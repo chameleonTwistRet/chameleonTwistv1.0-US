@@ -1,0 +1,182 @@
+name: Chameleon Twist (North America)
+sha1: 173875d2a98161228efb56841484e12446a43156
+options:
+  basename: chameleontwist
+  target_path: ct1.us.z64
+  base_path: .
+  compiler: IDO
+  find_file_boundaries: True
+  header_encoding: ASCII
+  platform: n64
+  ld_script_path: chameleontwist.ld
+  # undefined_funcs_auto: True
+  # undefined_funcs_auto_path: undefined_funcs_auto.txt
+  # undefined_syms_auto: True
+  # undefined_syms_auto_path: undefined_syms_auto.txt
+  # symbol_addrs_path: symbol_addrs.txt
+  # asm_path: asm
+  # src_path: src
+  # build_path: build
+  # extensions_path: tools/splat_ext
+  # mips_abi_float_regs: o32
+  # section_order: [".text", ".data", ".rodata", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+  # libultra_symbols: True
+  # hardware_regs: True
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: boot
+    type: bin
+    start: 0x40
+
+  - name: entry
+    type: code
+    start: 0x1000
+    vram: 0x80025C90
+    subsegments:
+      - [0x1000, hasm]
+
+  - name: main
+    type: code
+    start: 0x1050
+    vram: 0x80025CE0
+    follows_vram: entry
+    bss_size: 0x138720
+    subsegments:
+      - [0x1050, c]
+      - [0x12B0, c]
+      - [0x265C0, c]
+      - [0x26AF0, c]
+      - [0x290B0, c]
+      - [0x2D590, c]
+      - [0x82530, c]
+      - [0x9D1A0, c]
+      - [0xAB8D0, c]
+      - [0xACA10, c]
+      - [0xAD670, c]
+      - [0xADBA0, c]
+      - [0xADF90, c]
+      - [0xAE480, c]
+      - [0xAE4F0, c]
+      - [0xAE720, c]
+      - [0xAE8B0, c]
+      - [0xAE9C0, c]
+      - [0xAEAD0, c]
+      - [0xAEC10, c]
+      - [0xAEC70, c]
+      - [0xAEEE0, c]
+      - [0xAEF80, c]
+      - [0xAF040, c]
+      - [0xAF2A0, c]
+      - [0xAF490, c]
+      - [0xAF510, c]
+      - [0xAF570, c]
+      - [0xAF6E0, c]
+      - [0xAF750, c]
+      - [0xAFB10, c]
+      - [0xAFF30, c]
+      - [0xAFF90, c]
+      - [0xB0760, c]
+      - [0xB07D0, c]
+      - [0xB08B0, c]
+      - [0xB0A00, c]
+      - [0xB0A30, c]
+      - [0xB0CF0, c]
+      - [0xB0D50, c]
+      - [0xB0DD0, c]
+      - [0xB0EF0, c]
+      - [0xB0FC0, c]
+      - [0xB1070, c]
+      - [0xB10B0, c]
+      - [0xB1300, c]
+      - [0xB2690, c]
+      - [0xB26D0, c]
+      - [0xB2DE0, c]
+      - [0xB2E40, c]
+      - [0xB3670, c]
+      - [0xB3710, c]
+      - [0xB3730, c]
+      - [0xB3790, c]
+      - [0xB37F0, c]
+      - [0xB3880, c]
+      - [0xB38E0, c]
+      - [0xB3950, c]
+      - [0xB39C0, c]
+      - [0xB3A20, c]
+      - [0xB3A60, c]
+      - [0xB3B30, c]
+      - [0xB4630, c]
+      - [0xB4670, c]
+      - [0xB4830, c]
+      - [0xB48D0, c]
+      - [0xB4960, c]
+      - [0xB4970, c]
+      - [0xB4CA0, c]
+      - [0xB4DE0, c]
+      - [0xB4F20, c]
+      - [0xB4F50, c]
+      - [0xB52C0, c]
+      - [0xB5430, c]
+      - [0xB5960, c]
+      - [0xB5D10, c]
+      - [0xB5D30, c]
+      - [0xB5DE0, c]
+      - [0xB6740, c]
+      - [0xB7050, c]
+      - [0xB7090, c]
+      - [0xB74F0, c]
+      - [0xB7640, c]
+      - [0xB7650, c]
+      - [0xB79B0, c]
+      - [0xB8160, c]
+      - [0xB8370, c]
+      - [0xB8400, c]
+      - [0xB9160, c]
+      - [0xBA880, c]
+      - [0xBABA0, c]
+      - [0xBABE0, c]
+      - [0xBAC70, c]
+      - [0xBACA0, c]
+      - [0xBAD60, c]
+      - [0xBAD70, c]
+      - [0xBC6B0, c]
+      - [0xBCAC0, c]
+      - [0xBCC10, c]
+      - [0xBCCA0, c]
+      - [0xBCED0, c]
+      - [0xBCFC0, c]
+      - [0xBD050, c]
+      - [0xBD0F0, c]
+      - [0xBD220, c]
+      - [0xBD9C0, c]
+      - [0xBDA60, c]
+      - [0xBE700, c]
+      - [0xBEA00, c]
+      - [0xBF660, c]
+      - [0xBF770, c]
+      - [0xBF840, c]
+      - [0xC0050, c]
+      - [0xC0080, c]
+      - [0xC0180, c]
+      - [0xC0270, c]
+      - [0xC0280, c]
+      - [0xC02E0, c]
+      - [0xC0330, c]
+      - [0xC0380, c]
+      - [0xC0420, c]
+      - [0xC06C0, c]
+      - [0xC1180, c]
+      - [0xC1830, c]
+      - [0xC1850, c]
+      - [0xC24A0, c]
+      - [0xC2630, bin]
+      - [0xC2860, data]
+      - { start: 0xF8EB0, type: bss, vram: 0x8011DB40 }
+
+  - type: bin
+    start: 0xF8EB0
+    follows_vram: main
+  - [0xC00000]
