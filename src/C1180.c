@@ -1,32 +1,32 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E5E10.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSeqGetLoc.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E5E2C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSeqSetLoc.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E5E48.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSeqGetTicks.s")
 
 void func_800E5E50(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E5E58.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/seq_text_0048.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E5EA4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSeqNextEvent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E6028.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSeqNewMarker.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E6148.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSeqSecToTicks.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E622C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSeqTicksToSec.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E6280.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/__alSeqNextDelta.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E62D8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/seq_text_04AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E6328.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/seq_text_04FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E6358.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSeqNew.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E6430.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alSynSetPriority.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C1180/func_800E6440.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C1180/alCopy.s")

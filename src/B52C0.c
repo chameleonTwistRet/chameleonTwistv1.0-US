@@ -1,9 +1,9 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B52C0/func_800D9F50.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B52C0/__osSiCreateAccessQueue.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B52C0/func_800D9FA0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B52C0/__osSiGetAccess.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B52C0/func_800D9FE4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B52C0/__osSiRelAccess.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B52C0/func_800DA010.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B52C0/__osSiRawStartDma.s")

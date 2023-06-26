@@ -1,8 +1,8 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80052220.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/2D590/osSyncPrintf.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_8005223C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/2D590/osViExtendVStart.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80052248.s")
 
@@ -10,9 +10,9 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_800522E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_800522F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/2D590/leoInitUnit_atten.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80052300.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/2D590/__osGetActiveQueue.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_8005230C.s")
 
@@ -48,13 +48,13 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80053464.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80053498.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/2D590/leoDrive_reset.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80053524.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80053554.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80053594.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/2D590/__leoSetReset.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_800535B8.s")
 
@@ -610,7 +610,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_8007E964.s")
 
-void func_8007ED44(void) {
+void ptstart(void) {
 }
 
 void func_8007ED4C(void) {
@@ -872,7 +872,7 @@ void func_8007ED4C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80089E84.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80089F00.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/2D590/osVoiceControlGain.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_80089F6C.s")
 

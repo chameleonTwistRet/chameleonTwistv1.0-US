@@ -1,3 +1,3 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C0270/func_800E4F00.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/C0270/__osSetCompare.s")

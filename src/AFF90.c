@@ -1,13 +1,13 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/func_800D4C20.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/guAlignF.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/AFF90/func_800D4DE0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/func_800D4E30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/guLookAtF.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/func_800D50E8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/guLookAt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/func_800D5160.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/guPerspectiveF.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/func_800D5390.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AFF90/guPerspective.s")

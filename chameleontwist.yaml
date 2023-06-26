@@ -9,6 +9,7 @@ options:
   header_encoding: ASCII
   platform: n64
   ld_script_path: chameleontwist.ld
+  symbol_addrs_path: symbol_addrs.txt
   # undefined_funcs_auto: True
   # undefined_funcs_auto_path: undefined_funcs_auto.txt
   # undefined_syms_auto: True

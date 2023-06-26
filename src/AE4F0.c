@@ -1,5 +1,5 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AE4F0/func_800D3180.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AE4F0/osViBlack.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AE4F0/func_800D31F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AE4F0/osViSetSpecialFeatures.s")

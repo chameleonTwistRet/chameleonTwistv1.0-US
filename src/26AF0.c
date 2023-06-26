@@ -23,7 +23,7 @@ void func_8004BA38(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/26AF0/func_8004CD3C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/26AF0/func_8004CD80.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/26AF0/myfree.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/26AF0/func_8004CD8C.s")
 

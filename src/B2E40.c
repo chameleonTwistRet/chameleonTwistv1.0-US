@@ -3,25 +3,25 @@
 void func_800D7AD0(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D7AD8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/_timeToSamples.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D7B30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/_freePVoice.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D7B68.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/_collectPVoices.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D7BC8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/__freeParam.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D7BE0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/__allocParam.s")
 
 void func_800D7C10(void) {
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D7C18.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/alAudioFrame.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D7EB0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/alSynNew.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D81B0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/osSpTaskYield.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D81D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/osSpTaskYielded.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/func_800D8250.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/B2E40/osAiSetNextBuffer.s")

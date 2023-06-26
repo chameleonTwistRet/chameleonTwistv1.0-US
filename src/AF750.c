@@ -1,7 +1,7 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AF750/func_800D43E0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AF750/osContInit.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AF750/func_800D45D8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AF750/__osContGetInitData.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/AF750/func_800D46A8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/AF750/__osPackRequestData.s")

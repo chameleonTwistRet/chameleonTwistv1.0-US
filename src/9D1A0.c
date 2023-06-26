@@ -84,7 +84,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/9D1A0/func_800C7AEC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/9D1A0/func_800C7FB0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/9D1A0/n_alSynRemovePlayer.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/9D1A0/func_800C806C.s")
 

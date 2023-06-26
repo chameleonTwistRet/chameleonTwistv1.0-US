@@ -72,6 +72,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002CB1C.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/12B0/osBbUsbDevGetHandle.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002CBA4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002CBE8.s")
@@ -194,7 +196,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8003768C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_80037738.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/12B0/n_alSeqpDelete.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_80037758.s")
 
@@ -252,7 +254,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8003AF40.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8003B040.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/12B0/n_alSynFreeFX.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8003B048.s")
 
