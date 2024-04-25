@@ -43,7 +43,7 @@ segments:
     subsegments:
       - [0x1000, hasm]
       - [0x1050, c]
-      - [0x12B0, c]
+      - [0x7CE0, c]
       - [0x265C0, c]
       - [0x26AF0, c]
       - [0x290B0, c]
