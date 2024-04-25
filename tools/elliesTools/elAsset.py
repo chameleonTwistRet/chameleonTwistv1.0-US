@@ -114,7 +114,7 @@ class ImportedAsset:
 
 assetName = "fallenLogStump"
 assetGfxFileName = "./assets/model/JungleLand/fallenLogStump/fallenLogStump.gfx.inc.c"
-yaml = "./chameleontwist.jp.yaml"
+yaml = "./chameleontwist.us.yaml"
 asset = ImportedAsset(assetName=assetName, assetGfxFile=assetGfxFileName, yaml=yaml)
 
 asset.getLocalSegAddrs()

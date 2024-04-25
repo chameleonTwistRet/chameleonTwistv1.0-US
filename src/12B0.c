@@ -60,13 +60,84 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002C918.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002C970.s")
+/**
+ * @brief Wrap degrees to range [0-360)
+ * 
+ * @param theta_ptr: pointer to the angle to wrap
+ * @return (ptr) altered angle
+ */
+void WrapDegrees(f32* theta_ptr) {
+    while(1){
+        f32 theta = *theta_ptr;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002C9C4.s")
+        if (theta >= 360.0f) {
+            *theta_ptr = theta - 360.0f;
+            continue;
+        } else if (theta < 0.0f) {
+            *theta_ptr = theta + 360.0f;
+            continue;
+        } else {
+            break;
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002CA48.s")
+/**
+ * @brief This function takes in a vector, (a,b) in the form of two floats, and a radius c. 
+ * If the vector is outside the disk of radius c about (0,0), it is normalized to be on the boundary.
+ * 
+ * @param a: pointer to the x component of the vector
+ * @param b: pointer to the y component of the vector
+ * @param c: radius of a given disk
+ */
+void ClampPointToDisk(f32* a, f32* b, f32 radius) {
+    f32 norm;
+    f32 aSquaredPlusBSquared;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002CA90.s")
+    aSquaredPlusBSquared = SUM_OF_SQUARES(*a, *b);
+    if (!(aSquaredPlusBSquared <= SQ(radius))) {
+        norm = sqrtf(aSquaredPlusBSquared);
+        *a = (*a * radius) / norm;
+        *b = (*b * radius) / norm;
+    }
+}
+
+/**
+ * @brief Calculate the counterclockwise angle between two 2D points relative to the positive x-axis.
+ *
+ * This function calculates the counterclockwise angle in radians between two 2D points (x1, y1) and (x2, y2)
+ * relative to the positive x-axis. The angle is computed by CalculateAngleOfVector,
+ * which uses a lookup table to determine the angle based on the provided 2D vector (x, y).
+ *
+ * @param x1 The x-coordinate of the first point.
+ * @param y1 The y-coordinate of the first point.
+ * @param x2 The x-coordinate of the second point.
+ * @param y2 The y-coordinate of the second point.
+ *
+ * @return (f32) The counterclockwise angle between the two points in radians.
+ */
+f32 CalcAngleBetween2DPoints(f32 x1, f32 y1, f32 x2, f32 y2) {
+    return CalculateAngleOfVector(x2 - x1, -(y2 - y1));
+}
+
+/**
+ * @brief Reflect an angle about the x-axis to the first two quadrants (0 to 180 degrees).
+ *
+ * This function reflects an input angle about the x-axis, effectively mapping it to the first
+ * two quadrants. The result is an angle within the range [0, 180] degrees.
+ *
+ * @param theta The input angle in degrees.
+ * @return (f32) The reflected angle in the range [0, 180] degrees.
+ */
+f32 ReflectAngleToUpperQuadrants(f32 theta) {
+    if (theta < 0.0f) {
+        theta = -theta;
+    }
+    if (theta > 180.0f) {
+        theta = 360.0f - theta;
+    }
+    return theta;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12B0/func_8002CAD4.s")
 

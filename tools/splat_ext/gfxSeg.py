@@ -247,7 +247,7 @@ class N64SegGfxSeg(N64SegGfx):
 
     def getTrueAdr(self, addr, split=False):
         if len(hex(addr)) <= 7 + 2:#SPECIFICALLY at the start
-            yamlPath = os.getcwd()+"/chameleontwist.jp.yaml"
+            yamlPath = os.getcwd()+"/chameleontwist.us.yaml"
             yamler = open(yamlPath, "r", encoding="utf-8").readlines()
             index = hex((addr & 0x0F000000) >> 24).replace("0x", "0x0")
             otherhalf = addr & ~0x0F000000

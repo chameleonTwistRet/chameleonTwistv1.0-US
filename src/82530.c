@@ -562,4 +562,4 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/82530/func_800C1B14.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/82530/func_800C1B44.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/82530/CalculateAngleOfVector.s")

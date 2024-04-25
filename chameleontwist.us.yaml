@@ -19,7 +19,7 @@ options:
   gfx_ucode: f3dex
   extensions_path: tools/splat_ext
   auto_all_sections: [".data", ".rodata", ".bss"]
-  #migrate_rodata_to_functions : True
+  migrate_rodata_to_functions : True
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
@@ -172,6 +172,8 @@ segments:
       - [0xC24A0, c]
       - [0xC2630, databin]
       - [0xC2860, data]
+      #- [0xF72E0, .rodata, 82530]
+      - [0xF7360, data]
       - { start: 0xF8EB0, type: bss, vram: 0x8011DB40 }
 
   - type: databin

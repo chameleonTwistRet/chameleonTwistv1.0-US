@@ -387,3 +387,10 @@ __osBaseCounter = 0x80255FB8;
 __osViIntrCount = 0x80255FBC;
 __osTimerCounter = 0x80255FC0;
 __osEepPifRam = 0x80255FF0;
+
+
+ReflectAngleToUpperQuadrants = 0x8002CA90; // type:func
+CalculateAngleOfVector = 0x800C1B44; // type:func
+CalcAngleBetween2DPoints = 0x8002CA48; // type:func
+ClampPointToDisk = 0x8002C9C4; // type:func
+WrapDegrees = 0x8002C970; // type:func

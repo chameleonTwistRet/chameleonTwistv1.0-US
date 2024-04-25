@@ -1,4 +1,4 @@
-yaml = "./chameleontwist.jp.yaml"
+yaml = "./chameleontwist.us.yaml"
 
 with open(yaml, "r") as f:
     lines = f.readlines()
