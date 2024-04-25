@@ -10,9 +10,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/B3B30/cseq_text_0204.s")
 
-void func_800D8A5C(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/B3B30/alCSeqNextEvent.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/B3B30/alCSeqNew.s")

@@ -6,5 +6,4 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1050/func_80025E30.s")
 
-void __dummy(void) {
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/1050/__dummy.s")

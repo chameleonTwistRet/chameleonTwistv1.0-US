@@ -33,9 +33,6 @@ void func_800DFB88(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/BAD70/func_800E01FC.s")
 
-void func_800E0A14(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/BAD70/seqplayer_text_101C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/BAD70/__seqpStopOsc.s")

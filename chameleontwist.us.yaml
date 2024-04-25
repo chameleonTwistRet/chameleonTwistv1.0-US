@@ -2,51 +2,46 @@ name: Chameleon Twist (North America)
 sha1: 173875d2a98161228efb56841484e12446a43156
 options:
   basename: chameleontwist
-  target_path: ct1.us.z64
+  target_path: baserom.us.z64
   base_path: .
   compiler: IDO
   find_file_boundaries: True
   header_encoding: ASCII
   platform: n64
-  ld_script_path: chameleontwist.ld
+  ld_script_path: chameleontwist.us.ld
+  undefined_funcs_auto_path: undefined_funcs_auto.txt
   symbol_addrs_path: symbol_addrs.txt
-  # undefined_funcs_auto: True
-  # undefined_funcs_auto_path: undefined_funcs_auto.txt
-  # undefined_syms_auto: True
-  # undefined_syms_auto_path: undefined_syms_auto.txt
-  # symbol_addrs_path: symbol_addrs.txt
-  # asm_path: asm
-  # src_path: src
-  # build_path: build
-  # extensions_path: tools/splat_ext
-  # mips_abi_float_regs: o32
-  # section_order: [".text", ".data", ".rodata", ".bss"]
-  # auto_all_sections: [".data", ".rodata", ".bss"]
-  # libultra_symbols: True
-  # hardware_regs: True
+  #undefined_syms_path: undefined_syms.txt
+  asm_path: asm
+  src_path: src
+  asset_path: assets
+  build_path: build
+  gfx_ucode: f3dex
+  extensions_path: tools/splat_ext
+  auto_all_sections: [".data", ".rodata", ".bss"]
+  #migrate_rodata_to_functions : True
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+  create_undefined_funcs_auto: no
+  asm_emit_size_directive: false
 segments:
   - name: header
-    type: header
+    type: databin
     start: 0x0
 
   - name: boot
-    type: bin
+    type: databin
     start: 0x40
 
-  - name: entry
+  # Segment: Code
+  - name: main
     type: code
     start: 0x1000
     vram: 0x80025C90
-    subsegments:
-      - [0x1000, hasm]
-
-  - name: main
-    type: code
-    start: 0x1050
-    vram: 0x80025CE0
-    follows_vram: entry
     bss_size: 0x138720
     subsegments:
+      - [0x1000, hasm]
       - [0x1050, c]
       - [0x12B0, c]
       - [0x265C0, c]
@@ -125,6 +120,7 @@ segments:
       - [0xB5D10, c]
       - [0xB5D30, c]
       - [0xB5DE0, c]
+      - [0xB66E0, c]
       - [0xB6740, c]
       - [0xB7050, c]
       - [0xB7090, c]
@@ -137,6 +133,7 @@ segments:
       - [0xB8400, c]
       - [0xB9160, c]
       - [0xBA880, c]
+      - [0xBAB90, c]
       - [0xBABA0, c]
       - [0xBABE0, c]
       - [0xBAC70, c]
@@ -173,11 +170,11 @@ segments:
       - [0xC1830, c]
       - [0xC1850, c]
       - [0xC24A0, c]
-      - [0xC2630, bin]
+      - [0xC2630, databin]
       - [0xC2860, data]
       - { start: 0xF8EB0, type: bss, vram: 0x8011DB40 }
 
-  - type: bin
+  - type: databin
     start: 0xF8EB0
     follows_vram: main
   - [0xC00000]
