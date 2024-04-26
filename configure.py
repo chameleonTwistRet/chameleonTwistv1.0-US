@@ -59,6 +59,8 @@ BIN_CONVERT = f"{TOOLS_DIR}/bin_inc_c.py"
 NINJA_FILE = "build.ninja"
 NINJA_FILE_ASSETS = "assets.ninja"
 
+VER = "US"
+
 args = None #cmd args for use in build_stuff
 
 def clean():
@@ -209,8 +211,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         "load.c": "ido_O3_cc",
         "mainbus.c": "ido_O3_cc",
         "resample.c": "ido_O3_cc",
-        "reverb.c": "ido_O3_cc",
-        "seq.c": "ido_O3_cc",
         "seqplayer.c": "ido_O3_cc",
         "seqpsetbank.c": "ido_O3_cc",
         "seqpsetpan.c": "ido_O3_cc",
@@ -233,6 +233,10 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         "perspective.c": "O2_cc",
         "translate.c": "O2_cc",
     }
+    #revert these once they build
+    if VER == "JP":
+        c_file_rule_overrides["reverb.c"] = "ido_O3_cc"
+        c_file_rule_overrides["seq.c"] = "ido_O3_cc"
 
     #assets
     #i dont think there is a way to retrieve needed files? since its .data anyways
