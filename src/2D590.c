@@ -610,11 +610,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_8007E964.s")
 
-void ptstart(void) {
-}
-
-void func_8007ED4C(void) {
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/2D590/ptstart.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_8007ED54.s")
 
@@ -879,9 +875,6 @@ void func_8007ED4C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_8008A03C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_8008A0A0.s")
-
-void func_8008A130(void) {
-}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2D590/func_8008A138.s")
 

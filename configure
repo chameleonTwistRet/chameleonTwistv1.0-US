@@ -1,5 +1,2 @@
 #!/usr/bin/env bash
-
-python3 tools/splat/split.py chameleontwist.yaml
 python3 configure.py "$@"
-

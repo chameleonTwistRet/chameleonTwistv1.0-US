@@ -4,9 +4,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/26AF0/func_8004B964.s")
 
-void func_8004BA38(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/26AF0/func_8004BA40.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/26AF0/func_8004BCEC.s")

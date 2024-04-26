@@ -1,0 +1,235 @@
+name: Chameleon Twist (North America)
+sha1: 173875d2a98161228efb56841484e12446a43156
+options:
+  basename: chameleontwist
+  target_path: baserom.us.z64
+  base_path: .
+  compiler: IDO
+  find_file_boundaries: True
+  header_encoding: ASCII
+  platform: n64
+  ld_script_path: chameleontwist.us.ld
+  undefined_funcs_auto_path: undefined_funcs_auto.txt
+  symbol_addrs_path: symbol_addrs.txt
+  #undefined_syms_path: undefined_syms.txt
+  asm_path: asm
+  src_path: src
+  asset_path: assets
+  build_path: build
+  gfx_ucode: f3dex
+  extensions_path: tools/splat_ext
+  auto_all_sections: [".data", ".rodata", ".bss"]
+  migrate_rodata_to_functions : True
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+  create_undefined_funcs_auto: no
+  asm_emit_size_directive: false
+segments:
+  - name: header
+    type: databin
+    start: 0x0
+
+  - name: boot
+    type: databin
+    start: 0x40
+
+  # Segment: Code
+  - name: main
+    type: code
+    start: 0x1000
+    vram: 0x80025C90
+    bss_size: 0x138720
+    subsegments:
+      - [0x1000, hasm]
+      - [0x1050, c]
+      - [0x7CE0, c]
+      - [0x265C0, c]
+      - [0x26AF0, c]
+      - [0x290B0, c]
+      - [0x2D590, c]
+      - [0x82530, c]
+      - [0x9D1A0, c]
+      - [0xAB8D0, c]
+      - [0xACA10, c]
+      - [0xAD670, c]
+      - [0xADBA0, c]
+      - [0xADF90, c]
+      - [0xAE480, c]
+      - [0xAE4F0, c]
+      - [0xAE720, c]
+      - [0xAE8B0, c]
+      - [0xAE9C0, c]
+      - [0xAEAD0, c]
+      - [0xAEC10, c]
+      - [0xAEC70, c]
+      - [0xAEEE0, c]
+      - [0xAEF80, c]
+      - [0xAF040, c]
+      - [0xAF2A0, c]
+      - [0xAF490, c]
+      - [0xAF510, c]
+      - [0xAF570, c]
+      - [0xAF6E0, c]
+      - [0xAF750, c]
+      - [0xAFB10, c]
+      - [0xAFF30, c]
+      - [0xAFF90, c]
+      - [0xB0760, c]
+      - [0xB07D0, c]
+      - [0xB08B0, c]
+      - [0xB0A00, c]
+      - [0xB0A30, c]
+      - [0xB0CF0, c]
+      - [0xB0D50, c]
+      - [0xB0DD0, c]
+      - [0xB0EF0, c]
+      - [0xB0FC0, c]
+      - [0xB1070, c]
+      - [0xB10B0, c]
+      - [0xB1300, c]
+      - [0xB2690, c]
+      - [0xB26D0, c]
+      - [0xB2DE0, c]
+      - [0xB2E40, c]
+      - [0xB3670, c]
+      - [0xB3710, c]
+      - [0xB3730, c]
+      - [0xB3790, c]
+      - [0xB37F0, c]
+      - [0xB3880, c]
+      - [0xB38E0, c]
+      - [0xB3950, c]
+      - [0xB39C0, c]
+      - [0xB3A20, c]
+      - [0xB3A60, c]
+      - [0xB3B30, c]
+      - [0xB4630, c]
+      - [0xB4660, hasm, os/getcount]
+      - [0xB4670, c, gu/ortho]
+      - [0xB4830, hasm, libc/bzero]
+      #- [0xB48D0, hasm] something here???
+      - [0xB4970, c, libc/ll]
+      - [0xB4C30, c, io/conteepprobe]
+      - [0xB4CA0, c, io/conteeplongread]
+      - [0xB4DE0, c, io/conteeplongwrite]
+      - [0xB4F20, c, gu/random]
+      - [0xB4F50, c, io/pfsisplug]
+      - [0xB52C0, c, io/siacs]
+      - [0xB5380, c, io/sirawdma]
+      - [0xB5430, c, io/crc]
+      - [0xB55B0, c, io/contramwrite]
+      - [0xB5960, c, io/contramread]
+      - [0xB5D10, hasm, os/setsr]
+      - [0xB5D20, hasm, os/getsr]
+      - [0xB5D30, hasm, os/setfpccsr]
+      - [0xB5D40, c, io/sprawread]
+      - [0xB5D90, c, io/sprawwrite]
+      - [0xB5DE0, hasm, os/exceptasm]
+      - [0xB66E0, hasm, os/createspeedparam]
+      - [0xB6740, c, os/sethwinterrupt]
+      - [0xB6790, c, os/leointerrupt]
+      - [0xB7050, hasm, os/interrupt]
+      - [0xB7090, c, os/thread]
+      - [0xB70D0, c, os/timerintr]
+      - [0xB74D0, c, os/getthreadpri]
+      - [0xB74F0, c, io/vi]
+      - [0xB7640, c, io/vigetcurrcontext]
+      - [0xB7650, c, io/viswapcontext]
+      - [0xB79B0, c, io/piacs]
+      - [0xB7A70, c, io/pirawdma]
+      - [0xB7FE0, c, os/jammesg]
+      - [0xB8130, c, io/pigetcmdq]
+      - [0xB8160, c, gu/mtxcatf]
+      - [0xB8370, c, gu/normalize]
+      - [0xB8400, c, io/contpfs]
+      - [0xB9160, c, io/pfschecker]
+      - [0xB9BC0, c, libc/xprintf]
+      - [0xBA880, hasm, libc/bcopy]
+      - [0xBAB90, c, io/spsetstat]
+      - [0xBABA0, c, io/spsetpc]
+      - [0xBABE0, c, io/sprawdma]
+      - [0xBAC70, c, io/sp]
+      - [0xBACA0, hasm, os/probetlb]
+      - [0xBAD60, c, audio/syndelete]
+      - [0xBAD70, c, audio/seqplayer]
+      - [0xBC6B0, c, audio/event]
+      - [0xBC9F0, c, audio/synaddplayer]
+      - [0xBCA40, c, audio/synstopvoice]
+      - [0xBCAC0, c, audio/synfreevoice]
+      - [0xBCB70, c, audio/synsetvol]
+      - [0xBCC10, c, audio/synsetpitch]
+      - [0xBCCA0, c, audio/synallocvoice]
+      - [0xBCED0, c, audio/synstartvoiceparam]
+      - [0xBCFC0, c, audio/synsetpan]
+      - [0xBD050, c, audio/synsetfxmix]
+      - [0xBD0F0, hasm, os/setintmask]
+      - [0xBD190, c, audio/synstartvoice]
+      - [0xBD220, c, audio/drvrNew]
+      - [0xBD9C0, c, audio/synallocfx]
+      - [0xBDA60, c, audio/mainbus]
+      - [0xBDBB0, c, audio/load]
+      - [0xBE700, c, audio/resample]
+      - [0xBEA00, c, audio/env]
+      - [0xBF660, c, audio/auxbus]
+      - [0xBF730, c, audio/save]
+      - [0xBF830, c, io/spgetstat]
+      - [0xBF840, c, io/ai]
+      - [0xBF870, c, io/conteepwrite]
+      - [0xBFD50, c, io/conteepread]
+      - [0xC0050, c, io/si]
+      - [0xC0080, c, os/destroythread]
+      - [0xC0180, c, io/leodiskinit]
+      - [0xC0270, hasm, os/setcompare]
+      - [0xC0280, c, os/resetglobalintmask]
+      - [0xC02E0, c, io/epirawwrite]
+      - [0xC0330, c, os/yieldthread]
+      - [0xC0380, c, libc/string]
+      - [0xC0420, c, libc/xlitob]
+      - [0xC06C0, c, libc/xldtob]
+      - [0xC1180, c, audio/seq]
+      - [0xC17A0, c, audio/synsetpriority]
+      - [0xC17B0, c, audio/copy]
+      - [0xC1830, c, audio/filter]
+      - [0xC1850, c, audio/reverb]
+      - [0xC24A0, c, libc/ldiv]
+      - [0xC2630, databin]
+      - [0xC2860, data]
+      - [0xF09F0, data, 1050]
+      - [0xF0D90, data]
+      #- [0xF09F0, .rodata, 1050]
+      #- [0xF0D90, .rodata, 7CE0]
+      #- [0xF2160, .rodata, code/debug]
+      #- [0xF2460, .rodata, code/battle]
+      #- [0xF2510, .rodata, code/sprite]
+      #- [0xF2FD0, .rodata, code/5FF30]
+      #- [0xF6050, .rodata, code/clip]
+      #- [0xF60A0, .rodata, code/8ADD0]
+      #- [0xF72E0, .rodata, 82530]
+      - { start: 0xF8EB0, type: bss, vram: 0x8011DB40 }
+
+  - type: databin
+    start: 0xF8EB0
+    follows_vram: main
+
+  - start: 0xb6fbd0
+    name: Chameleons
+    vram: 0x07000000 #SEGMENT 0x07
+    dir: chameleons
+    subalign: 8
+    type: databin
+    subsegments:
+    - name: Chameleons
+      dir: Chameleons
+      type: databin
+      subalign: 8
+      vram: 0x80D84330
+      start: 0xb6fbd0
+      subsegments:
+      - [0xb6fbd0, databin, Davy]
+      - [0xb76620, databin, Jack]
+      - [0xB7d458, databin, Fred]
+      - [0xb84290, databin, Linda]
+  - [0xB8b820, databin, unkunk]
+  - [0xB91FE0, databin, ROM_PADDING]
+  - [0xC00000]
