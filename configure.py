@@ -36,7 +36,11 @@ ASFLAGS = f"{MIPS}-as -EB -mtune=vr4300 -march=vr4300 -mabi=32 {INCLUDES}"
 
 GAME_CC_DIR = f"{ASM_PROC} {ASM_PROC_FLAGS} {IDO_CC} --{ASFLAGS}"
 LIB_CC_DIR = GAME_CC_DIR
-DEFINES = "-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG"
+
+VERSION = "VER_US"
+
+DEFINES = f"-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -D{VERSION}"
+
 WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul {DEFINES} -woff 649,838"
 CFLAGS = f"-G 0 {WARNINGS} {INCLUDES}" 
 GAME_COMPILE_CMD = (

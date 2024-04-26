@@ -8,10 +8,10 @@ typedef struct Vec2f {
                f32 y;
 } Vec2f;
 
-typedef struct Vec2s {
+typedef struct Vec2w {
                s32 x;
                s32 y;
-} Vec2s;
+} Vec2w;
 
 typedef struct Vec3f {
                f32 x;
@@ -19,11 +19,11 @@ typedef struct Vec3f {
                f32 z;
 } Vec3f;
 
-typedef struct Vec3s {
+typedef struct Vec3w {
                s32 x;
                s32 y;
                s32 z;
-} Vec3s;
+} Vec3w;
 
 typedef struct Vec4f {
                f32 x;
@@ -52,7 +52,7 @@ typedef struct Actor {
     /* 0x004 */ s32 actorIndex;
     /* 0x008 */ s32 actorState;//enum, 0 == idle, 1 == on tongue, 2 == in mouth, 3 == spit
     /* 0x00C */ s32 posOnTongue;//the segment iirc
-    /* 0x010 */ s32 globalTimer;
+    /* 0x010 */ u32 globalTimer;
     /* 0x014 */ s32 touched; //0 == false. 1 == true.
     /* 0x018 */ s32 hit; //triggered when hit
     /* 0x01C */ s32 tongueBumpSeg; //the segment at which the tongue was bumped back
@@ -66,9 +66,9 @@ typedef struct Actor {
 
     /* 0x054 */ actorSubArray unknownPositionThings[3]; //usually 2?
     //actorSubArray is these offsets in the struct
-        // /* 0x054 */ f32 unk_54;//cos x used by fish
+        // /* 0x054 */ f32 unk_54;//cos x used by FISH
         // /* 0x058 */ f32 unk_58;//presumably y
-        // /* 0x05C */ f32 unk_5C;//sin z used by fish
+        // /* 0x05C */ f32 unk_5C;//sin z used by FISH
         // /* 0x060 */ f32 unk_60;//hitboxScale
         // /* 0x064 */ f32 unk_64;//hitboxYstretch
         
@@ -105,14 +105,14 @@ typedef struct Actor {
     /* 0x0E4 */ s32 unk_E4;
     /* 0x0E8 */ f32 unk_E8;
     /* 0x0EC */ s32 unk_EC;
-    /* 0x0F0 */ s32 unk_F0;
+    /* 0x0F0 */ u32 unk_F0;
     /* 0x0F4 */ f32 unk_F4;
     /* 0x0F8 */ f32 unk_F8;
     /* 0x0FC */ f32 unk_FC;
     /* 0x100 */ f32 unk_100;
     /* 0x104 */ f32 unk_104;
     /* 0x108 */ f32 unk_108;
-    /* 0x10C */ s32 unk_10C[5];
+    /* 0x10C */ s32 userVariables[5];
     /* 0x120 */ s32 unk_120;
     /* 0x124 */ s32 unk_124;
     /* 0x128 */ s32 unk_128;
@@ -121,7 +121,7 @@ typedef struct Actor {
     /* 0x134 */ f32 unk_134[8];
         /* 0x154 */ union {
         Vec2f _f32;
-        Vec2s _s32;
+        Vec2w _s32;
     } position;
     /* 0x15C */ f32 unk_15C;
     /* 0x160 */ f32 unk_160;

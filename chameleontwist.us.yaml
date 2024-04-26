@@ -172,8 +172,17 @@ segments:
       - [0xC24A0, c]
       - [0xC2630, databin]
       - [0xC2860, data]
+      - [0xF09F0, data, 1050]
+      - [0xF0D90, data]
+      #- [0xF09F0, .rodata, 1050]
+      #- [0xF0D90, .rodata, 7CE0]
+      #- [0xF2160, .rodata, code/debug]
+      #- [0xF2460, .rodata, code/battle]
+      #- [0xF2510, .rodata, code/sprite]
+      #- [0xF2FD0, .rodata, code/5FF30]
+      #- [0xF6050, .rodata, code/clip]
+      #- [0xF60A0, .rodata, code/8ADD0]
       #- [0xF72E0, .rodata, 82530]
-      - [0xF7360, data]
       - { start: 0xF8EB0, type: bss, vram: 0x8011DB40 }
 
   - type: databin

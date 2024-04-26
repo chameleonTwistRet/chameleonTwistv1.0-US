@@ -7,4 +7,7 @@
 #define VARIABLES_US_H
 
 
+
+extern Actor gActors[MAX_ACTORS]; //currently loaded actor structs
+
 #endif

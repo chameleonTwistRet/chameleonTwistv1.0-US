@@ -575,7 +575,7 @@ f32 ReflectAngleToUpperQuadrants(f32 theta) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_800483E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8004852C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/ActorInit_BattleModeSandCrab.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8004855C.s")
 
@@ -593,7 +593,7 @@ f32 ReflectAngleToUpperQuadrants(f32 theta) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_80048998.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_800489A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/ActorTick_BattleModeSandCrabSpawner.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_80048A7C.s")
 
@@ -621,9 +621,30 @@ f32 ReflectAngleToUpperQuadrants(f32 theta) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8004949C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_80049508.s")
+void func_80049508(Actor* arg0) {
+    f32 calc;
+
+    if (arg0->userVariables[0] != 0) {
+        arg0->userVariables[1]++;
+        if (arg0->unk_124 == arg0->userVariables[1]) {
+            func_80030AEC(arg0);
+        }
+    } else {
+        arg0->vel.y -= D_80116BF0 + (arg0->vel.y * D_80116BF4);
+        calc = arg0->pos.y + arg0->vel.y;
+        if (calc < arg0->position._f32.x) {
+            arg0->pos.y = arg0->position._f32.x;
+            arg0->userVariables[0] = 1;
+        } else {
+            arg0->pos.y = calc;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_800495A8.s")
+
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8004A150.s")
 
