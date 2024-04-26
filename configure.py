@@ -211,6 +211,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         "load.c": "ido_O3_cc",
         "mainbus.c": "ido_O3_cc",
         "resample.c": "ido_O3_cc",
+        "reverb.c": "ido_O3_cc",
+        "seq.c": "ido_O3_cc",
         "seqplayer.c": "ido_O3_cc",
         "seqpsetbank.c": "ido_O3_cc",
         "seqpsetpan.c": "ido_O3_cc",
@@ -233,10 +235,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         "perspective.c": "O2_cc",
         "translate.c": "O2_cc",
     }
-    #revert these once they build
-    if VER == "JP":
-        c_file_rule_overrides["reverb.c"] = "ido_O3_cc"
-        c_file_rule_overrides["seq.c"] = "ido_O3_cc"
+
 
     #assets
     #i dont think there is a way to retrieve needed files? since its .data anyways
@@ -344,7 +343,16 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                     fixed = str(src_path).split("/")[-1]
                     if fixed in list(c_file_rule_overrides.keys()):
                         overrideC.append(str(src_path))
-                        build(entry.object_path, entry.src_paths, c_file_rule_overrides[fixed])
+                        if VER == "JP":
+                            build(entry.object_path, entry.src_paths, c_file_rule_overrides[fixed])
+                        else:
+                            buil = "O2_cc"
+                            if fixed in ["auxbus.c"]:
+                                buil = "ido_O3_cc"
+                            build(entry.object_path, entry.src_paths, buil)
+
+
+                             
                         break
             elif ioCheck or osCheck:
                 for src_path in entry.src_paths:

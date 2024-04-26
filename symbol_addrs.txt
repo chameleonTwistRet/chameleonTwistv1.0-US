@@ -386,7 +386,7 @@ __osBaseCounter = 0x80255FB8;
 __osViIntrCount = 0x80255FBC;
 __osTimerCounter = 0x80255FC0;
 __osEepPifRam = 0x80255FF0;
-
+alMainBusParam = 0x800E2660; // type:func rom:0xbda60
 
 ReflectAngleToUpperQuadrants = 0x8002CA90; // type:func
 CalculateAngleOfVector = 0x800C1B44; // type:func
@@ -395,6 +395,8 @@ ClampPointToDisk = 0x8002C9C4; // type:func
 WrapDegrees = 0x8002C970; // type:func
 ActorInit_BattleModeSandCrab = 0x8004852C; // type:func
 ActorTick_BattleModeSandCrabSpawner = 0x800489A4; // type:func
+
+
 
 gActors = 0x80176ae8; // size:0x5d00
 
