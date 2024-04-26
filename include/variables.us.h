@@ -7,6 +7,8 @@
 #define VARIABLES_US_H
 
 
+extern f32 D_80116BF0;
+extern f32 D_80116BF4;
 
 extern Actor gActors[MAX_ACTORS]; //currently loaded actor structs
 

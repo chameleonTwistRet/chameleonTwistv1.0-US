@@ -1,9 +1,9 @@
 #ifndef MACROS_H
 #define MACROS_H
-#include "variables.us.h"
-#include "common_structs.h"
 
 #define MAX_ACTORS 64
+#include "variables.us.h"
+#include "common_structs.h"
 
 // GENERAL MATHS //
 #define PI 3.141592653589793
