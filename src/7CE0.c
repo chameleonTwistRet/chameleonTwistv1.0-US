@@ -93,7 +93,7 @@ f32 ReflectAngleToUpperQuadrants(f32 theta) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8002CDCC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8002CEC0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/Actors_Init.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8002D66C.s")
 
@@ -615,13 +615,32 @@ f32 ReflectAngleToUpperQuadrants(f32 theta) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_80048FBC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8004937C.s")
+void ActorInit_UnkFireSpawner(Actor* actor){
+  return;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_80049384.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/ActorTick_UnkFireSpawner.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8004949C.s")
+extern f32 D_80116BE8; // 3.200000048f
+extern f32 D_80116BEC; // 0.05000000075f
+void ActorTick_PickupHeartFalling(Actor* arg0) {
+    f32 temp_f2;
 
-void func_80049508(Actor* arg0) {
+    if (arg0->userVariables[0] == 0) {
+        arg0->vel.y -= (D_80116BE8 + (arg0->vel.y * D_80116BEC));
+        temp_f2 = arg0->pos.y + arg0->vel.y;
+        if (temp_f2 < 0.0f) {
+            arg0->pos.y = 0.0f;
+            arg0->userVariables[0] = 1;
+            return;
+        }
+        arg0->pos.y = temp_f2;
+    }
+}
+
+extern f32 D_80116BF0; // 3.200000048f
+extern f32 D_80116BF4; // 0.05000000075f
+void ActorTick_Powerup(Actor* arg0) {
     f32 calc;
 
     if (arg0->userVariables[0] != 0) {
@@ -641,12 +660,17 @@ void func_80049508(Actor* arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_800495A8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/Actors_Tick.s")
 
-
-
-
-#pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8004A150.s")
+void func_8004A150(s32 arg0) {
+    s32 i;
+    gCurrentActivePlayerPointer = &gPlayerActors[0];
+    gTongueOnePointer = &gTongues[0];
+    for (i = 0; i < arg0; i++){
+        Actors_Tick();
+        
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/7CE0/func_8004A1B4.s")
 

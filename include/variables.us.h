@@ -7,9 +7,12 @@
 #define VARIABLES_US_H
 
 
-extern f32 D_80116BF0;
-extern f32 D_80116BF4;
-
+extern pole poles[64]; //currently loaded pole structs
 extern Actor gActors[MAX_ACTORS]; //currently loaded actor structs
+extern s32 levelFlags[32]; //contextual-per-level flags
+extern PlayerActor* gCurrentActivePlayerPointer;
+extern Tongue* gTongueOnePointer;
+extern PlayerActor gPlayerActors[4];
+extern Tongue gTongues[4];
 
 #endif
