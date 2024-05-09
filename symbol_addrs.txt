@@ -401,6 +401,9 @@ ActorInit_UnkFireSpawner = 0x8004937c; // type:func
 ActorTick_UnkFireSpawner = 0x80049384; // type:func
 Actors_Init = 0x8002cec0; // type:func
 Actors_Tick = 0x800495A8; // type:func
+PlaySoundEffect = 0x80082A14; // type:func
+DummiedPrintf3 = 0x800D0560; // type:func
+Vec3f_Print = 0x800D1644; // type:func
 
 gActors = 0x80176ae8; // size:0x5d00
 levelFlags = 0x80180708; // type:s32 size:0x20
@@ -410,7 +413,6 @@ gCurrentActivePlayerPointer = 0x801806E0; // size:0x4
 gTongueOnePointer = 0x801806E4; // size:0x4
 gPlayerActors = 0x80174C28; // size:0x4c0
 gTongues = 0x801750E8; // size:0x1830
-
 
 
 //rodata
