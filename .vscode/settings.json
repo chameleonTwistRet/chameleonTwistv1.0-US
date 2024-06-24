@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "common_structs.h": "c"
+        "common_structs.h": "c",
+        "common.h": "c",
+        "enums.h": "c",
+        "functions.us.h": "c"
     }
 }

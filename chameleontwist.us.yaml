@@ -18,13 +18,14 @@ options:
   build_path: build
   gfx_ucode: f3dex
   extensions_path: tools/splat_ext
-  auto_all_sections: [".data", ".rodata", ".bss"]
+  #auto_all_sections: [".data", ".rodata", ".bss"]
   migrate_rodata_to_functions : True
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
   create_undefined_funcs_auto: no
   asm_emit_size_directive: false
+
 segments:
   - name: header
     type: databin
@@ -41,17 +42,24 @@ segments:
     vram: 0x80025C90
     bss_size: 0x138720
     subsegments:
+      #for all of the c named after the JP addr
+      #keep it in sync with whatever it gets changed to
+      #relative to v1.0-JP
       - [0x1000, hasm]
       - [0x1050, c, code/1050]
-      - [0x7CE0, c, code/7CE0]
-      - [0x265C0, c, code/265C0]
-      - [0x26AF0, c, code/26AF0]
-      - [0x290B0, c, code/290B0]
-      - [0x2D590, c, code/2D590]
-      - [0x82530, c, code/82530]
-      - [0x9D1A0, c, code/9D1A0]
+      - [0x7CE0, c, code/84E0] #match jp name
+      - [0x265C0, c, code/298D0] #match jp name
+      - [0x26AF0, c, code/debug]
+      - [0x290B0, c, code/battle]
+      - [0x2D590, c, code/sprite]
+      - [0x5aba0, c, code/5FEB0] #match jp name
+      - [0x5ac20, c, code/5FF30] #match jp name
+      - [0x82d60, c, code/clip]
+      - [0x83870, c, code/8ADD0] #match jp name
+      - [0x9cba0, c, code/math]
+      - [0x9D1A0, c, code/poly]
       - [0xAB8D0, c, code/vector]
-      - [0xACA10, c, code/ACA10]
+      - [0xACA10, c, code/B39A0] #match jp name
 
       - [0xAD670, c]
       - [0xADBA0, c]
@@ -196,8 +204,16 @@ segments:
       - [0xC24A0, c, libc/ldiv]
       - [0xC2630, databin]
       - [0xC2860, data]
-      - [0xF09F0, data, 1050]
-      - [0xF0D90, data]
+      - [0xC4950, data, code/1050]
+      - [0xC53f0, data, code/debug]
+      - [0xC5880, data, code/battle]
+      - [0xC5a60, data, code/sprite]
+      - [0xD0c40, data, code/5FF30]
+      - [0xe8b60, databin, assets0] #???? wtf
+      - [0xEEEC0, data, code/8ADD0]
+      - [0xef270, data]
+      #- [0xF09F0, data, code/1050]
+      #- [0xF0D90, data]
       #- [0xF09F0, .rodata, 1050]
       #- [0xF0D90, .rodata, 7CE0]
       #- [0xF2160, .rodata, code/debug]
@@ -207,7 +223,8 @@ segments:
       #- [0xF6050, .rodata, code/clip]
       #- [0xF60A0, .rodata, code/8ADD0]
       #- [0xF72E0, .rodata, 82530]
-      - { start: 0xF8EB0, type: bss, vram: 0x8011DB40 }
+      - { start: 0xF8EB0, type: bss, vram: 0x8011DB40, name: code/1050}
+      - { start: 0xF8EB0, type: bss, vram: 0x80174C20 }
 
   - type: databin
     start: 0xF8EB0

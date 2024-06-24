@@ -132,7 +132,7 @@ void func_800D1A18(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/code/ACA10/func_800D1A18.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/B39A0/func_800D1A18.s")
 #endif
 
 void func_800D1C28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
