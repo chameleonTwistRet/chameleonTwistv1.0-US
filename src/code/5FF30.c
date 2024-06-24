@@ -950,19 +950,217 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A701C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A71C0.s")
+/**
+ * @brief Compute the bounding box that encompasses both input rectangles.
+ * The resulting bounding box is stored in the provided output rectangle.
+ *
+ * @param[in] rectA Pointer to the first input rectangle.
+ * @param[in] rectB Pointer to the second input rectangle.
+ * @param[out] boundingBox Pointer to the output rectangle representing the computed bounding box.
+ *
+ * @note The function considers the minimum and maximum coordinates along the x, y, and z axes
+ *       to determine the bounding box.
+ */
+void ComputeBoundingBoxFromRects(Rect3D* rectA, Rect3D* rectB, Rect3D* rectOut) {
+    if (rectA->min.x < rectB->min.x) {
+        rectOut->min.x = rectA->min.x;
+    } else {
+        rectOut->min.x = rectB->min.x;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A72A0.s")
+    if (rectB->max.x < rectA->max.x) {
+        rectOut->max.x = rectA->max.x;
+    } else {
+        rectOut->max.x = rectB->max.x;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A735C.s")
+    if (rectA->min.y < rectB->min.y) {
+        rectOut->min.y = rectA->min.y;
+    } else {
+        rectOut->min.y = rectB->min.y;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A73AC.s")
+    if (rectB->max.y < rectA->max.y) {
+        rectOut->max.y = rectA->max.y;
+    } else {
+        rectOut->max.y = rectB->max.y;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/IfRectsIntersect.s")
+    if (rectA->min.z < rectB->min.z) {
+        rectOut->min.z = rectA->min.z;
+    } else {
+        rectOut->min.z = rectB->min.z;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7510.s")
+    if (rectB->max.z < rectA->max.z) {
+        rectOut->max.z = rectA->max.z;
+        return;
+    }
+    
+    rectOut->max.z = rectB->max.z;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A75D8.s")
+
+/**
+ * @brief Adjusts the boundaries of a 3D rectangle in order to include the coordinates of the provided 3D vector.
+ *
+ * @param[in,out] r Pointer to the 3D rectangle to be adjusted.
+ * @param[in] vec The 3D vector whose coordinates are included in the rectangle boundaries.
+ */
+void AdjustRectToVec3(Rect3D* r, Vec3f vec) {
+    if (vec.x < r->min.x) {
+        r->min.x = vec.x;
+    } else if (r->max.x < vec.x) {
+        r->max.x = vec.x;
+    }
+    if (vec.y < r->min.y) {
+        r->min.y = vec.y;
+    } else if (r->max.y < vec.y) {
+        r->max.y = vec.y;
+    }
+    if (vec.z < r->min.z) {
+        r->min.z = vec.z;
+        return;
+    }
+    else if (r->max.z < vec.z) {
+        r->max.z = vec.z;
+    }
+}
+
+/**
+ * @brief Expands the input rectangle by a given amount.
+ * 
+ * @param r: Pointer to the rectangle to be expanded
+ * @param s: Amount to expand the rectangle by 
+ */
+void Rect_Expand(Rect3D* r, f32 s){
+    r->min.x -= s;
+    r->min.y -= s;
+    r->min.z -= s;
+    r->max.x += s;
+    r->max.y += s;
+    r->max.z += s;
+}
+
+/**
+ * @brief Adjust the bounds of a rectangle to ensure that the minimum values are less than the maximum values.
+ * 
+ * @param[in,out] rect: Pointer to rectangle to adjust
+ */
+void OrderRectBounds(Rect3D *rect) {
+    f32 prevMaxX;
+    f32 prevMaxY;
+    f32 prevMaxZ;
+    
+    if (rect->max.x < rect->min.x) {
+        prevMaxX = rect->max.x;
+        rect->max.x = rect->min.x;
+        rect->min.x = prevMaxX;
+    }
+    
+    if (rect->max.y < rect->min.y) {
+        prevMaxY = rect->max.y;
+        rect->max.y = rect->min.y;
+        rect->min.y = prevMaxY;
+    }
+    
+    prevMaxZ = rect->max.z;
+    
+    if (prevMaxZ < rect->min.z) {
+        rect->max.z = rect->min.z;
+        rect->min.z = prevMaxZ;
+    }
+}
+
+/**
+ * @brief Compares two given rectangles to determine if they intersect.
+ *      
+ * @param[in,out] rectA: first rectangle
+ * @param[in,out] rectB: second rectangle
+ * 
+ * @return (s32) 1 if the two rectangles intersect, 0 otherwise
+ */
+s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB) {
+    if ((f64) rectB->max.x < (f64) rectA->min.x) {
+        return 0;
+    }
+    if ((f64) rectA->max.x < (f64) rectB->min.x) {
+        return 0;
+    }
+    if ((f64) rectB->max.y < (f64) rectA->min.y) {
+        return 0;
+    }
+    if ((f64) rectA->max.y < (f64) rectB->min.y) {
+        return 0;
+    }
+    if ((f64) rectB->max.z < (f64) rectA->min.z) {
+        return 0;
+    }
+    if ((f64) rectA->max.z < (f64) rectB->min.z) {
+        return 0;
+    }
+    return 1;
+}
+
+/**
+ * @brief Determines if a point (vec3f) is within a given rectangle.
+ * 
+ * @param point: Point to check 
+ * @param rect: Pointer to rectangle to check against
+ * @return (s32) 1 if point is in rectangle, 0 otherwise 
+ */
+s32 IsPointInRect(Vec3f point, Rect3D* rect) {
+    if (point.x < rect->min.x) {
+        return 0;
+    }
+    if (rect->max.x < point.x) {
+        return 0;
+    }
+    if (point.y < rect->min.y) {
+        return 0;
+    }
+    if (rect->max.y < point.y) {
+        return 0;
+    }
+    if (point.z < rect->min.z) {
+        return 0;
+    }
+    if (rect->max.z < point.z) {
+        return 0;
+    }
+    return 1;
+}
+
+/**
+ * @brief Create a bounding box from two given vectors.
+ * 
+ * @param vecA: First vector
+ * @param vecB: Second vector
+ * @param rect: Pointer to rectangle to store bounding box in 
+ */
+void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect) {
+    if (vecA.x < vecB.x) {
+        rect->min.x = vecA.x;
+        rect->max.x = vecB.x;
+    } else {
+        rect->min.x = vecB.x;
+        rect->max.x = vecA.x;
+    }
+    if (vecA.y < vecB.y) {
+        rect->min.y = vecA.y;
+        rect->max.y = vecB.y;
+    } else {
+        rect->min.y = vecB.y;
+        rect->max.y = vecA.y;
+    }
+    if (vecA.z < vecB.z) {
+        rect->min.z = vecA.z;
+        rect->max.z = vecB.z;
+        return;
+    }
+    rect->min.z = vecB.z;
+    rect->max.z = vecA.z;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A7678.s")
 

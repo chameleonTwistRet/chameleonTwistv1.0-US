@@ -104,25 +104,169 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC310.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC4F0.s")
+/**
+ * @brief This function returns a boolean value based on whether the RoomObject passed is valid.
+ * 
+ * @param obj: The RoomObject to check if valid.
+ * @return true if the obj is invalid, false otherwise.
+ */
+s32 IsRoomObjInvalid(RoomObject* obj) {
+    return obj->scale.x == 0.0 && obj->scale.y == 0.0 && obj->scale.z == 0.0 ? TRUE : FALSE;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC554.s")
+/**
+ * @brief This function returns a int value of how many RoomObjects are in an array.
+ * 
+ * @param obj: The RoomObject to start iterating from.
+ * @return the amount of valid RoomObjects in the array.
+ */
+s32 GetRoomObjCount(RoomObject* obj) {
+    s32 end;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC5B4.s")
+    if (!obj) {
+        return 0;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC5D4.s")
+    end = 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC634.s")
+    while(IsRoomObjInvalid(obj) == FALSE){
+        end++;
+        obj++;
+    }
+    return end;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC654.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC6B4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC6D4.s")
+/**
+ * @brief This function returns a boolean value based on whether the RoomActor passed is valid.
+ * 
+ * @param actor: The RoomActor to check if valid.
+ * @return true if the actor is invalid, false otherwise.
+ */
+s32 IsRoomActInvalid(RoomActor* actor) {
+    return (actor->id == 0) ? TRUE : FALSE;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC734.s")
+/**
+ * @brief This function returns a int value of how many RoomActors are in an array.
+ * 
+ * @param actor: The RoomActor to start iterating from.
+ * @return the amount of valid RoomActors in the array.
+ */
+s32 GetRoomActCount(RoomActor* actor) {
+    s32 i;
+    if (actor == NULL) {
+        return 0;
+    }
+    i = 0;
+    while (IsRoomActInvalid(actor) == FALSE) {
+        i++;
+        actor++;
+    }
+    return i;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC754.s")
+/**
+ * @brief This function returns a boolean value based on whether the Collectable passed is valid.
+ * 
+ * @param collectable: The Collectable to check if valid.
+ * @return true if the clct is invalid, false otherwise.
+ */
+s32 IsCollectableInvalid(Collectable* collectable) {
+    return (collectable->id == 0) ? TRUE : FALSE;
+}
+
+/**
+ * @brief This function returns a int value of how many Collectables are in an array.
+ * 
+ * @param collectable: The Collectable to start iterating from.
+ * @return the amount of valid Collectables in the array.
+ */
+s32 GetCollectableCount(Collectable* collectable) {
+    s32 i;
+
+    if (collectable == NULL) {
+        return 0;
+    }
+
+    i = 0;
+
+    while (IsCollectableInvalid(collectable) == FALSE) {
+        i++;
+        collectable++;
+    }
+
+    return i;
+}
+
+
+/**
+ * @brief This function returns a boolean value based on whether the RoomInstance passed is valid.
+ * 
+ * @param room: The RoomInstance to check if valid.
+ * @return true if the room is invalid, false otherwise.
+ */
+s32 IsRoomInvalid(RoomInstance* room) {
+    return (room->objects == NULL) ? TRUE : FALSE;
+}
+
+/**
+ * @brief This function returns a int value of how many RoomInstance are in an array.
+ * 
+ * @param room: The RoomInstance to start iterating from.
+ * @return the amount of valid RoomInstance in the array.
+ */
+s32 GetRoomCount(RoomInstance* room) {
+    s32 i;
+
+    if (room == NULL) {
+        return 0;
+    }
+
+    i = 0;
+
+    while (IsRoomInvalid(room) == FALSE) {
+        i++;
+        room++;
+    }
+
+    return i;
+}
+
+/**
+ * @brief This function returns a boolean value based on whether the SpriteActor passed is valid.
+ * 
+ * @param sprite: The SpriteActor to check if valid.
+ * @return true if the sprite is invalid, false otherwise.
+ */
+s32 IsSpriteActInvalid(SpriteActor* sprite) {
+    return (sprite->size < 0) ? TRUE : FALSE;
+}
+
+
+/**
+ * @brief This function returns a int value of how many SpriteActors are in an array.
+ * 
+ * @param sprite: The SpriteActor to start iterating from.
+ * @return the amount of valid SpriteActors in the array.
+ */
+s32 GetSpriteActCount(SpriteActor* sprite) {
+    s32 i;
+
+    if (sprite == 0) {
+        return 0;
+    }
+
+    i = 0;
+
+    while (IsSpriteActInvalid(sprite) == FALSE) {
+        i++;
+        sprite++;
+    }
+
+    return i;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC7B4.s")
 
