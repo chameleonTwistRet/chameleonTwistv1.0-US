@@ -24,8 +24,8 @@ options:
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
   create_undefined_funcs_auto: no
-  asm_emit_size_directive: false
-
+  asm_emit_size_directive: True
+  #symbol_name_format: $VRAM_$ROM
 segments:
   - name: header
     type: databin
@@ -59,8 +59,8 @@ segments:
       - [0x9cba0, c, code/math]
       - [0x9D1A0, c, code/poly]
       - [0xAB8D0, c, code/vector]
+      - [0xac620, c, code/B35B0]
       - [0xACA10, c, code/B39A0] #match jp name
-
       - [0xAD670, c]
       - [0xADBA0, c]
       - [0xADF90, c]
@@ -212,17 +212,18 @@ segments:
       - [0xe8b60, databin, assets0] #???? wtf
       - [0xEEEC0, data, code/8ADD0]
       - [0xef270, data]
-      #- [0xF09F0, data, code/1050]
-      #- [0xF0D90, data]
-      #- [0xF09F0, .rodata, 1050]
-      #- [0xF0D90, .rodata, 7CE0]
-      #- [0xF2160, .rodata, code/debug]
-      #- [0xF2460, .rodata, code/battle]
-      #- [0xF2510, .rodata, code/sprite]
-      #- [0xF2FD0, .rodata, code/5FF30]
-      #- [0xF6050, .rodata, code/clip]
-      #- [0xF60A0, .rodata, code/8ADD0]
-      #- [0xF72E0, .rodata, 82530]
+      - [0xF09F0, data, code/1050_] #rodata
+      - [0xF2160, data, code/debug_] #rodata
+      - [0xF2460, data, code/battle_] #rodata
+      - [0xF2510, data, code/sprite_] #rodata
+      - [0xF2FD0, data, code/5FF30_] #rodata
+      - [0xF6050, data, code/clip_] #rodata
+      - [0xF60A0, data, code/8ADD0_] #rodata
+      - [0xF72E0, data, code/math_] #rodata
+      - [0xF7360, data, code/poly_] #rodata
+      - [0xF7940, data, code/vector_] #rodata
+      - [0xF7A40, data, code/B35B0_] #rodata
+      - [0xF7A90, data, code/B39A0_] #rodata
       - { start: 0xF8EB0, type: bss, vram: 0x8011DB40, name: code/1050}
       - { start: 0xF8EB0, type: bss, vram: 0x80174C20 }
 

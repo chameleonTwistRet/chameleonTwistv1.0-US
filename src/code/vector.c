@@ -38,20 +38,3 @@ void DummiedPrintf3(char* arg0, ...) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D1278.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D1298.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D12B0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D1344.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D1438.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/vector/func_800D1568.s")
-
-/**
- * @brief Prints a vector to the console.
- * 
- * @param v: vector to print
- */
-void Vec3f_Print(Vec3f v) {
-    DummiedPrintf3(&D_8011C6E0, v.x, v.y, v.z);
-}
