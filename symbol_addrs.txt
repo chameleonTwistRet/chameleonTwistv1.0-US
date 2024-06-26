@@ -406,6 +406,25 @@ DummiedPrintf3 = 0x800D0560; // type:func
 Vec3f_Print = 0x800D1644; // type:func
 
 
+//8ADD0.c
+MoveTheater = 0x800A879C; // type:func
+RegistShutter = 0x800A9810; // type:func
+LimitInt = 0x800AA918; // type:func
+LimitFloat = 0x800AA948; // type:func
+IsNotPickup = 0x800AA988; // type:func
+IsPickup = 0x800AA9B0; // type:func
+IsBossID = 0x800AA9D4; // type:func
+IsActorBoss = 0x800AAA10; // type:func
+
+Vec3f_SetAtBossPos = 0x800AB2B0; // type:func
+IsBossPresent = 0x800AB34C; // type:func
+IsBossStage = 0x800AB3B4; // type:func
+IsntNegative = 0x800ABB00; // type:func
+ResetStageModels = 0x800ABF50; // type:func
+RegistModel = 0x800ABF6C; // type:func
+moveModel = 0x800ac194; // type:func
+ScaleModel = 0x800AC254; // type:func
+RotateModel = 0x800AC310; // type:func
 IsRoomObjInvalid = 0x800AC4F0; // type:func
 GetRoomObjCount = 0x800AC554; // type:func
 IsRoomActInvalid = 0x800AC5B4; // type:func
@@ -417,7 +436,14 @@ GetRoomCount = 0x800AC6D4; // type:func
 IsSpriteActInvalid = 0x800AC734; // type:func
 GetSpriteActCount = 0x800AC754; // type:func
 
-
+gCurrentStage = 0x801806FC; //size:0x4
+VertextBufferCount = 0x80217420; // type:s32
+TriangleBufferCount = 0x80217424; // type:s32
+ModelBufferCount = 0x80217428; // type:s32
+gFieldCount = 0x80249f20; // type:s32 size:0x4
+gZoneFields = 0x8024AF40;
+StageFlags = 0x80180708;
+sBossIDs = 0x80113B70;
 
 ComputeBoundingBoxFromRects = 0x800A71C0; // type:func
 AdjustRectToVec3 = 0x800A72A0; // type:func
@@ -427,11 +453,28 @@ IfRectsIntersect = 0x800A7414; // type:func
 IsPointInRect = 0x800A7510; // type:func
 CalculateBoundingRectFromVectors = 0x800A75D8; // type:func
 
+//vector.c
+WrapAngle = 0x800D057C; // type:func
+CompareWrappedAngles = 0x800D05E0; // type:func
+
+OnlyCheckPolyInfoLevel = 0x800D0A9C; // type:func
+
+ProjectOnPolygon = 0x800D0B4C; // type:func
+WorldToLocal = 0x800D0C44; // type:func
+LocalToWorld = 0x800D0D3C; // type:func
+IsInsidePolygon = 0x800D0E3C; // type:func
+IsOnPolygon = 0x800D0F10; // type:func
+RotateVector3D = 0x800D0FE0; // type:func
+IsNearPoint = 0x800D1130; // type:func
+Vec3f_Equals = 0x800D11B0; // type:func
+Vec3f_EqualsCopy = 0x800D1214; // type:func
+Vec3f_Set = 0x800D1278; // type:func
+Vec3f_Zero = 0x800D1298; // type:func
+
 
 Controller_Zero = 0x8004B4F0; // type:func
 
 gActors = 0x80176ae8; // size:0x5d00
-levelFlags = 0x80180708; // type:s32 size:0x20
 poles = 0x8017c7e8;
 
 gCurrentActivePlayerPointer = 0x801806E0; // size:0x4

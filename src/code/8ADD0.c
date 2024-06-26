@@ -1,108 +1,460 @@
 #include "common.h"
 
+void func_800AC7E4(Collider*, s32, s32);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A8500.s")
+/*
+JP EQUIVALENT - "func_800AF9D0"
+TODO: Fix rodata
+DONE: variable changes
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A865C.s")
+void func_800AF9D0(Collider* arg0, RoomObject* arg1) {
+    arg0->unk_5C = 2;
+    D_8020B5C4 = 0.0f;
+    D_8020B5CC = DEGREES_TO_RADIANS_PI(arg1->unk28);
+    D_8020B5C0 = 0.0f;
+    D_8020B5C8 = 0.0f;
+    D_8020B5D8.x = arg1->unk2C;
+    D_8020B5D8.y = arg1->unk30;
+    D_8020B5D8.z = arg1->unk34;
+    D_8020B5F4 = 0;
+    D_8020B60C = 50;
+    D_8020B610 = 10;
+    D_8020C018 = 1;
+    D_8020C040 = 3;
+    D_8020C048 = arg1->unk4C;
+    D_8020C0D0 = arg1->unk44;
+    D_8020C0D4 = arg1->unk48;
+    D_8020C0D8 = arg1->unk40;
+    D_8020C0DC = 1000;
+    D_8020C0E4 = 0;
+    D_8020C0E8 = 0.5f;
+    D_8020C0EC = 1;
+    D_8020C0F4 = 0;
+    func_800AC7E4(arg0, 0, 0);
+    func_800AC7E4(arg0, 1, 2);
+    func_800AC7E4(arg0, 2, 1);
+    D_8020C0F8 = -1;
+}
+*/
 
+// JP EQUIVALENT - "func_800AFB2C"
+void func_800A865C(Collider* arg0, RoomObject* arg1) {
+    arg0->unk_5C = 2;
+    arg0->unkA4 = 0;
+    func_800AC7E4(arg0, 0, 2);
+    func_800AC7E4(arg0, 1, 2);
+    func_800AC7E4(arg0, 2, 1);
+}
+
+// JP EQUIVALENT - "func_800AFB88"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A86B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A879C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/MoveTheater.s")
 
+// JP EQUIVALENT - "func_800B06B0"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A91E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A9294.s")
+//#ifdef JP:
+//move these down
+//for some reason in US these are moved up further than where they are
+// JP EQUIVALENT - "func_800B09C0"
+void func_800ADA70(f32 arg0, f32 arg1);
+void func_800A9294(Collider* arg0, RoomObject* arg1) {
+    func_800ADA70(arg1->unk28, arg1->unk2C);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A92BC.s")
+// JP EQUIVALENT - "func_800B09E8"
+s32 func_800ABC48(s32);
+void func_800A92BC(Collider* arg0, RoomObject* arg1) {
+    arg0->unk_AC = arg1->keyframes;    
+    if (func_800ABC48(arg0->unk_AC) != 0) {
+        arg0->unk_B0 = 0;
+    } else {
+        arg0->unk_B0 = 1;
+    }
+}
 
+// JP EQUIVALENT - "func_800B0B20"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A9304.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A9810.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistShutter.s")
 
+// JP EQUIVALENT - "func_800B118C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A9980.s")
 
+// JP EQUIVALENT - "func_800B12B4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A9AA8.s")
 
+// JP EQUIVALENT - "func_800B1538"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800A9D2C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA59C.s")
+// JP EQUIVALENT - "func_800B1DA0"
+void func_800AE260(Collider* arg0, s32 arg1);
+void func_800AA59C(Collider* arg0, s32 arg1) {
+    func_800AE260(arg0, 2);
+    arg0->unk_8C = 0.0f;
+}
 
+// JP EQUIVALENT - "func_800B1DD4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA5D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA86C.s")
+// JP EQUIVALENT - "func_800B2144"
+void func_800ABD74(s32 arg0);
+void func_800AA86C(Collider* arg0, unkStruct14* arg1) {
+    arg0->unk_AC = arg1->unk_38;
+    func_800ABD74(arg0->unk_AC);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA894.s")
+// JP EQUIVALENT - "func_800B216C"
+void func_800ABD28(s32 arg0);
+void func_800AA894(Collider* arg0) {
+    Actor* actorList;
+    s32 ballCount = 0;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA8F4.s")
+    for (i = 0, actorList = gActors; i < ARRAY_COUNT(gActors); i++, actorList++) {
+        if (actorList->actorID == BILLIARDS_BALL) {
+            ballCount++;
+        }
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA918.s")
+    if (ballCount == 0) {
+        func_800ABD28(arg0->unk_AC);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA948.s")
+//JP EQUIVALENT - "func_800B21CC"
+void func_800B7534(void);
+void func_800AA8F4(s32 arg0, s32 arg1) {
+    func_800B7534();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA988.s")
+/**
+ * @brief Limits an integer to be in an inclusive range [a, b].
+ *      
+ * @param integer: The integer to limit.
+ * @param a: The lower bound of the range.
+ * @param b: The upper bound of the range.
+ */
+void LimitInt(s32* integer, s32 a, s32 b) {
+    if (*integer < a) {
+        *integer = a;
+        return;
+    }
+    if (b < *integer) {
+        *integer = b;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA9B0.s")
+/**
+ * @brief Limits a float to be in an inclusive range [a, b].
+ *      
+ * @param _float: The float to limit.
+ * @param a: The lower bound of the range.
+ * @param b: The upper bound of the range.
+ */
+void LimitFloat(f32* _float, f32 a, f32 b) {
+    if (*_float < a) {
+        *_float = a;
+        return;
+    }
+    if (b < *_float) {
+        *_float = b;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AA9D4.s")
+/**
+ * @brief Checks if an actor is not a pickup.
+ *      
+ * @param actor: The actor to check.
+ * 
+ * @return: 1 if the actor is not a pickup, 0 otherwise.
+ */
+s32 IsNotPickup(Actor* actor) {
+    return (actor->actorID != 0 && actor->actorID < R_HEART) ? 1 : 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AAA10.s")
+/**
+ * @brief Checks if an actor is a pickup.
+ *      
+ * @param actor: The actor to check.
+ *      
+ * @return: 1 if the actor is a pickup, 0 otherwise.
+ */
+s32 IsPickup(Actor* actor) {
+    return (actor->actorID >= R_HEART ) ? 1 : 0;
+}
 
+/**
+ * @brief Checks a given ID against the array of Boss IDs
+ * 
+ * @param id 
+ * @return (s32) 1 if the ID is a Boss ID, 0 otherwise.
+ */
+
+extern s32 sBossIDs[6];
+s32 IsBossID(s32 id) {
+    int i;
+    int ret = 0;
+    
+    for (i = 0; i < ARRAY_COUNT(sBossIDs); i++) {
+        if (id == sBossIDs[i]) {
+            ret = 1;
+            break;
+        }
+    }
+    return ret;
+}
+
+/**
+ * @brief Determines if an actor is a boss by checking its ID.
+ * 
+ * @param actor 
+ * @return (s32) 1 if the actor is a boss, 0 otherwise. 
+ */
+s32 IsActorBoss(Actor* actor) {
+    return IsBossID(actor->actorID);
+}
+
+// JP EQUIVALENT - "func_800B2308"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AAA30.s")
 
+// JP EQUIVALENT - "func_800B2470"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AAB98.s")
 
+// JP EQUIVALENT - "func_800B255C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AAC38.s")
 
+// JP EQUIVALENT - "func_800B2AB4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB180.s")
 
+// JP EQUIVALENT - "func_800B2B50" (though a wee bit different)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB224.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB2B0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/Vec3f_SetAtBossPos.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB34C.s")
+/**
+ * @brief If the boss is in the list of currently active actors.
+ * 
+ * @return (s32) 1 if the boss is in the list of currently active actors, 0 otherwise.
+ */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB3B4.s")
+s32 IsBossPresent(void) {
+    s32 i;
+    Actor* curActor;
+    s32 isBoss = FALSE;
+    
+    for (i = 0, curActor = gActors; i < MAX_ACTORS; i++, curActor++) {
+        if (IsActorBoss(curActor) != 0) {
+            isBoss = TRUE;
+            break;
+        }
+    }
+    return isBoss;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB404.s")
+/**
+ * @brief Returns True if the current stage is a boss stage.
+ * 
+ * @return (s32) 1 if the current stage is a boss stage, 0 otherwise. 
+ */
+extern s32 gCurrentStage;
+s32 IsBossStage(void) {
+    s32 ret;
+    
+    if ((gCurrentStage != STAGE_JUNGLEBOSS) &&
+        (gCurrentStage != STAGE_ANTBOSS) &&
+        (gCurrentStage != STAGE_BOMBBOSS) &&
+        (gCurrentStage != STAGE_DESERTBOSS) &&
+        (gCurrentStage != STAGE_KIDSBOSS) &&
+        (gCurrentStage != STAGE_GHOSTBOSS)) {
+        ret = FALSE;
+    } else {
+        ret = TRUE;
+    }
+    return ret;
+}
 
+// JP EQUIVALENT - "func_800B2D10"
+extern s32 D_80210250[];
+extern s32 D_80210560[];
+s32 func_800AB404(s32 arg0, s32* arg1) {
+    *arg1 = D_80210250[arg0];
+    return D_80210560[arg0];
+}
+
+// JP EQUIVALENT - "func_800B2D34"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB428.s")
 
+// JP EQUIVALENT - "func_800B2D78"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB46C.s")
 
+// JP EQUIVALENT - "func_800B2E40"
+void func_800AB534(Collider*);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AB534.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABA58.s")
+// JP EQUIVALENT - "func_800B3364"
+s32 func_800AC7B4(Collider *arg0, s32 arg1);
+extern Collider* D_8024AAF8;
+extern s32 gFieldCount;
+void func_800ABA58(s32 arg0) {
+    s32 i;
+    Collider** temp_s0;
+    Collider* unkSpritePtr;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABB00.s")
+    for (i = 0, temp_s0 = &D_8024AAF8; i < gFieldCount; i++, temp_s0++) {
+        unkSpritePtr = *temp_s0;
+        unkSpritePtr->unk_E4 = 0;
+        if ((arg0 == 1) || (func_800AC7B4(unkSpritePtr, 4) != 0)) {
+            func_800AB534(unkSpritePtr);
+        }
+    }
+}
 
+s32 IsntNegative(s32 value) {
+    return ( value >= 0 ) ? 1 : 0;
+}
+
+#ifdef VER_US
+
+//new????
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABB18.s")
 
+
+#endif
+
+// JP EQUIVALENT - "func_800B3424"
+s32* func_800ABB9C(s32 arg0);
+extern Field gZoneFields[];
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABB9C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABBFC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABC48.s")
+// JP EQUIVALENT - "func_800B3484"
+extern s32 D_80210980[];
+extern s32 D_80210900[];
+s32* func_800ABBFC(s32 arg0) {
+    return ((arg0 & 0x100) ? 1 : 0) ? &D_80210980[arg0 & 0xFF] : &D_80210900[arg0 & 0xFF];
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABCB8.s")
+// JP EQUIVALENT - "func_800B34D0"
+s32 func_800ABC48(s32 arg0){
+    s32 temp_v1;
+    s32 var_v0;
+    s32 var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABCDC.s")
+    temp_v1 = *func_800ABB9C(arg0);
+    if (arg0 & 0x200) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    if (var_v0 != 0) {
+        if (temp_v1 == 0) {
+            var_v1 = 1;
+        } else {
+            var_v1 = 0;
+        }
+    } else if (temp_v1 != 0) {
+        var_v1 = 1;
+    } else {
+        var_v1 = 0;
+    }
+    return var_v1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABD28.s")
+// JP EQUIVALENT - "func_800B3540"
+s32 func_800ABCB8(s32 arg0) {
+    return 1 - func_800ABC48(arg0);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABD74.s")
+// JP EQUIVALENT - "func_800B3564"
+s32 func_800ABCDC(s32 arg0) {
+    s32 sp1C;
+    s32 var_v1;
+    s32 var2;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABDC0.s")
+    sp1C = *func_800ABB9C(arg0);
+    var2 = *func_800ABBFC(arg0);
+    if (sp1C != var2) {
+        var_v1 = 1;
+    } else {
+        var_v1 = 0;
+    }
+    return var_v1;
+}
 
+// JP EQUIVALENT - "func_800B35B0"
+void func_800ABD28(s32 arg0) {
+    s32 sp1C;
+    s32 var_v0;
+    s32 var_v1;
+
+    if (arg0 & 0x200) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    
+    if (var_v0 != 0) {
+        sp1C = 0;
+    } else {
+        sp1C = 1;
+    }
+    *func_800ABB9C(arg0) = sp1C;
+}
+
+// JP EQUIVALENT - "func_800B35FC"
+void func_800ABD74(s32 arg0) {
+    s32 sp1C;
+    s32 var_v0;
+    s32 var_v1;
+
+    if (arg0 & 0x200) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    
+    if (var_v0 != 0) {
+        sp1C = 1;
+    } else {
+        sp1C = 0;
+    }
+    
+    *func_800ABB9C(arg0) = sp1C;
+}
+
+// JP EQUIVALENT - "func_800B3648"
+void func_800ABDC0(s32 arg0) {
+    s32 var = *func_800ABB9C(arg0);
+    if (var == 0) {
+        *func_800ABB9C(arg0) = 1;
+        return;
+    }
+    *func_800ABB9C(arg0) = 0;
+}
+
+// JP EQUIVALENT - "func_800B3698"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABE10.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABF50.s")
+extern s32 VertextBufferCount;
+extern s32 TriangleBufferCount;
+extern s32 ModelBufferCount;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ABF6C.s")
+void ResetStageModels(void) {
+    VertextBufferCount = 0;
+    TriangleBufferCount = 0;
+    ModelBufferCount = 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC194.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RegistModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC254.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/moveModel.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC310.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/ScaleModel.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/RotateModel.s")
 
 /**
  * @brief This function returns a boolean value based on whether the RoomObject passed is valid.
@@ -135,8 +487,6 @@ s32 GetRoomObjCount(RoomObject* obj) {
     }
     return end;
 }
-
-
 
 /**
  * @brief This function returns a boolean value based on whether the RoomActor passed is valid.
@@ -199,7 +549,6 @@ s32 GetCollectableCount(Collectable* collectable) {
 
     return i;
 }
-
 
 /**
  * @brief This function returns a boolean value based on whether the RoomInstance passed is valid.
@@ -268,6 +617,8 @@ s32 GetSpriteActCount(SpriteActor* sprite) {
     return i;
 }
 
+
+// JP EQUIVALENT - "func_800B3FFC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC7B4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC7E4.s")

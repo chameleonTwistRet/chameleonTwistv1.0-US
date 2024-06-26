@@ -9,7 +9,7 @@
 
 extern Pole poles[64]; //currently loaded pole structs
 extern Actor gActors[MAX_ACTORS]; //currently loaded actor structs
-extern s32 levelFlags[32]; //contextual-per-level flags
+extern s32 StageFlags[32]; //contextual-per-level flags
 extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;
 extern PlayerActor gPlayerActors[4];

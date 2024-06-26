@@ -249,6 +249,25 @@ segments:
       - [0xb76620, databin, Jack]
       - [0xB7d458, databin, Fred]
       - [0xb84290, databin, Linda]
-  - [0xB8b820, databin, unkunk]
+  
+  #- start: 0xB8b820
+  #  name: DemoData
+  #  vram: 0x0D000000 #SEGMENT 0x0D
+  #  dir: img
+  #  subalign: 8
+  #  type: code
+  #  exclusive_ram_id: "DEMO"
+  #  subsegments:
+  #  - [auto, c, DemoData]
+  #  - name: DemoData
+  #    dir: DemoData
+  #    type: .data
+  #    subalign: 8
+  #    vram: 0x81000000
+  #    start: 0xB8b820
+  #    subsegments:
+  # 
+
+  - [0xB8b820, databin, DemoData]
   - [0xB91FE0, databin, ROM_PADDING]
   - [0xC00000]
