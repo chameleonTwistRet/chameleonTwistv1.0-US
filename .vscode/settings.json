@@ -3,6 +3,10 @@
         "common_structs.h": "c",
         "common.h": "c",
         "enums.h": "c",
-        "functions.us.h": "c"
+        "functions.us.h": "c",
+        "os_version.h": "c",
+        "assert.h": "c",
+        "synthinternals.h": "c",
+        "controller.h": "c"
     }
 }

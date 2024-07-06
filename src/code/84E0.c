@@ -80,163 +80,330 @@ f32 ReflectAngleToUpperQuadrants(f32 theta) {
     return theta;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002CAD4.s")
+/**
+ * @brief Check if one angle is within tolerance of another angle (degrees).
+ *
+ * This function determines whether the target angle is approximately equal to the reference angle within
+ * the specified tolerance angle.
+ *
+ * @param targetAngle The angle to be checked.
+ * @param refAngle The reference angle for comparison.
+ * @param toleranceAngle The tolerance angle, within which the angles are considered approximately equal. [0, 180]
+ *
+ * @return (s32) 1 if target is within the specified tolerance of reference; otherwise, it returns 0.
+ */
+s32 IsAngleWithinTolerance(f32 targetAngle, f32 refAngle, f32 toleranceAngle) {
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002CB1C.s")
+    if (ReflectAngleToUpperQuadrants(targetAngle - refAngle) <= toleranceAngle) {
+        return 1;
+    }
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/osBbUsbDevGetHandle.s")
+/**
+ * @brief Compare two angles to determine their relative positioning within a 180-degree range.
+ *
+ * This function compares two angles, `refAngle` and `targetAngle`, to determine whether said target angle is within
+ * a 180-degree range relative to the reference angle. It returns 1 if the target falls within this range,
+ * and -1 if it does not.
+ *
+ * @param refAngle The reference angle, used to define the 180-degree range.
+ * @param targetAngle The angle to be compared to `angleA`.
+ *
+ * @return (s32) 1 if target is within the 180-degree range relative to reference; otherwise, it returns -1.
+ */
+s32 AreAnglesWithin180Degrees(f32 refAngle, f32 targetAngle) {
+    if (refAngle < 180.0f) {
+        if ((refAngle < targetAngle) && (targetAngle <= (refAngle + 180.0f))) {
+            return 1;
+        }
+        return -1;
+    }
+    if (((refAngle - 180.0f) < targetAngle) && (targetAngle <= refAngle)) {
+        return -1;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002CBA4.s")
+// JP EQUIVALENT - "func_8002D328"
+// Rotates angle one 90 degrees, then checks if angle two is within 180 degrees of it
+s32 func_8002CBA4(f32 theta, f32 phi) {
+    f32* theta_ptr;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002CBE8.s")
+    theta_ptr = &theta;
+    theta = theta - 90.0f;
+    WrapDegrees(theta_ptr);
+    return AreAnglesWithin180Degrees(theta, phi);
+}
 
+// JP EQUIVALENT - "func_8002D36C"
+s32 func_8002CBE8(f32* arg0, f32 arg1, f32 arg2) {
+    s32 phi_v1;
+    f32 phi_f0;
+    s32 sp1C;
+
+    phi_v1 = 0;
+    if (*arg0 < arg1) {
+        phi_f0 = -(*arg0 - arg1);
+    } else {
+        phi_f0 = *arg0 - arg1;
+    }
+    if (phi_f0 > 180.0f) {
+        phi_f0 = 360.0f - phi_f0;
+    }
+    if (arg2 <= phi_f0) {
+        sp1C = 0;
+        *arg0 += arg2 * (f32) AreAnglesWithin180Degrees(*arg0, arg1);
+    } else {
+        *arg0 = arg1;
+        phi_v1 = 1;
+    }
+    sp1C = phi_v1;
+    WrapDegrees(arg0);
+    return sp1C;
+}
+
+// JP EQUIVALENT - "func_8002D434"
+//TODO: fix rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002CCB0.s")
 
+// JP EQUIVALENT - "func_8002D550"
+//TODO: fix rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002CDCC.s")
 
+void Actors_Init(s32 actorIndex, s32 actorID, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, f32 arg13, s32 arg14, s32 arg15, s32 arg16, s32 arg17);
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/Actors_Init.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D66C.s")
+extern s32 gActorCount;
+s32 Actor_Init(s32 id, f32 posX, f32 posY, f32 posZ, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, f32 argF, f32 arg10, f32 arg11, f32 arg12, s32 arg13, s32 arg14, s32 arg15, s32 arg16) {
+    s32 i;
+    Actor* curActor = gActors;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D798.s")
+    for (i = 0; i < ARRAY_COUNT(gActors); i++, curActor++) {
+        if (curActor->actorID == 0) {
+            Actors_Init(i, id, posX, posY, posZ, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+            gActorCount++;
+            return i;
+        }
+    }
+    return -1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D888.s")
+// JP EQUIVALENT - "func_8002DF5C"
+s32 func_8002D798(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    s32 i;
 
+    for (i = 0; i < ARRAY_COUNT(gActors); i++) {
+        if (Poles[i].mode == 0) {
+            Poles[i].mode = arg0;
+            Poles[i].pos.x = arg1;
+            Poles[i].pos.y = arg2;
+            Poles[i].pos.z = arg3;
+            Poles[i].yStretch = arg4; 
+            return i;            
+        }
+    }
+    return -1;
+}
+
+s32 Actor_SpawnAt(s32 actorID, f32 posX, f32 posY, f32 posZ) {
+    Actor_Init(actorID, posX, posY, posZ, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0);
+}
+
+// JP EQUIVALENT - "func_8002E0CC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002D908.s")
 
+// JP EQUIVALENT - "func_8002E5DC"
+// CHANGES: no billiards camera force
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002DDD8.s")
 
+// JP EQUIVALENT - "func_8002E9F4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E1D4.s")
 
+// JP EQUIVALENT - "func_8002ECCC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002E4AC.s")
 
+// JP EQUIVALENT - "func_8002F3D4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002EBB4.s")
 
+// JP EQUIVALENT - "func_8002F528"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002ED08.s")
 
+// JP EQUIVALENT - "func_8002F54C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002ED2C.s")
 
+// JP EQUIVALENT - "func_8002F568"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002ED48.s")
 
+// JP EQUIVALENT - "func_8002F5C4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002EDA4.s")
 
+// JP EQUIVALENT - "func_8002F6DC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002EEBC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002EFD0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/SetPlayerImpulse.s")
 
+// JP EQUIVALENT - "func_8002F960"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F064.s")
 
+// JP EQUIVALENT - "func_8002FA34"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8002F0AC.s")
 
+// JP EQUIVALENT - "func_80030DCC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030388.s")
 
+// JP EQUIVALENT - "func_80030F3C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800304F8.s")
 
+// JP EQUIVALENT - "func_800311C8"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030784.s")
 
+// JP EQUIVALENT - "func_800312B0" (are the calcs different?)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003086C.s")
 
+// JP EQUIVALENT - "func_800312FC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800308D0.s")
 
+// JP EQUIVALENT - "func_800313BC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030990.s")
 
+// JP EQUIVALENT - "func_800314E4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030AB8.s")
 
+// JP EQUIVALENT - "func_80031518"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030AEC.s")
 
+// JP EQUIVALENT - "func_800317A0"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030D24.s")
 
+// JP EQUIVALENT - "func_80031898"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80030E1C.s")
 
+// JP EQUIVALENT - "func_80031DB0"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031334.s")
 
+// JP EQUIVALENT - "func_80032074"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800315F8.s")
 
+// JP EQUIVALENT - "func_800320EC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031670.s")
 
+// JP EQUIVALENT - "func_800321F8"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003177C.s")
 
+// JP EQUIVALENT - "func_80032720"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031CA4.s")
 
+// JP EQUIVALENT - "func_80032A0C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80031F90.s")
 
+// JP EQUIVALENT - "func_80033048"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003260C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800331A8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/pickup_collide_func.s")
 
+// JP EQUIVALENT - "func_80034104"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80033604.s")
 
+// JP EQUIVALENT - "func_800343B4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800338BC.s")
 
+// JP EQUIVALENT - "func_8003449C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800339A4.s")
 
+// JP EQUIVALENT - "func_80034744"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80033C4C.s")
 
+// JP EQUIVALENT - "func_80034B10"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034018.s")
 
+// JP EQUIVALENT - "func_80034FFC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034504.s")
 
+// JP EQUIVALENT - "func_80035374"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003487C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80034968.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ControlTongue.s")
 
+// JP EQUIVALENT - "func_800360E4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800355EC.s")
 
+// JP EQUIVALENT - "func_8003624C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80035754.s")
 
+// JP EQUIVALENT - "func_80036490"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003599C.s")
 
+// JP EQUIVALENT - "func_80036900"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80035E04.s")
 
+// JP EQUIVALENT - "func_80036D74"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036268.s")
 
+// JP EQUIVALENT - "func_80036F30"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003641C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036910.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/IsExplodingActor.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036978.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/IsActiveExplosion.s")
 
+// JP EQUIVALENT - "func_80037584"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800369AC.s")
 
+// JP EQUIVALENT - "func_8003760C" (i think? though there MIGHT be differences)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80036A34.s")
 
+// JP EQUIVALENT - "func_80037D14"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800370BC.s")
 
+// JP EQUIVALENT - "func_80037F98"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037340.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003764C.s")
+// JP EQUIVALENT - "func_800382B4"
+void func_8003764C(f32* arg0, f32 arg1) {
+    if (*arg0 > arg1) {
+        *arg0 = arg1;
+    }
+    if (*arg0 < -arg1) {
+        *arg0 = -arg1;
+    }
+}
 
+// JP EQUIVALENT - "func_800382F4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003768C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/n_alSeqpDelete.s")
+// JP EQUIVALENT - "func_800383A0"
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037738.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037758.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_GreyAntSpawner.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003777C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GreyAntSpawner.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800378A8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_GreyAnt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_8003790C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_GreyAnt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037D28.s")
+void ActorInit_BulletHellAntSpawner(Actor* bulletHellAntSpawnerActor) {
+    bulletHellAntSpawnerActor->userVariables[1] = bulletHellAntSpawnerActor->unk_128;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037D34.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BulletHellAntSpawner.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037E78.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_AntBulletHell.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037F30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_BulletHellAnt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80037FFC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RedAntSpawner.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800381C8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntTrioSpawner.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800382D4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_AntTrio.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038340.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_AntTrio.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_800386CC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorInit_RedAnt.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038864.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_RedAnt.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/func_80038B40.s")
 

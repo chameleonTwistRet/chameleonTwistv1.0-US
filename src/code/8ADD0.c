@@ -621,64 +621,96 @@ s32 GetSpriteActCount(SpriteActor* sprite) {
 // JP EQUIVALENT - "func_800B3FFC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC7B4.s")
 
+// JP EQUIVALENT - "func_800B402C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC7E4.s")
 
+// JP EQUIVALENT - "func_800B4070"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC828.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC8AC.s")
+// JP EQUIVALENT - "func_800B40F4"
+void func_800AC8AC(unkSpriteStruct* arg0) {
+    arg0->unk_14 = 0;
+}
 
+//???????
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC8B4.s")
 
+// JP EQUIVALENT - "func_800B4408"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AC8F0.s")
 
+// JP EQUIVALENT - "func_800B4574"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ACA5C.s")
 
+// JP EQUIVALENT - "func_800B47DC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ACCC4.s")
 
+// JP EQUIVALENT - "func_800B4884" (with some differences)
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ACD6C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ACEDC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/setCrownPositionsForRoom.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ACF90.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/checkRoomItem.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD190.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/EraseRoomItem.s")
 
+// JP EQUIVALENT - "func_800B4F14"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD28C.s")
 
+// JP EQUIVALENT - "func_800B4FCC"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD344.s")
 
+// JP EQUIVALENT - "func_800B505C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD3D4.s")
 
+// JP EQUIVALENT - "func_800B5224"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD59C.s")
 
+// JP EQUIVALENT - "func_800B5314"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD68C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD978.s")
+// JP EQUIVALENT - "func_800B5600"
+extern s32 D_8020C1E8;
+void func_800AD978(void) {
+    D_8020C1E8 = 0;
+}
 
+// JP EQUIVALENT - "func_800B560C"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD984.s")
 
+// JP EQUIVALENT - "func_800B5640"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AD9DC.s")
 
+// JP EQUIVALENT - "func_800B56D4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ADA70.s")
 
+// JP EQUIVALENT - "func_800B56E8"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ADA84.s")
 
+// JP EQUIVALENT - "func_800B5878"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ADC14.s")
 
+//????????
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ADCA4.s")
 
+//?????? func_800ADC14 with one more param???
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ADD4C.s")
 
+// JP EQUIVALENT - "func_800B5908"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ADE00.s")
 
+// JP EQUIVALENT - "func_800B59F4"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ADEEC.s")
 
+// JP EQUIVALENT - "func_800B5A98"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800ADF90.s")
 
+// JP EQUIVALENT - "func_800B5C60"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AE158.s")
 
+// JP EQUIVALENT - "func_800B5D68"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AE260.s")
 
+// JP EQUIVALENT - "func_800B5E40"
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AE338.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800AE3C8.s")

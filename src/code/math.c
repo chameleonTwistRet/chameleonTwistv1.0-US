@@ -1,6 +1,6 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/math/func_800C1830.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/math/Random.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/math/func_800C1918.s")
 

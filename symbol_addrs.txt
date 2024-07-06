@@ -1,7 +1,5 @@
 osRomBase = 0x80000308;
 __dummy = 0x80025F30;
-osBbUsbDevGetHandle = 0x8002CB64;
-n_alSeqpDelete = 0x80037738;
 n_alSynFreeFX = 0x8003B040;
 myfree = 0x8004CD80;
 osSyncPrintf = 0x80052220;
@@ -388,23 +386,61 @@ __osTimerCounter = 0x80255FC0;
 __osEepPifRam = 0x80255FF0;
 alMainBusParam = 0x800E2660; // type:func rom:0xbda60
 
-ReflectAngleToUpperQuadrants = 0x8002CA90; // type:func
+//io/motor.c
+
+//osMotorStop = 0x800D2704; // type:func
+//osMotorStart = 0x800d25DC; // type:func
+//osMotorInit = 0x800D2444; // type:func
+
 CalculateAngleOfVector = 0x800C1B44; // type:func
-CalcAngleBetween2DPoints = 0x8002CA48; // type:func
-ClampPointToDisk = 0x8002C9C4; // type:func
-WrapDegrees = 0x8002C970; // type:func
 ActorInit_BattleModeSandCrab = 0x8004852C; // type:func
 ActorTick_BattleModeSandCrabSpawner = 0x800489A4; // type:func
 ActorTick_Powerup = 0x80049508; // type:func
 ActorTick_PickupHeartFalling = 0x8004949C; // type:func
 ActorInit_UnkFireSpawner = 0x8004937c; // type:func
 ActorTick_UnkFireSpawner = 0x80049384; // type:func
-Actors_Init = 0x8002cec0; // type:func
 Actors_Tick = 0x800495A8; // type:func
 PlaySoundEffect = 0x80082A14; // type:func
 DummiedPrintf3 = 0x800D0560; // type:func
 Vec3f_Print = 0x800D1644; // type:func
 
+//84E0.c
+WrapDegrees = 0x8002C970; // type:func
+ClampPointToDisk = 0x8002C9C4; // type:func
+CalcAngleBetween2DPoints = 0x8002CA48; // type:func
+ReflectAngleToUpperQuadrants = 0x8002CA90; // type:func
+IsAngleWithinTolerance = 0x8002CAD4; // type:func
+AreAnglesWithin180Degrees = 0x8002CB1C; // type:func
+Actors_Init = 0x8002cec0; // type:func
+Actor_Init = 0x8002D66C; // type:func
+Actor_SpawnAt = 0x8002D888; // type:func
+SetPlayerImpulse = 0x8002EFD0; // type:func
+pickup_collide_func = 0x800331A8; // type:func
+ControlTongue = 0x80034968; // type:func
+IsExplodingActor = 0x80036910; // type:func
+IsActiveExplosion= 0x80036978; // type:func
+//actor funcs
+ActorInit_GreyAntSpawner = 0x80037758; // type:func
+ActorTick_GreyAntSpawner = 0x8003777C; // type:func
+ActorInit_GreyAnt = 0x800378A8; // type:func
+ActorTick_GreyAnt = 0x8003790C; // type:func
+ActorInit_BulletHellAntSpawner = 0x80037D28; // type:func
+ActorTick_BulletHellAntSpawner = 0x80037D34; // type:func
+ActorInit_AntBulletHell = 0x80037E78; // type:func
+ActorTick_BulletHellAnt = 0x80037F30; // type:func
+ActorTick_RedAntSpawner = 0x80037FFC; // type:func
+ActorTick_AntTrioSpawner = 0x800381C8; // type:func
+ActorInit_AntTrio = 0x800382D4; // type:func
+ActorTick_AntTrio = 0x80038340; // type:func
+ActorInit_RedAnt = 0x800386CC; // type:func
+ActorTick_RedAnt = 0x80038864; // type:func
+
+
+
+
+
+//math.c
+Random = 0x800C1830; // type:func
 
 //8ADD0.c
 MoveTheater = 0x800A879C; // type:func
@@ -415,7 +451,6 @@ IsNotPickup = 0x800AA988; // type:func
 IsPickup = 0x800AA9B0; // type:func
 IsBossID = 0x800AA9D4; // type:func
 IsActorBoss = 0x800AAA10; // type:func
-
 Vec3f_SetAtBossPos = 0x800AB2B0; // type:func
 IsBossPresent = 0x800AB34C; // type:func
 IsBossStage = 0x800AB3B4; // type:func
@@ -435,15 +470,9 @@ IsRoomInvalid = 0x800AC6B4; // type:func
 GetRoomCount = 0x800AC6D4; // type:func
 IsSpriteActInvalid = 0x800AC734; // type:func
 GetSpriteActCount = 0x800AC754; // type:func
-
-gCurrentStage = 0x801806FC; //size:0x4
-VertextBufferCount = 0x80217420; // type:s32
-TriangleBufferCount = 0x80217424; // type:s32
-ModelBufferCount = 0x80217428; // type:s32
-gFieldCount = 0x80249f20; // type:s32 size:0x4
-gZoneFields = 0x8024AF40;
-StageFlags = 0x80180708;
-sBossIDs = 0x80113B70;
+setCrownPositionsForRoom = 0x800ACEDC; // type:func
+checkRoomItem = 0x800ACF90; // type:func
+EraseRoomItem = 0x800AD190; // type:func
 
 ComputeBoundingBoxFromRects = 0x800A71C0; // type:func
 AdjustRectToVec3 = 0x800A72A0; // type:func
@@ -474,15 +503,26 @@ Vec3f_Zero = 0x800D1298; // type:func
 
 Controller_Zero = 0x8004B4F0; // type:func
 
+//random vars
+Battle_GameType = 0x801813f0;
+gCurrentZone = 0x8024AF38;
+gActorCount = 0x80174C24;
+gCurrentStage = 0x801806FC; //size:0x4
+VertextBufferCount = 0x80217420; // type:s32
+TriangleBufferCount = 0x80217424; // type:s32
+ModelBufferCount = 0x80217428; // type:s32
+gFieldCount = 0x80249f20; // type:s32 size:0x4
+gZoneFields = 0x8024AF40;
+StageFlags = 0x80180708;
+sBossIDs = 0x80113B70;
 gActors = 0x80176ae8; // size:0x5d00
-poles = 0x8017c7e8;
-
+Poles = 0x8017c7e8;
 gCurrentActivePlayerPointer = 0x801806E0; // size:0x4
 gTongueOnePointer = 0x801806E4; // size:0x4
 gPlayerActors = 0x80174C28; // size:0x4c0
 gTongues = 0x801750E8; // size:0x1830
 
-
-
 //rodata
 D_80115DBC = 0x80115DBC; // type:f32 force_migration:True size:0x08
+
+

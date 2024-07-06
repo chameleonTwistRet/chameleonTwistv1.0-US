@@ -7,7 +7,7 @@
 #define VARIABLES_US_H
 
 
-extern Pole poles[64]; //currently loaded pole structs
+extern Pole Poles[64]; //currently loaded pole structs
 extern Actor gActors[MAX_ACTORS]; //currently loaded actor structs
 extern s32 StageFlags[32]; //contextual-per-level flags
 extern PlayerActor* gCurrentActivePlayerPointer;
