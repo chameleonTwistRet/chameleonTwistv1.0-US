@@ -67,10 +67,10 @@ class N64SegRoomSettings(CommonSegCodeSubsegment):
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("RoomSettings %s = {" % (sym.name))
+            lines.append("RoomInstance %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>IIIIiiiiiififffiiifhhhhiiiifi', byteData)
+        data = struct.unpack('>IIIIiiiiiififffffffhhhhiiiiff', byteData)
         i = 0
         while i < len(data):
             v = data[i]

@@ -67,13 +67,20 @@ class N64SegUnkType1(CommonSegCodeSubsegment):
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("UnkType1 %s = {" % (sym.name))
+            lines.append("PlatformKeyframe %s = {" % (sym.name))
 
         byteData = bytearray(sprite_data)
-        data = struct.unpack('>fffiiiiii', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        data = list(struct.unpack('>fffiiiiii', byteData))
+        vec3 = [data.pop(0), data.pop(0), data.pop(0)]
+        line = str(vec3).replace("[","{").replace("]","}")
+        i = 0
+        while i < len(data):
+            data[i] = str(data[i])
+            i += 1
+        data.insert(0, line)
+        line = ",".join(data)
 
+        lines.append(line)
         if not self.data_only:
             lines.append("};")
 

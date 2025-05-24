@@ -8,24 +8,25 @@ options:
   find_file_boundaries: True
   header_encoding: ASCII
   platform: n64
+  ld_symbol_header_path: include/ld_addrs.h
   ld_script_path: chameleontwist.us.ld
   undefined_funcs_auto_path: undefined_funcs_auto.txt
   symbol_addrs_path: symbol_addrs.txt
-  #undefined_syms_path: undefined_syms.txt
+  # undefined_syms_path: undefined_syms.txt
   asm_path: asm
   src_path: src
   asset_path: assets
   build_path: build
   gfx_ucode: f3dex
   extensions_path: tools/splat_ext
-  #auto_all_sections: [".data", ".rodata", ".bss"]
-  migrate_rodata_to_functions : True
+  auto_link_sections: [".data", ".rodata", ".bss"]
+  migrate_rodata_to_functions: False
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
   create_undefined_funcs_auto: no
-  asm_emit_size_directive: True
-  #symbol_name_format: $VRAM_$ROM
+  asm_emit_size_directive: true
+  #cache_path: .splache
 segments:
   - name: header
     type: databin
@@ -238,10 +239,11 @@ segments:
       - [0xEEEC0, data, code/8ADD0]
       - [0xef270, data]
       - [0xF09F0, data, code/1050_] #rodata
+      - [0xF0D90, data, code/84E0_] #rodata
       - [0xF2160, data, code/debug_] #rodata
       - [0xF2460, data, code/battle_] #rodata
       - [0xF2510, data, code/sprite_] #rodata
-      - [0xF2FD0, data, code/5FF30_] #rodata
+      - [0xF2FE0, data, code/5FF30_] #rodata
       - [0xF6050, data, code/clip_] #rodata
       - [0xF60A0, data, code/8ADD0_] #rodata
       - [0xF72E0, data, code/math_] #rodata
@@ -252,46 +254,770 @@ segments:
       - { start: 0xF8EB0, type: bss, vram: 0x8011DB40, name: code/1050}
       - { start: 0xF8EB0, type: bss, vram: 0x80174C20 }
 
+  - start: 0xF8EB0
+    name: static0
+    vram: 0x01000000 #SEGMENT 0x01
+    dir: img
+    subalign: 8
+    type: code
+    exclusive_ram_id: "STATIC_ZERO"
+    subsegments:
+    - [auto, c, static0]
+    - name: static0
+      dir: static0
+      type: .data
+      vram: 0x81000000
+      start: 0xF8EB0
+      subsegments:
+      - [0xF8EB0, databin, static_0]
+      - [0x10E688, lights, chameleon_light]
+      - [0x10E6a0, databin, static_0_2]
+      - name: Davy
+        dir: Davy
+        type: .data
+        start: 0x10e860
+        subsegments:
+        - {start: 0x10E860, type: vtx, name: body/body, data_only: True}
+        - [0x10E9A0, pad, identity_matrix]
+        - [0x10E9E0, pad, B8000000]
+        - [0x10E9E8, ci4, body/backpackStrap.ci4, 32, 64]
+        - [0x10EDE8, pad, B8000000]
+        - [0x10EDF0, palette, body/backpackStrap.ci4]
+        - [0x10EFF0, pad, B8000000]
+        - [0x10EFF8, ci4, body/solidColor.ci4, 8, 8]
+        - [0x10F018, pad, B8000000]
+        - [0x10F020, palette, body/solidColor.ci4]
+        - [0x10F220, pad, B8000000]
+        - [0x10F228, ci4, body/number.ci4, 32, 32]
+        - [0x10F428, pad, B8000000]
+        - [0x10F430, palette, body/number.ci4]
+        - {start: 0x10F630, type: gfxSeg, name: body/body, data_only: True}
+
+        - [0x10F9E8, mtx, bodyAssociate/bodyAssociate]
+        - {start: 0x10FA28, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
+
+        - {start: 0x10FA48, type: vtx, name: head/head, data_only: True}
+        - [0x10FEB8, pad, identity_matrix]
+        - [0x10FEF8, pad, B8000000]
+        - [0x10FF00, ci8, head/eyeL.ci8, 32, 32]
+        - [0x110300, pad, B8000000]
+        - [0x110308, palette, head/eyeL.ci8]
+        - [0x110508, pad, B8000000]
+        - [0x110510, ci8, head/eyeR.ci8, 32, 32]
+        - [0x110910, pad, B8000000]
+        - [0x110918, palette, head/eyeR.ci8]
+        - [0x110B18, pad, B8000000]
+        - [0x110B20, ci4, head/cheek.ci4, 32, 32]
+        - [0x110D20, pad, B8000000]
+        - [0x110D28, palette, head/cheek.ci4]
+        - {start: 0x110F28, type: gfxSeg, name: head/head, data_only: True}
+
+        - {start: 0x1114A8, type: vtx, name: backpack/backpack, data_only: True}
+        - [0x111528, pad, identity_matrix]
+        - [0x111568, pad, B8000000]
+        - [0x111570, ci8, backpack/backpack.ci8, 4, 8] #awful
+        - [0x111590, pad, B8000000]
+        - [0x111598, palette, backpack/backpack.ci8]
+        - {start: 0x111798, type: gfxSeg, name: backpack/backpack, data_only: True}
+
+        - {start: 0x111910, type: vtx, name: shoe/shoe, data_only: True}
+        - [0x111BD0, pad, identity_matrix]
+        - [0x111C10, pad, B8000000]
+        - [0x111C18, ci4, shoe/shoe.ci4, 64, 32]
+        - [0x112018, pad, B8000000]
+        - [0x112020, palette, shoe/shoe.ci4]
+        - {start: 0x112220, type: gfxSeg, name: shoe/shoe, data_only: True}
+
+        - {start: 0x1124E0, type: vtx, name: Lshoe/Lshoe, data_only: True}
+        - [0x1127A0, pad, identity_matrix]
+        - {start: 0x1127E0, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
+
+        - {start: 0x112AA0, type: vtx, name: cuff/cuff, data_only: True}
+        - [0x112B90, pad, identity_matrix]
+        - [0x112BD0, pad, B8000000]
+        - [0x112BD8, ci4, cuff/color.ci4, 8, 8]
+        - [0x112BF8, pad, B8000000]
+        - [0x112C00, palette, cuff/color.ci4]
+        - {start: 0x112E00, type: gfxSeg, name: cuff/cuff, data_only: True}
+
+        - {start: 0x1130B8, type: vtx, name: Lcuff/Lcuff, data_only: True}
+        - [0x1131A8, pad, identity_matrix]
+        - {start: 0x1131E8, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
+
+        - {start: 0x1134A0, type: vtx, name: wrist/wrist, data_only: True}
+        - [0x113670, pad, identity_matrix]
+        - [0x1136B0, pad, B8000000]
+        - [0x1136B8, ci4, wrist/wristColor.ci4, 8, 8]
+        - [0x1136D8, pad, B8000000]
+        - [0x1136E0, palette, wrist/wristColor.ci4]
+        - [0x1138E0, pad, B8000000]
+        - [0x1138E8, ci4, wrist/wrist.ci4, 32, 32]
+        - [0x113AE8, pad, B8000000]
+        - [0x113AF0, palette, wrist/wrist.ci4]
+        - {start: 0x113CF0, type: gfxSeg, name: wrist/wrist, data_only: True}
+
+        - {start: 0x114108, type: vtx, name: Lwrist/Lwrist, data_only: True}
+        - [0x1142D8, pad, identity_matrix]
+        - {start: 0x114318, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
+
+        - {start: 0x114730, type: vtx, name: shoulder/shoulder, data_only: True}
+        - [0x114790, pad, identity_matrix]
+        - {start: 0x1147D0, type: gfxSeg, name: shoulder/shoulder, data_only: True}
+
+        - {start: 0x114928, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
+        - [0x114988, pad, identity_matrix]
+        - {start: 0x1149C8, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
+
+        - {start: 0x114B20, type: vtx, name: fist/fist, data_only: True}
+        - [0x114DB0, pad, identity_matrix]
+        - [0x114DF0, pad, B8000000]
+        - [0x114DF8, ci4, fist/fist1.ci4, 32, 32]
+        - [0x114FF8, pad, B8000000]
+        - [0x115000, palette, fist/fist1.ci4]
+        - [0x115200, pad, B8000000]
+        - [0x115208, ci4, fist/fist2.ci4, 32, 32]
+        - [0x115408, pad, B8000000]
+        - [0x115410, palette, fist/fist2.ci4]
+        - [0x115610, pad, B8000000]
+        - [0x115618, ci4, fist/fist3.ci4, 32, 32]
+        - [0x115818, pad, B8000000]
+        - [0x115820, palette, fist/fist3.ci4]
+        - [0x115A20, pad, B8000000]
+        - [0x115A28, ci4, fist/fistDiamond.ci4, 32, 32]
+        - [0x115C28, pad, B8000000]
+        - [0x115C30, palette, fist/fistDiamond.ci4]
+        - [0x115E30, pad, B8000000]
+        - [0x115E38, ci4, fist/fist4.ci4, 32, 32]
+        - [0x116038, pad, B8000000]
+        - [0x116040, palette, fist/fist4.ci4]
+        - {start: 0x116240, type: gfxSeg, name: fist/fist, data_only: True}
+
+        - {start: 0x116958, type: vtx, name: Lfist/Lfist, data_only: True}
+        - [0x116C08, pad, identity_matrix]
+        - {start: 0x116C48, type: gfxSeg, name: Lfist/Lfist, data_only: True}
+
+        - [0x117360, mtx, restAssociate/restAssociate]
+        - {start: 0x1173A0, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
+
+      - name: Jack
+        dir: Jack
+        type: .data
+        start: 0x117420
+        subsegments:
+        - {start: 0x117420, type: vtx, name: body/body, data_only: True}
+        - [0x117560, pad, identity_matrix]
+        - [0x1175A0, pad, B8000000]
+        - [0x1175A8, ci4, body/backpackStrap.ci4, 32, 64]
+        - [0x1179A8, pad, B8000000]
+        - [0x1179B0, palette, body/backpackStrap.ci4]
+        - [0x117BB0, pad, B8000000]
+        - [0x117BB8, ci4, body/solidColor.ci4, 8, 8]
+        - [0x117BD8, pad, B8000000]
+        - [0x117BE0, palette, body/solidColor.ci4]
+        - [0x117DE0, pad, B8000000]
+        - [0x117DE8, ci4, body/number.ci4, 32, 32]
+        - [0x117FE8, pad, B8000000]
+        - [0x117FF0, palette, body/number.ci4]
+        - {start: 0x1181F0, type: gfxSeg, name: body/body, data_only: True}
+
+        - [0x1185A8, mtx, bodyAssociate/bodyAssociate]
+        - {start: 0x1185E8, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
+
+        - {start: 0x118608, type: vtx, name: head/head, data_only: True}
+        - [0x118AB8, pad, identity_matrix]
+        - [0x118AF8, pad, B8000000]
+        - [0x118B00, ci8, head/eyeL.ci8, 32, 32]
+        - [0x118F00, pad, B8000000]
+        - [0x118F08, palette, head/eyeL.ci8]
+        - [0x119108, pad, B8000000]
+        - [0x119110, ci8, head/eyeR.ci8, 32, 32]
+        - [0x119510, pad, B8000000]
+        - [0x119518, palette, head/eyeR.ci8]
+        - [0x119718, pad, B8000000]
+        - [0x119720, ci4, head/cheek.ci4, 32, 32]
+        - [0x119920, pad, B8000000]
+        - [0x119928, palette, head/cheek.ci4]
+        - {start: 0x119B28, type: gfxSeg, name: head/head, data_only: True}
+
+        - {start: 0x11A0A8, type: vtx, name: backpack/backpack, data_only: True}
+        - [0x11A128, pad, identity_matrix]
+        - [0x11A168, pad, B8000000]
+        - [0x11A170, ci8, backpack/backpack.ci8, 4, 8] #awful
+        - [0x11A190, pad, B8000000]
+        - [0x11A198, palette, backpack/backpack.ci8]
+        - {start: 0x11A398, type: gfxSeg, name: backpack/backpack, data_only: True}
+
+        - {start: 0x11A510, type: vtx, name: shoe/shoe, data_only: True}
+        - [0x11A7D0, pad, identity_matrix]
+        - [0x11A810, pad, B8000000]
+        - [0x11A818, ci4, shoe/shoe.ci4, 64, 32]
+        - [0x11AC18, pad, B8000000]
+        - [0x11AC20, palette, shoe/shoe.ci4]
+        - {start: 0x11AE20, type: gfxSeg, name: shoe/shoe, data_only: True}
+
+        - {start: 0x11B0E0, type: vtx, name: Lshoe/Lshoe, data_only: True}
+        - [0x11B3A0, pad, identity_matrix]
+        - {start: 0x11B3E0, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
+
+        - {start: 0x11B6A0, type: vtx, name: cuff/cuff, data_only: True}
+        - [0x11B790, pad, identity_matrix]
+        - [0x11B7D0, pad, B8000000]
+        - [0x11B7D8, ci4, cuff/color.ci4, 8, 8]
+        - [0x11B7F8, pad, B8000000]
+        - [0x11B800, palette, cuff/color.ci4]
+        - {start: 0x11BA00, type: gfxSeg, name: cuff/cuff, data_only: True}
+
+        - {start: 0x11BCB8, type: vtx, name: Lcuff/Lcuff, data_only: True}
+        - [0x11BDA8, pad, identity_matrix]
+        - {start: 0x11BDE8, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
+
+        - {start: 0x11C0A0, type: vtx, name: wrist/wrist, data_only: True}
+        - [0x11C270, pad, identity_matrix]
+        - [0x11C2B0, pad, B8000000]
+        - [0x11C2B8, ci4, wrist/wristColor.ci4, 8, 8]
+        - [0x11C2D8, pad, B8000000]
+        - [0x11C2E0, palette, wrist/wristColor.ci4]
+        - [0x11C4E0, pad, B8000000]
+        - [0x11C4E8, ci4, wrist/wrist.ci4, 32, 32]
+        - [0x11C6E8, pad, B8000000]
+        - [0x11C6F0, palette, wrist/wrist.ci4]
+        - {start: 0x11C8F0, type: gfxSeg, name: wrist/wrist, data_only: True}
+
+        - {start: 0x11CD08, type: vtx, name: Lwrist/Lwrist, data_only: True}
+        - [0x11CED8, pad, identity_matrix]
+        - {start: 0x11CF18, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
+
+        - {start: 0x11D330, type: vtx, name: shoulder/shoulder, data_only: True}
+        - [0x11D390, pad, identity_matrix]
+        - {start: 0x11D3D0, type: gfxSeg, name: shoulder/shoulder, data_only: True}
+
+        - {start: 0x11D528, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
+        - [0x11D588, pad, identity_matrix]
+        - {start: 0x11D5C8, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
+
+        - {start: 0x11D720, type: vtx, name: fist/fist, data_only: True}
+        - [0x11D9B0, pad, identity_matrix]
+        - [0x11D9F0, pad, B8000000]
+        - [0x11D9F8, ci4, fist/fist1.ci4, 32, 32]
+        - [0x11DBF8, pad, B8000000]
+        - [0x11DC00, palette, fist/fist1.ci4]
+        - [0x11DE00, pad, B8000000]
+        - [0x11DE08, ci4, fist/fist2.ci4, 32, 32]
+        - [0x11E008, pad, B8000000]
+        - [0x11E010, palette, fist/fist2.ci4]
+        - [0x11E210, pad, B8000000]
+        - [0x11E218, ci4, fist/fist3.ci4, 32, 32]
+        - [0x11E418, pad, B8000000]
+        - [0x11E420, palette, fist/fist3.ci4]
+        - [0x11E620, pad, B8000000]
+        - [0x11E628, ci4, fist/fistDiamond.ci4, 32, 32]
+        - [0x11E828, pad, B8000000]
+        - [0x11E830, palette, fist/fistDiamond.ci4]
+        - [0x11EA30, pad, B8000000]
+        - [0x11EA38, ci4, fist/fist4.ci4, 32, 32]
+        - [0x11EC38, pad, B8000000]
+        - [0x11EC40, palette, fist/fist4.ci4]
+        - {start: 0x11EE40, type: gfxSeg, name: fist/fist, data_only: True}
+
+        - {start: 0x11F558, type: vtx, name: Lfist/Lfist, data_only: True}
+        - [0x11F808, pad, identity_matrix]
+        - {start: 0x11F848, type: gfxSeg, name: Lfist/Lfist, data_only: True}
+
+        - [0x11FF60, mtx, restAssociate/restAssociate]
+        - {start: 0x11FFA0, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
+
+      - name: Fred
+        dir: Fred
+        type: .data
+        start: 0x120020
+        subsegments:
+        - {start: 0x120020, type: vtx, name: body/body, data_only: True}
+        - [0x120160, pad, identity_matrix]
+        - [0x1201A0, pad, B8000000]
+        - [0x1201A8, ci4, body/backpackStrap.ci4, 32, 64]
+        - [0x1205A8, pad, B8000000]
+        - [0x1205B0, palette, body/backpackStrap.ci4]
+        - [0x1207B0, pad, B8000000]
+        - [0x1207B8, ci4, body/solidColor.ci4, 8, 8]
+        - [0x1207D8, pad, B8000000]
+        - [0x1207E0, palette, body/solidColor.ci4]
+        - [0x1209E0, pad, B8000000]
+        - [0x1209E8, ci4, body/number.ci4, 32, 32]
+        - [0x120BE8, pad, B8000000]
+        - [0x120BF0, palette, body/number.ci4]
+        - {start: 0x120DF0, type: gfxSeg, name: body/body, data_only: True}
+
+        - [0x1211A8, mtx, bodyAssociate/bodyAssociate]
+        - {start: 0x1211E8, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
+
+        - {start: 0x121208, type: vtx, name: head/head, data_only: True}
+        - [0x121678, pad, identity_matrix]
+        - [0x1216B8, pad, B8000000]
+        - [0x1216C0, ci8, head/eyeL.ci8, 32, 32]
+        - [0x121AC0, pad, B8000000]
+        - [0x121AC8, palette, head/eyeL.ci8]
+        - [0x121CC8, pad, B8000000]
+        - [0x121CD0, ci8, head/eyeR.ci8, 32, 32]
+        - [0x1220D0, pad, B8000000]
+        - [0x1220D8, palette, head/eyeR.ci8]
+        - [0x1222D8, pad, B8000000]
+        - [0x1222E0, ci4, head/cheek.ci4, 32, 32]
+        - [0x1224E0, pad, B8000000]
+        - [0x1224E8, palette, head/cheek.ci4]
+        - {start: 0x1226E8, type: gfxSeg, name: head/head, data_only: True}
+
+        - {start: 0x122C68, type: vtx, name: backpack/backpack, data_only: True}
+        - [0x122CE8, pad, identity_matrix]
+        - [0x122D28, pad, B8000000]
+        - [0x122D30, ci8, backpack/backpack.ci8, 4, 8] #awful
+        - [0x122D50, pad, B8000000]
+        - [0x122D58, palette, backpack/backpack.ci8]
+        - {start: 0x122F58, type: gfxSeg, name: backpack/backpack, data_only: True}
+
+        - {start: 0x1230D0, type: vtx, name: shoe/shoe, data_only: True}
+        - [0x123390, pad, identity_matrix]
+        - [0x1233D0, pad, B8000000]
+        - [0x1233D8, ci4, shoe/shoe.ci4, 64, 32]
+        - [0x1237D8, pad, B8000000]
+        - [0x1237E0, palette, shoe/shoe.ci4]
+        - {start: 0x1239E0, type: gfxSeg, name: shoe/shoe, data_only: True}
+
+        - {start: 0x123CA0, type: vtx, name: Lshoe/Lshoe, data_only: True}
+        - [0x123F60, pad, identity_matrix]
+        - {start: 0x123FA0, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
+
+        - {start: 0x124260, type: vtx, name: cuff/cuff, data_only: True}
+        - [0x124350, pad, identity_matrix]
+        - [0x124390, pad, B8000000]
+        - [0x124398, ci4, cuff/color.ci4, 8, 8]
+        - [0x1243B8, pad, B8000000]
+        - [0x1243C0, palette, cuff/color.ci4]
+        - {start: 0x1245C0, type: gfxSeg, name: cuff/cuff, data_only: True}
+
+        - {start: 0x124878, type: vtx, name: Lcuff/Lcuff, data_only: True}
+        - [0x124968, pad, identity_matrix]
+        - {start: 0x1249A8, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
+
+        - {start: 0x124C60, type: vtx, name: wrist/wrist, data_only: True}
+        - [0x124E30, pad, identity_matrix]
+        - [0x124E70, pad, B8000000]
+        - [0x124E78, ci4, wrist/wristColor.ci4, 8, 8]
+        - [0x124E98, pad, B8000000]
+        - [0x124EA0, palette, wrist/wristColor.ci4]
+        - [0x1250A0, pad, B8000000]
+        - [0x1250A8, ci4, wrist/wrist.ci4, 32, 32]
+        - [0x1252A8, pad, B8000000]
+        - [0x1252B0, palette, wrist/wrist.ci4]
+        - {start: 0x1254B0, type: gfxSeg, name: wrist/wrist, data_only: True}
+
+        - {start: 0x1258C8, type: vtx, name: Lwrist/Lwrist, data_only: True}
+        - [0x125A98, pad, identity_matrix]
+        - {start: 0x125AD8, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
+
+        - {start: 0x125EF0, type: vtx, name: shoulder/shoulder, data_only: True}
+        - [0x125F50, pad, identity_matrix]
+        - {start: 0x125F90, type: gfxSeg, name: shoulder/shoulder, data_only: True}
+
+        - {start: 0x1260E8, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
+        - [0x126148, pad, identity_matrix]
+        - {start: 0x126188, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
+
+        - {start: 0x1262E0, type: vtx, name: fist/fist, data_only: True}
+        - [0x126570, pad, identity_matrix]
+        - [0x1265B0, pad, B8000000]
+        - [0x1265B8, ci4, fist/fist1.ci4, 32, 32]
+        - [0x1267B8, pad, B8000000]
+        - [0x1267C0, palette, fist/fist1.ci4]
+        - [0x1269C0, pad, B8000000]
+        - [0x1269C8, ci4, fist/fist2.ci4, 32, 32]
+        - [0x126BC8, pad, B8000000]
+        - [0x126BD0, palette, fist/fist2.ci4]
+        - [0x126DD0, pad, B8000000]
+        - [0x126DD8, ci4, fist/fist3.ci4, 32, 32]
+        - [0x126FD8, pad, B8000000]
+        - [0x126FE0, palette, fist/fist3.ci4]
+        - [0x1271E0, pad, B8000000]
+        - [0x1271E8, ci4, fist/fistDiamond.ci4, 32, 32]
+        - [0x1273E8, pad, B8000000]
+        - [0x1273F0, palette, fist/fistDiamond.ci4]
+        - [0x1275F0, pad, B8000000]
+        - [0x1275F8, ci4, fist/fist4.ci4, 32, 32]
+        - [0x1277F8, pad, B8000000]
+        - [0x127800, palette, fist/fist4.ci4]
+        - {start: 0x127A00, type: gfxSeg, name: fist/fist, data_only: True}
+
+        - {start: 0x128118, type: vtx, name: Lfist/Lfist, data_only: True}
+        - [0x1283C8, pad, identity_matrix]
+        - {start: 0x128408, type: gfxSeg, name: Lfist/Lfist, data_only: True}
+
+        - [0x128B20, mtx, restAssociate/restAssociate]
+        - {start: 0x128B60, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
+
+      - name: Linda
+        dir: Linda
+        type: .data
+        vram: 0x81000000
+        start: 0x128be0
+        subsegments:
+        - {start: 0x128BE0, type: vtx, name: body/body, data_only: True}
+        - [0x128D20, pad, identity_matrix]
+        - [0x128D60, pad, B8000000]
+        - [0x128D68, ci4, body/backpackStrap.ci4, 32, 64]
+        - [0x129168, pad, B8000000]
+        - [0x129170, palette, body/backpackStrap.ci4]
+        - [0x129370, pad, B8000000]
+        - [0x129378, ci4, body/solidColor.ci4, 8, 8]
+        - [0x129398, pad, B8000000]
+        - [0x1293A0, palette, body/solidColor.ci4]
+        - [0x1295A0, pad, B8000000]
+        - [0x1295A8, ci4, body/number.ci4, 32, 32]
+        - [0x1297A8, pad, B8000000]
+        - [0x1297B0, palette, body/number.ci4]
+        - {start: 0x1299B0, type: gfxSeg, name: body/body, data_only: True}
+
+        - [0x129D68, mtx, bodyAssociate/bodyAssociate]
+        - {start: 0x129DA8, type: gfxSeg, name: bodyAssociate/bodyAssociate, data_only: True}
+
+        - {start: 0x129DC8, type: vtx, name: head/head, data_only: True}
+        - [0x12A298, pad, identity_matrix]
+        - [0x12A2D8, pad, B8000000]
+        - [0x12A2E0, ci8, head/eyeL.ci8, 32, 32]
+        - [0x12A6E0, pad, B8000000]
+        - [0x12A6E8, palette, head/eyeL.ci8]
+        - [0x12A8E8, pad, B8000000]
+        - [0x12A8F0, ci4, head/bow.ci4, 64, 32]
+        - [0x12ACF0, pad, B8000000]
+        - [0x12ACF8, palette, head/bow.ci4]
+        - [0x12AEF8, pad, B8000000]
+        - [0x12AF00, ci8, head/eyeR.ci8, 32, 32]
+        - [0x12B300, pad, B8000000]
+        - [0x12B308, palette, head/eyeR.ci8]
+        - [0x12B508, pad, B8000000]
+        - [0x12B510, ci4, head/cheek.ci4, 32, 32]
+        - [0x12B710, pad, B8000000]
+        - [0x12B718, palette, head/cheek.ci4]
+        - {start: 0x12B918, type: gfxSeg, name: head/head, data_only: True}
+
+        - {start: 0x12BF98, type: vtx, name: backpack/backpack, data_only: True}
+        - [0x12C018, pad, identity_matrix]
+        - [0x12C058, pad, B8000000]
+        - [0x12C060, ci8, backpack/backpack.ci8, 4, 8] #awful
+        - [0x12C080, pad, B8000000]
+        - [0x12C088, palette, backpack/backpack.ci8]
+        - {start: 0x12C288, type: gfxSeg, name: backpack/backpack, data_only: True}
+
+        - {start: 0x12C400, type: vtx, name: shoe/shoe, data_only: True}
+        - [0x12C6E0, pad, identity_matrix]
+        - [0x12C720, pad, B8000000]
+        - [0x12C728, ci4, shoe/shoe.ci4, 64, 32]
+        - [0x12CB28, pad, B8000000]
+        - [0x12CB30, palette, shoe/shoe.ci4]
+        - {start: 0x12CD30, type: gfxSeg, name: shoe/shoe, data_only: True}
+
+        - {start: 0x12CFF0, type: vtx, name: Lshoe/Lshoe, data_only: True}
+        - [0x12D2B0, pad, identity_matrix]
+        - {start: 0x12D2F0, type: gfxSeg, name: Lshoe/Lshoe, data_only: True}
+
+        - {start: 0x12D5B0, type: vtx, name: cuff/cuff, data_only: True}
+        - [0x12D6A0, pad, identity_matrix]
+        - [0x12D6E0, pad, B8000000]
+        - [0x12D6E8, ci4, cuff/color.ci4, 8, 8]
+        - [0x12D708, pad, B8000000]
+        - [0x12D710, palette, cuff/color.ci4]
+        - {start: 0x12D910, type: gfxSeg, name: cuff/cuff, data_only: True}
+
+        - {start: 0x12DBC8, type: vtx, name: Lcuff/Lcuff, data_only: True}
+        - [0x12DCB8, pad, identity_matrix]
+        - {start: 0x12DCF8, type: gfxSeg, name: Lcuff/Lcuff, data_only: True}
+
+        - {start: 0x12DFB0, type: vtx, name: wrist/wrist, data_only: True}
+        - [0x12E180, pad, identity_matrix]
+        - [0x12E1C0, pad, B8000000]
+        - [0x12E1C8, ci4, wrist/wristColor.ci4, 8, 8]
+        - [0x12E1E8, pad, B8000000]
+        - [0x12E1F0, palette, wrist/wristColor.ci4]
+        - [0x12E3F0, pad, B8000000]
+        - [0x12E3F8, ci4, wrist/wrist.ci4, 32, 32]
+        - [0x12E5F8, pad, B8000000]
+        - [0x12E600, palette, wrist/wrist.ci4]
+        - {start: 0x12E800, type: gfxSeg, name: wrist/wrist, data_only: True}
+
+        - {start: 0x12EC18, type: vtx, name: Lwrist/Lwrist, data_only: True}
+        - [0x12EDE8, pad, identity_matrix]
+        - {start: 0x12EE28, type: gfxSeg, name: Lwrist/Lwrist, data_only: True}
+
+        - {start: 0x12F240, type: vtx, name: shoulder/shoulder, data_only: True}
+        - [0x12F2A0, pad, identity_matrix]
+        - {start: 0x12F2E0, type: gfxSeg, name: shoulder/shoulder, data_only: True}
+
+        - {start: 0x12F438, type: vtx, name: Lshoulder/Lshoulder, data_only: True}
+        - [0x12F498, pad, identity_matrix]
+        - {start: 0x12F4D8, type: gfxSeg, name: Lshoulder/Lshoulder, data_only: True}
+
+        - {start: 0x12F630, type: vtx, name: fist/fist, data_only: True}
+        - [0x12F8C0, pad, identity_matrix]
+        - [0x12F900, pad, B8000000]
+        - [0x12F908, ci4, fist/fist1.ci4, 32, 32]
+        - [0x12FB08, pad, B8000000]
+        - [0x12FB10, palette, fist/fist1.ci4]
+        - [0x12FD10, pad, B8000000]
+        - [0x12FD18, ci4, fist/fist2.ci4, 32, 32]
+        - [0x12FF18, pad, B8000000]
+        - [0x12FF20, palette, fist/fist2.ci4]
+        - [0x130120, pad, B8000000]
+        - [0x130128, ci4, fist/fist3.ci4, 32, 32]
+        - [0x130328, pad, B8000000]
+        - [0x130330, palette, fist/fist3.ci4]
+        - [0x130530, pad, B8000000]
+        - [0x130538, ci4, fist/fistDiamond.ci4, 32, 32]
+        - [0x130738, pad, B8000000]
+        - [0x130740, palette, fist/fistDiamond.ci4]
+        - [0x130940, pad, B8000000]
+        - [0x130948, ci4, fist/fist4.ci4, 32, 32]
+        - [0x130B48, pad, B8000000]
+        - [0x130B50, palette, fist/fist4.ci4]
+        - {start: 0x130D50, type: gfxSeg, name: fist/fist, data_only: True}
+
+        - {start: 0x131468, type: vtx, name: Lfist/Lfist, data_only: True}
+        - [0x131718, pad, identity_matrix]
+        - {start: 0x131758, type: gfxSeg, name: Lfist/Lfist, data_only: True}
+
+        - [0x131E70, mtx, restAssociate/restAssociate]
+        - {start: 0x131EB0, type: gfxSeg, name: restAssociate/restAssociate, data_only: True}
+
+  #this segment is fake, but the original game seems to have an old overlay compiled in
+  - name: AnimationMatrixSlots
+    type: code
+    vram: 0x801355D0
+    start: 0x131F30
+    subsegments:
+    - [0x131F30, c, code/AnimSlots]
+    - [0x131F30, .bss, code/AnimSlots]
+
   - type: databin
-    start: 0xF8EB0
+    start: 0x131F30
     follows_vram: main
 
-  - start: 0xb6fbd0
-    name: Chameleons
-    vram: 0x07000000 #SEGMENT 0x07
-    dir: chameleons
-    subalign: 8
-    type: databin
-    subsegments:
-    - name: Chameleons
-      dir: Chameleons
-      type: databin
-      subalign: 8
-      vram: 0x80D84330
-      start: 0xb6fbd0
-      subsegments:
-      - [0xb6fbd0, databin, Davy]
-      - [0xb76620, databin, Jack]
-      - [0xB7d458, databin, Fred]
-      - [0xb84290, databin, Linda]
-  
-  #- start: 0xB8b820
-  #  name: DemoData
-  #  vram: 0x0D000000 #SEGMENT 0x0D
-  #  dir: img
-  #  subalign: 8
-  #  type: code
-  #  exclusive_ram_id: "DEMO"
-  #  subsegments:
-  #  - [auto, c, DemoData]
-  #  - name: DemoData
-  #    dir: DemoData
-  #    type: .data
-  #    subalign: 8
-  #    vram: 0x81000000
-  #    start: 0xB8b820
-  #    subsegments:
-  # 
+  - [0x569a60, databin, AntLand]
+  - [0x5c0160, databin, BombLand]
+  - [0x601a70, databin, KidsLand]
+  - [0x64f530, databin, DesertCastle]
+  - [0x698fc0, databin, IntroOutro]
+  - [0x706130, databin, GhostCastle]
+  - [0x77b350, databin, JungleLand]
+  - [0x7df540, databin, LizardKong]
+  - [0x818f60, databin, Quintella]
+  - [0x878830, databin, BombSnake]
+  - [0x880be0, databin, GiantCake]
+  - [0x8a35d0, databin, Armadillo]
+  - [0x8ce8d0, databin, PileOfBooks]
+  - [0x916ba0, databin, BattleMode]
+  - [0x929740, databin, Training]
+  - [0x9455f0, databin, BossRush]
+  - [0x94c2f0, databin, Global]
+  - [0x98ee70, databin, extImages]
+
+  #sprite_listings = D_800EF0C0, CA430
+  #sprite_listings_end = D_800F4BB0, CFF20
+
+  #extImages
+  #start: 0x98ee70
+  #segment 0x0c (preeeeetty sure)
+  # - [0x98ee70] #B8000000
+  # - [0x98ee78, databin, davyEyeR_PNG]
+  # - [0x98F278] #B8000000
+  # - [0x98F280, databin, davyEyeR_PAL]
+  # - [0x98F480] #B8000000
+  # - [0x98F488, databin, davyClosedEyeR_PNG]
+  # - [0x98F888] #B8000000
+  # - [0x98F890, databin, davyClosedEyeR_PAL]
+  # - [0x98FA90] #B8000000
+  # - [0x98FA98, databin, davySadEyeR_ci8_PNG]
+  # - [0x98FE98] #B8000000
+  # - [0x98FEa0, databin, davySadEyeR_ci8_PAL]
+  # - [0x9900a0] #B8000000
+  # - [0x9900A8, databin, davyHappyEyeR_ci8_PNG]
+  # - [0x9904A8] #B8000000
+  # - [0x9904B0, databin, davyHappyEyeR_ci8_PAL]
+  # - [0x9906B0] #B8000000
+  # - [0x9906B8, databin, davyHurtEyeR_ci8_PNG]
+  # - [0x990AB8] #B8000000
+  # - [0x990AC0, databin, davyHurtEyeR_ci8_PAL]
+  # - [0x990CC0] #B8000000
+  # - [0x990CC8, databin, davyEyeL_ci8_PNG]
+  # - [0x9910C8] #B8000000
+  # - [0x9910D0, databin, davyEyeL_ci8_PAL]
+  # - [0x9912D0] #B8000000
+  # - [0x9912D8, databin, davyClosedEyeL_ci8_PNG]
+  # - [0x9916D8] #B8000000
+  # - [0x9916E0, databin, davyClosedEyeL_ci8_PAL]
+  # - [0x9918E0] #B8000000
+  # - [0x9918E8, databin, davySadEyeL_ci8_PNG]
+  # - [0x991CE8] #B8000000
+  # - [0x991CF0, databin, davySadEyeL_ci8_PAL]
+  # - [0x991EF0] #B8000000
+  # - [0x991EF8, databin, davyHappyEyeL_ci8_PNG]
+  # - [0x9922F8] #B8000000
+  # - [0x992300, databin, davyHappyEyeL_ci8_PAL]
+  # - [0x992500] #B8000000
+  # - [0x992508, databin, davyHurtEyeL_ci8_PNG]
+  # - [0x992908] #B8000000
+  # - [0x992910, databin, davyHurtEyeL_ci8_PAL]
+  # - [0x992B10] #B8000000
+  # - [0x992B18, databin, jackEyeR_ci8_PNG]
+  # - [0x992F18] #B8000000
+  # - [0x992F20, databin, jackEyeR_ci8_PAL]
+  # - [0x993120] #B8000000
+  # - [0x993128, databin, jackClosedEyeR_ci8_PNG]
+  # - [0x993528] #B8000000
+  # - [0x993530, databin, jackClosedEyeR_ci8_PAL]
+  # - [0x993730] #B8000000
+  # - [0x993738, databin, jackSadEyeR_ci8_PNG]
+  # - [0x993B38] #B8000000
+  # - [0x993B40, databin, jackSadEyeR_ci8_PAL]
+  # - [0x993D40] #B8000000
+  # - [0x993D48, databin, jackHappyEyeR_ci8_PNG]
+  # - [0x994148] #B8000000
+  # - [0x994150, databin, jackHappyEyeR_ci8_PAL]
+  # - [0x994350] #B8000000
+  # - [0x994358, databin, jackHurtEyeR_ci8_PNG]
+  # - [0x994758] #B8000000
+  # - [0x994760, databin, jackHurtEyeR_ci8_PAL]
+  # - [0x994960] #B8000000
+  # - [0x994968, databin, jackEyeL_ci8_PNG]
+  # - [0x994D68] #B8000000
+  # - [0x994D70, databin, jackEyeL_ci8_PAL]
+  # - [0x994F70] #B8000000
+  # - [0x994F78, databin, jackClosedEyeL_ci8_PNG]
+  # - [0x995378] #B8000000
+  # - [0x995380, databin, jackClosedEyeL_ci8_PAL]
+  # - [0x995580] #B8000000
+  # - [0x995588, databin, jackSadEyeL_ci8_PNG]
+  # - [0x995988] #B8000000
+  # - [0x995990, databin, jackSadEyeL_ci8_PAL]
+  # - [0x995B90] #B8000000
+  # - [0x995B98, databin, jackHappyEyeL_ci8_PNG]
+  # - [0x995F98] #B8000000
+  # - [0x995FA0, databin, jackHappyEyeL_ci8_PAL]
+  # - [0x9961A0] #B8000000
+  # - [0x9961A8, databin, jackHurtEyeL_ci8_PNG]
+  # - [0x9965A8] #B8000000
+  # - [0x9965B0, databin, jackHurtEyeL_ci8_PAL]
+  # - [0x9967B0] #B8000000
+  # - [0x9967B8, databin, lindaEyeR_ci8_PNG]
+  # - [0x996BB8] #B8000000
+  # - [0x996BC0, databin, lindaEyeR_ci8_PAL]
+  # - [0x996DC0] #B8000000
+  # - [0x996DC8, databin, lindaClosedEyeR_ci8_PNG]
+  # - [0x9971C8] #B8000000
+  # - [0x9971D0, databin, lindaClosedEyeR_ci8_PAL]
+  # - [0x9973D0] #B8000000
+  # - [0x9973D8, databin, lindaSadEyeR_ci8_PNG]
+  # - [0x9977D8] #B8000000
+  # - [0x9977E0, databin, lindaSadEyeR_ci8_PAL]
+  # - [0x9979E0] #B8000000
+  # - [0x9979E8, databin, lindaHappyEyeR_ci8_PNG]
+  # - [0x997DE8] #B8000000
+  # - [0x997DF0, databin, lindaHappyEyeR_ci8_PAL]
+  # - [0x997FF0] #B8000000
+  # - [0x997FF8, databin, lindaHurtEyeR_ci8_PNG]
+  # - [0x9983F8] #B8000000
+  # - [0x998400, databin, lindaHurtEyeR_ci8_PAL]
+  # - [0x998600] #B8000000
+  # - [0x998608, databin, lindaEyeL_ci8_PNG]
+  # - [0x998A08] #B8000000
+  # - [0x998A10, databin, lindaEyeL_ci8_PAL]
+  # - [0x998C10] #B8000000
+  # - [0x998C18, databin, lindaClosedEyeL_ci8_PNG]
+  # - [0x999018] #B8000000
+  # - [0x999020, databin, lindaClosedEyeL_ci8_PAL]
+  # - [0x999220] #B8000000
+  # - [0x999228, databin, lindaSadEyeL_ci8_PNG]
+  # - [0x999628] #B8000000
+  # - [0x999630, databin, lindaSadEyeL_ci8_PAL]
+  # - [0x999830] #B8000000
+  # - [0x999838, databin, lindaHappyEyeL_ci8_PNG]
+  # - [0x999C38] #B8000000
+  # - [0x999C40, databin, lindaHappyEyeL_ci8_PAL]
+  # - [0x999E40] #B8000000
+  # - [0x999E48, databin, lindaHurtEyeL_ci8_PNG]
+  # - [0x99A248] #B8000000
+  # - [0x99A250, databin, lindaHurtEyeL_ci8_PAL]
+  # - [0x99A450] #B8000000
+  # - [0x99A458, databin, fredEyeR_ci8_PNG]
+  # - [0x99A858] #B8000000
+  # - [0x99A860, databin, fredEyeR_ci8_PAL]
+  # - [0x99AA60] #B8000000
+  # - [0x99AA68, databin, fredClosedEyeR_ci8_PNG]
+  # - [0x99AE68] #B8000000
+  # - [0x99AE70, databin, fredClosedEyeR_ci8_PAL]
+  # - [0x99B070] #B8000000
+  # - [0x99B078, databin, fredSadEyeR_ci8_PNG]
+  # - [0x99B478] #B8000000
+  # - [0x99B480, databin, fredSadEyeR_ci8_PAL]
+  # - [0x99B680] #B8000000
+  # - [0x99B688, databin, fredHappyEyeR_ci8_PNG]
+  # - [0x99BA88] #B8000000
+  # - [0x99BA90, databin, fredHappyEyeR_ci8_PAL]
+  # - [0x99BC90] #B8000000
+  # - [0x99BC98, databin, fredHurtEyeR_ci8_PNG]
+  # - [0x99C098] #B8000000
+  # - [0x99C0A0, databin, fredHurtEyeR_ci8_PAL]
+  # - [0x99C2A0] #B8000000
+  # - [0x99C2A8, databin, fredEyeL_ci8_PNG]
+  # - [0x99C6A8] #B8000000
+  # - [0x99C6B0, databin, fredEyeL_ci8_PAL]
+  # - [0x99C8B0] #B8000000
+  # - [0x99C8B8, databin, fredClosedEyeL_ci8_PNG]
+  # - [0x99CCB8] #B8000000
+  # - [0x99CCC0, databin, fredClosedEyeL_ci8_PAL]
+  # - [0x99CEC0] #B8000000
+  # - [0x99CEC8, databin, fredSadEyeL_ci8_PNG]
+  # - [0x99D2C8] #B8000000
+  # - [0x99D2D0, databin, fredSadEyeL_ci8_PAL]
+  # - [0x99D4D0] #B8000000
+  # - [0x99D4D8, databin, fredHappyEyeL_ci8_PNG]
+  # - [0x99D8D8] #B8000000
+  # - [0x99D8E0, databin, fredHappyEyeL_ci8_PAL]
+  # - [0x99DAE0] #B8000000
+  # - [0x99DAE8, databin, fredHurtEyeL_ci8_PNG]
+  # - [0x99DEE8] #B8000000
+  # - [0x99DEF0, databin, fredHurtEyeL_ci8_PAL]
+
+  # - [0x99E0F0, databin]
+
+  # - [0xA9CB48, ci8, davyIcon.ci8, 16, 16]
+  # - [0xA9CB50] #B8000000
+  # - [0xA9CC50, palette, davyIcon.ci8]
+  # - [0xA9CB50] #B8000000
+  # - [0xA9CE58, ci8, jackIcon.ci8, 16, 16]
+  # - [0xA9CF58] #B8000000
+  # - [0xA9CF60, palette, jackIcon.ci8]
+  # - [0xA9CB50] #B8000000
+  # - [0xA9D168, ci8, fredIcon.ci8, 16, 16]
+  # - [0xA9D268] #B8000000
+  # - [0xA9D270, palette, fredIcon.ci8]
+  # - [0xA9CB50] #B8000000
+  # - [0xA9D478, ci8, lindaIcon.ci8, 16, 16]
+  # - [0xA9D578] #B8000000
+  # - [0xA9D580, palette, lindaIcon.ci8]
+  # - [0xA9CB50] #B8000000
+
+  # - [0xAA2B28, rgba16, titleSplash, 320, 240]
+  # - [0xAC8328]
+
+
+#  - start: 0xb6fbd0
+#    name: Battle_Chameleons
+#    vram: 0x07000000 #SEGMENT 0x07
+#    dir: battle_chameleons
+#    subalign: 8
+#    type: databin
+#    subsegments:
+#    - [0xb6fbd0, databin, Davy]
+#    - [0xb76620, databin, Jack]
+#    - [0xB7d458, databin, Fred]
+#    - [0xb84290, databin, Linda]
 
   - [0xB8b820, databin, DemoData]
   - [0xB91FE0, databin, ROM_PADDING]

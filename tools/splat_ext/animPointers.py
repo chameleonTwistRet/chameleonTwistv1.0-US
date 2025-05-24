@@ -8,7 +8,7 @@ from splat.util.log import error
 from splat.util import options, symbols
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
-class N64SegLevelPointer(CommonSegCodeSubsegment):
+class N64SegAnimPointers(CommonSegCodeSubsegment):
     def __init__(
         self,
         rom_start,
@@ -36,7 +36,7 @@ class N64SegLevelPointer(CommonSegCodeSubsegment):
         return []
 
     def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.lvp.inc.c"
+        return options.opts.asset_path / self.dir / f"{self.name}.animP.inc.c"
 
     def scan(self, rom_bytes: bytes):
         if self.out_path().exists():
@@ -47,42 +47,43 @@ class N64SegLevelPointer(CommonSegCodeSubsegment):
         pointer_data = rom_bytes[self.rom_start : self.rom_end]
 
         lines = []
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvp")
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Animp")
         if not sym:
             sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Lvp", define=True
+                addr=self.vram_start, in_segment=True, type="Animp", define=True
             )
-
+        if sym == "static0_chameleonAnimPointers_Animp":
+            print("what")
 
 
         num = 0
         pointersets = []
-        while num*0x30 < len(pointer_data):
-            data = struct.unpack('>IIiiiiiiiiii', pointer_data[num*0x30:(num+1)*0x30])
+        while num*0xC < len(pointer_data):
+            data = struct.unpack('>III', pointer_data[num*0xC:(num+1)*0xC])
             pointersets.append([])
             i = 0
             while i < len(data):
-                if i == 0: #Graphics
-                    symG = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Gfx")
+                if i == 0: #Frames
+                    symG = self.retrieve_sym_type(symbols.all_symbols_dict, data[i]-0x28, "Animh")
                     if not symG:
                         symG = self.create_symbol(
-                            addr=data[i], in_segment=True, type="Gfx", define=True
+                            addr=data[i], in_segment=True, type="Animh", define=True
                         )
-                    pointersets[num].append("&"+symG.name+"[0]")
-                elif i == 1: #Collision
-                    symC = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "ColH")
-                    if not symC:
-                        symC = self.create_symbol(
-                            addr=data[i], in_segment=True, type="ColH", define=True
+                    pointersets[num].append("&"+symG.name+".frames")
+                elif i == 1: #Objects
+                    symG = self.retrieve_sym_type(symbols.all_symbols_dict, data[i]-0x2C, "Animh")
+                    if not symG:
+                        symG = self.create_symbol(
+                            addr=data[i], in_segment=True, type="Animh", define=True
                         )
-                    pointersets[num].append("&"+symC.name)
-                else:
-                    nus = str(data[i])
-                    if i == 2:
-                        nus = "{"+nus
-                    elif i == 11:
-                        nus += "}"
-                    pointersets[num].append(nus)
+                    pointersets[num].append("&"+symG.name+".objects")
+                elif i == 2: #Anim
+                    symG = self.retrieve_sym_type(symbols.all_symbols_dict, data[i]-0x2C, "Animarr")
+                    if not symG:
+                        symG = self.create_symbol(
+                            addr=data[i], in_segment=True, type="Animarr", define=True
+                        )
+                    pointersets[num].append("&"+symG.name+"[0][0]")
 
                 i += 1
             num += 1
@@ -90,13 +91,16 @@ class N64SegLevelPointer(CommonSegCodeSubsegment):
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("StageModel "+sym.name+"["+str(num)+"] = {")
+            lines.append("AnimPointer "+sym.name+"["+str(num)+"] = {")
 
         for set in pointersets:
             currLine = "{"
-            for v in set: currLine += v+", "
+            for v in set:
+                currLine += v+", "
+            currLine = currLine[:-2]
             currLine += "},"
             lines.append(currLine)
+        lines[-1] = lines[-1][:-1]
 
         if not self.data_only:
             lines.append("};")

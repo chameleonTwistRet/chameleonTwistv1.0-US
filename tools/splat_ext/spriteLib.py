@@ -1,17 +1,19 @@
 """
-Dumps out an animation header as a .inc.c file.
+Chameleon Twist: Sprite Actor struct splitter
+Dumps out spriteActor data as a .inc.c file.
+
+Original Author: Ellie (Elisiah)
+Modified for Collectable struct: Nathan R.
 """
 
 import re
 import struct
 from pathlib import Path
 from splat.util.log import error
-from math import floor
-from splat.util import options
+from splat.util import symbols, options
 from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
 
-
-class N64SegAnimHeader(CommonSegCodeSubsegment):
+class N64SegSpriteLib(CommonSegCodeSubsegment):
     def __init__(
         self,
         rom_start,
@@ -39,7 +41,7 @@ class N64SegAnimHeader(CommonSegCodeSubsegment):
         return []
 
     def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.animH.inc.c"
+        return options.opts.asset_path / self.dir / f"{self.name}.sprLib.inc.c"
 
     def scan(self, rom_bytes: bytes):
         if self.out_path().exists():
@@ -47,32 +49,35 @@ class N64SegAnimHeader(CommonSegCodeSubsegment):
         self.file_text = self.disassemble_data(rom_bytes)
 
     def disassemble_data(self, rom_bytes):
-        buffer = rom_bytes[self.rom_start : self.rom_end]
-        segment_length = len(buffer)
-        if segment_length != 0x30:
+        sprite_data = rom_bytes[self.rom_start : self.rom_end]
+        segment_length = len(sprite_data)
+        if (segment_length) % 0x4 != 0:
             error(
-                f"Error: Animation header segment {self.name} size incorrect; Is ({segment_length}) when it should be ({0x30})!"
+                f"Error: sprLib segment {self.name} length ({segment_length}) is not valid"
             )
 
-
         lines = []
-
-        sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
-        )
+        
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Sprlib")
+        if not sym:
+            sym = self.create_symbol(
+                addr=self.vram_start, in_segment=True, type="Sprlib", define=True
+            )
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append(f"Anim {sym.name} = {{")
+            lines.append(f"s32 {sym.name}[] = {{")
 
-        byteData = bytearray(buffer)
-        data = struct.unpack('>ffffffffffII', byteData)
-        for v in data:
-            lines.append(f"    {v},")
+        i = 0
+        while i < len(sprite_data):
+            newSprite = list(struct.unpack('>i', sprite_data[i:i+4]))
+            lines.append(f"    {newSprite[0]},")
+            i += 4
+            
 
         if not self.data_only:
             lines.append("};")
-        
+
         # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
@@ -83,14 +88,3 @@ class N64SegAnimHeader(CommonSegCodeSubsegment):
 
             with open(self.out_path(), "w", newline="\n") as f:
                 f.write(self.file_text)
-
-
-
-    #def should_scan(self) -> bool:
-    #    return (
-    #        self.rom_start != "auto"
-    #        and self.rom_end != "auto"
-    #    )
-#
-    #def should_split(self) -> bool:
-    #    return self.extract and options.mode_active("mtx")

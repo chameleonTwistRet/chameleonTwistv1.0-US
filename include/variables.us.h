@@ -14,5 +14,6 @@ extern PlayerActor* gCurrentActivePlayerPointer;
 extern Tongue* gTongueOnePointer;
 extern PlayerActor gPlayerActors[4];
 extern Tongue gTongues[4];
+extern Mtx AnimationSlots[40];
 
 #endif

@@ -7,6 +7,9 @@ this custom segtype aims to fix that.
 At least by fixing vtx's.
 """
 
+rangeStarter = 0x801355D0
+animSlots = 40
+
 import re
 from typing import Optional
 
@@ -55,7 +58,7 @@ class N64SegGfxSeg(N64SegGfx):
 
     def out_path(self) -> Path:
         return options.opts.asset_path / self.dir / f"{self.name}.gfx.inc.c"
-    
+
     def disassemble_data(self, rom_bytes):
         assert isinstance(self.rom_start, int)
         assert isinstance(self.rom_end, int)
@@ -140,7 +143,7 @@ class N64SegGfxSeg(N64SegGfx):
         out_str = re.sub(LIGHTS_RE, light_sub_func, out_str)
 
         return out_str
-    
+
     def tlut_handler(self, addr, idx, count):
         #Do fixed check first
         addr = self.getTrueAdr(addr)
@@ -195,7 +198,7 @@ class N64SegGfxSeg(N64SegGfx):
         )
         gfxd_printf(self.format_sym_name(sym))
         return 1
-    
+
     #Gfx
     def dl_handler(self, addr):
         #Do fixed check first
@@ -217,7 +220,22 @@ class N64SegGfxSeg(N64SegGfx):
 
         gfxd_printf(self.format_sym_name(sym))
         return 1
-    
+
+    def mtx_handler(self, addr):
+        use = ""
+        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "Mtx")
+        if not sym:
+            #animslot check
+            if addr >= rangeStarter and addr < rangeStarter + (animSlots * 0x40):
+                index = int((addr - rangeStarter)/0x40)
+                use = f"&AnimationSlots[{index}]"
+            else:
+                print("guh")
+        else:
+            use = f"&{self.format_sym_name(sym)}"
+        gfxd_printf(use)
+        return 1
+
     def vtx_handler(self, addr, count):
         # Look for 'Vtx'-typed symbols first
         splitAdr = self.getTrueAdr(addr, True)
@@ -236,7 +254,7 @@ class N64SegGfxSeg(N64SegGfx):
         index = int((addr - splitAdr) / 0x10)
         gfxd_printf(f"&{self.format_sym_name(sym)}[{index}]")
         return 1
-    
+
     def getSplitAdr(self, line):
         args = ("0x"+(line.split("#")[0].strip().split("0x")[-1]))[:-1].split(",")
         if line.find("[") != -1:

@@ -75,7 +75,7 @@ class N64SegLevelMap(CommonSegCodeSubsegment):
                             addr=data[i], in_segment=True, type="LvmM", define=True
                         )
                         add.append(str(data[i]))
-                    else: add.append("&"+smsym.name)
+                    else: add.append(smsym.name)
                 else:
                     add.append(str(data[i]))
                 i += 1
@@ -83,7 +83,7 @@ class N64SegLevelMap(CommonSegCodeSubsegment):
             if not self.data_only:
                 lines.append('#include "common.h"')
                 lines.append("")
-                lines.append("LevelMap "+sym.name+" = {")
+                lines.append("StageMapData "+sym.name+" = {")
 
             currLine = ""
             for v in add: currLine += v+", "
