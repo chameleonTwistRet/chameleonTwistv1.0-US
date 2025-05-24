@@ -386,23 +386,15 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E044.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117214.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117224.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117234.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117250.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8011726C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117278.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117284.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801172A0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801172BC.s")
+const char D_80117214[] = "ＰＡＵＳＥ！";
+const char D_80117224[] = "ＣＡＮＣＥＬ";
+const char D_80117234[] = "ＳＴＡＧＥ　ＳＥＬＥＣＴ";
+const char D_80117250[] = "ＣＯＬＯＲ　ＳＥＬＥＣＴ";
+const char D_8011726C[] = "ＥＸＩＴ";
+const char D_80117278[] = "ＲＥＴＲＹ";
+const char D_80117284[] = "ＳＴＡＧＥ　ＣＨＡＮＧＥ";
+const char D_801172A0[] = "ＣＯＬＯＲ　ＣＨＡＮＧＥ";
+const char D_801172BC[] = "ＥＸＩＴ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E0EC.s")
 
@@ -424,7 +416,9 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F31C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117308.s")
+#define period "\xAd\xa3"
+
+const char D_80117308[] = "ＳＷＩＴＣＨ　ＯＦＦ　ＴＨＥ　ＰＯＷＥＲ" period;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F444.s")
 
@@ -584,17 +578,12 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078B2C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8011736C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801173A4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801173C8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801173E8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117414.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117448.s")
+const char D_8011736C[] = "ＴＯ　ＴＨＥ　ＣＯＮＴＲＯＬＬＥＲ　ＳＯＣＫＥＴ一" period;
+const char D_801173A4[] = "　　ＲＵＭＢＬＥ　ＰＡＫ　ＩＳ　　";
+const char D_801173C8[] = "ＭＡＬＦＵＮＣＴＩＯＮＩＮＧ" period;
+const char D_801173E8[] = "　　ＣＯＮＴＲＯＬＬＥＲ　ＰＡＫ　ＩＳ　　";
+const char D_80117414[] = "ＮＯＴ　ＤＥＳＩＧＮＥＤ　ＦＯＲ　ＵＳＥ　ＷＩＴＨ";
+const char D_80117448[] = "ＣＨＡＭＥＬＥＯＮ　ＴＷＩＳＴ" period;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078B64.s")
 

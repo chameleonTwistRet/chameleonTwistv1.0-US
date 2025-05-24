@@ -100,27 +100,23 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80083EF8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117F68.s")
+//story
+const char D_80117F68[] = "ＣＡＮＣＥＬ";
+const char D_80117F78[] = "ＳＡＶＥ";
+const char D_80117F84[] = "ＳＴＡＧＥ  ＱＵＩＴ";
+const char D_80117F9C[] = "ＥＸＩＴ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117F78.s")
+//training (during round)
+const char D_80117FA8[] = "ＣＡＮＣＥＬ";
+const char D_80117FB8[] = "ＲＥＳＴＡＲＴ";
+const char D_80117FC8[] = "ＥＸＩＴ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117F84.s")
+//training (normal)
+const char D_80117FD4[] = "ＣＡＮＣＥＬ";
+const char D_80117FE4[] = "ＥＸＩＴ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117F9C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FA8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FB8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FC8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FD4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FE4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FF0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FF8.s")
+const char D_80117FF0[] = "ＹＥＳ";
+const char D_80117FF8[] = "ＮＯ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800846D8.s")
 
@@ -292,21 +288,14 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B000.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118210.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118228.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011823C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118254.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118270.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118288.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801182A4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801182B8.s")
+const char D_80118210[] = "ＪＵＮＧＬＥ　ＬＡＮＤ";
+const char D_80118228[] = "　ＡＮＴ　ＬＡＮＤ";
+const char D_8011823C[] = "　ＢＯＭＢ　ＬＡＮＤ";
+const char D_80118254[] = "ＤＥＳＥＲＴ　ＣＡＳＴＬＥ";
+const char D_80118270[] = "　ＫＩＤＳ　ＬＡＮＤ";
+const char D_80118288[] = "ＧＨＯＳＴ　ＣＡＳＴＬＥ";
+const char D_801182A4[] = "　　ＳＥＣＲＥＴ";
+const char D_801182B8[] = "\0\0\0";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B0A0.s")
 
@@ -326,49 +315,35 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008BEE0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118434.s")
+//save
+const char D_80118434[] = "DATA A";
+const char D_8011843C[] = "DATA B";
+const char D_80118444[] = "DATA C";
+const char D_8011844C[] = "DATA D";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011843C.s")
+//????
+const char D_80118454[] = "Ｓ  ＮＯＲＭ";
+const char D_80118464[] = "Ｓ  ＹＥＳＮＯ";
+const char D_80118474[] = "Ｓ  ＯＫ";
+const char D_80118480[] = "Ｓ  ＱＵＩＴ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118444.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011844C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118454.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118464.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118474.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118480.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118490.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184A0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184B0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184BC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184CC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184DC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184EC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184F8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118508.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118518.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118524.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118534.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118544.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118550.s")
+//???? part 2
+const char D_80118490[] = "Ｌ  ＮＯＲＭ";
+const char D_801184A0[] = "Ｌ  ＹＥＳＮＯ";
+const char D_801184B0[] = "Ｌ  ＯＫ";
+const char D_801184BC[] = "Ｌ  ＱＵＩＴ";
+//???? part 3
+const char D_801184CC[] = "Ｄ  ＮＯＲＭ";
+const char D_801184DC[] = "Ｄ  ＹＥＳＮＯ";
+const char D_801184EC[] = "Ｄ  ＯＫ";
+const char D_801184F8[] = "Ｄ  ＱＵＩＴ";
+//???? part 4
+const char D_80118508[] = "Ｃ  ＮＯＲＭ";
+const char D_80118518[] = "Ｃ  ＴＯ";
+const char D_80118524[] = "Ｃ  ＢＡＣＫ";
+const char D_80118534[] = "Ｃ  ＹＥＳＮＯ";
+const char D_80118544[] = "Ｃ  ＯＫ";
+const char D_80118550[] = "Ｃ  ＱＵＩＴ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008BF04.s")
 
@@ -498,17 +473,12 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800916B4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C24.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C38.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C44.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C54.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C64.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C78.s")
+const char D_80118C24[] = "ＮＥＷ　ＧＡＭＥ";
+const char D_80118C38[] = "ＬＯＡＤ";
+const char D_80118C44[] = "ＢＡＴＴＬＥ";
+const char D_80118C54[] = "ＯＰＴＩＯＮ";
+const char D_80118C64[] = "ＴＲＡＩＮＩＮＧ";
+const char D_80118C78[] = "ＲＡＮＫＩＮＧ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091A38.s")
 
@@ -528,15 +498,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009237C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118CDC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118CF4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118D0C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118D24.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118D4C.s")
+const char D_80118CDC[] = "ＳＯＵＮＤ  ＭＯＤＥ";
+const char D_80118CF4[] = "ＳＯＵＮＤ  ＴＥＳＴ";
+const char D_80118D0C[] = "ＭＵＳＩＣ  ＴＥＳＴ";
+const char D_80118D24[] = "ＲＡＮＫＩＮＧ  ＤＡＴＡ  ＣＬＥＡＲ";
+const char D_80118D4C[] = "　　　　　　　ＥＸＩＴ　　　　　　　";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092458.s")
 
@@ -562,9 +528,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800939E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118DF8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E0C.s")
+const char D_80118DF8[] = "ＣＯＮＴＩＮＵＥ";
+const char D_80118E0C[] = "ＥＸＩＴ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093BC4.s")
 
@@ -614,13 +579,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095120.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E5C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E68.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E74.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E80.s")
+//battle mode
+const char D_80118E5C[] = "ＤＡＶＹ";
+const char D_80118E68[] = "ＪＡＣＫ";
+const char D_80118E74[] = "ＦＲＥＤ";
+const char D_80118E80[] = "ＬＩＮＤＡ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095180.s")
 
@@ -668,19 +631,16 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800974CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118FB8.s")
+//battle mode
+const char D_80118FB8[] = "ＢＧＭ　ＳＥＬＥＣＴ";
+const char D_80118FD0[] = "ＴＩＭＥ　ＬＩＭＩＴ";
+const char D_80118FE8[] = "ＥＸＩＴ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118FD0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118FE8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118FF4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119004.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119010.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011901C.s")
+//music options for ^
+const char D_80118FF4[] = "ＲＡＮＤＯＭ";
+const char D_80119004[] = "ＢＧＭ１";
+const char D_80119010[] = "ＢＧＭ２";
+const char D_8011901C[] = "ＢＧＭ３";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009755C.s")
 
@@ -900,39 +860,29 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D7F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191E4.s")
+//chameleon names
+//if you can somehow get it to build with them being one string be my guest
+const char D_801191E0[] = "Ｄ";
+const char D_801191E4[] = "Ａ";
+const char D_801191E8[] = "Ｖ";
+const char D_801191EC[] = "Ｙ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191E8.s")
+const char D_801191F0[] = "Ｊ";
+const char D_801191F4[] = "Ａ";
+const char D_801191F8[] = "Ｃ";
+const char D_801191FC[] = "Ｋ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191EC.s")
+const char D_80119200[] = "Ｆ";
+const char D_80119204[] = "Ｒ";
+const char D_80119208[] = "Ｅ";
+const char D_8011920C[] = "Ｄ";
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191F0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191F4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191F8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191FC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119200.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119204.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119208.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011920C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119210.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119214.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119218.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011921C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119220.s")
+const char D_80119210[] = "Ｌ";
+const char D_80119214[] = "Ｉ";
+const char D_80119218[] = "Ｎ";
+const char D_8011921C[] = "Ｄ";
+const char D_80119220[] = "Ａ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D7F8.s")
 
@@ -952,29 +902,19 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E55C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119294.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192A4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192B0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192B8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192C4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192D0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192DC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192EC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192FC.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119308.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119314.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119320.s")
+const char D_80119294[] = "ＪＵＮＧＬＥ";
+const char D_801192A4[] = "ＬＡＮＤ";
+const char D_801192B0[] = "ＡＮＴ";
+const char D_801192B8[] = "ＬＡＮＤ";
+const char D_801192C4[] = "ＢＯＭＢ";
+const char D_801192D0[] = "ＬＡＮＤ";
+const char D_801192DC[] = "ＤＥＳＥＲＴ";
+const char D_801192EC[] = "ＣＡＳＴＬＥ";
+const char D_801192FC[] = "ＫＩＤＳ";
+const char D_80119308[] = "ＬＡＮＤ";
+const char D_80119314[] = "ＧＨＯＳＴ";
+const char D_80119320[] = "ＣＡＳＴＬＥ";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E5C0.s")
 
@@ -1078,41 +1018,24 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1CBC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011973C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119740.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119744.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119748.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011974C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119750.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119754.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119758.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011975C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119760.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119764.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119768.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011976C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119770.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119774.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119778.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011977C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119780.s")
+const char D_8011973C[] = "Jun";
+const char D_80119740[] = "Ant";
+const char D_80119744[] = "Bom";
+const char D_80119748[] = "Des";
+const char D_8011974C[] = "Kid";
+const char D_80119750[] = "Gho";
+const char D_80119754[] = "Bos";
+const char D_80119758[] = "0";
+const char D_8011975C[] = "1";
+const char D_80119760[] = "2";
+const char D_80119764[] = "3";
+const char D_80119768[] = "4";
+const char D_8011976C[] = "5";
+const char D_80119770[] = "6";
+const char D_80119774[] = "7";
+const char D_80119778[] = "8";
+const char D_8011977C[] = "9";
+const char D_80119780[] = "10";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1DD0.s")
 
