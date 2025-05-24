@@ -100,6 +100,28 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80083EF8.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117F68.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117F78.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117F84.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117F9C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FA8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FB8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FC8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FD4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FE4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FF0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80117FF8.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800846D8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008495C.s")
@@ -270,6 +292,22 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B000.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118210.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118228.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011823C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118254.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118270.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118288.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801182A4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801182B8.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B0A0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008B774.s")
@@ -287,6 +325,50 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008BB78.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008BEE0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118434.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011843C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118444.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011844C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118454.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118464.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118474.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118480.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118490.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184A0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184B0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184BC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184CC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184DC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184EC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801184F8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118508.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118518.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118524.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118534.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118544.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118550.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8008BF04.s")
 
@@ -416,6 +498,18 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800916B4.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C24.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C38.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C44.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C54.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C64.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118C78.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091A38.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80091B1C.s")
@@ -433,6 +527,16 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800922E8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009237C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118CDC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118CF4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118D0C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118D24.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118D4C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80092458.s")
 
@@ -457,6 +561,10 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009398C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800939E0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118DF8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E0C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80093BC4.s")
 
@@ -506,6 +614,14 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095120.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E5C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E68.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E74.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118E80.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095180.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80095230.s")
@@ -551,6 +667,20 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_80097370.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800974CC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118FB8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118FD0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118FE8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80118FF4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119004.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119010.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011901C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009755C.s")
 
@@ -770,6 +900,40 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D7F0.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191E0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191E4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191E8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191EC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191F0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191F4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191F8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801191FC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119200.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119204.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119208.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011920C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119210.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119214.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119218.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011921C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119220.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009D7F8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009DFD0.s")
@@ -787,6 +951,30 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E4B8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E55C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119294.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192A4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192B0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192B8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192C4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192D0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192DC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192EC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_801192FC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119308.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119314.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119320.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_8009E5C0.s")
 
@@ -889,6 +1077,42 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1A60.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1CBC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011973C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119740.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119744.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119748.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011974C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119750.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119754.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119758.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011975C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119760.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119764.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119768.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011976C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119770.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119774.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119778.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_8011977C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/D_80119780.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/5FF30/func_800A1DD0.s")
 
@@ -996,7 +1220,7 @@ void ComputeBoundingBoxFromRects(Rect3D* rectA, Rect3D* rectB, Rect3D* rectOut) 
         rectOut->max.z = rectA->max.z;
         return;
     }
-    
+
     rectOut->max.z = rectB->max.z;
 }
 
@@ -1029,9 +1253,9 @@ void AdjustRectToVec3(Rect3D* r, Vec3f vec) {
 
 /**
  * @brief Expands the input rectangle by a given amount.
- * 
+ *
  * @param r: Pointer to the rectangle to be expanded
- * @param s: Amount to expand the rectangle by 
+ * @param s: Amount to expand the rectangle by
  */
 void Rect_Expand(Rect3D* r, f32 s){
     r->min.x -= s;
@@ -1044,28 +1268,28 @@ void Rect_Expand(Rect3D* r, f32 s){
 
 /**
  * @brief Adjust the bounds of a rectangle to ensure that the minimum values are less than the maximum values.
- * 
+ *
  * @param[in,out] rect: Pointer to rectangle to adjust
  */
 void OrderRectBounds(Rect3D *rect) {
     f32 prevMaxX;
     f32 prevMaxY;
     f32 prevMaxZ;
-    
+
     if (rect->max.x < rect->min.x) {
         prevMaxX = rect->max.x;
         rect->max.x = rect->min.x;
         rect->min.x = prevMaxX;
     }
-    
+
     if (rect->max.y < rect->min.y) {
         prevMaxY = rect->max.y;
         rect->max.y = rect->min.y;
         rect->min.y = prevMaxY;
     }
-    
+
     prevMaxZ = rect->max.z;
-    
+
     if (prevMaxZ < rect->min.z) {
         rect->max.z = rect->min.z;
         rect->min.z = prevMaxZ;
@@ -1074,10 +1298,10 @@ void OrderRectBounds(Rect3D *rect) {
 
 /**
  * @brief Compares two given rectangles to determine if they intersect.
- *      
+ *
  * @param[in,out] rectA: first rectangle
  * @param[in,out] rectB: second rectangle
- * 
+ *
  * @return (s32) 1 if the two rectangles intersect, 0 otherwise
  */
 s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB) {
@@ -1104,10 +1328,10 @@ s32 IfRectsIntersect(Rect3D* rectA, Rect3D* rectB) {
 
 /**
  * @brief Determines if a point (vec3f) is within a given rectangle.
- * 
- * @param point: Point to check 
+ *
+ * @param point: Point to check
  * @param rect: Pointer to rectangle to check against
- * @return (s32) 1 if point is in rectangle, 0 otherwise 
+ * @return (s32) 1 if point is in rectangle, 0 otherwise
  */
 s32 IsPointInRect(Vec3f point, Rect3D* rect) {
     if (point.x < rect->min.x) {
@@ -1133,10 +1357,10 @@ s32 IsPointInRect(Vec3f point, Rect3D* rect) {
 
 /**
  * @brief Create a bounding box from two given vectors.
- * 
+ *
  * @param vecA: First vector
  * @param vecB: Second vector
- * @param rect: Pointer to rectangle to store bounding box in 
+ * @param rect: Pointer to rectangle to store bounding box in
  */
 void CalculateBoundingRectFromVectors(Vec3f vecA, Vec3f vecB, Rect3D* rect) {
     if (vecA.x < vecB.x) {

@@ -3,7 +3,7 @@
 
 /**
  * @brief Wrap degrees to range [0-360)
- * 
+ *
  * @param theta_ptr: pointer to the angle to wrap
  * @return (ptr) altered angle
  */
@@ -24,9 +24,9 @@ void WrapDegrees(f32* theta_ptr) {
 }
 
 /**
- * @brief This function takes in a vector, (a,b) in the form of two floats, and a radius c. 
+ * @brief This function takes in a vector, (a,b) in the form of two floats, and a radius c.
  * If the vector is outside the disk of radius c about (0,0), it is normalized to be on the boundary.
- * 
+ *
  * @param a: pointer to the x component of the vector
  * @param b: pointer to the y component of the vector
  * @param c: radius of a given disk
@@ -199,8 +199,8 @@ s32 func_8002D798(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
             Poles[i].pos.x = arg1;
             Poles[i].pos.y = arg2;
             Poles[i].pos.z = arg3;
-            Poles[i].yStretch = arg4; 
-            return i;            
+            Poles[i].yStretch = arg4;
+            return i;
         }
     }
     return -1;
@@ -789,13 +789,11 @@ void ActorInit_UnkFireSpawner(Actor* actor){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/84E0/ActorTick_UnkFireSpawner.s")
 
-extern f32 D_80116BE8; // 3.200000048f
-extern f32 D_80116BEC; // 0.05000000075f
 void ActorTick_PickupHeartFalling(Actor* arg0) {
     f32 temp_f2;
 
     if (arg0->userVariables[0] == 0) {
-        arg0->vel.y -= (D_80116BE8 + (arg0->vel.y * D_80116BEC));
+        arg0->vel.y -= (3.2f + (arg0->vel.y * 0.05f));
         temp_f2 = arg0->pos.y + arg0->vel.y;
         if (temp_f2 < 0.0f) {
             arg0->pos.y = 0.0f;
@@ -806,8 +804,6 @@ void ActorTick_PickupHeartFalling(Actor* arg0) {
     }
 }
 
-extern f32 D_80116BF0; // 3.200000048f
-extern f32 D_80116BF4; // 0.05000000075f
 void ActorTick_Powerup(Actor* arg0) {
     f32 calc;
 
@@ -817,7 +813,7 @@ void ActorTick_Powerup(Actor* arg0) {
             func_80030AEC(arg0);
         }
     } else {
-        arg0->vel.y -= D_80116BF0 + (arg0->vel.y * D_80116BF4);
+        arg0->vel.y -= 3.2f + (arg0->vel.y * 0.05f);
         calc = arg0->pos.y + arg0->vel.y;
         if (calc < arg0->position._f32.x) {
             arg0->pos.y = arg0->position._f32.x;
@@ -836,7 +832,6 @@ void func_8004A150(s32 arg0) {
     gTongueOnePointer = &gTongues[0];
     for (i = 0; i < arg0; i++){
         Actors_Tick();
-        
     }
 }
 

@@ -67,7 +67,7 @@ void func_800A9294(Collider* arg0, RoomObject* arg1) {
 // JP EQUIVALENT - "func_800B09E8"
 s32 func_800ABC48(s32);
 void func_800A92BC(Collider* arg0, RoomObject* arg1) {
-    arg0->unk_AC = arg1->keyframes;    
+    arg0->unk_AC = arg1->keyframes;
     if (func_800ABC48(arg0->unk_AC) != 0) {
         arg0->unk_B0 = 0;
     } else {
@@ -132,7 +132,7 @@ void func_800AA8F4(s32 arg0, s32 arg1) {
 
 /**
  * @brief Limits an integer to be in an inclusive range [a, b].
- *      
+ *
  * @param integer: The integer to limit.
  * @param a: The lower bound of the range.
  * @param b: The upper bound of the range.
@@ -149,7 +149,7 @@ void LimitInt(s32* integer, s32 a, s32 b) {
 
 /**
  * @brief Limits a float to be in an inclusive range [a, b].
- *      
+ *
  * @param _float: The float to limit.
  * @param a: The lower bound of the range.
  * @param b: The upper bound of the range.
@@ -166,9 +166,9 @@ void LimitFloat(f32* _float, f32 a, f32 b) {
 
 /**
  * @brief Checks if an actor is not a pickup.
- *      
+ *
  * @param actor: The actor to check.
- * 
+ *
  * @return: 1 if the actor is not a pickup, 0 otherwise.
  */
 s32 IsNotPickup(Actor* actor) {
@@ -177,9 +177,9 @@ s32 IsNotPickup(Actor* actor) {
 
 /**
  * @brief Checks if an actor is a pickup.
- *      
+ *
  * @param actor: The actor to check.
- *      
+ *
  * @return: 1 if the actor is a pickup, 0 otherwise.
  */
 s32 IsPickup(Actor* actor) {
@@ -188,8 +188,8 @@ s32 IsPickup(Actor* actor) {
 
 /**
  * @brief Checks a given ID against the array of Boss IDs
- * 
- * @param id 
+ *
+ * @param id
  * @return (s32) 1 if the ID is a Boss ID, 0 otherwise.
  */
 
@@ -197,7 +197,7 @@ extern s32 sBossIDs[6];
 s32 IsBossID(s32 id) {
     int i;
     int ret = 0;
-    
+
     for (i = 0; i < ARRAY_COUNT(sBossIDs); i++) {
         if (id == sBossIDs[i]) {
             ret = 1;
@@ -209,9 +209,9 @@ s32 IsBossID(s32 id) {
 
 /**
  * @brief Determines if an actor is a boss by checking its ID.
- * 
- * @param actor 
- * @return (s32) 1 if the actor is a boss, 0 otherwise. 
+ *
+ * @param actor
+ * @return (s32) 1 if the actor is a boss, 0 otherwise.
  */
 s32 IsActorBoss(Actor* actor) {
     return IsBossID(actor->actorID);
@@ -236,7 +236,7 @@ s32 IsActorBoss(Actor* actor) {
 
 /**
  * @brief If the boss is in the list of currently active actors.
- * 
+ *
  * @return (s32) 1 if the boss is in the list of currently active actors, 0 otherwise.
  */
 
@@ -244,7 +244,7 @@ s32 IsBossPresent(void) {
     s32 i;
     Actor* curActor;
     s32 isBoss = FALSE;
-    
+
     for (i = 0, curActor = gActors; i < MAX_ACTORS; i++, curActor++) {
         if (IsActorBoss(curActor) != 0) {
             isBoss = TRUE;
@@ -256,13 +256,13 @@ s32 IsBossPresent(void) {
 
 /**
  * @brief Returns True if the current stage is a boss stage.
- * 
- * @return (s32) 1 if the current stage is a boss stage, 0 otherwise. 
+ *
+ * @return (s32) 1 if the current stage is a boss stage, 0 otherwise.
  */
 extern s32 gCurrentStage;
 s32 IsBossStage(void) {
     s32 ret;
-    
+
     if ((gCurrentStage != STAGE_JUNGLEBOSS) &&
         (gCurrentStage != STAGE_ANTBOSS) &&
         (gCurrentStage != STAGE_BOMBBOSS) &&
@@ -395,7 +395,7 @@ void func_800ABD28(s32 arg0) {
     } else {
         var_v0 = 0;
     }
-    
+
     if (var_v0 != 0) {
         sp1C = 0;
     } else {
@@ -415,13 +415,13 @@ void func_800ABD74(s32 arg0) {
     } else {
         var_v0 = 0;
     }
-    
+
     if (var_v0 != 0) {
         sp1C = 1;
     } else {
         sp1C = 0;
     }
-    
+
     *func_800ABB9C(arg0) = sp1C;
 }
 
@@ -458,17 +458,16 @@ void ResetStageModels(void) {
 
 /**
  * @brief This function returns a boolean value based on whether the RoomObject passed is valid.
- * 
+ *
  * @param obj: The RoomObject to check if valid.
  * @return true if the obj is invalid, false otherwise.
  */
 s32 IsRoomObjInvalid(RoomObject* obj) {
     return obj->scale.x == 0.0 && obj->scale.y == 0.0 && obj->scale.z == 0.0 ? TRUE : FALSE;
 }
-
 /**
  * @brief This function returns a int value of how many RoomObjects are in an array.
- * 
+ *
  * @param obj: The RoomObject to start iterating from.
  * @return the amount of valid RoomObjects in the array.
  */
@@ -490,7 +489,7 @@ s32 GetRoomObjCount(RoomObject* obj) {
 
 /**
  * @brief This function returns a boolean value based on whether the RoomActor passed is valid.
- * 
+ *
  * @param actor: The RoomActor to check if valid.
  * @return true if the actor is invalid, false otherwise.
  */
@@ -500,7 +499,7 @@ s32 IsRoomActInvalid(RoomActor* actor) {
 
 /**
  * @brief This function returns a int value of how many RoomActors are in an array.
- * 
+ *
  * @param actor: The RoomActor to start iterating from.
  * @return the amount of valid RoomActors in the array.
  */
@@ -519,7 +518,7 @@ s32 GetRoomActCount(RoomActor* actor) {
 
 /**
  * @brief This function returns a boolean value based on whether the Collectable passed is valid.
- * 
+ *
  * @param collectable: The Collectable to check if valid.
  * @return true if the clct is invalid, false otherwise.
  */
@@ -529,7 +528,7 @@ s32 IsCollectableInvalid(Collectable* collectable) {
 
 /**
  * @brief This function returns a int value of how many Collectables are in an array.
- * 
+ *
  * @param collectable: The Collectable to start iterating from.
  * @return the amount of valid Collectables in the array.
  */
@@ -552,7 +551,7 @@ s32 GetCollectableCount(Collectable* collectable) {
 
 /**
  * @brief This function returns a boolean value based on whether the RoomInstance passed is valid.
- * 
+ *
  * @param room: The RoomInstance to check if valid.
  * @return true if the room is invalid, false otherwise.
  */
@@ -562,7 +561,7 @@ s32 IsRoomInvalid(RoomInstance* room) {
 
 /**
  * @brief This function returns a int value of how many RoomInstance are in an array.
- * 
+ *
  * @param room: The RoomInstance to start iterating from.
  * @return the amount of valid RoomInstance in the array.
  */
@@ -585,7 +584,7 @@ s32 GetRoomCount(RoomInstance* room) {
 
 /**
  * @brief This function returns a boolean value based on whether the SpriteActor passed is valid.
- * 
+ *
  * @param sprite: The SpriteActor to check if valid.
  * @return true if the sprite is invalid, false otherwise.
  */
@@ -596,7 +595,7 @@ s32 IsSpriteActInvalid(SpriteActor* sprite) {
 
 /**
  * @brief This function returns a int value of how many SpriteActors are in an array.
- * 
+ *
  * @param sprite: The SpriteActor to start iterating from.
  * @return the amount of valid SpriteActors in the array.
  */
@@ -944,6 +943,12 @@ void func_800AD978(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B964C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B98AC.s")
+
+const char D_8011B2E8[] = "NO_DIR";
+const char D_8011B2F0[] = "NORTH";
+const char D_8011B2F8[] = "EAST";
+const char D_8011B300[] = "SOUTH";
+const char D_8011B308[] = "WEST";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/8ADD0/func_800B98C8.s")
 

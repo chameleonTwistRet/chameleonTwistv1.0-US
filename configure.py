@@ -315,7 +315,6 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                     )
                     binOpt2 = True
                 path = line.split("build/")[-1].split(".inc.c")[0]+".databin.bin"
-                print(path)
                 object = "build/"+path.replace(".databin.bin", ".inc.c")
                 build(Path(object), [Path(path)], "bin_inc_c")
                 c_dependencies[file].append(object)

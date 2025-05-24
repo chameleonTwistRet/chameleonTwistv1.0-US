@@ -86,7 +86,7 @@ void func_800D1A18(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
     f32 xPos;
     f32 zPos;
     f32 temp_f0;
-    s32 zero = 0; 
+    s32 zero = 0;
     f32 sp44;
     f32 var_f12;
     Vec3f sp34;
@@ -96,7 +96,7 @@ void func_800D1A18(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
         xPos = gPlayerActors[0].pos.x - arg4;
         var_v0 = 1;
         temp_f0 = (zPos - xPos) * SQROOT_2_DIV_2;
-        
+
         if (temp_f0 < -(arg5 + arg7)) {
             var_v0 = 0;
         } else if (temp_f0 < -arg5) {
@@ -108,9 +108,9 @@ void func_800D1A18(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
         } else {
             var_v0 = 0;
         }
-        
+
         temp_f0 = (zPos + xPos) * SQROOT_2_DIV_2;
-        
+
         if (temp_f0 < -(arg6 + arg8)) {
             var_v0 = 0;
         } else if (temp_f0 < -arg6) {
@@ -125,7 +125,7 @@ void func_800D1A18(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
 
         if (var_v0 != 0) {
             sp34.z = (arg4 * 1.0f) + (var_f12 - sp44) * SQROOT_2_DIV_2;
-            sp34.y = gPlayerActors[zero].pos.y; 
+            sp34.y = gPlayerActors[zero].pos.y;
             sp34.x = (arg3 * 1.0f) + (sp44 + var_f12) * SQROOT_2_DIV_2;
             func_800831DC(PlaySoundEffect(sfxID, &sp34.z, &sp34.y, &sp34.x, 8, 0));
         }
@@ -160,7 +160,7 @@ void func_800D1C28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
         } else {
             var_v0 = 0;
         }
-        
+
         if (zPos < -(arg6 + arg8)) {
             var_v0 = 0;
         } else if (zPos < -arg6) {
@@ -172,7 +172,7 @@ void func_800D1C28(Collider* arg0, s32 sfxID, s32 arg2, f32 arg3, f32 arg4, f32 
         } else {
             var_v0 = 0;
         }
-        
+
         if (var_v0 != 0) {
             sp34.z = arg4 + sp44;
             sp34.y = gPlayerActors[zero].pos.y;
@@ -189,9 +189,7 @@ void func_800D1DF0(Collider* arg0, s32 sfxID) {
     }
 }
 
-extern f32 D_8011C730; // 19600.0f
-extern f32 D_8011C734; // 1500.0f
-void func_800D1E58(Collider* arg0) {func_800D1A18(arg0, 0x50, 0x1E, -12800.0f, D_8011C730, 700.0f, D_8011C734, 1000.0f, 2000.0f);}
+void func_800D1E58(Collider* arg0) {func_800D1A18(arg0, 0x50, 0x1E, -12800.0f, 19600.0f, 700.0f, 1500.0f, 1000.0f, 2000.0f);}
 
 void func_800D1EBC(Collider* arg0) {
     func_800D1728(arg0, 0x54, 0x2D);
@@ -213,27 +211,19 @@ void func_800D1F4C(Collider* arg0) {
     func_800D1728(arg0, 0x84, 0x1E);
 }
 
-extern f32 D_8011C738; // 6000.0f
-extern f32 D_8011C73C; // 1500.0f
-void func_800D1F70(Collider* arg0) {func_800D1A18(arg0, 0x84, 0x1E, D_8011C738, D_8011C738, 600.0f, D_8011C73C, 500.0f, 2000.0f);}
+void func_800D1F70(Collider* arg0) {func_800D1A18(arg0, 0x84, 0x1E, 6000.0f, 6000.0f, 600.0f, 1500.0f, 500.0f, 2000.0f);}
+
 
 void func_800D1FD4(Collider* arg0) {func_800D1A18(arg0, 0x84, 0x1E, 2200.0f, 1400.0f, 700.0f, 1000.0f, 500.0f, 2000.0f);}
 
-extern f32 D_8011C740; // 24000.0f
-extern f32 D_8011C744; // 2500.0f
-void func_800D203C(Collider* arg0) {func_800D1A18(arg0, 0x84, 0x1E, -8500.0f, D_8011C740, 600.0f, D_8011C744, 1000.0f, 1000.0f);}
+void func_800D203C(Collider* arg0) {func_800D1A18(arg0, 0x84, 0x1E, -8500.0f, 24000.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-extern f32 D_8011C748; // 25300.0f
-extern f32 D_8011C74C; // 2500.0f
-void func_800D209C(Collider* arg0) {func_800D1C28(arg0, 0x84, 0x1E, -5100.0f, D_8011C748, 600.0f, D_8011C74C, 1000.0f, 1000.0f);}
+void func_800D209C(Collider* arg0) {func_800D1C28(arg0, 0x84, 0x1E, -5100.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-extern f32 D_8011C750; // 25300.0f
-extern f32 D_8011C754; // 2500.0f
-void func_800D20FC(Collider* arg0) {func_800D1C28(arg0, 0x84, 0x1E, 0.0f, D_8011C750, 600.0f, D_8011C754, 1000.0f, 1000.0f);}
+void func_800D20FC(Collider* arg0) {func_800D1C28(arg0, 0x84, 0x1E, 0.0f, 25300.0f, 600.0f, 2500.0f, 1000.0f, 1000.0f);}
 
-extern f32 D_8011C758; // 23600.0f
-extern f32 D_8011C75C; // 3000.0f
-void func_800D2158(Collider* arg0) {func_800D1A18(arg0, 0x84, 0x1E, 5100.0f, D_8011C758, D_8011C75C, 600.0f, 1000.0f, 1000.0f);}
+void func_800D2158(Collider* arg0) {func_800D1A18(arg0, 0x84, 0x1E, 5100.0f, 23600.0f, 3000.0f, 600.0f, 1000.0f, 1000.0f);}
+
 
 void func_800D21B8(Collider* arg0) {
     func_800D17A4(arg0, 0x9B, -1, 0x1E);

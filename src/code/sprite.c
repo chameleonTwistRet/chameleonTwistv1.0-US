@@ -386,6 +386,24 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E044.s")
 
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117214.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117224.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117234.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117250.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8011726C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117278.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117284.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801172A0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801172BC.s")
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E0EC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E5A4.s")
@@ -405,6 +423,8 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F2C8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F31C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117308.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F444.s")
 
@@ -563,6 +583,18 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078AF4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078B2C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_8011736C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801173A4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801173C8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_801173E8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117414.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/D_80117448.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078B64.s")
 

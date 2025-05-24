@@ -12,7 +12,7 @@ void Controller_Zero(ContMain* cont) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/298D0/func_8004B514.s")
 
-extern u16 D_80181478[MAXCONTROLLERS];   
+extern u16 D_80181478[MAXCONTROLLERS];
 extern ContMain D_80181480[MAXCONTROLLERS]; //gContMain
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/298D0/func_8004B73C.s")
