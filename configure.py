@@ -18,7 +18,7 @@ ROOT = Path(__file__).parent.resolve()
 TOOLS_DIR = "tools"
 
 BASENAME = "chameleontwist.us"
-YAML_FILE = f"{BASENAME}.yaml"
+YAML_FILE = Path(f"{BASENAME}.yaml")  # Convert to Path object
 LD_PATH = f"{BASENAME}.ld"
 ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
