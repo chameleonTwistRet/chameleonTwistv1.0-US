@@ -814,6 +814,7 @@ segments:
     type: code
     vram: 0x801355D0
     start: 0x131F30
+    bss_size: 0xA00
     subsegments:
     - [0x131F30, c, code/AnimSlots]
     - [0x131F30, .bss, code/AnimSlots]
