@@ -6,13 +6,15 @@
 #include "common_structs.h"
 
 // GENERAL MATHS //
+#define PI_SHORT 3.14156 //for unknown reasons, less digits are randomly required
 #define PI 3.141592653589793
-#define PI_2 6.283185307179586
+#define TAU 6.283185307179586
+#define PI_HALF 1.57078
 #define SQ(x) ((x)*(x))
 #define SUM_OF_SQUARES(x,y) (SQ(x) + SQ(y))
 #define NORM_2(x,y) (sqrtf(SQ(x) + SQ(y)))
 #define NORM_3(x,y,z) (sqrtf(SQ(x) + SQ(y) + SQ(z)))
-#define sqrtf _nsqrtf
+#define sqrtf __sqrtf
 #define sinf __sinf
 #define cosf __cosf
 #define DEGREES_TO_RADIANS_2PI(x) ((x) * 2 * PI / 360.0)
@@ -36,9 +38,18 @@
 #define PACK_FILL_COLOR(r, g, b, a) (GPACK_RGBA5551(r, g, b, a) << 0x10) | GPACK_RGBA5551(r, g, b, a)
 #define PACK_FILL_DEPTH(z,dz) (GPACK_ZDZ(z, dz) << 0x10) | GPACK_ZDZ(z, dz)
 
+
+//goes top left, bottom left, top right, bottom right
+//when the top half is copied to the bottom half
+#define SetTextGradient_TopBottom(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r2, g2, b2, a2, r1, g1, b1, a1, r2, g2, b2, a2)
+//when the left half is copied to the right half
+#define SetTextGradient_LeftRight(r1,g1,b1,a1,r2,g2,b2,a2) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r2, g2, b2, a2, r2, g2, b2, a2)
+//when the you use the same color for all verts
+#define SetTextGradient_All(r1,g1,b1,a1) SetTextGradient(r1, g1, b1, a1, r1, g1, b1, a1, r1, g1, b1, a1, r1, g1, b1, a1)
+
 //macros for simplifying the "play sound effect" calls
-#define PLAYSFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
-#define PLAYSFXAT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
+#define PLAY_SFX(id,arg4,flag) PlaySoundEffect(id,NULL,NULL,NULL,arg4,flag)
+#define PLAY_SFX_AT(id,pos,arg4,flag) PlaySoundEffect(id,&pos.x,&pos.y,&pos.z,arg4,flag)
 
 #define flabs(A) (((A) < 0.0f) ? (-A) : (A))
 #define RANDOM(min, max)  ((min) + (Rand() % (s32)((max) - (min) + 1)))
@@ -50,10 +61,15 @@
 //identity matrix
 //see the end of common_structs.h for Mtx_f
 //building matricies is really weird
-#define IDENTITY_M {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}}
-#define IDENTITY {{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
+#define IDENTITY {0x00010000, 0, 1, 0, 0, 0x00010000, 0, 1,    0, 0, 0, 0, 0, 0, 0, 0}
 //basic file padding
 #define FILEPAD {0xB8,0,0,0,0,0,0,0}
+
+#define NULL_OBJECT { {0.0,0.0,0.0}, {0.0,0.0,0.0}, 0, 0.0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+#define NULL_ACTOR { ACTOR_NULL, {0.0,0.0,0.0}, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0}
+#define NULL_ROOM {0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,{0,0,0},{0,0,0},{0,0,0},{0,0,0},-1}
+#define NULL_COLLECTABLE { ACTOR_NULL, {0.0,0.0,0.0}, -1}
+#define NULL_SPRITE { -1, SPRITE_BLANK, {-1.0,-1.0,-1.0}, {-1.0,32.0,32.0}, 1, 0, 0.0, 0, 0, 0, 0, 0, {-1, -1, 0, 0}}
 
 
 #endif

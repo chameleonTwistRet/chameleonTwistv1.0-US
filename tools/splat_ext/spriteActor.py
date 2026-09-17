@@ -1,83 +1,72 @@
-"""
-Chameleon Twist: Sprite Actor struct splitter
-Dumps out spriteActor data as a .inc.c file.
+"""Sprite actor struct splitter."""
 
-Author: Ellie (Elisiah)
-Originally found struct format: Nathan R.
-"""
-
-import re
 import struct
-from pathlib import Path
+import sys
 from splat.util.log import error
-from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
 
+sys.path.append(str(options.opts.base_path / "tools/splat_ext"))
+from _ct_base import CTSegBase, lookup_enum, do_pretty_print
 
-class N64SegSpriteActor(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
-
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
-
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.sprite.inc.c"
-
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
+class N64SegSpriteActor(CTSegBase):
+    SUFFIX = "sprite"
 
     def disassemble_data(self, rom_bytes):
-        sprite_data = rom_bytes[self.rom_start : self.rom_end]
-        segment_length = len(sprite_data)
-        if (segment_length) != 80:
+        SIZE = 80
+        NULL_STRUCT = (-1,0,-1,-1,-1,-1,32,32,1,0,0,0,0,0,0,0,-1,-1,0,0)
+        NULL_MACRO = "NULL_SPRITE"
+
+        buf = rom_bytes[self.rom_start : self.rom_end]
+        if (len(buf)) % SIZE != 0:
             error(
-                f"Error: spriteActor segment {self.name} length ({segment_length}) is not valid"
+                f"Error: spriteActor segment {self.name} length ({len(buf)}) is not valid"
             )
 
         lines = []
-
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Sprite")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Sprite", define=True
-            )
+        sym = self.get_myself("Sprite")
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("SpriteActor %s = {" % (sym.name))
+            lines.append(f"SpriteActor {sym.name}[] = {{")
 
-        data = struct.unpack('>iiffffffiifiiiiiiiii', sprite_data)
-        i = 0
-        while i < len(data):
-            use = data[i]
-            if i in [2, 5]: #Position
-                use = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
-                i += 2
-            lines.append(f"    {use},")
-            i += 1
+        csv_lines = []
+        has_null = False
+        x = 0
+        while x < len(buf):
+            data = struct.unpack('>iiffffffiffifffiiiii', buf[x:x+SIZE])
+
+            if x == len(buf)-SIZE:
+                if data == NULL_STRUCT:
+                    has_null = True
+                    break
+
+            args = []
+            i = 0
+            while i < len(data):
+                use = data[i]
+                if i == 1: #Sprite ID
+                    ident = lookup_enum("SPRITE", use, self.version)
+                    if ident is not None:
+                        use = ident
+                elif i in (2, 5): #Position
+                    use = self.make_vec3f(data[i:i+3])
+                    i += 2
+                elif i == 16: #color
+                    use = f"{{{data[i]},{data[i+1]},{data[i+2]},{data[i+3]}}}"
+                    i += 3
+                elif type(use) == float:
+                    use = self.round_float(use)
+                args.append(str(use))
+                i += 1
+            csv_lines.append(",".join(args))
+            x += SIZE
+
+        lines += do_pretty_print(csv_lines)
+        if has_null:
+            lines.append("\t"+NULL_MACRO)
+        else:
+            #remove following comma
+            lines[-1] = lines[-1][:-1]
 
         if not self.data_only:
             lines.append("};")
@@ -85,10 +74,3 @@ class N64SegSpriteActor(CommonSegCodeSubsegment):
         # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)

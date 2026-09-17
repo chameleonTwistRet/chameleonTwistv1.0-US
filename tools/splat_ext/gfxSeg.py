@@ -1,16 +1,17 @@
-#workaround for seg2virtual until we get something reasonably better
+"""
+Workaround for splat seg2virtual: a custom Gfx segtype that resolves
+segmented addresses (Vtx / Gfx / Light / etc.) by walking the project YAML.
+
+The original implementation re-read the entire YAML from disk on *every*
+gfxd callback. This version reads it once and caches the lines in a
+module-level list, which is shared across instances.
+"""
+
 import os
-
-"""
-Because segmented addresses mess up symbol generaton,
-this custom segtype aims to fix that.
-At least by fixing vtx's.
-"""
-
 import re
-from typing import Optional
-
+from functools import lru_cache
 from pathlib import Path
+from typing import Optional
 
 from pygfxd import (
     gfxd_buffer_to_string,
@@ -40,22 +41,39 @@ from pygfxd import (
     gfxd_f3dexb,
     gfxd_f3dex2,
 )
-from splat.segtypes.segment import Segment
-
-from splat.util import log, options, symbols
-from splat.util.log import error
 
 from splat.segtypes.n64.gfx import N64SegGfx
+from splat.util import options, symbols
+from splat.util.log import error
 
+
+# AnimationSlots range for the Mtx callback fallback — addresses in this
+# window aren't real symbols, they index into a runtime mtx pool.
+_ANIM_RANGE_START = 0x801355D0
+_ANIM_SLOTS = 40
+_ANIM_RANGE_END = _ANIM_RANGE_START + _ANIM_SLOTS * 0x40
 
 LIGHTS_RE = re.compile(r"\*\(Lightsn \*\)0x[0-9A-F]{8}")
 
-class N64SegGfxSeg(N64SegGfx):
-    groupName = ""
+@lru_cache(maxsize=1)
+def _yaml_lines():
+    yaml_path = Path(os.getcwd()) / "chameleontwist.us.yaml"
+    with open(yaml_path, "r", encoding="utf-8") as f:
+        return f.readlines()
 
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.gfx.inc.c"
-    
+def _split_addr(line: str) -> int:
+    """Extract the leading 0x address from a YAML segment entry."""
+    args = ("0x" + (line.split("#")[0].strip().split("0x")[-1]))[:-1].split(",")
+    if "[" in line:
+        args = [a.strip() for a in args]
+    elif "{" in line:
+        args = [
+            a.replace("type: ", "").replace("name: ", "").strip()
+            for a in args
+        ]
+    return int(args[0], 16)
+
+class N64SegGfxSeg(N64SegGfx):
     def disassemble_data(self, rom_bytes):
         assert isinstance(self.rom_start, int)
         assert isinstance(self.rom_end, int)
@@ -71,7 +89,10 @@ class N64SegGfxSeg(N64SegGfx):
         out_str = "" if self.data_only else options.opts.generated_c_preamble + "\n\n"
 
         sym = self.create_symbol(
-            addr=self.vram_start, in_segment=True, type="data", define=True
+            addr=self.vram_start,
+            in_segment=True,
+            type="Gfx",
+            define=True,
         )
 
         gfxd_input_buffer(gfx_data)
@@ -116,176 +137,150 @@ class N64SegGfxSeg(N64SegGfx):
         def light_sub_func(match):
             light = match.group(0)
             addr = int(light[12:], 0)
-
-
-            #Do fixed check first
-            addr = self.getTrueAdr(addr)
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "Light")
-            if not sym:
-                #Do legacy check next, for compatability
-                splitAdr = self.getTrueAdr(addr, True)
-                addr = self.getTrueAdr(addr)
-                sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Light")
-                if not sym:
-                    sym = self.create_symbol(
-                        addr=splitAdr,
-                        in_segment=self.in_segment,
-                        type="Light",
-                        reference=True,
-                        search_ranges=True,
-                    )
-
+            sym = self.create_symbol(
+                addr=addr,
+                in_segment=self.in_segment,
+                reference=True,
+            )
             return self.format_sym_name(sym)
 
         out_str = re.sub(LIGHTS_RE, light_sub_func, out_str)
 
         return out_str
-    
+
+    # ----- gfxd callbacks --------------------------------------------------
+
+    def _resolve_with_fallback(self, addr: int, sym_type: str):
+        """Try to resolve an address as a symbol of `sym_type`, first via the
+        fixed mapping then via the legacy split-mapping. Creates a symbol if
+        none is found."""
+        # getTrueAdr(addr, split=False) is functionally a no-op: it walks the
+        # YAML for side-effects (a now-unused groupName attr) but returns
+        # `addr` unchanged.
+        sym = self.get_symbol(addr, type=sym_type)
+        if sym:
+            return sym
+        split_adr = self.getTrueAdr(addr, True)
+        sym = self.get_symbol(split_adr, type=sym_type)
+        if sym:
+            return sym
+        return self.create_symbol(
+            addr=split_adr,
+            in_segment=self.in_segment,
+            type=sym_type,
+            reference=True,
+            search_ranges=True,
+        )
+
+    def _light_sub(self, match):
+        light = match.group(0)
+        addr = int(light[12:], 0)
+        sym = self._resolve_with_fallback(addr, "Light")
+        return self.format_sym_name(sym)
+
     def tlut_handler(self, addr, idx, count):
-        #Do fixed check first
-        addr = self.getTrueAdr(addr)
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "TLut")
-        if not sym:
-            #Do legacy check next, for compatability
-            splitAdr = self.getTrueAdr(addr, True)
-            addr = self.getTrueAdr(addr)
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "TLut")
-            if not sym:
-                sym = self.create_symbol(
-                    addr=splitAdr,
-                    in_segment=self.in_segment,
-                    type="TLut",
-                    reference=True,
-                    search_ranges=True,
-                )
+        sym = self._resolve_with_fallback(addr, "TLut")
         gfxd_printf(self.format_sym_name(sym))
         return 1
 
-    #ci image
     def timg_handler(self, addr, fmt, size, width, height, pal):
-        #Do fixed check first
-        addr = self.getTrueAdr(addr)
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "TImg")
-        if not sym:
-            #Do legacy check next, for compatability
-            splitAdr = self.getTrueAdr(addr, True)
-            addr = self.getTrueAdr(addr)
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "TImg")
-            if not sym:
-                sym = self.create_symbol(
-                    addr=splitAdr,
-                    in_segment=self.in_segment,
-                    type="TImg",
-                    reference=True,
-                    search_ranges=True,
-                )
+        sym = self._resolve_with_fallback(addr, "TImg")
         gfxd_printf(self.format_sym_name(sym))
         return 1
 
-    def cimg_handler(self, addr, fmt, size, width):
-        sym = self.create_symbol(
-            addr=addr, in_segment=self.in_segment, type="data", reference=True
-        )
-        gfxd_printf(self.format_sym_name(sym))
-        return 1
-
-    def zimg_handler(self, addr):
-        sym = self.create_symbol(
-            addr=addr, in_segment=self.in_segment, type="data", reference=True
-        )
-        gfxd_printf(self.format_sym_name(sym))
-        return 1
-    
-    #Gfx
     def dl_handler(self, addr):
-        #Do fixed check first
-        addr = self.getTrueAdr(addr)
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, addr, "Gfx")
-        if not sym:
-            #Do legacy check next, for compatability
-            splitAdr = self.getTrueAdr(addr, True)
-            addr = self.getTrueAdr(addr)
-            sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Gfx")
-            if not sym:
-                sym = self.create_symbol(
-                    addr=splitAdr,
-                    in_segment=self.in_segment,
-                    type="Gfx",
-                    reference=True,
-                    search_ranges=True,
-                )
-
+        sym = self._resolve_with_fallback(addr, "Gfx")
         gfxd_printf(self.format_sym_name(sym))
         return 1
-    
-    def vtx_handler(self, addr, count):
-        # Look for 'Vtx'-typed symbols first
-        splitAdr = self.getTrueAdr(addr, True)
-        addr = self.getTrueAdr(addr)
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, splitAdr, "Vtx")
 
+    def mtx_handler(self, addr):
+        sym = self.get_symbol(
+            addr,
+            in_segment=False,
+            reference=True,
+            local_only=False,
+            validation=lambda sym: sym.type == "Mtx",
+        )
+        if sym:
+            gfxd_printf(f"&{self.format_sym_name(sym)}")
+            return 1
+        if _ANIM_RANGE_START <= addr < _ANIM_RANGE_END:
+            index = (addr - _ANIM_RANGE_START) // 0x40
+            gfxd_printf(f"&AnimationSlots[{index}]")
+            return 1
+        gfxd_printf("")
+        return 1
+
+    def vtx_handler(self, addr, count):
+        split_adr = self.getTrueAdr(addr, True)
+        sym = self.get_symbol(split_adr, type="Vtx")
         if not sym:
             sym = self.create_symbol(
-                addr=splitAdr,
+                addr=split_adr,
                 in_segment=self.in_segment,
                 type="Vtx",
                 reference=True,
                 search_ranges=True,
             )
-
-        index = int((addr - splitAdr) / 0x10)
+        index = (addr - split_adr) // 0x10
         gfxd_printf(f"&{self.format_sym_name(sym)}[{index}]")
         return 1
-    
-    def getSplitAdr(self, line):
-        args = ("0x"+(line.split("#")[0].strip().split("0x")[-1]))[:-1].split(",")
-        if line.find("[") != -1:
-            for a in range(len(args)): args[a] = args[a].strip()
-        elif line.find("{") != -1:
-            for a in range(len(args)): args[a] = args[a].replace("type: ", "").replace("name: ", "").strip()
-        return int(args[0],16)
 
-    def getTrueAdr(self, addr, split=False):
-        if len(hex(addr)) <= 7 + 2:#SPECIFICALLY at the start
-            yamlPath = os.getcwd()+"/chameleontwist.us.yaml"
-            yamler = open(yamlPath, "r", encoding="utf-8").readlines()
-            index = hex((addr & 0x0F000000) >> 24).replace("0x", "0x0")
-            otherhalf = addr & ~0x0F000000
-            myself = hex(self.rom_start)
-            i = 0
-            mode = 0
-            vram = 0x0
-            baseAdr = 0x0
-            new = 0x0
-            while i < len(yamler):
-                if mode == 0: #find the split the gfx came from
-                    if yamler[i].lower().find(myself) != -1:
-                        mode = 1
-                    i += 1
-                elif mode == 1: #go backwards until you find a rom start
-                    if yamler[i].find("SEGMENT "+index):
-                        for back in range(0,5):
-                            line = yamler[i - back]
-                            if line.startswith("  - start: ") and baseAdr == 0x0:
-                                baseAdr = int(line.split(": ")[1].split("#")[0].strip(),16)
-                            elif line.startswith("    name: ") and self.groupName == "":
-                                self.groupName = line.split(": ")[1].split("#")[0].strip()
-                            if baseAdr != 0x0 and self.groupName != "": break
-                    if baseAdr != 0x0:
-                        new = baseAdr+otherhalf
-                        if not split: break
-                        mode = 2
-                    i -= 1
-                elif mode == 2: #try and find the asset in which you are calling for
-                    #the only reason this mode exists is because vtx's have a bad habit of being called a specific distance into themselves, making this all worthless
-                    if yamler[i].find("-") != -1 and yamler[i].find("0x") != -1:
-                        yoink = self.getSplitAdr(yamler[i])
-                        if yoink == new: break #is a valid split; wouldve been generated in symbol_addrs if you got to this point
-                        elif yoink > new: #we definitely passed it. it must be in the middle of the one before
-                            diff = (baseAdr+otherhalf)-self.getSplitAdr(yamler[i-1])
-                            #print(hex(otherhalf), hex(diff), hex(myself))
-                            otherhalf -= diff
-                            break
-                    i += 1
-            return int(index+"000000",16)+otherhalf
-        else: return addr
+    # ----- segmented-address resolver --------------------------------------
+
+    def getTrueAdr(self, addr: int, split: bool = False) -> int:
+        # Real virtual addresses are 0x80xxxxxx-style — already 9 hex chars.
+        # Anything shorter is a segmented address that needs translation.
+        if len(hex(addr)) > 7 + 2:
+            return addr
+        # split=False was a no-op walk; callers now skip it. Preserve here in
+        # case anything else calls getTrueAdr directly.
+        if not split:
+            return addr
+        return _resolve_split_adr(self.rom_start, addr)
+
+
+@lru_cache(maxsize=None)
+def _resolve_split_adr(rom_start: int, addr: int) -> int:
+    yaml_lines = _yaml_lines()
+    index = hex((addr & 0x0F000000) >> 24).replace("0x", "0x0")
+    otherhalf = addr & ~0x0F000000
+    myself = hex(rom_start)
+
+    i = 0
+    mode = 0
+    base_adr = 0x0
+    new = 0x0
+
+    while i < len(yaml_lines):
+        line = yaml_lines[i]
+        if mode == 0:  # find the split this gfx segment came from
+            if line.lower().find(myself) != -1:
+                mode = 1
+            i += 1
+        elif mode == 1:  # walk back to find the rom-start of that block
+            if line.find("SEGMENT " + index):
+                for back in range(0, 5):
+                    prev = yaml_lines[i - back]
+                    if prev.startswith("  - start: ") and base_adr == 0x0:
+                        base_adr = int(
+                            prev.split(": ")[1].split("#")[0].strip(), 16
+                        )
+                    if base_adr != 0x0:
+                        break
+            if base_adr != 0x0:
+                new = base_adr + otherhalf
+                mode = 2
+            i -= 1
+        elif mode == 2:
+            if line.find("-") != -1 and "0x" in line:
+                candidate = _split_addr(line)
+                if candidate == new:
+                    break
+                if candidate > new:
+                    diff = (base_adr + otherhalf) - _split_addr(yaml_lines[i - 1])
+                    otherhalf -= diff
+                    break
+            i += 1
+
+    return int(index + "000000", 16) + otherhalf

@@ -1,89 +1,45 @@
-"""
-Chameleon Twist: Sprite Actor struct splitter
-Dumps out spriteActor data as a .inc.c file.
+"""Level scope struct splitter."""
 
-Original Author: Ellie (Elisiah)
-Modified for Level Scope struct: Nathan R.
-"""
-
-import re
 import struct
-from pathlib import Path
+import sys
 from splat.util.log import error
-from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
 
+sys.path.append(str(options.opts.base_path / "tools/splat_ext"))
+from _ct_base import CTSegBase
 
-class N64SegLevelScope(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
-
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
-
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.lvlScope.inc.c"
-
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
+class N64SegLevelScope(CTSegBase):
+    SUFFIX = "lvlScope"
 
     def disassemble_data(self, rom_bytes):
-        sprite_data = rom_bytes[self.rom_start : self.rom_end]
-        segment_length = len(sprite_data)
-        if (segment_length) != 0x18:
+        SIZE = 24
+        buf = rom_bytes[self.rom_start : self.rom_end]
+        if len(buf) != SIZE:
             error(
-                f"Error: levelScope segment {self.name} length ({segment_length}) is not valid"
+                f"Error: levelScope segment {self.name} length ({len(buf)}) is not valid"
             )
 
         lines = []
-
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvlscope")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Lvlscope", define=True
-            )
+        sym = self.get_myself("Lvlscope")
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("LevelScope %s = {" % (sym.name))
+            lines.append(f"LevelScope {sym.name} = {{")
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>iiiiii', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        data = struct.unpack('>iiiiii', buf)
+        i = 0
+        args = []
+        while i < len(data):
+            use = data[i]
+            if i == 0:
+                use = f"{{{data[i]}, {data[i+1]}, {data[i+2]}}}"
+                i += 2
+            args.append(str(use))
+            i += 1
+        lines.append(", ".join(args))
 
         if not self.data_only:
             lines.append("};")
 
-        # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)

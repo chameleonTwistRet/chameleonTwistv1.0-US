@@ -1,129 +1,127 @@
-"""
-Chameleon Twist: Sprite Actor struct splitter
-Dumps out spriteActor data as a .inc.c file.
+"""Room object struct splitter."""
 
-Original Author: Ellie (Elisiah)
-Modified for Room Object struct: Nathan R.
-"""
-
-import re
 import struct
-from math import degrees
-from pathlib import Path
+import sys
 from splat.util.log import error
-from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
 
+sys.path.append(str(options.opts.base_path / "tools/splat_ext"))
+from _ct_base import CTSegBase, lookup_enum, do_pretty_print
 
-class N64SegRoomObject(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
+from math import degrees
 
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
-
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.roomObj.inc.c"
-
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
+class N64SegRoomObject(CTSegBase):
+    SUFFIX = "roomObj"
 
     def disassemble_data(self, rom_bytes):
-        sprite_data = rom_bytes[self.rom_start : self.rom_end]
-        segment_length = len(sprite_data)
-        if (segment_length) != 140:
+        SIZE = 140
+        NULL_STRUCT = (0,) * 35
+        NULL_MACRO = "NULL_OBJECT"
+
+        buf = rom_bytes[self.rom_start : self.rom_end]
+        if len(buf) % SIZE != 0:
             error(
-                f"Error: roomObject segment {self.name} length ({segment_length}) is not valid"
+                f"Error: roomObject segment {self.name} length ({len(buf)}) is not valid"
             )
 
         lines = []
-
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Roomobj")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Roomobj", define=True
-            )
+        sym = self.get_myself("Roomobj")
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("RoomObject %s = {" % (sym.name))
+            lines.append(f"RoomObject {(sym.name)}[] = {{")
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>ffffffiiiiffffiiiiiiiiiiIIiiiiiiiii', byteData)
-        enums = open("include/enums.h", "r", encoding="UTF-8").readlines()
-        i = 0
-        while i < len(data):
-            v = data[i]
-            if i in [0, 3]:
-                v = "{"+str(data[i])+","+str(data[i+1])+","+str(data[i+2])+"}"
-                i += 2
-            elif i == 6: #rotationMode
-                pass
-                #enum = 0
-                #actorAt = 0 #number in the actor enum
-                #reading = False
-                #while enum < len(enums):
-                #    enumLine = enums[enum]
-                #    if enumLine.find("RotationMode") != -1: reading = True
-                #    elif reading:
-                #        if actorAt == v:
-                #            v = enumLine.split(",")[0].split("	")[-1].strip()
-                #            break
-                #        elif enumLine.find("};") != -1: break
-                #        actorAt += 1
-                #    enum += 1
-            elif i == 7:
-                v = "DEGREES_TO_RADIANS_2PI("+str(degrees(v))+")"
-            elif i == 14: #exitDirection
-                pass
-                #enum = 0
-                #actorAt = 0 #number in the actor enum
-                #reading = False
-                #while enum < len(enums):
-                #    enumLine = enums[enum]
-                #    if enumLine.find("ExitDirection") != -1: reading = True
-                #    elif reading:
-                #        if actorAt == v:
-                #            v = enumLine.split(",")[0].split("	")[-1].strip()
-                #            break
-                #        elif enumLine.find("};") != -1: break
-                #        actorAt += 1
-                #    enum += 1
-            lines.append(f"    {v},")
-            i += 1
+        externs = []
+        csv_lines = []
+        has_null = False
+        x = 0
+        while x < len(buf):
+            data = struct.unpack(">ffffffifiiffffiiiiiiiiiiIIIiiiiiiii", buf[x:x+SIZE])
+
+            if x == len(buf)-SIZE:
+                if data == NULL_STRUCT:
+                    has_null = True
+                    break
+
+            args = []
+            i = 0
+            while i < len(data):
+                use = data[i]
+                if i in (0, 3):
+                    use = self.make_vec3f(data[i:i+3])
+                    i += 2
+                elif i == 6: #rotationMode
+                    ident = lookup_enum("RotateModes", use, self.version)
+                    if ident is not None:
+                        use = ident
+                elif i == 7:
+                    if use != 0:
+                        use = f"DEGREES_TO_RADIANS_2PI({self.round_float(degrees(use))})"
+                    else:
+                        use = "0"
+                elif i == 8: #objUse
+                    ident = lookup_enum("objUse", use, self.version)
+                    if ident is not None:
+                        use = ident
+                elif i == 9: #objMode
+                    ident = lookup_enum("objMode", use, self.version)
+                    if ident is not None:
+                        use = ident
+                elif i == 14: #uservariable symbol
+                    if hex(use).startswith("0x3") and len(hex(use)) == 9:
+                        #CAN BE:
+                            #uservariable symbol
+                            #exitDirection
+                        #TODO: what the hell is 4DD0D8 - 4dd1f4 in bombland. it is referenced with this slot but i have no idea what it is
+                        #ive had to make a workaround for now but this is the first appearance of anything relating to this
+
+                        sym2 = self.create_symbol(
+                            addr=use, in_segment=True, type="data", define=True
+                        )
+                        if not sym2.name.startswith("D_"):
+                            if sym2.type == "Vtx":
+                                externs.append(f"extern Vtx {sym2.name}[];")
+                            use = "&"+sym2.name
+                    elif args[4] == "OBJU_ZONE": #zdir
+                        ident = lookup_enum("Zone_Directions", use, self.version)
+                        if ident is not None:
+                            use = ident
+                    elif use == 0:
+                        use = "NULL"
+                elif i in (24, 25, 26):  # function pointers
+                    if use != 0:
+                        smsym = self.get_symbol(data[i], type="func")
+                        if not smsym:
+                            smsym = self.create_symbol(
+                                addr=use, in_segment=True, type="func", define=True
+                            )
+                        #TODO: verify declaration
+                        if i < 26:
+                            externs.append(f"void {smsym.name}(Collider*);")
+                        else:
+                            externs.append(f"void {smsym.name}(Collider* arg0, RoomObject* arg1);")
+                        use = "&"+smsym.name
+                    else:
+                        use = "NULL"
+                elif type(use) == float:
+                    use = self.round_float(use)
+                args.append(str(use))
+                i += 1
+            csv_lines.append(",".join(args))
+            x += SIZE
+
+        if not self.data_only:
+            lines[1:1] = list(set(externs))
+
+        lines += do_pretty_print(csv_lines)
+        if has_null:
+            lines.append("\t"+NULL_MACRO)
+        else:
+            #remove following comma
+            lines[-1] = lines[-1][:-1]
 
         if not self.data_only:
             lines.append("};")
 
-        # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)

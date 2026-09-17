@@ -5,6 +5,7 @@ import os
 import shutil
 import subprocess
 import sys
+import glob
 from pathlib import Path
 from typing import Dict, List, Set, Union
 
@@ -18,6 +19,7 @@ TOOLS_DIR = "tools"
 
 BASENAME = "chameleontwist.us"
 YAML_FILE = f"{BASENAME}.yaml"
+YAML_FILE_SMALL = f"{BASENAME}.copy.yaml"
 LD_PATH = f"{BASENAME}.ld"
 ELF_PATH = f"build/{BASENAME}"
 MAP_PATH = f"build/{BASENAME}.map"
@@ -42,7 +44,7 @@ VERSION = "VER_US"
 DEFINES = f"-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -D{VERSION}"
 
 WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul {DEFINES} -woff 649,838"
-CFLAGS = f"-G 0 {WARNINGS} {INCLUDES}" 
+CFLAGS = f"-G 0 {WARNINGS} {INCLUDES}"
 GAME_COMPILE_CMD = (
     f"{GAME_CC_DIR} {INCLUDES} -- -c {CFLAGS} -mips2 -O2"
 )
@@ -57,7 +59,6 @@ IMG_CONVERT = f"{TOOLS_DIR}/image_converter.py"
 BIN_CONVERT = f"{TOOLS_DIR}/bin_inc_c.py"
 
 NINJA_FILE = "build.ninja"
-NINJA_FILE_ASSETS = "assets.ninja"
 
 VER = "US"
 
@@ -93,6 +94,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         object_paths: Union[Path, List[Path]],
         src_paths: List[Path],
         task: str,
+        implicit: List[str] = [],
         variables: Dict[str, str] = {},
         implicit_outputs: List[str] = [],
     ):
@@ -108,6 +110,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 outputs=object_strs,
                 rule=task,
                 inputs=[str(s) for s in src_paths],
+                implicit=implicit,
                 variables=variables,
                 implicit_outputs=implicit_outputs,
             )
@@ -174,11 +177,9 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     else:
         ninja.rule(
             "make_z64",
-            command=f"({MIPS}-objcopy -O binary $in $out) && ({TOOLS_DIR}/n64crc/n64crc.exe $out)",
+            command=f"({MIPS}-objcopy -O binary $in $out)  && python3 fix.py && ({TOOLS_DIR}/n64crc/n64crc.exe $out)",
             description="Making z64"
         )
-        
-    
 
 
     ninja.rule(
@@ -238,47 +239,44 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
 
     #assets
-    #i dont think there is a way to retrieve needed files? since its .data anyways
-    #manual it is
-
-    #TODO: get a better method to get custom c's. maybe some asset path reading???
-    #TODO: why does the github ci compile c's first THEN assets???? ninja2 should NOT be needed and wasnt before.
-    
-    ninja2 = ninja_syntax.Writer(open(NINJA_FILE_ASSETS, "w"))
-
-    import glob
-    asset_files = []
-    for file in glob.glob(f"src/**/*.c", recursive=True):
-        for custom in ["chameleons/", "levelGroup/"]:
-            if file.find(custom) != -1:
-                asset_files.append(file)
-                break
-    
-    #print(split.config["segments"])
+    #NOTE: because of how dependencies work, just reading through the c's and getting their includes should be fine.
+    #at least logistically. cuz like. thats what you need! lol
+    #if we need to do it with asm, go for it. might need to reconfigure but it should work!
 
     imageOpt = False
     binOpt = False
     binOpt2 = False
 
-    for file in asset_files:
+    c_dependencies = {}
+    for file in glob.glob(f"src/**/*.c", recursive=True):
         fileContents = open(file, "r", encoding="utf-8").readlines()
         for line in fileContents:
-            if line.find("build/assets/") == -1: continue
+            if line.find("build/") == -1:
+                continue
+            if not file in list(c_dependencies.keys()):
+                c_dependencies[file] = []
             #manual compilation for build/asset files
             if line.find(".png.inc.c") != -1: #is image
                 if not imageOpt:
                     #generate image rules if any images used
-                    for imageType in ["ia4", "ia8", "i4", "i8", "rgba16", "rgba32", "ci4", "ci8", "palette"]:
-                        ninja2.rule(
+                    for imageType in ["ia4", "ia8", "i4", "i8", "rgba16", "rgba32", "ci4", "ci8", "palette16", "palette256"]:
+                        COMMAND = f"python3 {IMG_CONVERT} {imageType} $in $out"
+                        if imageType == "palette16":
+                            COMMAND += " --palSize 16"
+                        elif imageType == "palette256":
+                            COMMAND += " --palSize 256"
+                        if imageType.find("palette") != -1:
+                            COMMAND = COMMAND.replace(imageType, "palette")
+                        ninja.rule(
                             f'{imageType}_convert',
-                            command = f"python3 {IMG_CONVERT} {imageType} $in $out",
+                            command = COMMAND,
                             description = f"Converting {imageType}"
                         )
                     imageOpt = True
                 if not binOpt:
                     #used for inc'd bins
-                    #dataOnly 
-                    ninja2.rule(
+                    #dataOnly
+                    ninja.rule(
                         "bin_inc_c_d",
                         command=f'python3 {BIN_CONVERT} 1 $in $out',
                         description="bin_inc_c $out"
@@ -295,26 +293,37 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 base = path
 
                 bin = "build/"+path+".bin"
-                ninja2.build(bin, type+"_convert", base)
-                ninja2.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
+                build(Path(bin), [Path(base)], type+"_convert")
+                object = bin.replace(".bin", ".inc.c")
+                build(Path(object), [Path(bin)], "bin_inc_c_d", implicit=[bin])
+                c_dependencies[file].append(object)
                 if type.find("ci") != -1: #paletted
+                    size = type.split("ci")[-1]
+                    if size == "4":
+                        size = "16"
+                    elif size == "8":
+                        size = "256"
+
+
                     bin = "build/"+path.replace(".png",".pal")+".bin"
-                    ninja2.build(bin, "palette_convert", base)
-                    ninja2.build(bin.replace(".bin", ".inc.c"), "bin_inc_c_d", bin)
+                    build(Path(bin), [Path(base)], "palette"+size+"_convert")
+                    object = bin.replace(".bin", ".inc.c")
+                    build(Path(object), [Path(bin)], "bin_inc_c_d", implicit=[bin])
+                    c_dependencies[file].append(object)
             elif line.find(".inc.c") != -1 and line.find(".pal.inc.c") == -1: #is databin
                 if not binOpt2:
                     #used for inc'd bins
-                    #dataOnly 
-                    ninja2.rule(
+                    #dataOnly
+                    ninja.rule(
                         "bin_inc_c",
                         command=f'python3 {BIN_CONVERT} 0 $in $out',
                         description="bin_inc_c $out"
                     )
                     binOpt2 = True
                 path = line.split("build/")[-1].split(".inc.c")[0]+".databin.bin"
-                ninja2.build("build/"+path.replace(".databin.bin", ".inc.c"), "bin_inc_c", path)
-    print(f"{NINJA_FILE_ASSETS} generated")
-    ninja2.close()
+                object = "build/"+path.replace(".databin.bin", ".inc.c")
+                build(Path(object), [Path(path)], "bin_inc_c")
+                c_dependencies[file].append(object)
 
     overrideC = []
     for entry in linker_entries:
@@ -325,7 +334,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
 
         if entry.object_path is None:
             continue
-        
+
         #databins' src paths are actually pointing to asm/data.
         #the .s' just incbin the bins anyways. whatever.
         #the rest are just asm so it makes sense
@@ -352,16 +361,21 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                             build(entry.object_path, entry.src_paths, buil)
 
 
-                             
+
                         break
             elif ioCheck or osCheck:
                 for src_path in entry.src_paths:
                     overrideC.append(str(src_path))
                 build(entry.object_path, entry.src_paths, "O1_cc")
             else:
+                #default
                 for src_path in entry.src_paths:
                     overrideC.append(str(src_path))
-                build(entry.object_path, entry.src_paths, "O2_cc")
+                realPath = str(entry.src_paths[0])
+                if realPath in list(c_dependencies.keys()):
+                    build(entry.object_path, entry.src_paths, "O2_cc", implicit=c_dependencies[realPath])
+                else:
+                    build(entry.object_path, entry.src_paths, "O2_cc")
         else:
             print(f"ERROR: Unsupported build segment type {seg.type}")
             sys.exit(1)
@@ -385,30 +399,13 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             ninja.build(o_file, "O2_cc", c_file)  # Update later
         elif os.path.dirname(c_file) in ["src/io", "src/os"]:
             ninja.build(o_file, "O1_cc", c_file)
-    
-    for obj in built_objects:
-        o_files.append(str(obj))
+
+    o_files = [str(obj) for obj in built_objects]
     #########################
 
-    ninja.build(
-        PRE_ELF_PATH,
-        "ld",
-        LD_PATH,
-        o_files
-    )
-
-    ninja.build(
-        BUILD_PATH,
-        "make_z64",
-        PRE_ELF_PATH
-    )
-
-    ninja.build(
-        ELF_PATH,
-        "elf",
-        PRE_ELF_PATH,
-    )
-
+    build(Path(PRE_ELF_PATH), [Path(LD_PATH)], "ld", o_files)
+    build(Path(BUILD_PATH), [Path(PRE_ELF_PATH)], "make_z64")
+    build(Path(ELF_PATH), [Path(PRE_ELF_PATH)], "elf")
 
     print(f"{NINJA_FILE} generated")
     ninja.close()
@@ -425,6 +422,13 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "-f",
+        "--full",
+        help="Split the entire game (not recommended for func work)",
+        action="store_true",
+    )
+
+    parser.add_argument(
         "-n",
         "--nonmatching",
         help="Build a non-matching version of the game",
@@ -434,12 +438,17 @@ if __name__ == "__main__":
 
     if args.clean:
         clean()
-    
+
     if args.nonmatching:
         subprocess.run(f"gcc {TOOLS_DIR}/n64crc/n64crc.c -o {TOOLS_DIR}/n64crc/n64crc.exe", shell = True, executable="/bin/bash")
-        
 
-    split.main([YAML_FILE], modes="all", verbose=False, use_cache=False)
+    yaml_to_use = YAML_FILE
+    if not args.full:
+        yaml_to_use = YAML_FILE_SMALL
+    else:
+        print("splitting entire game!")
+
+    split.main([Path(yaml_to_use)], modes="all", verbose=False, use_cache=False)
 
     linker_entries = split.linker_writer.entries
 

@@ -1,120 +1,99 @@
-"""
-"""
+"""Level map struct splitter."""
 
-import re
 import struct
-from pathlib import Path
+import sys
 from splat.util.log import error
-from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
 
-class N64SegLevelMap(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
-        self.type = isinstance(yaml, dict) and yaml.get("args", "Header")
+sys.path.append(str(options.opts.base_path / "tools/splat_ext"))
+from _ct_base import CTSegBase, do_pretty_print
 
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
+_PTR_FIELDS = {
+    2: "Rmset",
+    3: "LvmM",
+}
 
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.lvm{self.type[0]}.inc.c"
+_VARIANT = {
+    "Map":    ("lvmM", "LvmM", ""),
+    "Header":   ("lvmH", "LvmH", ""),
+}
 
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
+class N64SegLevelMap(CTSegBase):
+    def __init__(self, rom_start, rom_end, type, name, vram_start, args, yaml, bss_size):
+        super().__init__(rom_start, rom_end, type, name, vram_start, args, yaml, bss_size)
+        if isinstance(yaml, dict):
+            self.type = yaml.get("args", "Header")
+            self.width = yaml.get("width", 0)
+            self.height = yaml.get("width", 0)
+        else:
+            if len(yaml) < 4:
+                error(f"Error: {yaml} is missing type parameter")
+            self.type = yaml[3]
+            self.width = 0
+            self.height = 0
+            if len(yaml) > 4:
+                self.width = yaml[4]
+                self.height = yaml[5]
+        self.SUFFIX = _VARIANT[self.type][0]
 
     def disassemble_data(self, rom_bytes):
-        map_data = rom_bytes[self.rom_start : self.rom_end]
+        buf = rom_bytes[self.rom_start : self.rom_end]
 
         lines = []
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvp")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Lvp", define=True
-            )
-
+        if not self.data_only:
+            lines.append('#include "common.h"')
+            lines.append("")
 
         if self.type == "Header":
-            data = struct.unpack('>iiII', map_data[0:0x10])
-            add = []
+            sym = self.get_myself("LvmH")
+            if not self.data_only:
+                lines.append(f"StageMapData {sym.name} = {{")
+
+            data = struct.unpack('>iiII', buf[:0x10])
+            args = []
             i = 0
             while i < len(data):
-                if i == 2: #Settings Pointer
-                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Rmset")
-                    if not rmsym:
-                        rmsym = self.create_symbol(
-                            addr=data[i], in_segment=True, type="Rmset", define=True
+                if i in (2, 3): #Settings Pointer
+                    argsym = self.get_symbol(data[i], type=_PTR_FIELDS[i])
+                    if not argsym:
+                        argsym = self.create_symbol(
+                            addr=data[i], in_segment=True, type=_PTR_FIELDS[i], define=True
                         )
-                        add.append(str(data[i]))
-                    else: add.append("&"+rmsym.name)
-                elif i == 3: #Map Array pointer
-                    smsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "LvmM")
-                    if not smsym:
-                        smsym = self.create_symbol(
-                            addr=data[i], in_segment=True, type="LvmM", define=True
-                        )
-                        add.append(str(data[i]))
-                    else: add.append("&"+smsym.name)
+                        args.append("&"+str(data[i]))
+                    else:
+                        args.append(argsym.name)
                 else:
-                    add.append(str(data[i]))
+                    args.append(str(data[i]))
                 i += 1
-
-            if not self.data_only:
-                lines.append('#include "common.h"')
-                lines.append("")
-                lines.append("LevelMap "+sym.name+" = {")
-
-            currLine = ""
-            for v in add: currLine += v+", "
-            lines.append(currLine)
+            lines.append(", ".join(args))
 
         elif self.type == "Map":
-            num = 0
-            pointersets = []
-            while num*4 < len(map_data):
-                data = struct.unpack('>i', map_data[num*4:(num+1)*4])
-                pointersets.append(str(data[0]))
-                num += 1
-            
+            x = 0
+            rooms = []
+            while x < len(buf):
+                data = int.from_bytes(buf[x:x+4], 'big', signed=True)
+                rooms.append(str(data))
+                x += 4
+
+            has_defined_dimensions = self.width > 0 and self.height > 0
+
+            sym = self.get_myself("LvmM")
             if not self.data_only:
-                lines.append('#include "common.h"')
-                lines.append("")
-                lines.append("s32 "+sym.name+"["+str(len(pointersets))+"] = {")
-            currLine = ""
-            for v in pointersets: currLine += v+", "
-            lines.append(currLine)
+                if has_defined_dimensions:
+                    lines.append(f"s32 {sym.name}[{self.height}][{self.width}] = {{")
+                else:
+                    lines.append(f"s32 {sym.name}[{len(rooms)}] = {{")
+
+            if has_defined_dimensions:
+                map = [",".join(rooms[i : i + self.width]) for i in range(0, len(rooms), self.width)]
+                lines += do_pretty_print(map)
+                #remove following comma
+                lines[-1] = lines[-1][:-1]
+            else:
+                lines.append(", ".join(rooms))
 
         if not self.data_only:
             lines.append("};")
 
-        # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)

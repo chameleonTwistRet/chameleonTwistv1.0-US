@@ -25,6 +25,12 @@ typedef struct Vec3w {
     s32 z;
 } Vec3w;
 
+typedef struct Vec3h {
+    s16 x;
+    s16 y;
+    s16 z;
+} Vec3h;
+
 typedef struct Vec4f {
     f32 x;
     f32 y;
@@ -76,7 +82,7 @@ typedef struct unkIsChange {
 
 /**
  * @brief The player struct.
- * 
+ *
  * This struct is used to control and define various properties regarding the player.
  */
 typedef struct PlayerActor {
@@ -130,10 +136,10 @@ typedef struct PlayerActor {
     /* 0x114 */ s32 active; //0x00 = no, 0x01 = yes
     /* 0x118 */ s32 exists; //0x00 = no, 0x01 = yes
     /* 0x11C */ u32 power; //enum of power it has
-    /* 0x120 */ s32 powerTimer; 
-    /* 0x124 */ s32 powerTimerTill; 
-    /* 0x128 */ f32 tongueYOffset; 
-    /* 0x12C */ f32 tongueSeperation; 
+    /* 0x120 */ s32 powerTimer;
+    /* 0x124 */ s32 powerTimerTill;
+    /* 0x128 */ f32 tongueYOffset;
+    /* 0x12C */ f32 tongueSeperation;
 } PlayerActor; //sizeof 0x130
 
 typedef struct EffectTypeAQArg7 {
@@ -157,7 +163,7 @@ typedef struct Struct_80076EA0 {
 
 /**
  * @brief Struct for player tongues.
- * 
+ *
  * This struct is dedicated to the tongue mechanic, managing all the properties and states.
  */
 typedef struct Tongue { // at 80169268 (for p1)
@@ -220,65 +226,71 @@ typedef struct ModelCollision{
 
 
 typedef struct Collider {
-    /* 0x000 */ s32 unk_00;
-    /* 0x004 */ s32 unk_04;
-    /* 0x008 */ s32 unk_08;
-    /* 0x00C */ s32 unk_0C;
-    /* 0x010 */ s32 unk_10;
-    /* 0x014 */ s32 unk_14;
-    /* 0x018 */ Vec3f sfxPos;
-    /* 0x024 */ f32 unk_24;
-    /* 0x028 */ s32 UNK_28;
-    /* 0x02C */ s32 unk_2C;
-    /* 0x030 */ Vec3f unk_30;
-    /* 0x03C */ Vec3f unk_3C;
-    /* 0x048 */ f32 unk_48;
-    /* 0x04C */ struct Collider* unk_4C;
-    /* 0x050 */ f32 unk_50;
-    /* 0x054 */ f32 unk_54;
-    /* 0x058 */ f32 unk_58;
-    /* 0x05C */ s32 unk_5C;
-    /* 0x060 */ f32 unk60;
-    /* 0x064 */ f32 unk64;
-    /* 0x068 */ char pad68[0x18];                   /* maybe part of unk64[7]? */
-    /* 0x080 */ s32 unk80;
-    /* 0x084 */ char pad84[8];                      /* maybe part of unk80[3]? */
-    /* 0x08C */ f32 unk_8C;
-    /* 0x090 */ f32 unk_90;
-    /* 0x094 */ f32 unk_94;
-    /* 0x098 */ f32 unk_98;
-    /* 0x09C */ f32 unk_9C;
-    /* 0x0A0 */ f32 unk_A0;
-    /* 0x0A4 */ f32 unkA4;
-    /* 0x0A8 */ f32 unkA8;
-    /* 0x0AC */ s32 unk_AC;
-    /* 0x0B0 */ s32 unk_B0; // Vtx*?
-    /* 0x0B4 */ s32 unk_B4;
-    /* 0x0B8 */ s32 unk_B8;
-    /* 0x0BC */ s32 unk_BC;
-    /* 0x0C0 */ s32 unk_C0;
-    /* 0x0C4 */ s32 unkC4;
-    /* 0x0C8 */ s32 unkC8;
-    /* 0x0CC */ Rect3D unk_CC;
-    /* 0x0E4 */ void* unk_E4;
-    /* 0x0E8 */ ModelCollision* collisionData;
-    /* 0x0EC */ Gfx* gfx;
-    /* 0x0F0 */ char padF0[4];
-    /* 0x0F4 */ void* unkF4;                        /* inferred */
-    /* 0x0F8 */ void (*function)(struct Collider*);
-    /* 0x0FC */ void* unk_FC;
-    /* 0x100 */ void* unk_100;
-    /* 0x104 */ char pad104[8];                     /* maybe part of unk_100[3]? */
-    /* 0x10C */ s32 unk10C;                         /* inferred */
-    /* 0x110 */ s32 unk_110;
-    /* 0x114 */ s32 unk_114;
-    /* 0x118 */ s32 unk_118;
-    /* 0x11C */ s32 unk_11C;
-    /* 0x120 */ char pad120[4];
-    /* 0x124 */ s32 unk_124;
-    /* 0x128 */ s32 unk_128;
-    /* 0x12C */ char pad12C[4];
-} Collider;                                         /* size = 0x130 */
+/* 0x000 */ s32 unk_00;
+/* 0x004 */ s32 unk_04;
+/* 0x008 */ s32 unk_08;
+/* 0x00C */ s32 unk_0C;
+/* 0x010 */ s32 unk_10;
+/* 0x014 */ s32 unk_14;
+/* 0x018 */ Vec3f sfxPos;
+/* 0x024 */ f32 unk_24;
+/* 0x028 */ s32 UNK_28;
+/* 0x02C */ s32 unk_2C;
+/* 0x030 */ Vec3f unk_30;
+/* 0x03C */ Vec3f unk_3C;
+/* 0x048 */ f32 unk_48;
+/* 0x04C */ struct Collider* unk_4C;
+/* 0x050 */ f32 unk_50;
+/* 0x054 */ f32 unk_54;
+/* 0x058 */ f32 unk_58;
+/* 0x05C */ s32 unk_5C;
+/* 0x060 */ f32 unk60;
+/* 0x064 */ f32 unk64;
+/* 0x068 */ char pad68[4];
+/* 0x06C */ s32 unk_6C;
+/* 0x070 */ char pad70[0x10];
+/* 0x080 */ s32 unk80;
+/* 0x084 */ char pad84[8];                      /* maybe part of unk80[3]? */
+/* 0x08C */ f32 unk_8C;
+/* 0x090 */ f32 unk_90;
+/* 0x094 */ f32 unk_94;
+/* 0x098 */ f32 unk_98;
+/* 0x09C */ f32 unk_9C;
+/* 0x0A0 */ f32 unk_A0;
+/* 0x0A4 */ f32 unkA4;
+/* 0x0A8 */ f32 unkA8;
+/* 0x0AC */ s32 unk_AC;
+/* 0x0B0 */ s32 unk_B0; // Vtx*?
+/* 0x0B4 */ s32 unk_B4;
+/* 0x0B8 */ s32 unk_B8;
+/* 0x0BC */ s32 unk_BC;
+/* 0x0C0 */ s32 unk_C0;
+/* 0x0C4 */ s32 unkC4;
+/* 0x0C8 */ s32 unkC8;
+/* 0x0CC */ Rect3D unk_CC;
+/* 0x0E4 */ void* unk_E4;
+/* 0x0E8 */ ModelCollision* collision;
+/* 0x0EC */ Gfx* gfx;
+/* 0x0F0 */ char padF0[4];
+/* 0x0F4 */ void* unkF4;                        /* inferred */
+/* 0x0F8 */ void (*function)(struct Collider*);
+/* 0x0FC */ void* unk_FC;
+/* 0x100 */ void* unk_100;
+/* 0x104 */ char pad104[8];                     /* maybe part of unk_100[3]? */
+/* 0x10C */ s32 unk10C;                         /* inferred */
+/* 0x110 */ s32 unk_110;
+/* 0x114 */ s32 unk_114;
+/* 0x118 */ s32 unk_118;
+/* 0x11C */ s32 unk_11C;
+/* 0x120 */ char pad120[4];
+/* 0x124 */ s32 unk_124;
+/* 0x128 */ s32 unk_128;
+/* 0x12C */ char pad12C[4];
+#ifdef VER_US
+/* 0x130 */ char pad130[4];
+#endif
+} Collider;
+/* size = 0x130 */
 
 typedef struct unkSpriteStruct {
     /* 0x000 */ s32 unk_00;
@@ -304,10 +316,10 @@ typedef struct unkSpriteStruct {
 typedef struct RoomObject {
     Vec3f position;
     Vec3f scale;
-    s32 unk18;
-    f32 damages;
-    s32 unk20;
-    s32 unk24;
+    s32 unk18; //rotationAxis?
+    f32 damages; //angle?
+    s32 unk20; //objectUse?
+    s32 unk24; //objectMode?
     f32 unk28;
     f32 unk2C;
     f32 unk30;
@@ -345,7 +357,7 @@ typedef struct RoomActor {
     f32 unk10;
     f32 unk14;
     f32 unk18;
-    s32 unk1C;
+    f32 unk1C;
     f32 unk20;
     f32 unk24;
     f32 unk28;
@@ -354,14 +366,14 @@ typedef struct RoomActor {
     f32 unk34;
     f32 unk38;
     f32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
+    f32 unk40;
+    f32 unk44;
+    f32 unk48;
+    f32 unk4C;
+    f32 unk50;
+    f32 unk54;
+    f32 unk58;
+    f32 unk5C;
 } RoomActor; //sizeof 0x60
 
 typedef struct Collectable {
@@ -391,20 +403,21 @@ typedef struct Color128 {
 } Color128;
 
 typedef struct SpriteActor {
-    s32 size;
-    s32 spriteIndex;
-    Vec3f position;
-    Vec3f scale;
-    s32 unk20;
-    s32 unk24;
-    f32 unk28;
-    s32 damages;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    Color128 color;
+/* 0x00 */ s32 size;
+/* 0x04 */ s32 spriteIndex;
+/* 0x08 */ Vec3f position;
+/* 0x14 */ Vec3f scale;
+/* 0x20 */ s32 unk20;
+/* 0x24 */ f32 unk24;
+/* 0x28 */ f32 unk28;
+/* 0x2C */ s32 damages;
+/* 0x30 */ f32 unk30;
+/* 0x34 */ f32 unk34;
+/* 0x38 */ f32 unk38;
+/* 0x3C */ s32 unk3C;
+/* 0x40 */ Color128 color;
 } SpriteActor; // sizeof 0x50
+
 
 typedef struct Field {
     /* 0x00 */ RoomObject* objects;
@@ -413,7 +426,7 @@ typedef struct Field {
     /* 0x04 */ RoomActor* actors;
     //pointer of levelData actors
     //0 for none
-    /* 0x08 */ Collectable* collectables; 
+    /* 0x08 */ Collectable* collectables;
     //pointer of levelData collectables
     //0 for none
     /* 0x0C */ SpriteActor* spriteActors;
@@ -451,7 +464,7 @@ typedef struct Field {
     /* 0x94 */ s32 cameraMode;
     //basically an enum, has a ton of different (usually dungeon based) angles
     //it feels like most of them can be seen in the credits, though this definitely needs more research
-    /* 0x98 */ Vec3f cameraAnchor; 
+    /* 0x98 */ Vec3f cameraAnchor;
     //the position the camera is anchored within the room
     /* 0xA4 */ f32 unkA4;
     /* 0xA8 */ f32 unkA8;
@@ -462,8 +475,10 @@ typedef struct Field {
     /* 0xB8 */ s16 unkB8;                           /* inferred */
     /* 0xBA */ char padBA[0x12];                    /* maybe part of unkB8[0xA]? */
     /* 0xCC */ f32 unkCC;                           /* inferred */
+#ifdef VER_JP
     /* 0xD0 */ f32 unkD0;
     /* 0xD4 */ char padD4[4];
+#endif
 } Field;                                        /* size = 0xD8 */
 
 
@@ -473,7 +488,7 @@ typedef struct CardinalDirection {
     /* 0x08 */ s32 unk8;
     /* 0x0C */ const char* name;
     /* 0x10 */ f32 angle;
-} CardinalDirection; 
+} CardinalDirection;
 
 //camera 0x8016AA98
 //camera copy 0x801768A0
@@ -567,7 +582,7 @@ typedef struct unkStruct15 {
 
 typedef struct SaveRecord {
 /* 0x00 */ u8 flags[4]; //{checksum,flags,blank,blank}
-/* 0x04 */ s32 perfectCode; 
+/* 0x04 */ s32 perfectCode;
 /* 0x08 */ u8 stageTimes[7][5][3]; //[stageIndex][timeRank][]
 /* 0x71 */ s8 index; //index of most recent save file
 /* 0x72 */ s8 unk_72[2];
@@ -675,24 +690,21 @@ typedef struct unkVecStruct {
 } unkVecStruct;
 
 typedef struct Poly {
-    /* 0x00 */ s32 unk_00; 
-    /* 0x04 */ char unk_04[4];
-    /* 0x08 */ Vec3f offset;
-    /* 0x14 */ Vec3f unkVec;
-    /* 0x20 */ Vec3f unkVec2;
-    /* 0x2C */ Rect3D boundBox;
-    /* 0x44 */ unkVecStruct unkVectorStruct;
-    /* 0x68 */ f32 unk_68;
-    /* 0x6C */ f32 unk_6C;
-    /* 0x70 */ f32 unk_70;
-    /* 0x74 */ f32 unk_74;
-    /* 0x78 */ f32 unk_78;
-    /* 0x7C */ f32 unk_7C;
-    /* 0x80 */ f32 unk_80;
-    /* 0x84 */ f32 unk_84;
-    /* 0x88 */ f32 unk_88;
-    /* 0x8C */ f32 unk_8C;
-    /* 0x90 */ f32 unk_90;
+/* 0x00 */ s32 unk_00;
+/* 0x04 */ char unk_04[4];
+/* 0x08 */ Vec3f offset;
+/* 0x14 */ Vec3f unkVec;
+/* 0x20 */ Vec3f unkVec2;
+/* 0x2C */ Rect3D boundBox;
+/* 0x44 */ unkVecStruct unkVectorStruct;
+/* 0x68 */ f32 unk_68;
+/* 0x6C */ f32 unk_6C;
+/* 0x70 */ f32 unk_70;
+/* 0x74 */ f32 unk_74;
+/* 0x78 */ f32 unk_78;
+/* 0x7C */ Vec2f unk_7C;
+/* 0x84 */ Vec2f unk_84;
+/* 0x8C */ Vec2f unk_8C;
 } Poly;
 
 typedef struct Actor {
@@ -719,7 +731,7 @@ typedef struct Actor {
         // /* 0x05C */ f32 unk_5C;//sin z used by FISH
         // /* 0x060 */ f32 unk_60;//hitboxScale
         // /* 0x064 */ f32 unk_64;//hitboxYstretch
-        
+
         // /* 0x068 */ f32 unk_68;
         // /* 0x06C */ f32 unk_6C;
         // /* 0x070 */ f32 unk_70;
@@ -813,7 +825,7 @@ typedef struct SaveFile {
     /* 0x34 */ u8 unk34[16]; //stores D_802023e0[]
     /* 0x44 */ u8 stageCrowns;
     /* 0x45 */ TimeVal stageTimes[8];
-    /* 0x5D */ u8 carrotBitfield; 
+    /* 0x5D */ u8 carrotBitfield;
     /* 0x5E */ u8 UNK_5E[2]; //first also copies CARROT progress.
 } SaveFile; //sizeof 0x60
 
@@ -842,7 +854,7 @@ typedef struct ContDemo {
     s8 y;
 } ContDemo; //sizeof 0x4
 
-typedef struct EffectPart { 
+typedef struct EffectPart {
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ Vec3f vel;
     /* 0x18 */ f32 lifeTime;
@@ -1003,11 +1015,11 @@ typedef struct Door {
     Vec3f max;
     u32 direction; // index in gCardinalDirections
     s32 unk34; //not read?
-    s32 unk38; 
-    s32 unk3C; 
+    s32 unk38;
+    s32 unk3C;
     s32 toZone;
-    s32 unk44; 
-    s32 unk48; 
+    s32 unk44;
+    s32 unk48;
 } Door; //sizeof 0x4C (?)
 
 //platform move point
@@ -1030,6 +1042,25 @@ typedef struct UnkType2 {
     f32 unk14;
 } UnkType2; //sizeof 0x18
 
+//todo: better name. :)
+typedef struct rabObject {
+/* 0x00 */ s32 unk0;
+/* 0x04 */ f32 unk4;
+/* 0x08 */ f32 unk8;
+/* 0x0C */ f32 unkC;
+/* 0x10 */ ModelCollision* unk10;
+} rabObject;
+
+//todo: identify!!!
+typedef struct BombLand_unkstructuret{
+/* 0x00 */ s32* pointer;
+/* 0x04 */ s32 unk4; //size???
+/* 0x08 */ s32 unk8;
+/* 0x0C */ s32 unkC;
+/* 0x10 */ s32 unk10;
+/* 0x14 */ s32 unk14;
+} BombLand_unkstructuret; //sizeof 0x18
+
 typedef struct RoomInstance {
     RoomObject* objects;
     RoomActor* actors;
@@ -1050,14 +1081,10 @@ typedef struct RoomInstance {
     f32 unk40;
     f32 unk44;
     f32 unk48;
-    s16 unk4C;
-    s16 unk4E;
-    s16 unk50;
-    s16 unk52;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-    s32 unk60;
+    Vec3h p1pos;
+    Vec3h p2pos;
+    Vec3h p3pos;
+    Vec3h p4pos;
     f32 unk64;
 #ifdef VER_JP
     f32 unk68;
@@ -1068,28 +1095,26 @@ typedef struct StageMapData {
     s32 width; // width in rooms of map
     s32 height; // height in rooms of map
     RoomInstance* roomInstances;
-    s32* roomsMap;
+    s32 (*roomsMap)[];
 } StageMapData;
 
 typedef struct LevelScope {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 renderDistance;
-    s32 unk14;
+/* 0x00 */ Vec3f spawn_point; //not used?
+/* 0x0C */ s32 unkC;
+/* 0x10 */ s32 renderDistance;
+/* 0x14 */ s32 unk14;
 } LevelScope;
 
 typedef struct StageData {
-    StageMapData* roomsMap;
-    RoomInstance* roomInstances;
-    StageModel* models;
-    u16 modelCount;
-    u16 unkC;
-    u32 RoomObjects;
-    u32 unk14;
-    s32* SpriteLib;
-    LevelScope* Scope;
+/* 0x00 */ StageMapData* roomsMap;
+/* 0x04 */ RoomInstance* roomInstances;
+/* 0x08 */ StageModel* models;
+/* 0x0C */ u16 modelCount;
+/* 0x0E */ u16 unkC;
+/* 0x10 */ rabObject* rabObjects;
+/* 0x14 */ u32 unk14;
+/* 0x18 */ s32 (*SpriteLib)[];
+/* 0x1C */ LevelScope* Scope;
 } StageData;
 
 typedef struct segTableEntry {
@@ -1260,5 +1285,27 @@ typedef struct cutsceneFunction{
 /* 0x48 */ f32 unk48;
 /* 0x4C */ u32 unk4C; //unktype
 } cutsceneFunction; //sizeof 0x50
+
+typedef struct UnkTempStruct {
+    u16 unk_00;
+    u16 unk_02;
+    s32 unk_04;
+    s32 unk_08;
+    s32 unk_0C;
+} UnkTempStruct;
+
+typedef struct UnkMinDistance {
+    f32 temp; //unused?
+    f32* unk_04;
+    s32* unk_08;
+    Vec3f* vec;
+} UnkMinDistance;
+
+typedef struct UnkArg4 {
+    Poly* unk0;
+    s32 unk4;
+    char unk8[8];
+    Vec3f unk10;
+} UnkArg4;
 
 #endif

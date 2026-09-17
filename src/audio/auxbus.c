@@ -2,7 +2,7 @@
 #include "PR/synthInternals.h"
 
 Acmd *alAuxBusPull(void *filter, s16 *outp, s32 outCount, s32 sampleOffset,
-                   Acmd *p) 
+                   Acmd *p)
 {
     Acmd        *ptr = p;
     ALAuxBus     *m = (ALAuxBus *)filter;
@@ -16,7 +16,7 @@ Acmd *alAuxBusPull(void *filter, s16 *outp, s32 outCount, s32 sampleOffset,
         ptr = (sources[i]->handler)(sources[i], outp, outCount, sampleOffset,
                                     ptr);
     }
-    
+
     return ptr;
 }
 
@@ -24,13 +24,13 @@ s32 alAuxBusParam(void *filter, s32 paramID, void *param)
 {
     ALAuxBus     *m = (ALAuxBus *) filter;
     ALFilter    **sources = m->sources;
-    
+
     switch (paramID) {
 
         case (AL_FILTER_ADD_SOURCE):
             sources[m->sourceCount++] = (ALFilter *) param;
             break;
-            
+
         default:
             /* ??? */
             break;

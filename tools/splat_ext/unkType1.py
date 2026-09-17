@@ -1,89 +1,54 @@
-"""
-Chameleon Twist: Sprite Actor struct splitter
-Dumps out spriteActor data as a .inc.c file.
+"""unkType1 (PlatformKeyframe) splitter."""
 
-Original Author: Ellie (Elisiah)
-Modified for unkType struct: Nathan R.
-"""
-
-import re
 import struct
-from pathlib import Path
+import sys
 from splat.util.log import error
-from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
 
+sys.path.append(str(options.opts.base_path / "tools/splat_ext"))
+from _ct_base import CTSegBase, do_pretty_print
 
-class N64SegUnkType1(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
+class N64SegUnkType1(CTSegBase):
+    SUFFIX = "ut1"
 
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
-
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.ut1.inc.c"
-
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
 
     def disassemble_data(self, rom_bytes):
-        sprite_data = rom_bytes[self.rom_start : self.rom_end]
-        segment_length = len(sprite_data)
-        if (segment_length) != 0x24:
+        SIZE = 36
+        buf = rom_bytes[self.rom_start : self.rom_end]
+        if len(buf) % SIZE != 0:
             error(
-                f"Error: unkType1 segment {self.name} length ({segment_length}) is not valid"
+                f"Error: unkType1 segment {self.name} length ({len(buf)}) is not valid"
             )
 
         lines = []
-
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Ut1")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Ut1", define=True
-            )
+        sym = self.get_myself("Ut1")
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("UnkType1 %s = {" % (sym.name))
+            lines.append(f"PlatformKeyframe {sym.name}[] = {{")
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>fffiiiiii', byteData)
-        for v in data: 
-            lines.append(f"    {v},")
+        csv_lines = []
+        x = 0
+        while x < len(buf):
+            data = struct.unpack(">fffiiiiii", buf[x:x+SIZE])
+            args = []
+            i = 0
+            while i < len(data):
+                use = data[i]
+                if i == 0: #Position
+                    use = self.make_vec3f(data[i:i+3])
+                    i += 2
+                args.append(str(use))
+                i += 1
+            csv_lines.append(",".join(args))
+            x += SIZE
+
+        lines += do_pretty_print(csv_lines)
+        #remove following comma
+        lines[-1] = lines[-1][:-1]
 
         if not self.data_only:
             lines.append("};")
 
-        # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)

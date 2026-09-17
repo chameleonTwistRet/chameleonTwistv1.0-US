@@ -1,0 +1,2864 @@
+#include "AntLand.h"
+Mtx AntLand_IMtx1 = IDENTITY;
+
+extern ModelCollision AntLand_room12Floor2_ColH;
+extern ModelCollision AntLand_room15Ceiling_ColH;
+extern Gfx Global_JLCaveDoor_Gfx[];
+extern ModelCollision AntLand_room10Floor_ColH;
+extern ModelCollision Global_BossBridge_ColH;
+extern Gfx AntLand_room0doorTorchStand2_Gfx[];
+extern ModelCollision AntLand_room8Floor_ColH;
+extern ModelCollision AntLand_room21_ColH;
+extern Gfx AntLand_room11Floor2_Gfx[];
+extern Gfx Global_JLCaveExit1_Gfx[];
+extern ModelCollision Global_ALBLExit_ColH;
+extern Gfx AntLand_room0_Gfx[];
+extern Gfx AntLand_exit4_Gfx[];
+extern Gfx AntLand_room2_Gfx[];
+extern ModelCollision Global_exitShadowWest_ColH;
+extern ModelCollision AntLand_room2_ColH;
+extern ModelCollision Global_JLCaveExit1_ColH;
+extern ModelCollision AntLand_room10_ColH;
+extern Gfx AntLand_room20_Gfx[];
+extern ModelCollision AntLand_room0doorTop_ColH;
+extern Gfx AntLand_room13_Gfx[];
+extern Gfx Global_pole_Gfx[];
+extern Gfx AntLand_room8Floor2_Gfx[];
+extern Gfx AntLand_room4_Gfx[];
+extern Gfx Global_ALPole_Gfx[];
+extern ModelCollision Global_ALPole_ColH;
+extern ModelCollision AntLand_room11Floor2_ColH;
+extern Gfx AntLand_room16Grate_Gfx[];
+extern ModelCollision AntLand_room13_ColH;
+extern ModelCollision AntLand_room18_ColH;
+extern ModelCollision AntLand_room11_ColH;
+extern ModelCollision AntLand_room0doorTorchStand1_ColH;
+extern Gfx AntLand_room7_Gfx[];
+extern ModelCollision AntLand_room7Ceiling_ColH;
+extern Gfx AntLand_room14_Gfx[];
+extern Gfx Global_BossBridge_Gfx[];
+extern ModelCollision Global_BLMetalBridge_ColH;
+extern ModelCollision Global_exitShadowNorth_ColH;
+extern Gfx AntLand_room0doorTop_Gfx[];
+extern ModelCollision AntLand_room3_ColH;
+extern ModelCollision AntLand_room0doorTorchStand2_ColH;
+extern Gfx Global_JLCaveExit2_Gfx[];
+extern Gfx Global_JLFxCamPillar_Gfx[];
+extern ModelCollision AntLand_room6_ColH;
+extern Gfx AntLand_room10_Gfx[];
+extern ModelCollision Global_JLFxCamPillar_ColH;
+extern Gfx AntLand_room3_Gfx[];
+extern Gfx Global_BLLava3_Gfx[];
+extern Gfx Global_exitShadowNorth_Gfx[];
+extern Gfx Global_ALBLDoor_Gfx[];
+extern ModelCollision Global_KLDoor_ColH;
+extern Gfx Global_BLLava8_Gfx[];
+extern ModelCollision AntLand_room8Floor2_ColH;
+extern Gfx AntLand_room10Platform1_Gfx[];
+extern Gfx Global_ALBLExit_Gfx[];
+extern ModelCollision Global_pole_ColH;
+extern Gfx AntLand_room15Floor_Gfx[];
+extern Gfx Global_BLDestructableTop_Gfx[];
+extern Gfx Global_BLLava_Gfx[];
+extern ModelCollision Global_BLLava5_ColH;
+extern Gfx AntLand_room7Floor_Gfx[];
+extern Gfx Global_BLLavaFloor_Gfx[];
+extern ModelCollision AntLand_room12Floor1_ColH;
+extern ModelCollision AntLand_room142_ColH;
+extern ModelCollision AntLand_room13Platform_ColH;
+extern Gfx AntLand_exit3_Gfx[];
+extern Gfx Global_BLLava6_Gfx[];
+extern Gfx Global_KLDoor_Gfx[];
+extern ModelCollision AntLand_room0_ColH;
+extern Gfx AntLand_room0doorPillar2_Gfx[];
+extern Gfx Global_sandPit_Gfx[];
+extern Gfx AntLand_room7Ceiling_Gfx[];
+extern Gfx Global_exitShadowEast_Gfx[];
+extern ModelCollision Global_trainingRoomLight_ColH;
+extern Gfx Global_DCExit_Gfx[];
+extern Gfx AntLand_room12_Gfx[];
+extern Gfx AntLand_room8Floor_Gfx[];
+extern ModelCollision AntLand_room15Floor_ColH;
+extern Gfx AntLand_room10Floor_Gfx[];
+extern Gfx Global_BLMetalBridge_Gfx[];
+extern ModelCollision Global_BLLava2_ColH;
+extern ModelCollision AntLand_room21Platform1_ColH;
+extern ModelCollision AntLand_fixedCamPillar_ColH;
+extern Gfx Global_JLCaveExit3_Gfx[];
+extern Gfx Global_JLCaveExit4_Gfx[];
+extern Gfx AntLand_room9_Gfx[];
+extern ModelCollision AntLand_room5Platform_ColH;
+extern ModelCollision Global_BLLavaFloor_ColH;
+extern Gfx AntLand_room4Floor_Gfx[];
+extern Gfx AntLand_room12Floor2_Gfx[];
+extern ModelCollision AntLand_room4_ColH;
+extern Gfx AntLand_room6Floor_Gfx[];
+extern ModelCollision Global_TallExitShadow2_ColH;
+extern Gfx AntLand_room0doorPillar1_Gfx[];
+extern ModelCollision AntLand_exit4_ColH;
+extern ModelCollision Global_BLLava8_ColH;
+extern ModelCollision Global_DCExit_ColH;
+extern ModelCollision AntLand_room15_ColH;
+extern Gfx Global_exitShadowSouth_Gfx[];
+extern ModelCollision Global_KLExit_ColH;
+extern Gfx AntLand_room16Floor1_Gfx[];
+extern Gfx AntLand_room0doorTorchStand1_Gfx[];
+extern ModelCollision AntLand_room16Floor1_ColH;
+extern Gfx AntLand_room4Platform_Gfx[];
+extern ModelCollision Global_ALSpinDoor_ColH;
+extern ModelCollision AntLand_room4Platform_ColH;
+extern Gfx AntLand_room11_Gfx[];
+extern ModelCollision AntLand_room20_ColH;
+extern ModelCollision AntLand_room16Grate_ColH;
+extern ModelCollision AntLand_room6Floor_ColH;
+extern Gfx Global_trainingRoomLight_Gfx[];
+extern ModelCollision Global_BLLava3_ColH;
+extern Gfx Global_BLLava7_Gfx[];
+extern ModelCollision AntLand_room10Platform3_ColH;
+extern Gfx AntLand_room8Floor1_Gfx[];
+extern ModelCollision AntLand_room4Grate_ColH;
+extern Gfx AntLand_room10Platform2_Gfx[];
+extern ModelCollision AntLand_room14_ColH;
+extern Gfx AntLand_room13Platform_Gfx[];
+extern Gfx Global_fallbackCube_Gfx[];
+extern Gfx Global_exitShadowWest_Gfx[];
+extern Gfx AntLand_room15Ceiling_Gfx[];
+extern ModelCollision Global_BLLava_ColH;
+extern Gfx AntLand_room5_Gfx[];
+extern ModelCollision AntLand_exit2_ColH;
+extern ModelCollision Global_ALBLDoor_ColH;
+extern Gfx Global_TallExitShadow2_Gfx[];
+extern ModelCollision Global_JLOutsideEntrance_ColH;
+extern ModelCollision Global_JLCaveExit4_ColH;
+extern ModelCollision AntLand_room21Platform2_ColH;
+extern ModelCollision Global_BLLava6_ColH;
+extern ModelCollision Global_fallbackCube_ColH;
+extern ModelCollision Global_BLLava4_ColH;
+extern Gfx AntLand_room17_Gfx[];
+extern ModelCollision AntLand_room17Floor_ColH;
+extern ModelCollision Global_GCExit1_ColH;
+extern Gfx Global_BLLava5_Gfx[];
+extern ModelCollision AntLand_room7_ColH;
+extern Gfx AntLand_room17Floor_Gfx[];
+extern ModelCollision Global_sandPit_ColH;
+extern ModelCollision Global_JLCaveDoor_ColH;
+extern ModelCollision Global_JLCaveExit3_ColH;
+extern ModelCollision AntLand_room1_ColH;
+extern Gfx AntLand_fixedCamPillar_Gfx[];
+extern Gfx AntLand_room4Grate_Gfx[];
+extern Gfx Global_BLLava4_Gfx[];
+extern ModelCollision Global_exitShadowEast_ColH;
+extern Gfx AntLand_room15_Gfx[];
+extern ModelCollision Global_BLDestructableTop_ColH;
+extern ModelCollision AntLand_room10Platform2_ColH;
+extern Gfx AntLand_room10Platform3_Gfx[];
+extern Gfx AntLand_room21_Gfx[];
+extern Gfx AntLand_room5Platform_Gfx[];
+extern Gfx AntLand_room18_Gfx[];
+extern ModelCollision AntLand_room8Floor1_ColH;
+extern ModelCollision AntLand_room0doorPillar1_ColH;
+extern ModelCollision AntLand_room16Floor2_ColH;
+extern Gfx AntLand_room21Platform2_Gfx[];
+extern ModelCollision AntLand_room5_ColH;
+extern ModelCollision AntLand_room4Floor_ColH;
+extern ModelCollision AntLand_room0doorPillar2_ColH;
+extern Gfx AntLand_room6_Gfx[];
+extern ModelCollision AntLand_room11Floor1_ColH;
+extern Gfx Global_ALSpinDoor_Gfx[];
+extern ModelCollision Global_BLLava7_ColH;
+extern Gfx Global_BLLava2_Gfx[];
+extern ModelCollision AntLand_room16_ColH;
+extern Gfx AntLand_room8_Gfx[];
+extern Gfx AntLand_room11Floor1_Gfx[];
+extern Gfx AntLand_room1_Gfx[];
+extern Gfx Global_GCExit1_Gfx[];
+extern Gfx Global_KLExit_Gfx[];
+extern Gfx AntLand_exit2_Gfx[];
+extern Gfx Global_JLOutsideEntrance_Gfx[];
+extern Gfx AntLand_room21Platform1_Gfx[];
+extern ModelCollision Global_exitShadowSouth_ColH;
+extern ModelCollision AntLand_room9_ColH;
+extern ModelCollision AntLand_room10Platform1_ColH;
+extern ModelCollision AntLand_room17_ColH;
+extern ModelCollision AntLand_room7Floor_ColH;
+extern Gfx AntLand_room16_Gfx[];
+extern Gfx AntLand_room12Floor1_Gfx[];
+extern ModelCollision AntLand_room8_ColH;
+extern ModelCollision Global_JLCaveExit2_ColH;
+extern Gfx AntLand_room16Floor2_Gfx[];
+extern ModelCollision AntLand_exit3_ColH;
+
+StageModel AntLand_stageModels[] = {
+	{         Global_fallbackCube_Gfx,          &Global_fallbackCube_ColH},
+	{      Global_exitShadowSouth_Gfx,       &Global_exitShadowSouth_ColH},
+	{      Global_exitShadowNorth_Gfx,       &Global_exitShadowNorth_ColH},
+	{       Global_exitShadowEast_Gfx,        &Global_exitShadowEast_ColH},
+	{       Global_exitShadowWest_Gfx,        &Global_exitShadowWest_ColH},
+	{             Global_ALBLExit_Gfx,              &Global_ALBLExit_ColH},
+	{              Global_sandPit_Gfx,               &Global_sandPit_ColH},
+	{           Global_BossBridge_Gfx,            &Global_BossBridge_ColH},
+	{               Global_ALPole_Gfx,                &Global_ALPole_ColH},
+	{             Global_ALBLDoor_Gfx,              &Global_ALBLDoor_ColH},
+	{           Global_ALSpinDoor_Gfx,            &Global_ALSpinDoor_ColH},
+	{          Global_BLLavaFloor_Gfx,           &Global_BLLavaFloor_ColH},
+	{               Global_BLLava_Gfx,                &Global_BLLava_ColH},
+	{              Global_BLLava2_Gfx,               &Global_BLLava2_ColH},
+	{              Global_BLLava3_Gfx,               &Global_BLLava3_ColH},
+	{              Global_BLLava4_Gfx,               &Global_BLLava4_ColH},
+	{              Global_BLLava5_Gfx,               &Global_BLLava5_ColH},
+	{              Global_BLLava6_Gfx,               &Global_BLLava6_ColH},
+	{              Global_BLLava7_Gfx,               &Global_BLLava7_ColH},
+	{              Global_BLLava8_Gfx,               &Global_BLLava8_ColH},
+	{    Global_BLDestructableTop_Gfx,     &Global_BLDestructableTop_ColH},
+	{        Global_BLMetalBridge_Gfx,         &Global_BLMetalBridge_ColH},
+	{               Global_KLExit_Gfx,                &Global_KLExit_ColH},
+	{               Global_KLDoor_Gfx,                &Global_KLDoor_ColH},
+	{               Global_DCExit_Gfx,                &Global_DCExit_ColH},
+	{      Global_TallExitShadow2_Gfx,       &Global_TallExitShadow2_ColH},
+	{              Global_GCExit1_Gfx,               &Global_GCExit1_ColH},
+	{    Global_trainingRoomLight_Gfx,     &Global_trainingRoomLight_ColH},
+	{          Global_JLCaveExit1_Gfx,           &Global_JLCaveExit1_ColH},
+	{          Global_JLCaveExit2_Gfx,           &Global_JLCaveExit2_ColH},
+	{          Global_JLCaveExit3_Gfx,           &Global_JLCaveExit3_ColH},
+	{          Global_JLCaveExit4_Gfx,           &Global_JLCaveExit4_ColH},
+	{    Global_JLOutsideEntrance_Gfx,     &Global_JLOutsideEntrance_ColH},
+	{        Global_JLFxCamPillar_Gfx,         &Global_JLFxCamPillar_ColH},
+	{           Global_JLCaveDoor_Gfx,            &Global_JLCaveDoor_ColH},
+	{               AntLand_exit2_Gfx,                &AntLand_exit2_ColH},
+	{               AntLand_exit3_Gfx,                &AntLand_exit3_ColH},
+	{               AntLand_exit4_Gfx,                &AntLand_exit4_ColH},
+	{               AntLand_room0_Gfx,                &AntLand_room0_ColH},
+	{               AntLand_room1_Gfx,                &AntLand_room1_ColH},
+	{               AntLand_room2_Gfx,                &AntLand_room2_ColH},
+	{              AntLand_room14_Gfx,               &AntLand_room14_ColH},
+	{               AntLand_room4_Gfx,              &AntLand_room142_ColH},
+	{               AntLand_room5_Gfx,                &AntLand_room4_ColH},
+	{               AntLand_room6_Gfx,                &AntLand_room5_ColH},
+	{               AntLand_room7_Gfx,                &AntLand_room6_ColH},
+	{               AntLand_room8_Gfx,                &AntLand_room7_ColH},
+	{               AntLand_room9_Gfx,                &AntLand_room8_ColH},
+	{              AntLand_room10_Gfx,                &AntLand_room9_ColH},
+	{              AntLand_room11_Gfx,               &AntLand_room10_ColH},
+	{              AntLand_room12_Gfx,               &AntLand_room11_ColH},
+	{              AntLand_room13_Gfx,               &AntLand_room13_ColH},
+	{               AntLand_room3_Gfx,                &AntLand_room3_ColH},
+	{              AntLand_room17_Gfx,               &AntLand_room17_ColH},
+	{              AntLand_room15_Gfx,               &AntLand_room15_ColH},
+	{              AntLand_room18_Gfx,               &AntLand_room18_ColH},
+	{              AntLand_room16_Gfx,               &AntLand_room16_ColH},
+	{              AntLand_room20_Gfx,               &AntLand_room20_ColH},
+	{              AntLand_room21_Gfx,               &AntLand_room21_ColH},
+	{       AntLand_room4Platform_Gfx,        &AntLand_room4Platform_ColH},
+	{          AntLand_room4Floor_Gfx,           &AntLand_room4Floor_ColH},
+	{          AntLand_room6Floor_Gfx,           &AntLand_room6Floor_ColH},
+	{          AntLand_room8Floor_Gfx,           &AntLand_room8Floor_ColH},
+	{         AntLand_room17Floor_Gfx,          &AntLand_room17Floor_ColH},
+	{         AntLand_room10Floor_Gfx,          &AntLand_room10Floor_ColH},
+	{     AntLand_room10Platform1_Gfx,      &AntLand_room10Platform1_ColH},
+	{     AntLand_room10Platform2_Gfx,      &AntLand_room10Platform2_ColH},
+	{     AntLand_room10Platform3_Gfx,      &AntLand_room10Platform3_ColH},
+	{       AntLand_room5Platform_Gfx,        &AntLand_room5Platform_ColH},
+	{      AntLand_room13Platform_Gfx,       &AntLand_room13Platform_ColH},
+	{     AntLand_room21Platform1_Gfx,      &AntLand_room21Platform1_ColH},
+	{     AntLand_room21Platform2_Gfx,      &AntLand_room21Platform2_ColH},
+	{        AntLand_room12Floor1_Gfx,         &AntLand_room12Floor1_ColH},
+	{        AntLand_room12Floor2_Gfx,         &AntLand_room12Floor2_ColH},
+	{        AntLand_room11Floor1_Gfx,         &AntLand_room11Floor1_ColH},
+	{        AntLand_room11Floor2_Gfx,         &AntLand_room11Floor2_ColH},
+	{          AntLand_room4Grate_Gfx,           &AntLand_room4Grate_ColH},
+	{          AntLand_room7Floor_Gfx,           &AntLand_room7Floor_ColH},
+	{        AntLand_room7Ceiling_Gfx,         &AntLand_room7Ceiling_ColH},
+	{         AntLand_room15Floor_Gfx,          &AntLand_room15Floor_ColH},
+	{       AntLand_room15Ceiling_Gfx,        &AntLand_room15Ceiling_ColH},
+	{         AntLand_room8Floor1_Gfx,          &AntLand_room8Floor1_ColH},
+	{         AntLand_room8Floor2_Gfx,          &AntLand_room8Floor2_ColH},
+	{    AntLand_room0doorPillar1_Gfx,     &AntLand_room0doorPillar1_ColH},
+	{    AntLand_room0doorPillar2_Gfx,     &AntLand_room0doorPillar2_ColH},
+	{        AntLand_room0doorTop_Gfx,         &AntLand_room0doorTop_ColH},
+	{AntLand_room0doorTorchStand1_Gfx, &AntLand_room0doorTorchStand1_ColH},
+	{AntLand_room0doorTorchStand2_Gfx, &AntLand_room0doorTorchStand2_ColH},
+	{        AntLand_room16Floor1_Gfx,         &AntLand_room16Floor1_ColH},
+	{        AntLand_room16Floor2_Gfx,         &AntLand_room16Floor2_ColH},
+	{         AntLand_room16Grate_Gfx,          &AntLand_room16Grate_ColH},
+	{      AntLand_fixedCamPillar_Gfx,       &AntLand_fixedCamPillar_ColH},
+	{                 Global_pole_Gfx,                  &Global_pole_ColH}
+};
+
+extern ModelCollision Global_unk1_ColH;
+
+rabObject AntLand_rabObjects[] = {
+	{0, 100.0, 100.0, 100.0, &Global_unk1_ColH},
+	{0, 100.0, 100.0, 100.0, &Global_unk1_ColH}
+};
+
+
+RoomObject AntLand_room0_objects[] = {
+	{{1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 83, -1, -1, -1, NULL, NULL, NULL, 0,  6,  4, 4, 0, -1, 0, 0},
+	{   {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 84, -1, -1, -1, NULL, NULL, NULL, 0,  6,  4, 4, 0, -1, 0, 0},
+	{   {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 85, -1, -1, -1, NULL, NULL, NULL, 0,  6,  4, 4, 0, -1, 0, 0},
+	{   {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 86, -1, -1, -1, NULL, NULL, NULL, 0,  6,  4, 4, 0, -1, 0, 0},
+	{   {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 87, -1, -1, -1, NULL, NULL, NULL, 0,  6,  4, 4, 0, -1, 0, 0},
+	{   {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0},    ROT_X, DEGREES_TO_RADIANS_2PI(0.0274155672), OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 38, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_EAST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{{-900.0, 0.0, -900.0}, {1.5, 1.5, 1.5}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room0_actors[] = {
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room1_objects[] = {
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_WEST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_EAST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 39, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {-900.0, 0.0, -900.0}, {1.5, 1.0, 1.5}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room1_actors[] = {
+	{GREY_ANT_SPAWNER, {-250.0, 0.0, -1100.0}, 180.0, -1500.0, 1500.0, 0.0, 0.0, -1500.0, 1500.0, 1, -250.0,  1100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8.0, 30.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,    {0.0, 0.0,  1100.0}, 180.0, -1500.0, 1500.0, 0.0, 0.0, -1500.0, 1500.0, 1,    0.0, -1100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8.0, 30.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,  {250.0, 0.0, -1100.0}, 180.0, -1500.0, 1500.0, 0.0, 0.0, -1500.0, 1500.0, 1,  250.0,  1100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8.0, 30.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room2_objects[] = {
+	{    {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 40, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_WEST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_EAST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{ {-900.0, 0.0, -900.0}, {1.5, 1.5, 1.5}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room2_actors[] = {
+	{RED_ANT_SPAWNER, {-200.0, 0.0, -400.0}, 100.0, -950.0, 950.0, -500.0, 0.0, -950.0, 950.0, 0, 18.0, 0.8, 4.0, 360000.0, 225.0, 0.0, 0.0, 0.0, 120.0, 8.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER, {-200.0, 0.0,  400.0}, 100.0, -950.0, 950.0, -500.0, 0.0, -950.0, 950.0, 0, 18.0, 0.8, 4.0, 360000.0, 135.0, 0.0, 0.0, 0.0, 120.0, 8.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER,  {300.0, 0.0, -300.0}, 100.0, -950.0, 950.0, -500.0, 0.0, -950.0, 950.0, 0, 18.0, 0.8, 4.0, 360000.0, 135.0, 0.0, 0.0, 0.0, 120.0, 8.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER,  {300.0, 0.0,  300.0}, 100.0, -950.0, 950.0, -500.0, 0.0, -950.0, 950.0, 0, 18.0, 0.8, 4.0, 360000.0, 225.0, 0.0, 0.0, 0.0, 120.0, 8.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room3_objects[] = {
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_WEST,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 52, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_EAST,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{ {1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, 0.0, 1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 37, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0, 0.0, 1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  3, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0, 0.0, 1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_SOUTH,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{    {0.0, 0.0, 1200.0}, {4.0, 4.0, 4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, 0.0, 1050.0}, {1.0, 1.0, 0.2}, ROT_NONE, DEGREES_TO_RADIANS_2PI(0.0274155672), OBJU_NORMAL,   OBJM_DOOR,    0.0,  400.0,  1050.0, 0.0,          1, 40, -1,   40, 0, 0,  9, -1, -1, 14, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {-900.0, 0.0, -900.0}, {1.5, 1.5, 1.5}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room3_actors[] = {
+	{       GREEN_ANT,     {0.0, 0.0,   600.0}, 100.0,  -900.0,  900.0, 0.0,  100.0,  -900.0,  900.0, 0,    30.0,    15.0,   650.0,     0.0,     0.0,     0.0, 0.0, 0.0, 39.0,   0.0, 0.0, 0.0},
+	{       GREEN_ANT,   {500.0, 0.0,  -400.0}, 100.0,  -900.0,  900.0, 0.0, 1000.0,  -900.0,  900.0, 0,    30.0,    15.0,   650.0,     0.0,     0.0,     0.0, 0.0, 0.0, 39.0,   0.0, 0.0, 0.0},
+	{       GREEN_ANT,  {-400.0, 0.0,  -400.0}, 100.0,  -900.0,  900.0, 0.0,  800.0,  -900.0,  900.0, 0,    30.0,    15.0,   650.0,     0.0,     0.0,     0.0, 0.0, 0.0, 39.0,   0.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,   {700.0, 0.0, -1100.0}, 180.0,  -900.0,  900.0, 0.0,  100.0,  -900.0,  900.0, 1,   700.0,  1100.0,   700.0,  1100.0,   700.0,  1100.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,  {-600.0, 0.0,  1100.0}, 180.0, -1000.0, 1000.0, 0.0,  100.0, -1000.0, 1000.0, 1,  -600.0, -1100.0,  -600.0, -1100.0,  -600.0, -1100.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {-1100.0, 0.0,   800.0},  90.0, -1000.0, 1000.0, 0.0,  100.0, -1000.0, 1000.0, 1,  1100.0,   800.0,  1100.0,   800.0,  1100.0,   800.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,  {1100.0, 0.0,   400.0},  90.0, -1000.0, 1000.0, 0.0,  100.0, -1000.0, 1000.0, 1, -1100.0,   400.0, -1100.0,   400.0, -1100.0,   400.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room20_objects[] = {
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 57, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_WEST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{  {900.0, 0.0, -900.0}, {1.5, 1.5, 1.5}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomObject AntLand_room4_objects[] = {
+	{   {0.0,     0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  5, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,     0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  4, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,     0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_NORTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{   {0.0,     0.0, -1200.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{   {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 42, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {140.0,     0.0,  -140.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 59, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{   {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 60, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{   {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 76, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{{1200.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{1200.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{1200.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_EAST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{{1200.0,     0.0,     0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{   {0.0,  -300.0,     0.0}, {1.0, 2.5, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  8, -1, -1, -1, NULL, NULL, NULL, 0, 6,  4, 4, 0, -1, 1, 0},
+	{   {0.0, -1500.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0, 0,  0, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room4_actors[] = {
+	{YELLOW_ANT, {-400.0, 0.0, 400.0}, 45.0, 200.0, 500.0, 0.0, 0.0, 200.0, 500.0, 1, 300.0, 300.0, 30.0, 8.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room5_objects[] = {
+	{  {200.0,   0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  8, -1, -1, -1, NULL, NULL, NULL, 0,  6,  4, 4, 0, -1, 1, 0},
+	{{-1400.0, 600.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1400.0, 600.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1400.0, 600.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_WEST,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1400.0, 600.0,     0.0}, {4.0, 4.0, 4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,   0.0,     0.0}, {0.8, 1.0, 0.8}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 43, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{  {300.0,   0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 68, -1, -1, -1, NULL, NULL, NULL, 0,  7,  4, 4, 0, -1, 0, 0},
+	{    {0.0,   0.0,  1400.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 37, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,   0.0,  1400.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  3, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,   0.0,  1400.0}, {1.0, 1.0, 1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_SOUTH,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,   0.0,  1400.0}, {4.0, 4.0, 4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,   0.0,  1250.0}, {1.0, 1.0, 0.2}, ROT_NONE, DEGREES_TO_RADIANS_2PI(0.0274155672), OBJU_NORMAL,   OBJM_DOOR,    0.0,  400.0,  1250.0, 0.0,          1, 40, -1,   40, 0, 0,  9, -1, -1,  4, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,   0.0, -1100.0}, {1.5, 1.5, 1.5}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room5_actors[] = {
+	{      YELLOW_ANT,   {500.0, 0.0,  -300.0}, 270.0,  -1500.0,  1500.0, 0.0, 0.0,  -1500.0,  1500.0, 1,  200.0,  300.0, 30.0, 8.0, 10.0, 0.0, 0.0, 0.0, 0.0,   0.0, 0.0, 0.0},
+	{      YELLOW_ANT,   {500.0, 0.0,   300.0}, 270.0,  -1500.0,  1500.0, 0.0, 0.0,  -1500.0,  1500.0, 1,  200.0,  300.0, 30.0, 8.0, 10.0, 0.0, 0.0, 0.0, 0.0,   1.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {-1300.0, 0.0,  1000.0},   0.0, -10000.0, 10000.0, 0.0, 0.0, -10000.0, 10000.0, 1, 1300.0, 1000.0,  0.0, 0.0,  0.0, 0.0, 0.0, 0.0, 8.0, 150.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,  {-800.0, 0.0, -1300.0},   0.0, -10000.0, 10000.0, 0.0, 0.0, -10000.0, 10000.0, 1, 1300.0,  800.0,  0.0, 0.0,  0.0, 0.0, 0.0, 0.0, 8.0, 150.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room6_objects[] = {
+	{    {0.0,     0.0, -1700.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  5, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  4, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_NORTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 44, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 61, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{{-1700.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{{-1700.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{{-1700.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_WEST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{{-1700.0,     0.0,     0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, -1500.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0, 0,  0, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room6_actors[] = {
+	{FALLING_GREY_ANT_SPAWNER, {-700.0, 1000.0, 1400.0}, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 750.0, 1400.0, 1400.0, 0.0, 1150.0, -1050.0, 360000.0, 0.0, 10.0, 60.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+void func_800A91E0(Collider*);
+void func_800A865C(Collider*);
+
+RoomObject AntLand_roomUnk_objects[] = {
+	{ {1200.0, -20.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 36, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, -20.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0,  2, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, -20.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,      OBJU_ZONE,     OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,   ZDIR_EAST,           1,  0,    0, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{ {1200.0, -20.0, 0.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, -10.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 77, -1, -1,  -1,           NULL,           NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{    {0.0,   0.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 78, -1, -1,  -1,           NULL,           NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, -20.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 35, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, -20.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0,  1, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, -20.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,      OBJU_ZONE,     OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,   ZDIR_WEST,           1,  0,    0, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{{-1200.0, -20.0, 0.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,   0.0, 0.0}, {0.88, 0.88, 0.88}, ROT_NONE, 0,    OBJU_NORMAL, OBJM_MOVESCRIPT,    7.0, 1000.0,     0.0, 0.0, -2146794240, -2146793572, 40,   24, 8, 11, 45, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{  {930.0, 500.0, 0.0},  {0.2,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,       OBJM_DOOR,  930.0,    0.0,     0.0, 0.0,           1,          30, -1,   30, 0,  0, 10, -1, -1,   0, &func_800A865C, &func_800A91E0, NULL, 0, 2,  4, 4, 0, 11, 0, 0},
+	{ {-930.0, 500.0, 0.0},  {0.2,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,       OBJM_DOOR, -930.0,    0.0,     0.0, 0.0,           1,          30, -1,   30, 0,  0, 10, -1, -1,   0, &func_800A865C, &func_800A91E0, NULL, 0, 2,  4, 4, 0, 11, 0, 0},
+	{ {-800.0,   0.0, 0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_FLAG_ZONE,     OBJM_NORMAL,  300.0, 1000.0,  2000.0, 0.0,        NULL,           0,  0,    0, 0,  0,  0, -1,  0, 523,           NULL,           NULL, NULL, 0, 7, -1, 1, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+void func_800A91E0(Collider*);
+void func_800A865C(Collider*);
+
+RoomObject AntLand_room7_objects[] = {
+	{ {1200.0, -20.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 36, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, -20.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0,  2, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0, -20.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,      OBJU_ZONE,     OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,   ZDIR_EAST,           1,  0,    0, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{ {1200.0, -20.0,    0.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, -10.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 77, -1, -1,  -1,           NULL,           NULL, NULL, 0,  7,  4, 4, 0, -1, 0, 0},
+	{    {0.0,   0.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 78, -1, -1,  -1,           NULL,           NULL, NULL, 0,  7,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, -20.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 35, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, -20.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0,  1, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, -20.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,      OBJU_ZONE,     OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,   ZDIR_WEST,           1,  0,    0, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1200.0, -20.0,    0.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,   0.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,        NULL,          90,  0, 1000, 0,  0, 45, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,   0.0,    0.0}, {0.88, 0.88, 0.88}, ROT_NONE, 0,    OBJU_NORMAL, OBJM_MOVESCRIPT,    7.0, 1000.0,     0.0, 0.0, -2146794240, -2146793572, 40,   24, 8, 11, 45, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{  {930.0, 500.0,    0.0},  {0.2,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,       OBJM_DOOR,  930.0,    0.0,     0.0, 0.0,           1,          30, -1,   30, 0,  0, 10, -1, -1,   0, &func_800A865C, &func_800A91E0, NULL, 0,  2,  4, 4, 0, 11, 0, 0},
+	{ {-930.0, 500.0,    0.0},  {0.2,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,       OBJM_DOOR, -930.0,    0.0,     0.0, 0.0,           1,          30, -1,   30, 0,  0, 10, -1, -1,   0, &func_800A865C, &func_800A91E0, NULL, 0,  2,  4, 4, 0, 11, 0, 0},
+	{  {400.0,   0.0,    0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_FLAG_ZONE,     OBJM_NORMAL,  300.0, 1000.0,  2000.0, 0.0,        NULL,           0,  0,    0, 0,  0,  0, -1,  0, 523,           NULL,           NULL, NULL, 0,  7, -1, 1, 0, -1, 0, 0},
+	{    {0.0,   0.0, -800.0},  {1.5,  1.5,  1.5}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,        NULL,           0,  0,    0, 0,  0, 91, -1, -1,  -1,           NULL,           NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomObject AntLand_room8_objects[] = {
+	{ {1700.0,     0.0,  1500.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,     0.0,  1500.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,     0.0,  1500.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_EAST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{ {1700.0,     0.0,  1500.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{{-1700.0,     0.0, -1500.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{-1700.0,     0.0, -1500.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{-1700.0,     0.0, -1500.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_WEST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{{-1700.0,     0.0, -1500.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{{-1501.0,  -100.0,   900.0}, {0.01, 11.0, 44.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{{-1501.0,  -100.0, -3000.0}, {0.01, 11.0, 26.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{{-1501.0,   300.0, -1500.0}, {0.01, 11.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,  -100.0,  -900.0}, {0.01, 11.0, 44.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,  -100.0,  3000.0}, {0.01, 11.0, 26.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,   300.0,  1500.0}, {0.01, 11.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,  -100.0, -3001.0}, {32.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,  -100.0,  3001.0}, {32.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 46, -1, -1, -1, NULL, NULL, NULL, 0, 0,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 62, -1, -1, -1, NULL, NULL, NULL, 0, 6,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 81, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 82, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0, -1500.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0, 0,  0, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room8_actors[] = {
+	{ANT_TRIO_SPAWNER, {-600.0, 800.0, -1500.0}, 0.0,     0.0,    0.0,      0.0,    0.0,     0.0,    0.0, 1,  500.0, -1900.0, -1200.0, 2500.0, 600.0, 2000.0, 360000.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{ANT_TRIO_SPAWNER, {-600.0, 800.0, -1700.0}, 0.0,     0.0,    0.0,      0.0,    0.0,     0.0,    0.0, 1,  900.0, -2200.0,  -900.0, 2200.0, 600.0, 1800.0, 360000.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{ANT_TRIO_SPAWNER, {-600.0, 800.0, -1900.0}, 0.0,     0.0,    0.0,      0.0,    0.0,     0.0,    0.0, 1, 1200.0, -2500.0,  -500.0, 1900.0, 600.0, 1600.0, 360000.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{        ANT_TRIO,  {400.0,   0.0, -1650.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1,  400.0, -1650.0, -1200.0, 2500.0, 600.0, 2000.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO,  {100.0,   0.0,  -900.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1,  100.0,  -900.0, -1200.0, 2500.0, 600.0, 2000.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO, {-150.0,   0.0,  -200.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1, -150.0,  -200.0, -1200.0, 2500.0, 600.0, 2000.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO, {-450.0,   0.0,   600.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1, -450.0,   600.0, -1200.0, 2500.0, 600.0, 2000.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO, {-750.0,   0.0,  1300.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1, -750.0,  1300.0, -1200.0, 2500.0, 600.0, 2000.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO,  {750.0,   0.0, -1850.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1,  750.0, -1850.0,  -900.0, 2200.0, 600.0, 1800.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO,  {400.0,   0.0, -1000.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1,  400.0, -1000.0,  -900.0, 2200.0, 600.0, 1800.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO,  {100.0,   0.0,  -250.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1,  100.0,  -250.0,  -900.0, 2200.0, 600.0, 1800.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO, {-200.0,   0.0,   500.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1, -200.0,   500.0,  -900.0, 2200.0, 600.0, 1800.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO, {-500.0,   0.0,  1200.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1, -500.0,  1200.0,  -900.0, 2200.0, 600.0, 1800.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO, {1000.0,   0.0, -2000.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1, 1000.0, -2000.0,  -500.0, 1900.0, 600.0, 1600.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO,  {700.0,   0.0, -1200.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1,  700.0, -1200.0,  -500.0, 1900.0, 600.0, 1600.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO,  {350.0,   0.0,  -300.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1,  350.0,  -300.0,  -500.0, 1900.0, 600.0, 1600.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO,   {50.0,   0.0,   450.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1,   50.0,   450.0,  -500.0, 1900.0, 600.0, 1600.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	{        ANT_TRIO, {-200.0,   0.0,  1100.0}, 0.0, -5000.0, 5000.0, -50000.0, 5000.0, -5000.0, 5000.0, 1, -200.0,  1100.0,  -500.0, 1900.0, 600.0, 1600.0, 360000.0, 0.0, 10.0,   0.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room9_objects[] = {
+	{ {2200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {2200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {2200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_EAST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{ {2200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, 0.0,    0.0}, {2.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 47, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-2200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-2200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-2200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_WEST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-2200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{ {1900.0, 0.0, -900.0}, {1.5, 1.5, 1.5}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room9_actors[] = {
+	{RED_ANT_SPAWNER, {-1150.0, 0.0, -600.0}, 240.0, -1900.0, 1900.0, -500.0, 0.0, -950.0, 950.0, 0, 20.0, 0.8, 6.0,  810000.0, 225.0, 0.0, 0.0, 0.0, 100.0, 16.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER,  {-150.0, 0.0, -600.0}, 240.0, -1900.0, 1900.0, -500.0, 0.0, -950.0, 950.0, 0, 20.0, 0.8, 6.0,  810000.0,  60.0, 0.0, 0.0, 0.0, 110.0, 16.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER,   {850.0, 0.0, -600.0}, 240.0, -1900.0, 1900.0, -500.0, 0.0, -950.0, 950.0, 0, 20.0, 0.8, 6.0, 1000000.0, 315.0, 0.0, 0.0, 0.0, 100.0, 16.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER,  {-650.0, 0.0,    0.0}, 240.0, -1900.0, 1900.0, -500.0, 0.0, -950.0, 950.0, 0, 21.0, 0.6, 5.0, 1210000.0, 180.0, 0.0, 0.0, 0.0,  90.0, 16.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER,   {150.0, 0.0,    0.0}, 240.0, -1900.0, 1900.0, -500.0, 0.0, -950.0, 950.0, 0, 21.0, 0.6, 5.0, 1210000.0,   0.0, 0.0, 0.0, 0.0,  90.0, 16.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER, {-1150.0, 0.0,  600.0}, 240.0, -1900.0, 1900.0, -500.0, 0.0, -950.0, 950.0, 0, 20.0, 0.8, 6.0,  810000.0, 135.0, 0.0, 0.0, 0.0, 100.0, 16.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER,  {-150.0, 0.0,  600.0}, 240.0, -1900.0, 1900.0, -500.0, 0.0, -950.0, 950.0, 0, 20.0, 0.8, 6.0,  810000.0, 300.0, 0.0, 0.0, 0.0, 110.0, 16.0, 0.0, 0.0},
+	{RED_ANT_SPAWNER,   {850.0, 0.0,  600.0}, 240.0, -1900.0, 1900.0, -500.0, 0.0, -950.0, 950.0, 0, 20.0, 0.8, 6.0, 1000000.0,  45.0, 0.0, 0.0, 0.0, 100.0, 16.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room10_objects[] = {
+	{ {-600.0,     0.0,  -700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  8, -1, -1, -1, NULL, NULL, NULL, 0, 6,  4, 4, 0, -1, 1, 0},
+	{  {500.0,     0.0,  -700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  8, -1, -1, -1, NULL, NULL, NULL, 0, 6,  4, 4, 0, -1, 1, 0},
+	{ {-600.0,     0.0,   500.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  8, -1, -1, -1, NULL, NULL, NULL, 0, 6,  4, 4, 0, -1, 1, 0},
+	{ {1700.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_EAST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{ {1700.0,     0.0,     0.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  3, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_SOUTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{ {1501.0,  -100.0,   900.0}, {0.01, 11.0, 14.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,  -100.0,  -900.0}, {0.01, 11.0, 14.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,   300.0,     0.0}, {0.01, 11.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,  -100.0, -1501.0}, {32.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{{-1501.0,  -100.0,     0.0}, {0.01, 11.0, 32.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {-900.0,  -100.0,  1501.0}, {14.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{  {900.0,  -100.0,  1501.0}, {14.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,   300.0,  1501.0},  {4.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 48, -1, -1, -1, NULL, NULL, NULL, 0, 0,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 64, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 65, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 66, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 67, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0, -1500.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0, 0,  0, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room10_actors[] = {
+	{GREY_ANT_SPAWNER, {1050.0, 0.0, -1400.0}, 180.0, -1700.0, 1700.0, 0.0, 10.0, -1700.0, 1700.0, 1, 1050.0, 1050.0, -1400.0, 1050.0, -1400.0, 1050.0, 0.0, 0.0, 10.0, 15.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room11_objects[] = {
+	{  {0.0,     0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  5, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{  {0.0,     0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  4, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{  {0.0,     0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_NORTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{  {0.0,     0.0, -1200.0}, {4.0, 4.0, 4.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{  {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 49, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{  {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  8, -1, -1, -1, NULL, NULL, NULL, 0, 6,  4, 4, 0, -1, 1, 0},
+	{{300.0,     0.0,     0.0}, {0.5, 0.8, 0.8},    ROT_Y, DEGREES_TO_RADIANS_2PI(-90.0), OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 74, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{  {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 74, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{  {0.0,     0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 75, -1, -1, -1, NULL, NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{  {0.0,     0.0,  1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 37, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{  {0.0,     0.0,  1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  3, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{  {0.0,     0.0,  1200.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_SOUTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{  {0.0,     0.0,  1200.0}, {4.0, 4.0, 4.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{  {0.0, -1500.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE,                             0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0, 0,  0, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomObject AntLand_room12_objects[] = {
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  5, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  4, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_NORTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{ {1700.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_EAST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{ {1700.0,     0.0,     0.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{ {1501.0,  -100.0,   900.0}, {0.01, 11.0, 14.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,  -100.0,  -900.0}, {0.01, 11.0, 14.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,   300.0,     0.0}, {0.01, 11.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {-900.0,  -100.0, -1501.0}, {14.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{  {900.0,  -100.0, -1501.0}, {14.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,   300.0, -1501.0},  {4.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{{-1501.0,  -100.0,     0.0}, {0.01, 11.0, 32.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,  -100.0,  1501.0}, {32.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 50, -1, -1, -1, NULL, NULL, NULL, 0, 0,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 72, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 73, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0, -1500.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0, 0,  0, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room12_actors[] = {
+	{GREY_ANT_SPAWNER, {1150.0, 0.0, 1350.0}, 0.0, -5000.0, 5000.0, 0.0, 0.0, -5000.0, 5000.0, 0, 350.0, 1350.0, 350.0, 100.0, -1350.0, 100.0, -1350.0, -1350.0, 8.0, 30.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room13_objects[] = {
+	{    {0.0,   0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0,  0,    0, 0, 0,  8, -1, -1, -1, NULL, NULL, NULL, 0,  6,  4, 4, 0, -1, 1, 0},
+	{{-1700.0, 600.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90,  0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1700.0, 600.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90,  0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1700.0, 600.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_WEST,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1700.0, 600.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,   0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90,  0, 1000, 0, 0, 51, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,   0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90,  0, 1000, 0, 0, 69, -1, -1, -1, NULL, NULL, NULL, 0,  7,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,   0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90,  0, 1000, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,   0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90,  0, 1000, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1700.0,   0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_EAST,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{ {1700.0,   0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{ {1550.0,   0.0,    0.0}, {0.2, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL,   OBJM_DOOR, 1550.0,  400.0,     0.0, 0.0,         1, 40, -1,   40, 0, 0,  9, -1, -1,  6, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1400.0,   0.0, 1400.0}, {1.5, 1.5, 1.5}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0,  0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room13_actors[] = {
+	{      YELLOW_ANT,   {500.0, 0.0,  -300.0}, 270.0,  -1500.0,  1500.0, 0.0, 0.0,  -1500.0,  1500.0, 1,  400.0,   600.0, 30.0, 12.0, 10.0, 0.0, 0.0, 0.0,  0.0,   0.0, 0.0, 0.0},
+	{      YELLOW_ANT,   {500.0, 0.0,   300.0}, 270.0,  -1500.0,  1500.0, 0.0, 0.0,  -1500.0,  1500.0, 1,  400.0,   600.0, 30.0, 12.0, 10.0, 0.0, 0.0, 0.0,  0.0,   0.0, 0.0, 0.0},
+	{      YELLOW_ANT,  {-500.0, 0.0,   300.0}, 270.0,  -1500.0,  1500.0, 0.0, 0.0,  -1500.0,  1500.0, 1,  400.0,   600.0, 30.0, 12.0, 10.0, 0.0, 0.0, 0.0,  0.0,   0.0, 0.0, 0.0},
+	{      YELLOW_ANT,  {-500.0, 0.0,  -300.0}, 270.0,  -1500.0,  1500.0, 0.0, 0.0,  -1500.0,  1500.0, 1,  400.0,   600.0, 30.0, 12.0, 10.0, 0.0, 0.0, 0.0,  0.0,   0.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {-1600.0, 0.0,  1200.0},   0.0, -10000.0, 10000.0, 0.0, 0.0, -10000.0, 10000.0, 1, 1600.0,  1200.0,  0.0,  0.0,  0.0, 0.0, 0.0, 0.0, 12.0,  90.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {-1100.0, 0.0, -1600.0},   0.0, -10000.0, 10000.0, 0.0, 0.0, -10000.0, 10000.0, 1, 1600.0,  1100.0,  0.0,  0.0,  0.0, 0.0, 0.0, 0.0, 12.0, 150.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {-1300.0, 0.0,   300.0},   0.0, -10000.0, 10000.0, 0.0, 0.0, -10000.0, 10000.0, 1, 1600.0, -1100.0,  0.0,  0.0,  0.0, 0.0, 0.0, 0.0, 12.0, 150.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room14_objects[] = {
+	{ {1200.0,    0.0, -1000.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0, 36, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0,    0.0, -1000.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  2, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {1200.0,    0.0, -1000.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_EAST,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{ {1200.0,    0.0, -1000.0},  {4.0,  4.0,  4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,    0.0,  2200.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,    0.0,  2200.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  3, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,    0.0,  2200.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_SOUTH,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,    0.0,  2200.0},  {4.0,  4.0,  4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{{-1200.0,    0.0, -1000.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0,    0.0, -1000.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0,    0.0, -1000.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0,  ZDIR_WEST,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1200.0,    0.0, -1000.0},  {4.0,  4.0,  4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{ {1001.0, -100.0,  1000.0}, {0.01, 11.0, 36.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{ {1001.0, -100.0, -2000.0}, {0.01, 11.0, 16.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{ {1001.0,  300.0, -1000.0}, {0.01, 11.0,  4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{    {0.0, -100.0, -2001.0}, {32.0, 11.0, 0.01}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{{-1001.0, -100.0,  1000.0}, {0.01, 11.0, 36.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{{-1001.0, -100.0, -2000.0}, {0.01, 11.0, 16.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{{-1001.0,  300.0, -1000.0}, {0.01, 11.0,  4.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{ {-900.0, -100.0,  2001.0}, {14.0, 11.0, 0.01}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{  {900.0, -100.0,  2001.0}, {14.0, 11.0, 0.01}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,  300.0,  2001.0},  {4.0, 11.0, 0.01}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,   -1.0,     0.0}, {30.0, 0.01, 50.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2,  0, 4, 0, -1, 0, 0},
+	{    {0.0,    0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 41, -1, -1, -1, NULL, NULL, NULL, 0,  0,  4, 4, 0, -1, 0, 0},
+	{    {0.0,    0.0,  2050.0},  {1.0,  1.0,  0.2}, ROT_NONE, DEGREES_TO_RADIANS_2PI(0.0274155672), OBJU_NORMAL,   OBJM_DOOR,    0.0,  400.0,  2050.0, 0.0,          1, 40, -1,   40, 0, 0,  9, -1, -1,  7, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{ {-900.0,    0.0,  -150.0},  {1.5,  1.5,  1.5}, ROT_NONE,                                    0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room14_actors[] = {
+	{       GREEN_ANT,   {600.0, 0.0,  -300.0}, 100.0,  -900.0,  900.0, 0.0, 1000.0, -1900.0, 1900.0, 0,    30.0,    15.0,   650.0,     0.0,     0.0,     0.0, 0.0, 0.0, 62.0,   0.0, 0.0, 0.0},
+	{       GREEN_ANT,  {-600.0, 0.0,  -300.0}, 100.0,  -900.0,  900.0, 0.0, 1000.0, -1900.0, 1900.0, 0,    30.0,    15.0,   650.0,     0.0,     0.0,     0.0, 0.0, 0.0, 42.0,   0.0, 0.0, 0.0},
+	{       GREEN_ANT,   {600.0, 0.0,  1600.0}, 100.0,  -900.0,  900.0, 0.0, 1000.0, -1900.0, 1900.0, 0,    30.0,    15.0,   650.0,     0.0,     0.0,     0.0, 0.0, 0.0, 52.0,   0.0, 0.0, 0.0},
+	{       GREEN_ANT,  {-600.0, 0.0,  1600.0}, 100.0,  -900.0,  900.0, 0.0, 1000.0, -1900.0, 1900.0, 0,    30.0,    15.0,   650.0,     0.0,     0.0,     0.0, 0.0, 0.0, 22.0,   0.0, 0.0, 0.0},
+	{       GREEN_ANT,     {0.0, 0.0,   600.0}, 100.0,  -900.0,  900.0, 0.0, 1000.0, -1900.0, 1900.0, 0,    30.0,    15.0,   650.0,     0.0,     0.0,     0.0, 0.0, 0.0, 39.0,   0.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,  {-600.0, 0.0, -2100.0}, 180.0, -1000.0, 1000.0, 0.0,  100.0, -2000.0, 2000.0, 1,  -600.0,  2100.0,  -600.0,  2100.0,  -600.0,  2100.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,  {-600.0, 0.0,  2100.0},   0.0, -1200.0, 1200.0, 0.0, 1000.0, -2000.0, 2000.0, 1,  -600.0, -2100.0,  -600.0, -2100.0,  -600.0, -2100.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {-1100.0, 0.0,   100.0},  90.0, -1200.0, 1200.0, 0.0, 1000.0, -2000.0, 2000.0, 1,  1100.0,   100.0,  1100.0,   100.0,  1100.0,   100.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {-1100.0, 0.0,  1100.0}, 270.0, -1200.0, 1200.0, 0.0, 1000.0, -2000.0, 2000.0, 1,  1100.0,  1100.0,  1100.0,  1100.0,  1100.0,  1100.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER,  {1100.0, 0.0,  -400.0}, 240.0, -1200.0, 1200.0, 0.0, 1000.0, -2000.0, 2000.0, 1, -1100.0,   600.0, -1100.0,   600.0, -1100.0,   600.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {-1100.0, 0.0,  1600.0},  30.0, -1200.0, 1200.0, 0.0, 1000.0, -2000.0, 2000.0, 1,  1100.0,   600.0,  1100.0,   600.0,  1100.0,   600.0, 0.0, 0.0, 10.0, 120.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room21_objects[] = {
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 35, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  1, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_WEST,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{{-1200.0, 0.0,    0.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{    {0.0, 0.0,    0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 58, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{  {450.0, 0.0, -150.0}, {1.0, 5.5, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0,  6,  4, 4, 0, -1, 1, 0},
+	{    {0.0, 0.0,    0.0}, {1.0, 1.1, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 70, -1, -1, -1, NULL, NULL, NULL, 0,  2,  4, 4, 0, -1, 0, 0},
+	{    {0.0, 0.0,    0.0}, {1.0, 1.5, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,      NULL, 90, 0, 1000, 0, 0, 71, -1, -1, -1, NULL, NULL, NULL, 0,  2,  4, 4, 0, -1, 0, 0},
+	{ {-900.0, 0.0,  900.0}, {1.5, 1.5, 1.5}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,      NULL,  0, 0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+void func_800A91E0(Collider*);
+void func_800A865C(Collider*);
+
+RoomObject AntLand_room15_objects[] = {
+	{   {0.0,   0.0, -1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  5, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0, -1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  4, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0, -1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,      OBJU_ZONE,     OBJM_NORMAL,  400.0,  400.0,     0.0,    0.0,  ZDIR_NORTH,           1,  0,    0, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{   {0.0,   0.0, -1200.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{   {0.0,   0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0, 54, -1, -1,  -1,           NULL,           NULL, NULL, 0,  7,  4, 4, 0, -1, 0, 0},
+	{   {0.0, -10.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0, 79, -1, -1,  -1,           NULL,           NULL, NULL, 0,  7,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0, 80, -1, -1,  -1,           NULL,           NULL, NULL, 0,  7,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0,  1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0, 37, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0,  1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  3, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0,  1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,      OBJU_ZONE,     OBJM_NORMAL,  400.0,  400.0,     0.0,    0.0,  ZDIR_SOUTH,           1,  0,    0, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{   {0.0,   0.0,  1200.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{   {0.0,   0.0,     0.0}, {0.88, 0.88, 0.88}, ROT_NONE, 0,    OBJU_NORMAL, OBJM_MOVESCRIPT,   10.0,    0.0,     0.0, 1000.0, -2146794240, -2146793572, 60,   32, 6, 12, 54, -1, -1,  -1,           NULL,           NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0, 500.0,   930.0},  {1.0,  1.0,  0.2}, ROT_NONE, 0,    OBJU_NORMAL,       OBJM_DOOR,    0.0,    0.0,   930.0,    0.0,           1,          30, -1,   30, 0,  0, 10, -1, -1,   0, &func_800A865C, &func_800A91E0, NULL, 0,  2,  4, 4, 0, 11, 0, 0},
+	{   {0.0, 500.0,  -930.0},  {1.0,  1.0,  0.2}, ROT_NONE, 0,    OBJU_NORMAL,       OBJM_DOOR,    0.0,    0.0,  -930.0,    0.0,           1,          30, -1,   30, 0,  0, 10, -1, -1,   0, &func_800A865C, &func_800A91E0, NULL, 0,  2,  4, 4, 0, 11, 0, 0},
+	{   {0.0,   0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_FLAG_ZONE,     OBJM_NORMAL, 2000.0, 1000.0,   300.0,    0.0,        NULL,           0,  0,    0, 0,  0,  0, -1,  0, 524,           NULL,           NULL, NULL, 0,  7, -1, 1, 0, -1, 0, 0},
+	{{-800.0,   0.0,     0.0},  {1.5,  1.5,  1.5}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL,    0.0,    0.0,     0.0,    0.0,        NULL,           0,  0,    0, 0,  0, 91, -1, -1,  -1,           NULL,           NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+void func_800A91E0(Collider*);
+void func_800A865C(Collider*);
+
+RoomObject AntLand_roomUnk3_objects[] = {
+	{{0.0,   0.0, -1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  5, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{0.0,   0.0, -1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  4, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{0.0,   0.0, -1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,      OBJU_ZONE,     OBJM_NORMAL,  400.0,  400.0,     0.0,    0.0,  ZDIR_NORTH,           1,  0,    0, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{{0.0,   0.0, -1200.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{{0.0, -10.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0, 79, -1, -1,  -1,           NULL,           NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{{0.0,   0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0, 80, -1, -1,  -1,           NULL,           NULL, NULL, 0, 7,  4, 4, 0, -1, 0, 0},
+	{{0.0,   0.0,  1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0, 37, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{0.0,   0.0,  1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  3, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{0.0,   0.0,  1200.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,      OBJU_ZONE,     OBJM_NORMAL,  400.0,  400.0,     0.0,    0.0,  ZDIR_SOUTH,           1,  0,    0, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{{0.0,   0.0,  1200.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0,    OBJU_NORMAL,     OBJM_NORMAL, 1400.0, 1000.0, -1000.0,    0.0,        NULL,          90,  0, 1000, 0,  0,  0, -1, -1,  -1,           NULL,           NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{{0.0,   0.0,     0.0}, {0.88, 0.88, 0.88}, ROT_NONE, 0,    OBJU_NORMAL, OBJM_MOVESCRIPT,   10.0,    0.0,     0.0, 1000.0, -2146794240, -2146793572, 60,   32, 6, 12, 54, -1, -1,  -1,           NULL,           NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{{0.0, 500.0,   930.0},  {1.0,  1.0,  0.2}, ROT_NONE, 0,    OBJU_NORMAL,       OBJM_DOOR,    0.0,    0.0,   930.0,    0.0,           1,          30, -1,   30, 0,  0, 10, -1, -1,   0, &func_800A865C, &func_800A91E0, NULL, 0, 2,  4, 4, 0, 11, 0, 0},
+	{{0.0, 500.0,  -930.0},  {1.0,  1.0,  0.2}, ROT_NONE, 0,    OBJU_NORMAL,       OBJM_DOOR,    0.0,    0.0,  -930.0,    0.0,           1,          30, -1,   30, 0,  0, 10, -1, -1,   0, &func_800A865C, &func_800A91E0, NULL, 0, 2,  4, 4, 0, 11, 0, 0},
+	{{0.0,   0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_FLAG_ZONE,     OBJM_NORMAL, 2000.0, 1000.0,   300.0,    0.0,        NULL,           0,  0,    0, 0,  0,  0, -1,  0, 524,           NULL,           NULL, NULL, 0, 7, -1, 1, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomObject AntLand_room16_objects[] = {
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  5, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  4, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_NORTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  3, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_SOUTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {4.0,  4.0,  4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{{-1501.0,  -100.0,     0.0}, {0.01, 11.0, 32.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,  -100.0,     0.0}, {0.01, 11.0, 32.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {-900.0,  -100.0, -1501.0}, {14.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{  {900.0,  -100.0, -1501.0}, {14.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,   300.0, -1501.0},  {4.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {-900.0,  -100.0,  1501.0}, {14.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{  {900.0,  -100.0,  1501.0}, {14.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,   300.0,  1501.0},  {4.0, 11.0, 0.01}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 88, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 89, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 90, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 56, -1, -1, -1, NULL, NULL, NULL, 0, 0,  4, 4, 0, -1, 0, 0},
+	{    {0.0, -1500.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0, 0,  0, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room16_actors[] = {
+	{GREY_ANT_SPAWNER, {1150.0, 0.0, -1050.0}, 0.0, -1500.0, 0.0, -1500.0, 1500.0, 0.0, -1500.0, 1, -1350.0, -1050.0, -1350.0,    0.0,  1350.0,    0.0,  1350.0, 1350.0, 12.0, 20.0, 0.0, 0.0},
+	{GREY_ANT_SPAWNER, {1350.0, 0.0, -1050.0}, 0.0, -1500.0, 0.0, -1500.0, 1500.0, 0.0, -1500.0, 1,  1350.0,  -100.0, -1350.0, -100.0, -1350.0, -100.0, -1350.0, 1150.0, 12.0, 20.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room17_objects[] = {
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  5, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  4, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_NORTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,     0.0, -1700.0},  {4.0,  4.0,  4.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 37, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  3, -1, -1, -1, NULL, NULL, NULL, 0, 3,  4, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_SOUTH,  1, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 2, -1, 1, 0, -1, 0, 0},
+	{    {0.0,     0.0,  1700.0},  {4.0,  4.0,  4.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 1,  0, 0, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 53, -1, -1, -1, NULL, NULL, NULL, 0, 0,  4, 4, 0, -1, 0, 0},
+	{{-1501.0,  -100.0,     0.0}, {0.01, 11.0, 32.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {1501.0,  -100.0,     0.0}, {0.01, 11.0, 32.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {-900.0,  -100.0, -1501.0}, {14.0, 11.0, 0.01}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{  {900.0,  -100.0, -1501.0}, {14.0, 11.0, 0.01}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,   300.0, -1501.0},  {4.0, 11.0, 0.01}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {-900.0,  -100.0,  1501.0}, {14.0, 11.0, 0.01}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{  {900.0,  -100.0,  1501.0}, {14.0, 11.0, 0.01}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,   300.0,  1501.0},  {4.0, 11.0, 0.01}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{    {0.0,     0.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 63, -1, -1, -1, NULL, NULL, NULL, 0, 6,  4, 4, 0, -1, 0, 0},
+	{{-1300.0,  -200.0,  1300.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 71, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{  {100.0,  -200.0,  1300.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90, 0, 1000, 0, 0, 71, -1, -1, -1, NULL, NULL, NULL, 0, 3,  0, 4, 0, -1, 0, 0},
+	{ {-300.0,     0.0, -1000.0},  {1.2,  1.0,  1.2},    ROT_Y, DEGREES_TO_RADIANS_2PI(90.0), OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 74, -1, -1, -1, NULL, NULL, NULL, 0, 2,  4, 4, 0, -1, 0, 0},
+	{    {0.0, -1500.0,     0.0},  {1.0,  1.0,  1.0}, ROT_NONE,                            0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0, 0,    0, 0, 0, 92, -1, -1, -1, NULL, NULL, NULL, 0, 0,  0, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room17_actors[] = {
+	{BULLET_HELL_ANT_SPAWNER, {-490.0, 0.0, 1600.0}, 90.0, -1500.0, 1500.0, 0.0, 0.0, -1500.0, 1500.0, 1, 40.0,  8.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 10.0, 0.0, 0.0},
+	{BULLET_HELL_ANT_SPAWNER, {-970.0, 0.0, 1600.0}, 90.0, -1500.0, 1500.0, 0.0, 0.0, -1500.0, 1500.0, 1, 40.0, -8.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 30.0, 0.0, 0.0},
+	{BULLET_HELL_ANT_SPAWNER,  {490.0, 0.0, 1600.0}, 90.0, -1500.0, 1500.0, 0.0, 0.0, -1500.0, 1500.0, 1, 40.0,  8.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 10.0, 0.0, 0.0},
+	{BULLET_HELL_ANT_SPAWNER,  {970.0, 0.0, 1600.0}, 90.0, -1500.0, 1500.0, 0.0, 0.0, -1500.0, 1500.0, 1, 40.0, -8.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 30.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+RoomObject AntLand_room18_objects[] = {
+	{   {0.0,   0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  5, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  4, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0, -1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_NORTH,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{   {0.0,   0.0, -1200.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{   {0.0,   0.0,     0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 55, -1, 13, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0,  1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0, 37, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0,  1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  3, -1, -1, -1, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{   {0.0,   0.0,  1200.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0,   OBJU_ZONE, OBJM_NORMAL,  400.0,  400.0,     0.0, 0.0, ZDIR_SOUTH,  1,  0,    0, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  2, -1, 1, 0, -1, 0, 0},
+	{   {0.0,   0.0,  1200.0}, {4.0, 4.0, 4.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 1400.0, 1000.0, -1000.0, 0.0,       NULL, 90,  0, 1000, 0, 0,  0, -1, -1, -1, NULL, NULL, NULL, 0,  1,  0, 0, 0, -1, 0, 0},
+	{   {0.0, 400.0, -1050.0}, {1.0, 1.0, 0.2}, ROT_NONE, 0, OBJU_NORMAL,   OBJM_DOOR,    0.0,    0.0, -1050.0, 0.0,          1, 15, -1,   40, 0, 0,  9, -1, -1, 13, NULL, NULL, NULL, 0,  3,  4, 4, 0, -1, 0, 0},
+	{{-900.0,   0.0,  -900.0}, {1.5, 1.5, 1.5}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL,    0.0,    0.0,     0.0, 0.0,       NULL,  0,  0,    0, 0, 0, 91, -1, -1, -1, NULL, NULL, NULL, 0, 34,  4, 4, 0, -1, 0, 0},
+	NULL_OBJECT
+};
+
+
+RoomObject AntLand_room19_objects[] = {
+	{{0.0, 0.0, 0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 0.0, 0.0, 0.0, 0.0, NULL, 0, 0, 0, 0, 0, 38, -1, -1, -1, NULL, NULL, NULL, 0, 2, 0, 4, 0, -1, 0, 0},
+	{{0.0, 0.0, 0.0}, {1.0, 1.0, 1.0}, ROT_NONE, 0, OBJU_NORMAL, OBJM_NORMAL, 0.0, 0.0, 0.0, 0.0, NULL, 0, 0, 0, 0, 0,  8, -1, -1, -1, NULL, NULL, NULL, 0, 6, 4, 4, 0, -1, 1, 0},
+	NULL_OBJECT
+};
+
+
+RoomActor AntLand_room19_actors[] = {
+	{YELLOW_ANT, {800.0, 0.0, 300.0}, 270.0, 300.0, 300.0, 0.0, 0.0, 0.0, 0.0, 1, 300.0, 300.0, 60.0, 12.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+	NULL_ACTOR
+};
+
+
+s32 AntLand_spriteLib[4][16] = {
+{           SPRITE_ANTHOLE,
+              SPRITE_FIRE2,
+     SPRITE_GREENANTBOTTOM,
+        SPRITE_GREENANTTOP,
+            SPRITE_GRAYANT,
+   SPRITE_CATERPILLAR_PART,
+       SPRITE_CATERPILLAR},
+{           SPRITE_ANTHOLE,
+              SPRITE_FIRE2,
+            SPRITE_GRAYANT,
+   SPRITE_CATERPILLAR_PART,
+       SPRITE_CATERPILLAR},
+{SPRITE_CATERPILLAR_APPEAR,
+            SPRITE_ANTHOLE,
+              SPRITE_FIRE2,
+   SPRITE_CATERPILLAR_PART,
+        SPRITE_CATERPILLAR,
+           SPRITE_GRAYANT},
+{SPRITE_CATERPILLAR_APPEAR,
+            SPRITE_ANTHOLE,
+              SPRITE_FIRE2,
+            SPRITE_GRAYANT,
+     SPRITE_GREENANTBOTTOM,
+        SPRITE_GREENANTTOP,
+   SPRITE_CATERPILLAR_PART,
+       SPRITE_CATERPILLAR}
+};
+
+
+SpriteActor AntLand_room0_sprites[] = {
+	{18, SPRITE_BLANK, {-700.0,   0.0, -300.0}, {100.0, 200.0, 200.0}, 1, 0.0, 60.0, 0,    0.0,    0.0, 0.0, 0,  {31,   1,   0,   0}},
+	{ 3, SPRITE_BLANK,  {900.0, 400.0, -900.0}, {100.0, 200.0, 250.0}, 1, 0.0, 60.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{ 3, SPRITE_BLANK,  {900.0, 400.0,  900.0}, {100.0, 200.0, 250.0}, 1, 0.0, 80.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{ 8, SPRITE_BLANK,  {990.0, 500.0, -900.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{ 8, SPRITE_BLANK,  {900.0, 500.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{ 8, SPRITE_BLANK,  {990.0, 500.0,  900.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{ 8, SPRITE_BLANK,  {900.0, 500.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 90.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room1_sprites[] = {
+	{4, SPRITE_BLANK, {-250.0,  50.0, -990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,    {0.0,  50.0, -990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {250.0,  50.0, -990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-250.0,  50.0,  990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,    {0.0,  50.0,  990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {250.0,  50.0,  990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-920.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0,  920.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0,  920.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 90.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0, -920.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0, -920.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,  100.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0, -100.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0, -100.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 90.0, 1, -100.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0,  100.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0,  100.0,   0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room2_sprites[] = {
+	{3, SPRITE_BLANK, {-930.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0,  930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0,  930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 90.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0, -930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0, -930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 81.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 90.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 81.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room3_sprites[] = {
+	{4, SPRITE_BLANK, {-600.0,  50.0, -990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0,  100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {700.0,  50.0, -990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0,  100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-600.0,  50.0,  990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, -100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {700.0,  50.0,  990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, -100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-990.0,  50.0,  400.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-990.0,  50.0,  800.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {990.0,  50.0,  400.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {990.0,  50.0,  800.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-930.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-930.0, 260.0, -642.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0,  930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0, -930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 65.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0, -642.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0,  930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0, -930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0, -642.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0, -100.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 65.0, 1,    0.0,  100.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0, -642.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0, -100.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1,    0.0,  100.0,    0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room4_sprites[] = {
+	{3, SPRITE_BLANK, {-950.0, 260.0, -650.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-950.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0,  950.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {650.0, 260.0,  950.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-950.0, 260.0, -650.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {950.0, 260.0, -650.0}, {100.0, 100.0, 150.0}, 1, 0.0, 74.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0, -650.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {650.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0, -650.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0, -650.0}, {100.0, 100.0, 150.0}, 1, 0.0, 74.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room5_sprites[] = {
+	{4, SPRITE_BLANK, {-1190.0,  50.0,  1000.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {1190.0,  50.0,  1000.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {-700.0,  50.0, -1190.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, -100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {1190.0,  50.0,   700.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1130.0, 260.0,   440.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-440.0, 260.0,  1130.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1130.0, 860.0,   440.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,   {540.0, 260.0, -1130.0}, {100.0, 100.0, 150.0}, 1, 0.0,  8.0, 0,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1130.0, 260.0,  -540.0}, {100.0, 100.0, 150.0}, 1, 0.0,  8.0, 0,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-440.0, 260.0, -1130.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1190.0, 260.0,   440.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-440.0, 260.0,  1190.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0, -100.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1190.0, 860.0,   440.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {540.0, 260.0, -1190.0}, {100.0, 100.0, 150.0}, 1, 0.0,  8.0, 0,    0.0,  100.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1190.0, 260.0,  -540.0}, {100.0, 100.0, 150.0}, 1, 0.0,  8.0, 0, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-440.0, 260.0, -1190.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,  100.0,    0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room6_sprites[] = {
+	{3, SPRITE_BLANK,   {750.0, 260.0, -1420.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,   0.0,   0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1420.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,   0.0,   0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1420.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,   0.0,   0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0, -1420.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,   0.0,   0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0, -1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,   0.0, 100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1, 100.0,   0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1, 100.0,   0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0, -1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,   0.0, 100.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room8_sprites[] = {
+	{3, SPRITE_BLANK, {-1430.0, 260.0,  2250.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1430.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1430.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1430.0, 260.0, -2250.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0, -2930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,   {750.0, 260.0, -2930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 48.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1430.0, 260.0, -2250.0}, {100.0, 100.0, 150.0}, 1, 0.0, 52.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1430.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1430.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 74.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1430.0, 260.0,  2250.0}, {100.0, 100.0, 150.0}, 1, 0.0, 76.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,   {750.0, 260.0,  2930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 90.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0,  2930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 66.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,  2250.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0, -2250.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0, -2990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0, -2990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 48.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0, -2250.0}, {100.0, 100.0, 150.0}, 1, 0.0, 52.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 74.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,  2250.0}, {100.0, 100.0, 150.0}, 1, 0.0, 76.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0,  2990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 90.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0,  2990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 66.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room9_sprites[] = {
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room10_sprites[] = {
+	{3, SPRITE_BLANK,  {1450.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1450.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,   {750.0, 260.0, -1450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0,  1450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1450.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1450.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0, -1450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,   {750.0, 260.0,  1450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 66.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0, -1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0,  1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0, -1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0,  1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 66.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room11_sprites[] = {
+	{3, SPRITE_BLANK, {-920.0, 260.0, -644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-920.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0,  920.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {920.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {920.0, 260.0, -644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0, -920.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0, -644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 80.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0, -644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room12_sprites[] = {
+	{3, SPRITE_BLANK,   {750.0, 260.0, -1430.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1430.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1430.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0,  1430.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1430.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1430.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0, -1430.0}, {100.0, 100.0, 150.0}, 1, 0.0, 66.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,   {750.0, 260.0,  1430.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0, -1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0,  1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0, -1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 66.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0,  1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room13_sprites[] = {
+	{4, SPRITE_BLANK, {-1490.0,  50.0,  1200.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {1490.0,  50.0,  1200.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-1000.0,  50.0, -1490.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0, 0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {1490.0,  50.0,  1000.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-1090.0,  50.0,   200.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {1490.0,  50.0, -1000.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1450.0, 860.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1450.0, 860.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 860.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,  100.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 860.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,  100.0, 0.0,   0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room14_sprites[] = {
+	{4, SPRITE_BLANK, {-600.0,  50.0, -1990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0,  100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {600.0,  50.0,  1990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0,  100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-600.0,  50.0,  1990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, -100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {600.0,  50.0, -1990.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, -100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-990.0,  50.0,   100.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-990.0,  50.0,   600.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-990.0,  50.0,  1100.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {990.0,  50.0,   100.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {990.0,  50.0,   600.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {990.0,  50.0,  1100.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {990.0,  50.0,  -400.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK, {-990.0,  50.0,  1600.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0,  1930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 73.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0,  1644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0,   450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0,  -450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0, -1930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 83.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0, -1930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-930.0, 260.0,  -450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-930.0, 260.0,   450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 69.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-930.0, 260.0,  1644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0,  1990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 73.0, 1,    0.0, -100.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,  1644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 72.0, 1, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,   450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,  -450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1, -100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0, -1990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 83.0, 1,    0.0,  100.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0, -1990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,  100.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,  -450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,   450.0}, {100.0, 100.0, 150.0}, 1, 0.0, 69.0, 1,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,  1644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,  100.0,    0.0,    0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room16_sprites[] = {
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room17_sprites[] = {
+	{4, SPRITE_BLANK,   {490.0,  50.0,  1490.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,   {970.0,  50.0,  1490.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {-490.0,  50.0,  1490.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{4, SPRITE_BLANK,  {-970.0,  50.0,  1490.0}, {100.0, 200.0, 250.0}, 1, 0.0,  1.0, 0,    0.0,    0.0, 100.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,   {750.0, 260.0, -1430.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1430.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-1430.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0,  1430.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1430.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 64.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {1430.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 66.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {-750.0, 260.0, -1430.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,   {750.0, 260.0,  1430.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0, -1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,  100.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,  100.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,  100.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0,  1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0, -100.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,   750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 64.0, 1, -100.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {1490.0, 260.0,  -750.0}, {100.0, 100.0, 150.0}, 1, 0.0, 66.0, 1, -100.0,    0.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {-750.0, 260.0, -1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 62.0, 1,    0.0,  100.0,   0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,   {750.0, 260.0,  1490.0}, {100.0, 100.0, 150.0}, 1, 0.0, 60.0, 1,    0.0, -100.0,   0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+SpriteActor AntLand_room20_sprites[] = {
+	{3, SPRITE_BLANK,  {930.0, 260.0, -644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0,  930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0,  930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {930.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK,  {642.0, 260.0, -930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 64.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-550.0, 260.0, -930.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{3, SPRITE_BLANK, {-930.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,    0.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0, -644.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 78.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 88.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0,  990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 58.0, 1,    0.0, -100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 68.0, 1, -100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK,  {642.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 64.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-550.0, 260.0, -990.0}, {100.0, 100.0, 150.0}, 1, 0.0, 70.0, 1,    0.0,  100.0, 0.0, 0, {255, 255, 255, 255}},
+	{8, SPRITE_BLANK, {-990.0, 260.0,  550.0}, {100.0, 100.0, 150.0}, 1, 0.0, 50.0, 1,  100.0,    0.0, 0.0, 0, {255, 255, 255, 255}},
+	NULL_SPRITE
+};
+
+
+Collectable AntLand_room0_collectables[] = {
+	{R_HEART, {-849.0, 0.0, -589.0}, -1},
+	{  CROWN, {-555.0, 0.0, -862.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room1_collectables[] = {
+	{CROWN, {-150.0, 0.0, 0.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room2_collectables[] = {
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room3_collectables[] = {
+	{R_HEART, {815.0, 0.0, 667.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room20_collectables[] = {
+	{  CROWN,    {0.0,  0.0, -550.0}, -1},
+	{  CROWN,  {400.0,  0.0, -400.0}, -1},
+	{  CROWN,  {550.0,  0.0,    0.0}, -1},
+	{  CROWN,  {400.0,  0.0,  400.0}, -1},
+	{  CROWN,    {0.0,  0.0,  550.0}, -1},
+	{  CROWN, {-400.0,  0.0,  400.0}, -1},
+	{  CROWN, {-550.0,  0.0,    0.0}, -1},
+	{  CROWN, {-400.0,  0.0, -400.0}, -1},
+	{O_HEART,    {0.0, 20.0,    0.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room5_collectables[] = {
+	{R_HEART, {-1120.0, 300.0, 300.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room6_collectables[] = {
+	{  CROWN,   {500.0, 0.0, -1100.0}, -1},
+	{R_HEART,  {1200.0, 0.0,   500.0}, -1},
+	{  CROWN, {-1100.0, 0.0,   500.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room8_collectables[] = {
+	{R_HEART, {-1080.0, 0.0,  2400.0}, -1},
+	{R_HEART,  {1020.0, 0.0, -2500.0}, -1},
+	{R_HEART,  {1020.0, 0.0, -2300.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room9_collectables[] = {
+	{R_HEART, {1020.0, 0.0, -2500.0}, -1},
+	{R_HEART, {1020.0, 0.0, -2400.0}, -1},
+	{R_HEART, {1020.0, 0.0, -2300.0}, -1},
+	{R_HEART,  {820.0, 0.0,     0.0}, -1},
+	{R_HEART,  {820.0, 0.0,  -100.0}, -1},
+	{R_HEART,  {820.0, 0.0,  -200.0}, -1},
+	{R_HEART,  {220.0, 0.0,   200.0}, -1},
+	{R_HEART,  {220.0, 0.0,   300.0}, -1},
+	{R_HEART,  {220.0, 0.0,   400.0}, -1},
+	{R_HEART, {-380.0, 0.0,  -200.0}, -1},
+	{R_HEART, {-380.0, 0.0,  -400.0}, -1},
+	{R_HEART, {-380.0, 0.0,  -300.0}, -1},
+	{R_HEART, {-980.0, 0.0,   100.0}, -1},
+	{R_HEART, {-980.0, 0.0,   200.0}, -1},
+	{R_HEART, {-980.0, 0.0,   300.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room10_collectables[] = {
+	{R_HEART,    {50.0, 0.0,  -150.0}, -1},
+	{O_HEART,  {-150.0, 0.0,    50.0}, -1},
+	{  CROWN,   {-50.0, 0.0, -1250.0}, -1},
+	{  CROWN, {-1250.0, 0.0,   -50.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room11_collectables[] = {
+	{  CROWN, {900.0, 0.0, -100.0}, -1},
+	{R_HEART, {900.0, 0.0,  100.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room12_collectables[] = {
+	{  CROWN, {1350.0, 0.0, 1350.0}, -1},
+	{R_HEART, {1230.0, 0.0, -250.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_roomUnk4_collectables[] = {
+	{  CROWN, {1350.0,   0.0, 1350.0}, -1},
+	{R_HEART,  {700.0, 300.0,  200.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room21_collectables[] = {
+	{  CROWN, {850.0, 880.0, -850.0}, -1},
+	{  CROWN, {650.0, 880.0, -850.0}, -1},
+	{  CROWN, {450.0, 880.0, -850.0}, -1},
+	{R_HEART, {850.0, 880.0, -650.0}, -1},
+	{O_HEART, {650.0, 880.0, -650.0}, -1},
+	{R_HEART, {450.0, 880.0, -650.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room16_collectables[] = {
+	{  CROWN,  {1350.0, 0.0, -1350.0}, -1},
+	{  CROWN, {-1350.0, 0.0,  1350.0}, -1},
+	{R_HEART,     {0.0, 0.0,  1050.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room17_collectables[] = {
+	{CROWN,   {500.0, 0.0,   500.0}, -1},
+	{CROWN,  {-500.0, 0.0,   500.0}, -1},
+	{CROWN, {-1300.0, 0.0, -1000.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+Collectable AntLand_room18_collectables[] = {
+	{R_HEART, {0.0, 150.0, 0.0}, -1},
+	{R_HEART, {0.0, 300.0, 0.0}, -1},
+	{  CROWN, {0.0, 450.0, 0.0}, -1},
+	NULL_COLLECTABLE
+};
+
+
+RoomInstance AntLand_room_instances[] = {
+	{ AntLand_room0_objects,  AntLand_room0_actors,  AntLand_room0_collectables,  AntLand_room0_sprites, 0, 0, 1,  0, -1,   0, 0.0,  1,  -900.0,  300.0,  -900.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room1_objects,  AntLand_room1_actors,  AntLand_room1_collectables,  AntLand_room1_sprites, 0, 0, 1,  0, -1, 200, 0.0,  1,  -900.0,  600.0,  -900.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room2_objects,  AntLand_room2_actors,  AntLand_room2_collectables,  AntLand_room2_sprites, 0, 0, 2,  0, -1,   0, 0.0,  1,  -900.0,  600.0,  -900.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room3_objects,  AntLand_room3_actors,  AntLand_room3_collectables,  AntLand_room3_sprites, 1, 0, 0,  2, 14,   0, 0.0,  1,  -900.0,  600.0,  -900.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room4_objects,  AntLand_room4_actors,                        NULL,  AntLand_room4_sprites, 0, 0, 1,  0, -1,   0, 0.0,  2,  -700.0,  800.0,  -950.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room5_objects,  AntLand_room5_actors,  AntLand_room5_collectables,  AntLand_room5_sprites, 1, 0, 1,  6,  4,   0, 0.0,  2,     0.0,  800.0, -1100.0, 0.0, 0.0,    1.8, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room6_objects,  AntLand_room6_actors,  AntLand_room6_collectables,  AntLand_room6_sprites, 0, 0, 1,  0, -1,   0, 0.0,  1,  1400.0,  500.0, -1400.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room7_objects,                  NULL,                        NULL,                   NULL, 0, 0, 1,  0, -1,   0, 0.0,  2,     0.0,  600.0,  -800.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room8_objects,  AntLand_room8_actors,  AntLand_room8_collectables,  AntLand_room8_sprites, 0, 0, 1,  0, -1,   0, 0.0,  1,   900.0,  800.0,   600.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{ AntLand_room9_objects,  AntLand_room9_actors,                        NULL,  AntLand_room9_sprites, 0, 0, 2,  0, -1,   0, 0.0,  1,  1900.0,  600.0,  -900.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room10_objects, AntLand_room10_actors, AntLand_room10_collectables, AntLand_room10_sprites, 0, 0, 2,  0, -1, 200, 0.0,  2,  -550.0,  800.0, -1100.0, 0.0, 0.0, -600.0, 0.7, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room11_objects,                  NULL, AntLand_room11_collectables, AntLand_room11_sprites, 0, 0, 2,  0, -1,   0, 0.0,  2,  -980.0,  700.0,     0.0, 0.0, 0.0,    0.0, 0.3, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room12_objects, AntLand_room12_actors, AntLand_room12_collectables, AntLand_room12_sprites, 0, 0, 2,  0, -1, 400, 0.0, 10, -1000.0,    0.0,  1300.0, 0.0, 0.0,    3.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room13_objects, AntLand_room13_actors,                        NULL, AntLand_room13_sprites, 1, 0, 2,  6,  6,   0, 0.0,  2, -1400.0,  900.0,  1400.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room14_objects, AntLand_room14_actors,                        NULL, AntLand_room14_sprites, 1, 0, 0,  2,  7,   0, 0.0, 10,  -900.0,    0.0,  -150.0, 0.0, 0.0,    0.0, 2.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room15_objects,                  NULL,                        NULL,                   NULL, 0, 0, 1,  0, -1,   0, 0.0,  2,  -800.0,  600.0,     0.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room16_objects, AntLand_room16_actors, AntLand_room16_collectables, AntLand_room16_sprites, 0, 0, 2,  0, -1, 200, 0.0, 10,  -500.0,    0.0,  1400.0, 0.0, 0.0,    0.0, 2.5, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room17_objects, AntLand_room17_actors, AntLand_room17_collectables, AntLand_room17_sprites, 1, 0, 2, 11,  9,   0, 0.0,  1,  -400.0,  550.0, -1350.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room18_objects,                  NULL, AntLand_room18_collectables,                   NULL, 0, 0, 2,  0, -1,   0, 0.0,  2,  -900.0,  800.0,  -900.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room19_objects, AntLand_room19_actors,                        NULL,                   NULL, 1, 1, 2,  0, -1,   0, 0.0,  2,     0.0,  800.0,  1000.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room20_objects,                  NULL, AntLand_room20_collectables, AntLand_room20_sprites, 0, 0, 2,  0, -1,   0, 0.0,  1,   900.0,  600.0,  -900.0, 0.0, 0.0,    0.0, 0.0, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	{AntLand_room21_objects,                  NULL, AntLand_room21_collectables,                   NULL, 0, 0, 2,  0, -1,   0, 0.0,  2,  -900.0, 1150.0,   900.0, 0.0, 0.0,    0.0, 0.6, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, {0,  0,  0}, -1.0},
+	NULL_ROOM
+};
+
+
+s32 AntLand_map[10][8] = {
+	{-1,  0,  1,  2,  3, 20, -1, -1},
+	{-1, -1, -1, -1,  4,  5, -1, -1},
+	{-1, 10,  9,  8,  7,  6, -1, -1},
+	{-1, 11, -1, -1, -1, -1, -1, -1},
+	{-1, 12, 13, 14, 21, -1, -1, -1},
+	{-1, -1, -1, 15, -1, -1, -1, -1},
+	{-1, -1, -1, 16, -1, -1, -1, -1},
+	{-1, -1, -1, 17, -1, -1, -1, -1},
+	{-1, -1, -1, 18, -1, -1, -1, -1},
+	{-1, -1, -1, 19, -1, -1, -1, -1}
+};
+
+
+StageMapData AntLand_map_data = {
+8, 10, AntLand_room_instances, AntLand_map
+};
+
+
+RoomInstance AntLand_ext_room_instances[] = {
+	NULL_ROOM
+};
+
+
+LevelScope AntLand_scope = {
+{0, 0, 0}, 255, 20000, 60
+};
+
+
+StageData AntLand_stageData = {
+               &AntLand_map_data,
+                            NULL,
+             AntLand_stageModels,
+ARRAY_COUNT(AntLand_stageModels),
+                               0,
+              AntLand_rabObjects,
+                         0x20000,
+               AntLand_spriteLib,
+                  &AntLand_scope
+};
+s32 AntLand_alignment1[] = {0,0,0};
+Mtx AntLand_IMtx2 = IDENTITY;
+Lights1 AntLand_alScope_Light =
+#include "assets/levelGroup/AntLand/alScope.light.inc.c"
+Vtx AntLand_exit2_Vtx[] = {
+#include "assets/levelGroup/AntLand/exit2/exit2.vtx.inc.c"
+};
+Mtx AntLand_IMtx3 = IDENTITY;
+unsigned char AntLand_Pad1[] = FILEPAD;
+unsigned char AntLand_antWallw_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/antWallw.i4.png.inc.c"
+};
+Gfx AntLand_exit2_Gfx[] = {
+#include "assets/levelGroup/AntLand/exit2/exit2.gfx.inc.c"
+};
+Vtx AntLand_exit3_Vtx[] = {
+#include "assets/levelGroup/AntLand/exit3/exit3.vtx.inc.c"
+};
+Mtx AntLand_IMtx4 = IDENTITY;
+Gfx AntLand_exit3_Gfx[] = {
+#include "assets/levelGroup/AntLand/exit3/exit3.gfx.inc.c"
+};
+Vtx AntLand_exit4_Vtx[] = {
+#include "assets/levelGroup/AntLand/exit4/exit4.vtx.inc.c"
+};
+Mtx AntLand_IMtx5 = IDENTITY;
+Gfx AntLand_exit4_Gfx[] = {
+#include "assets/levelGroup/AntLand/exit4/exit4.gfx.inc.c"
+};
+Vtx AntLand_room0_Vtx[] = {
+#include "assets/levelGroup/AntLand/room0/room0.vtx.inc.c"
+};
+Mtx AntLand_IMtx6 = IDENTITY;
+unsigned char AntLand_Pad2[] = FILEPAD;
+unsigned char AntLand_antWallShine1_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/antWallShine1.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad3[] = FILEPAD;
+unsigned char AntLand_antWallShine1_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/antWallShine1.ci4.pal.inc.c"
+};
+unsigned char AntLand_Pad4[] = FILEPAD;
+unsigned char AntLand_antWallShine2_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/antWallShine2.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad5[] = FILEPAD;
+unsigned char AntLand_antWallShine2_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/antWallShine2.ci4.pal.inc.c"
+};
+Gfx AntLand_room0_Gfx[] = {
+#include "assets/levelGroup/AntLand/room0/room0.gfx.inc.c"
+};
+Vtx AntLand_room1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room1/room1.vtx.inc.c"
+};
+Mtx AntLand_IMtx7 = IDENTITY;
+unsigned char AntLand_Pad6[] = FILEPAD;
+unsigned char AntLand_antWalli4_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/antWalli4.i4.png.inc.c"
+};
+unsigned char AntLand_Pad7[] = FILEPAD;
+unsigned char AntLand_gooinga_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/gooinga.i4.png.inc.c"
+};
+unsigned char AntLand_Pad8[] = FILEPAD;
+unsigned char AntLand_AntshineWall3_ci8_PNG[] = {
+#include "build/assets/levelGroup/AntLand/AntshineWall3.ci8.png.inc.c"
+};
+unsigned char AntLand_Pad9[] = FILEPAD;
+unsigned char AntLand_AntshineWall3_ci8_PAL[] = {
+#include "build/assets/levelGroup/AntLand/AntshineWall3.ci8.pal.inc.c"
+};
+Gfx AntLand_room1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room1/room1.gfx.inc.c"
+};
+Vtx AntLand_room2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room2/room2.vtx.inc.c"
+};
+Mtx AntLand_IMtx8 = IDENTITY;
+unsigned char AntLand_Pad10[] = FILEPAD;
+unsigned char AntLand_horror_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/horror.i4.png.inc.c"
+};
+unsigned char AntLand_Pad11[] = FILEPAD;
+unsigned char AntLand_antMural1_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/antMural1.i4.png.inc.c"
+};
+Gfx AntLand_room2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room2/room2.gfx.inc.c"
+};
+Vtx AntLand_room14_Vtx[] = {
+#include "assets/levelGroup/AntLand/room14/room14.vtx.inc.c"
+};
+Mtx AntLand_IMtx9 = IDENTITY;
+unsigned char AntLand_Pad12[] = FILEPAD;
+unsigned char AntLand_AlShinewall2_ci8_PNG[] = {
+#include "build/assets/levelGroup/AntLand/AlShinewall2.ci8.png.inc.c"
+};
+unsigned char AntLand_Pad13[] = FILEPAD;
+unsigned char AntLand_AlShinewall2_ci8_PAL[] = {
+#include "build/assets/levelGroup/AntLand/AlShinewall2.ci8.pal.inc.c"
+};
+unsigned char AntLand_Pad14[] = FILEPAD;
+unsigned char AntLand_wallawalwal_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/wallawalwal.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad15[] = FILEPAD;
+unsigned char AntLand_wallawalwal_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/wallawalwal.ci4.pal.inc.c"
+};
+Gfx AntLand_room14_Gfx[] = {
+#include "assets/levelGroup/AntLand/room14/room14.gfx.inc.c"
+};
+Vtx AntLand_room4_Vtx[] = {
+#include "assets/levelGroup/AntLand/room4/room4.vtx.inc.c"
+};
+Mtx AntLand_IMtx10 = IDENTITY;
+unsigned char AntLand_Pad16[] = FILEPAD;
+unsigned char AntLand_ALWall2_ci8_PNG[] = {
+#include "build/assets/levelGroup/AntLand/ALWall2.ci8.png.inc.c"
+};
+unsigned char AntLand_Pad17[] = FILEPAD;
+unsigned char AntLand_ALWall2_ci8_PAL[] = {
+#include "build/assets/levelGroup/AntLand/ALWall2.ci8.pal.inc.c"
+};
+Gfx AntLand_room4_Gfx[] = {
+#include "assets/levelGroup/AntLand/room4/room4.gfx.inc.c"
+};
+Vtx AntLand_room5_Vtx[] = {
+#include "assets/levelGroup/AntLand/room5/room5.vtx.inc.c"
+};
+Mtx AntLand_IMtx11 = IDENTITY;
+unsigned char AntLand_Pad18[] = FILEPAD;
+unsigned char AntLand_ALShinewall_ci8_PNG[] = {
+#include "build/assets/levelGroup/AntLand/ALShinewall.ci8.png.inc.c"
+};
+unsigned char AntLand_Pad19[] = FILEPAD;
+unsigned char AntLand_ALShinewall_ci8_PAL[] = {
+#include "build/assets/levelGroup/AntLand/ALShinewall.ci8.pal.inc.c"
+};
+Gfx AntLand_room5_Gfx[] = {
+#include "assets/levelGroup/AntLand/room5/room5.gfx.inc.c"
+};
+Vtx AntLand_room6_Vtx[] = {
+#include "assets/levelGroup/AntLand/room6/room6.vtx.inc.c"
+};
+Mtx AntLand_IMtx12 = IDENTITY;
+unsigned char AntLand_Pad20[] = FILEPAD;
+unsigned char AntLand_antfadeee_ci8_PNG[] = {
+#include "build/assets/levelGroup/AntLand/antfadeee.ci8.png.inc.c"
+};
+unsigned char AntLand_Pad21[] = FILEPAD;
+unsigned char AntLand_antfadeee_ci8_PAL[] = {
+#include "build/assets/levelGroup/AntLand/antfadeee.ci8.pal.inc.c"
+};
+unsigned char AntLand_Pad22[] = FILEPAD;
+unsigned char AntLand_ALMural_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/ALMural.i4.png.inc.c"
+};
+Gfx AntLand_room6_Gfx[] = {
+#include "assets/levelGroup/AntLand/room6/room6.gfx.inc.c"
+};
+Vtx AntLand_room7_Vtx[] = {
+#include "assets/levelGroup/AntLand/room7/room7.vtx.inc.c"
+};
+Mtx AntLand_IMtx13 = IDENTITY;
+Gfx AntLand_room7_Gfx[] = {
+#include "assets/levelGroup/AntLand/room7/room7.gfx.inc.c"
+};
+Vtx AntLand_room8_Vtx[] = {
+#include "assets/levelGroup/AntLand/room8/room8.vtx.inc.c"
+};
+Mtx AntLand_IMtx14 = IDENTITY;
+Gfx AntLand_room8_Gfx[] = {
+#include "assets/levelGroup/AntLand/room8/room8.gfx.inc.c"
+};
+Vtx AntLand_room9_Vtx[] = {
+#include "assets/levelGroup/AntLand/room9/room9.vtx.inc.c"
+};
+Mtx AntLand_IMtx15 = IDENTITY;
+Gfx AntLand_room9_Gfx[] = {
+#include "assets/levelGroup/AntLand/room9/room9.gfx.inc.c"
+};
+Vtx AntLand_room10_Vtx[] = {
+#include "assets/levelGroup/AntLand/room10/room10.vtx.inc.c"
+};
+Mtx AntLand_IMtx16 = IDENTITY;
+Gfx AntLand_room10_Gfx[] = {
+#include "assets/levelGroup/AntLand/room10/room10.gfx.inc.c"
+};
+Vtx AntLand_room11_Vtx[] = {
+#include "assets/levelGroup/AntLand/room11/room11.vtx.inc.c"
+};
+Mtx AntLand_IMtx17 = IDENTITY;
+Gfx AntLand_room11_Gfx[] = {
+#include "assets/levelGroup/AntLand/room11/room11.gfx.inc.c"
+};
+Vtx AntLand_room12_Vtx[] = {
+#include "assets/levelGroup/AntLand/room12/room12.vtx.inc.c"
+};
+Mtx AntLand_IMtx18 = IDENTITY;
+Gfx AntLand_room12_Gfx[] = {
+#include "assets/levelGroup/AntLand/room12/room12.gfx.inc.c"
+};
+Vtx AntLand_room13_Vtx[] = {
+#include "assets/levelGroup/AntLand/room13/room13.vtx.inc.c"
+};
+Mtx AntLand_IMtx19 = IDENTITY;
+Gfx AntLand_room13_Gfx[] = {
+#include "assets/levelGroup/AntLand/room13/room13.gfx.inc.c"
+};
+Vtx AntLand_room3_Vtx[] = {
+#include "assets/levelGroup/AntLand/room3/room3.vtx.inc.c"
+};
+Mtx AntLand_IMtx20 = IDENTITY;
+Gfx AntLand_room3_Gfx[] = {
+#include "assets/levelGroup/AntLand/room3/room3.gfx.inc.c"
+};
+Vtx AntLand_room17_Vtx[] = {
+#include "assets/levelGroup/AntLand/room17/room17.vtx.inc.c"
+};
+Mtx AntLand_IMtx21 = IDENTITY;
+unsigned char AntLand_Pad23[] = FILEPAD;
+unsigned char AntLand_ALwall_ci8_PNG[] = {
+#include "build/assets/levelGroup/AntLand/ALwall.ci8.png.inc.c"
+};
+unsigned char AntLand_Pad24[] = FILEPAD;
+unsigned char AntLand_ALwall_ci8_PAL[] = {
+#include "build/assets/levelGroup/AntLand/ALwall.ci8.pal.inc.c"
+};
+Gfx AntLand_room17_Gfx[] = {
+#include "assets/levelGroup/AntLand/room17/room17.gfx.inc.c"
+};
+Vtx AntLand_room15_Vtx[] = {
+#include "assets/levelGroup/AntLand/room15/room15.vtx.inc.c"
+};
+Mtx AntLand_IMtx22 = IDENTITY;
+Gfx AntLand_room15_Gfx[] = {
+#include "assets/levelGroup/AntLand/room15/room15.gfx.inc.c"
+};
+Vtx AntLand_room18_Vtx[] = {
+#include "assets/levelGroup/AntLand/room18/room18.vtx.inc.c"
+};
+Mtx AntLand_IMtx23 = IDENTITY;
+Gfx AntLand_room18_Gfx[] = {
+#include "assets/levelGroup/AntLand/room18/room18.gfx.inc.c"
+};
+Vtx AntLand_room16_Vtx[] = {
+#include "assets/levelGroup/AntLand/room16/room16.vtx.inc.c"
+};
+Mtx AntLand_IMtx24 = IDENTITY;
+Gfx AntLand_room16_Gfx[] = {
+#include "assets/levelGroup/AntLand/room16/room16.gfx.inc.c"
+};
+Vtx AntLand_room20_Vtx[] = {
+#include "assets/levelGroup/AntLand/room20/room20.vtx.inc.c"
+};
+Mtx AntLand_IMtx25 = IDENTITY;
+Gfx AntLand_room20_Gfx[] = {
+#include "assets/levelGroup/AntLand/room20/room20.gfx.inc.c"
+};
+Vtx AntLand_room21_Vtx[] = {
+#include "assets/levelGroup/AntLand/room21/room21.vtx.inc.c"
+};
+Mtx AntLand_IMtx26 = IDENTITY;
+unsigned char AntLand_Pad25[] = FILEPAD;
+unsigned char AntLand_murals_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/murals.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad26[] = FILEPAD;
+unsigned char AntLand_murals_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/murals.ci4.pal.inc.c"
+};
+Gfx AntLand_room21_Gfx[] = {
+#include "assets/levelGroup/AntLand/room21/room21.gfx.inc.c"
+};
+Vtx AntLand_room4Platform_Vtx[] = {
+#include "assets/levelGroup/AntLand/room4Platform/room4Platform.vtx.inc.c"
+};
+Mtx AntLand_IMtx27 = IDENTITY;
+Gfx AntLand_room4Platform_Gfx[] = {
+#include "assets/levelGroup/AntLand/room4Platform/room4Platform.gfx.inc.c"
+};
+Vtx AntLand_room4Floor_Vtx[] = {
+#include "assets/levelGroup/AntLand/room4Floor/room4Floor.vtx.inc.c"
+};
+Mtx AntLand_IMtx28 = IDENTITY;
+Gfx AntLand_room4Floor_Gfx[] = {
+#include "assets/levelGroup/AntLand/room4Floor/room4Floor.gfx.inc.c"
+};
+Vtx AntLand_room6Floor_Vtx[] = {
+#include "assets/levelGroup/AntLand/room6Floor/room6Floor.vtx.inc.c"
+};
+Mtx AntLand_IMtx29 = IDENTITY;
+Gfx AntLand_room6Floor_Gfx[] = {
+#include "assets/levelGroup/AntLand/room6Floor/room6Floor.gfx.inc.c"
+};
+Vtx AntLand_room8Floor_Vtx[] = {
+#include "assets/levelGroup/AntLand/room8Floor/room8Floor.vtx.inc.c"
+};
+Mtx AntLand_IMtx30 = IDENTITY;
+Gfx AntLand_room8Floor_Gfx[] = {
+#include "assets/levelGroup/AntLand/room8Floor/room8Floor.gfx.inc.c"
+};
+Vtx AntLand_room17Floor_Vtx[] = {
+#include "assets/levelGroup/AntLand/room17Floor/room17Floor.vtx.inc.c"
+};
+Mtx AntLand_IMtx31 = IDENTITY;
+Gfx AntLand_room17Floor_Gfx[] = {
+#include "assets/levelGroup/AntLand/room17Floor/room17Floor.gfx.inc.c"
+};
+Vtx AntLand_room10Floor_Vtx[] = {
+#include "assets/levelGroup/AntLand/room10Floor/room10Floor.vtx.inc.c"
+};
+Mtx AntLand_IMtx32 = IDENTITY;
+unsigned char AntLand_Pad27[] = FILEPAD;
+unsigned char AntLand_hole_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/hole.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad28[] = FILEPAD;
+unsigned char AntLand_hole_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/hole.ci4.pal.inc.c"
+};
+unsigned char AntLand_Pad29[] = FILEPAD;
+unsigned char AntLand_metallurgic_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/metallurgic.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad30[] = FILEPAD;
+unsigned char AntLand_metallurgic_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/metallurgic.ci4.pal.inc.c"
+};
+Gfx AntLand_room10Floor_Gfx[] = {
+#include "assets/levelGroup/AntLand/room10Floor/room10Floor.gfx.inc.c"
+};
+Vtx AntLand_room10Platform1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.vtx.inc.c"
+};
+Mtx AntLand_IMtx33 = IDENTITY;
+Gfx AntLand_room10Platform1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.gfx.inc.c"
+};
+Vtx AntLand_room10Platform2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.vtx.inc.c"
+};
+Mtx AntLand_IMtx34 = IDENTITY;
+Gfx AntLand_room10Platform2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.gfx.inc.c"
+};
+Vtx AntLand_room10Platform3_Vtx[] = {
+#include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.vtx.inc.c"
+};
+Mtx AntLand_IMtx35 = IDENTITY;
+Gfx AntLand_room10Platform3_Gfx[] = {
+#include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.gfx.inc.c"
+};
+Vtx AntLand_room5Platform_Vtx[] = {
+#include "assets/levelGroup/AntLand/room5Platform/room5Platform.vtx.inc.c"
+};
+Mtx AntLand_IMtx36 = IDENTITY;
+Gfx AntLand_room5Platform_Gfx[] = {
+#include "assets/levelGroup/AntLand/room5Platform/room5Platform.gfx.inc.c"
+};
+Vtx AntLand_room13Platform_Vtx[] = {
+#include "assets/levelGroup/AntLand/room13Platform/room13Platform.vtx.inc.c"
+};
+Mtx AntLand_IMtx37 = IDENTITY;
+Gfx AntLand_room13Platform_Gfx[] = {
+#include "assets/levelGroup/AntLand/room13Platform/room13Platform.gfx.inc.c"
+};
+Vtx AntLand_room21Platform1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.vtx.inc.c"
+};
+Mtx AntLand_IMtx38 = IDENTITY;
+Gfx AntLand_room21Platform1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.gfx.inc.c"
+};
+Vtx AntLand_room21Platform2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.vtx.inc.c"
+};
+Mtx AntLand_IMtx39 = IDENTITY;
+Gfx AntLand_room21Platform2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.gfx.inc.c"
+};
+Vtx AntLand_room12Floor1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.vtx.inc.c"
+};
+Mtx AntLand_IMtx40 = IDENTITY;
+unsigned char AntLand_Pad31[] = FILEPAD;
+unsigned char AntLand_path_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/path.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad32[] = FILEPAD;
+unsigned char AntLand_path_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/path.ci4.pal.inc.c"
+};
+unsigned char AntLand_Pad33[] = FILEPAD;
+unsigned char AntLand_stone_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/stone.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad34[] = FILEPAD;
+unsigned char AntLand_stone_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/stone.ci4.pal.inc.c"
+};
+Gfx AntLand_room12Floor1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.gfx.inc.c"
+};
+Vtx AntLand_room12Floor2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.vtx.inc.c"
+};
+Mtx AntLand_IMtx41 = IDENTITY;
+Gfx AntLand_room12Floor2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.gfx.inc.c"
+};
+Vtx AntLand_room11Floor1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.vtx.inc.c"
+};
+Mtx AntLand_IMtx42 = IDENTITY;
+Gfx AntLand_room11Floor1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.gfx.inc.c"
+};
+Vtx AntLand_room11Floor2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.vtx.inc.c"
+};
+Mtx AntLand_IMtx43 = IDENTITY;
+Gfx AntLand_room11Floor2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.gfx.inc.c"
+};
+Vtx AntLand_room4Grate_Vtx[] = {
+#include "assets/levelGroup/AntLand/room4Grate/room4Grate.vtx.inc.c"
+};
+Mtx AntLand_IMtx44 = IDENTITY;
+Gfx AntLand_room4Grate_Gfx[] = {
+#include "assets/levelGroup/AntLand/room4Grate/room4Grate.gfx.inc.c"
+};
+Vtx AntLand_room7Floor_Vtx[] = {
+#include "assets/levelGroup/AntLand/room7Floor/room7Floor.vtx.inc.c"
+};
+Mtx AntLand_IMtx45 = IDENTITY;
+Gfx AntLand_room7Floor_Gfx[] = {
+#include "assets/levelGroup/AntLand/room7Floor/room7Floor.gfx.inc.c"
+};
+Vtx AntLand_room7Ceiling_Vtx[] = {
+#include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.vtx.inc.c"
+};
+Mtx AntLand_IMtx46 = IDENTITY;
+Gfx AntLand_room7Ceiling_Gfx[] = {
+#include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.gfx.inc.c"
+};
+Vtx AntLand_room15Floor_Vtx[] = {
+#include "assets/levelGroup/AntLand/room15Floor/room15Floor.vtx.inc.c"
+};
+Mtx AntLand_IMtx47 = IDENTITY;
+Gfx AntLand_room15Floor_Gfx[] = {
+#include "assets/levelGroup/AntLand/room15Floor/room15Floor.gfx.inc.c"
+};
+Vtx AntLand_room15Ceiling_Vtx[] = {
+#include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.vtx.inc.c"
+};
+Mtx AntLand_IMtx48 = IDENTITY;
+Gfx AntLand_room15Ceiling_Gfx[] = {
+#include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.gfx.inc.c"
+};
+Vtx AntLand_room8Floor1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.vtx.inc.c"
+};
+Mtx AntLand_IMtx49 = IDENTITY;
+Gfx AntLand_room8Floor1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.gfx.inc.c"
+};
+Vtx AntLand_room8Floor2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.vtx.inc.c"
+};
+Mtx AntLand_IMtx50 = IDENTITY;
+Gfx AntLand_room8Floor2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.gfx.inc.c"
+};
+Vtx AntLand_room0doorPillar1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.vtx.inc.c"
+};
+Mtx AntLand_IMtx51 = IDENTITY;
+unsigned char AntLand_Pad35[] = FILEPAD;
+unsigned char AntLand_wallagain_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/wallagain.i4.png.inc.c"
+};
+Gfx AntLand_room0doorPillar1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.gfx.inc.c"
+};
+Vtx AntLand_room0doorPillar2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.vtx.inc.c"
+};
+Mtx AntLand_IMtx52 = IDENTITY;
+Gfx AntLand_room0doorPillar2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.gfx.inc.c"
+};
+Vtx AntLand_room0doorTop_Vtx[] = {
+#include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.vtx.inc.c"
+};
+Mtx AntLand_IMtx53 = IDENTITY;
+unsigned char AntLand_Pad36[] = FILEPAD;
+unsigned char AntLand_wallsss_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/wallsss.i4.png.inc.c"
+};
+unsigned char AntLand_Pad37[] = FILEPAD;
+unsigned char AntLand_wallSmall_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/wallSmall.i4.png.inc.c"
+};
+Gfx AntLand_room0doorTop_Gfx[] = {
+#include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.gfx.inc.c"
+};
+Vtx AntLand_room0doorTorchStand1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.vtx.inc.c"
+};
+Mtx AntLand_IMtx54 = IDENTITY;
+unsigned char AntLand_Pad38[] = FILEPAD;
+unsigned char AntLand_muralllll_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/muralllll.i4.png.inc.c"
+};
+Gfx AntLand_room0doorTorchStand1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.gfx.inc.c"
+};
+Vtx AntLand_room0doorTorchStand2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.vtx.inc.c"
+};
+Mtx AntLand_IMtx55 = IDENTITY;
+unsigned char AntLand_Pad39[] = FILEPAD;
+unsigned char AntLand_muralllll2_i4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/muralllll2.i4.png.inc.c"
+};
+Gfx AntLand_room0doorTorchStand2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.gfx.inc.c"
+};
+Vtx AntLand_room16Floor1_Vtx[] = {
+#include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.vtx.inc.c"
+};
+Mtx AntLand_IMtx56 = IDENTITY;
+Gfx AntLand_room16Floor1_Gfx[] = {
+#include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.gfx.inc.c"
+};
+Vtx AntLand_room16Floor2_Vtx[] = {
+#include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.vtx.inc.c"
+};
+Mtx AntLand_IMtx57 = IDENTITY;
+unsigned char AntLand_Pad40[] = FILEPAD;
+unsigned char AntLand_wallFade32_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/wallFade32.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad41[] = FILEPAD;
+unsigned char AntLand_wallFade32_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/wallFade32.ci4.pal.inc.c"
+};
+Gfx AntLand_room16Floor2_Gfx[] = {
+#include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.gfx.inc.c"
+};
+Vtx AntLand_room16Grate_Vtx[] = {
+#include "assets/levelGroup/AntLand/room16Grate/room16Grate.vtx.inc.c"
+};
+Mtx AntLand_IMtx58 = IDENTITY;
+Gfx AntLand_room16Grate_Gfx[] = {
+#include "assets/levelGroup/AntLand/room16Grate/room16Grate.gfx.inc.c"
+};
+Vtx AntLand_fixedCamPillar_Vtx[] = {
+#include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.vtx.inc.c"
+};
+Mtx AntLand_IMtx59 = IDENTITY;
+Gfx AntLand_fixedCamPillar_Gfx[] = {
+#include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.gfx.inc.c"
+};
+Vec3f AntLand_exit2_ColV[] = {
+#include "assets/levelGroup/AntLand/exit2/exit2.colV.inc.c"
+};
+Vec3w AntLand_exit2_ColT[] = {
+#include "assets/levelGroup/AntLand/exit2/exit2.colT.inc.c"
+};
+Rect3D AntLand_exit2_ColS = {
+#include "assets/levelGroup/AntLand/exit2/exit2.colS.inc.c"
+};
+ModelCollision AntLand_exit2_ColH = {
+ARRAY_COUNT(AntLand_exit2_ColV), ARRAY_COUNT(AntLand_exit2_ColT), AntLand_exit2_ColV, AntLand_exit2_ColT, &AntLand_exit2_ColS
+};
+Vec3f AntLand_exit3_ColV[] = {
+#include "assets/levelGroup/AntLand/exit3/exit3.colV.inc.c"
+};
+Vec3w AntLand_exit3_ColT[] = {
+#include "assets/levelGroup/AntLand/exit3/exit3.colT.inc.c"
+};
+Rect3D AntLand_exit3_ColS = {
+#include "assets/levelGroup/AntLand/exit3/exit3.colS.inc.c"
+};
+ModelCollision AntLand_exit3_ColH = {
+ARRAY_COUNT(AntLand_exit3_ColV), ARRAY_COUNT(AntLand_exit3_ColT), AntLand_exit3_ColV, AntLand_exit3_ColT, &AntLand_exit3_ColS
+};
+Vec3f AntLand_exit4_ColV[] = {
+#include "assets/levelGroup/AntLand/exit4/exit4.colV.inc.c"
+};
+Vec3w AntLand_exit4_ColT[] = {
+#include "assets/levelGroup/AntLand/exit4/exit4.colT.inc.c"
+};
+Rect3D AntLand_exit4_ColS = {
+#include "assets/levelGroup/AntLand/exit4/exit4.colS.inc.c"
+};
+ModelCollision AntLand_exit4_ColH = {
+ARRAY_COUNT(AntLand_exit4_ColV), ARRAY_COUNT(AntLand_exit4_ColT), AntLand_exit4_ColV, AntLand_exit4_ColT, &AntLand_exit4_ColS
+};
+Vec3f AntLand_room0_ColV[] = {
+#include "assets/levelGroup/AntLand/room0/room0.colV.inc.c"
+};
+Vec3w AntLand_room0_ColT[] = {
+#include "assets/levelGroup/AntLand/room0/room0.colT.inc.c"
+};
+Rect3D AntLand_room0_ColS = {
+#include "assets/levelGroup/AntLand/room0/room0.colS.inc.c"
+};
+ModelCollision AntLand_room0_ColH = {
+ARRAY_COUNT(AntLand_room0_ColV), ARRAY_COUNT(AntLand_room0_ColT), AntLand_room0_ColV, AntLand_room0_ColT, &AntLand_room0_ColS
+};
+Vec3f AntLand_room1_ColV[] = {
+#include "assets/levelGroup/AntLand/room1/room1.colV.inc.c"
+};
+Vec3w AntLand_room1_ColT[] = {
+#include "assets/levelGroup/AntLand/room1/room1.colT.inc.c"
+};
+Rect3D AntLand_room1_ColS = {
+#include "assets/levelGroup/AntLand/room1/room1.colS.inc.c"
+};
+ModelCollision AntLand_room1_ColH = {
+ARRAY_COUNT(AntLand_room1_ColV), ARRAY_COUNT(AntLand_room1_ColT), AntLand_room1_ColV, AntLand_room1_ColT, &AntLand_room1_ColS
+};
+Vec3f AntLand_room2_ColV[] = {
+#include "assets/levelGroup/AntLand/room2/room2.colV.inc.c"
+};
+Vec3w AntLand_room2_ColT[] = {
+#include "assets/levelGroup/AntLand/room2/room2.colT.inc.c"
+};
+Rect3D AntLand_room2_ColS = {
+#include "assets/levelGroup/AntLand/room2/room2.colS.inc.c"
+};
+ModelCollision AntLand_room2_ColH = {
+ARRAY_COUNT(AntLand_room2_ColV), ARRAY_COUNT(AntLand_room2_ColT), AntLand_room2_ColV, AntLand_room2_ColT, &AntLand_room2_ColS
+};
+Vec3f AntLand_room14_ColV[] = {
+#include "assets/levelGroup/AntLand/room14/room14.colV.inc.c"
+};
+Vec3w AntLand_room14_ColT[] = {
+#include "assets/levelGroup/AntLand/room14/room14.colT.inc.c"
+};
+Rect3D AntLand_room14_ColS = {
+#include "assets/levelGroup/AntLand/room14/room14.colS.inc.c"
+};
+ModelCollision AntLand_room14_ColH = {
+ARRAY_COUNT(AntLand_room14_ColV), ARRAY_COUNT(AntLand_room14_ColT), AntLand_room14_ColV, AntLand_room14_ColT, &AntLand_room14_ColS
+};
+Vec3f AntLand_room142_ColV[] = {
+#include "assets/levelGroup/AntLand/room142/room142.colV.inc.c"
+};
+Vec3w AntLand_room142_ColT[] = {
+#include "assets/levelGroup/AntLand/room142/room142.colT.inc.c"
+};
+Rect3D AntLand_room142_ColS = {
+#include "assets/levelGroup/AntLand/room142/room142.colS.inc.c"
+};
+ModelCollision AntLand_room142_ColH = {
+ARRAY_COUNT(AntLand_room142_ColV), ARRAY_COUNT(AntLand_room142_ColT), AntLand_room142_ColV, AntLand_room142_ColT, &AntLand_room142_ColS
+};
+Vec3f AntLand_room4_ColV[] = {
+#include "assets/levelGroup/AntLand/room4/room4.colV.inc.c"
+};
+Vec3w AntLand_room4_ColT[] = {
+#include "assets/levelGroup/AntLand/room4/room4.colT.inc.c"
+};
+Rect3D AntLand_room4_ColS = {
+#include "assets/levelGroup/AntLand/room4/room4.colS.inc.c"
+};
+ModelCollision AntLand_room4_ColH = {
+ARRAY_COUNT(AntLand_room4_ColV), ARRAY_COUNT(AntLand_room4_ColT), AntLand_room4_ColV, AntLand_room4_ColT, &AntLand_room4_ColS
+};
+Vec3f AntLand_room5_ColV[] = {
+#include "assets/levelGroup/AntLand/room5/room5.colV.inc.c"
+};
+Vec3w AntLand_room5_ColT[] = {
+#include "assets/levelGroup/AntLand/room5/room5.colT.inc.c"
+};
+Rect3D AntLand_room5_ColS = {
+#include "assets/levelGroup/AntLand/room5/room5.colS.inc.c"
+};
+ModelCollision AntLand_room5_ColH = {
+ARRAY_COUNT(AntLand_room5_ColV), ARRAY_COUNT(AntLand_room5_ColT), AntLand_room5_ColV, AntLand_room5_ColT, &AntLand_room5_ColS
+};
+Vec3f AntLand_room6_ColV[] = {
+#include "assets/levelGroup/AntLand/room6/room6.colV.inc.c"
+};
+Vec3w AntLand_room6_ColT[] = {
+#include "assets/levelGroup/AntLand/room6/room6.colT.inc.c"
+};
+Rect3D AntLand_room6_ColS = {
+#include "assets/levelGroup/AntLand/room6/room6.colS.inc.c"
+};
+ModelCollision AntLand_room6_ColH = {
+ARRAY_COUNT(AntLand_room6_ColV), ARRAY_COUNT(AntLand_room6_ColT), AntLand_room6_ColV, AntLand_room6_ColT, &AntLand_room6_ColS
+};
+Vec3f AntLand_room7_ColV[] = {
+#include "assets/levelGroup/AntLand/room7/room7.colV.inc.c"
+};
+Vec3w AntLand_room7_ColT[] = {
+#include "assets/levelGroup/AntLand/room7/room7.colT.inc.c"
+};
+Rect3D AntLand_room7_ColS = {
+#include "assets/levelGroup/AntLand/room7/room7.colS.inc.c"
+};
+ModelCollision AntLand_room7_ColH = {
+ARRAY_COUNT(AntLand_room7_ColV), ARRAY_COUNT(AntLand_room7_ColT), AntLand_room7_ColV, AntLand_room7_ColT, &AntLand_room7_ColS
+};
+Vec3f AntLand_room8_ColV[] = {
+#include "assets/levelGroup/AntLand/room8/room8.colV.inc.c"
+};
+Vec3w AntLand_room8_ColT[] = {
+#include "assets/levelGroup/AntLand/room8/room8.colT.inc.c"
+};
+Rect3D AntLand_room8_ColS = {
+#include "assets/levelGroup/AntLand/room8/room8.colS.inc.c"
+};
+ModelCollision AntLand_room8_ColH = {
+ARRAY_COUNT(AntLand_room8_ColV), ARRAY_COUNT(AntLand_room8_ColT), AntLand_room8_ColV, AntLand_room8_ColT, &AntLand_room8_ColS
+};
+Vec3f AntLand_room9_ColV[] = {
+#include "assets/levelGroup/AntLand/room9/room9.colV.inc.c"
+};
+Vec3w AntLand_room9_ColT[] = {
+#include "assets/levelGroup/AntLand/room9/room9.colT.inc.c"
+};
+Rect3D AntLand_room9_ColS = {
+#include "assets/levelGroup/AntLand/room9/room9.colS.inc.c"
+};
+ModelCollision AntLand_room9_ColH = {
+ARRAY_COUNT(AntLand_room9_ColV), ARRAY_COUNT(AntLand_room9_ColT), AntLand_room9_ColV, AntLand_room9_ColT, &AntLand_room9_ColS
+};
+Vec3f AntLand_room10_ColV[] = {
+#include "assets/levelGroup/AntLand/room10/room10.colV.inc.c"
+};
+Vec3w AntLand_room10_ColT[] = {
+#include "assets/levelGroup/AntLand/room10/room10.colT.inc.c"
+};
+Rect3D AntLand_room10_ColS = {
+#include "assets/levelGroup/AntLand/room10/room10.colS.inc.c"
+};
+ModelCollision AntLand_room10_ColH = {
+ARRAY_COUNT(AntLand_room10_ColV), ARRAY_COUNT(AntLand_room10_ColT), AntLand_room10_ColV, AntLand_room10_ColT, &AntLand_room10_ColS
+};
+Vec3f AntLand_room11_ColV[] = {
+#include "assets/levelGroup/AntLand/room11/room11.colV.inc.c"
+};
+Vec3w AntLand_room11_ColT[] = {
+#include "assets/levelGroup/AntLand/room11/room11.colT.inc.c"
+};
+Rect3D AntLand_room11_ColS = {
+#include "assets/levelGroup/AntLand/room11/room11.colS.inc.c"
+};
+ModelCollision AntLand_room11_ColH = {
+ARRAY_COUNT(AntLand_room11_ColV), ARRAY_COUNT(AntLand_room11_ColT), AntLand_room11_ColV, AntLand_room11_ColT, &AntLand_room11_ColS
+};
+Vec3f AntLand_room13_ColV[] = {
+#include "assets/levelGroup/AntLand/room13/room13.colV.inc.c"
+};
+Vec3w AntLand_room13_ColT[] = {
+#include "assets/levelGroup/AntLand/room13/room13.colT.inc.c"
+};
+Rect3D AntLand_room13_ColS = {
+#include "assets/levelGroup/AntLand/room13/room13.colS.inc.c"
+};
+ModelCollision AntLand_room13_ColH = {
+ARRAY_COUNT(AntLand_room13_ColV), ARRAY_COUNT(AntLand_room13_ColT), AntLand_room13_ColV, AntLand_room13_ColT, &AntLand_room13_ColS
+};
+Vec3f AntLand_room3_ColV[] = {
+#include "assets/levelGroup/AntLand/room3/room3.colV.inc.c"
+};
+Vec3w AntLand_room3_ColT[] = {
+#include "assets/levelGroup/AntLand/room3/room3.colT.inc.c"
+};
+Rect3D AntLand_room3_ColS = {
+#include "assets/levelGroup/AntLand/room3/room3.colS.inc.c"
+};
+ModelCollision AntLand_room3_ColH = {
+ARRAY_COUNT(AntLand_room3_ColV), ARRAY_COUNT(AntLand_room3_ColT), AntLand_room3_ColV, AntLand_room3_ColT, &AntLand_room3_ColS
+};
+Vec3f AntLand_room17_ColV[] = {
+#include "assets/levelGroup/AntLand/room17/room17.colV.inc.c"
+};
+Vec3w AntLand_room17_ColT[] = {
+#include "assets/levelGroup/AntLand/room17/room17.colT.inc.c"
+};
+Rect3D AntLand_room17_ColS = {
+#include "assets/levelGroup/AntLand/room17/room17.colS.inc.c"
+};
+ModelCollision AntLand_room17_ColH = {
+ARRAY_COUNT(AntLand_room17_ColV), ARRAY_COUNT(AntLand_room17_ColT), AntLand_room17_ColV, AntLand_room17_ColT, &AntLand_room17_ColS
+};
+Vec3f AntLand_room15_ColV[] = {
+#include "assets/levelGroup/AntLand/room15/room15.colV.inc.c"
+};
+Vec3w AntLand_room15_ColT[] = {
+#include "assets/levelGroup/AntLand/room15/room15.colT.inc.c"
+};
+Rect3D AntLand_room15_ColS = {
+#include "assets/levelGroup/AntLand/room15/room15.colS.inc.c"
+};
+ModelCollision AntLand_room15_ColH = {
+ARRAY_COUNT(AntLand_room15_ColV), ARRAY_COUNT(AntLand_room15_ColT), AntLand_room15_ColV, AntLand_room15_ColT, &AntLand_room15_ColS
+};
+Vec3f AntLand_room18_ColV[] = {
+#include "assets/levelGroup/AntLand/room18/room18.colV.inc.c"
+};
+Vec3w AntLand_room18_ColT[] = {
+#include "assets/levelGroup/AntLand/room18/room18.colT.inc.c"
+};
+Rect3D AntLand_room18_ColS = {
+#include "assets/levelGroup/AntLand/room18/room18.colS.inc.c"
+};
+ModelCollision AntLand_room18_ColH = {
+ARRAY_COUNT(AntLand_room18_ColV), ARRAY_COUNT(AntLand_room18_ColT), AntLand_room18_ColV, AntLand_room18_ColT, &AntLand_room18_ColS
+};
+Vec3f AntLand_room16_ColV[] = {
+#include "assets/levelGroup/AntLand/room16/room16.colV.inc.c"
+};
+Vec3w AntLand_room16_ColT[] = {
+#include "assets/levelGroup/AntLand/room16/room16.colT.inc.c"
+};
+Rect3D AntLand_room16_ColS = {
+#include "assets/levelGroup/AntLand/room16/room16.colS.inc.c"
+};
+ModelCollision AntLand_room16_ColH = {
+ARRAY_COUNT(AntLand_room16_ColV), ARRAY_COUNT(AntLand_room16_ColT), AntLand_room16_ColV, AntLand_room16_ColT, &AntLand_room16_ColS
+};
+Vec3f AntLand_room20_ColV[] = {
+#include "assets/levelGroup/AntLand/room20/room20.colV.inc.c"
+};
+Vec3w AntLand_room20_ColT[] = {
+#include "assets/levelGroup/AntLand/room20/room20.colT.inc.c"
+};
+Rect3D AntLand_room20_ColS = {
+#include "assets/levelGroup/AntLand/room20/room20.colS.inc.c"
+};
+ModelCollision AntLand_room20_ColH = {
+ARRAY_COUNT(AntLand_room20_ColV), ARRAY_COUNT(AntLand_room20_ColT), AntLand_room20_ColV, AntLand_room20_ColT, &AntLand_room20_ColS
+};
+Vec3f AntLand_room21_ColV[] = {
+#include "assets/levelGroup/AntLand/room21/room21.colV.inc.c"
+};
+Vec3w AntLand_room21_ColT[] = {
+#include "assets/levelGroup/AntLand/room21/room21.colT.inc.c"
+};
+Rect3D AntLand_room21_ColS = {
+#include "assets/levelGroup/AntLand/room21/room21.colS.inc.c"
+};
+ModelCollision AntLand_room21_ColH = {
+ARRAY_COUNT(AntLand_room21_ColV), ARRAY_COUNT(AntLand_room21_ColT), AntLand_room21_ColV, AntLand_room21_ColT, &AntLand_room21_ColS
+};
+Vec3f AntLand_room4Platform_ColV[] = {
+#include "assets/levelGroup/AntLand/room4Platform/room4Platform.colV.inc.c"
+};
+Vec3w AntLand_room4Platform_ColT[] = {
+#include "assets/levelGroup/AntLand/room4Platform/room4Platform.colT.inc.c"
+};
+Rect3D AntLand_room4Platform_ColS = {
+#include "assets/levelGroup/AntLand/room4Platform/room4Platform.colS.inc.c"
+};
+ModelCollision AntLand_room4Platform_ColH = {
+ARRAY_COUNT(AntLand_room4Platform_ColV), ARRAY_COUNT(AntLand_room4Platform_ColT), AntLand_room4Platform_ColV, AntLand_room4Platform_ColT, &AntLand_room4Platform_ColS
+};
+Vec3f AntLand_room4Floor_ColV[] = {
+#include "assets/levelGroup/AntLand/room4Floor/room4Floor.colV.inc.c"
+};
+Vec3w AntLand_room4Floor_ColT[] = {
+#include "assets/levelGroup/AntLand/room4Floor/room4Floor.colT.inc.c"
+};
+Rect3D AntLand_room4Floor_ColS = {
+#include "assets/levelGroup/AntLand/room4Floor/room4Floor.colS.inc.c"
+};
+ModelCollision AntLand_room4Floor_ColH = {
+ARRAY_COUNT(AntLand_room4Floor_ColV), ARRAY_COUNT(AntLand_room4Floor_ColT), AntLand_room4Floor_ColV, AntLand_room4Floor_ColT, &AntLand_room4Floor_ColS
+};
+Vec3f AntLand_room6Floor_ColV[] = {
+#include "assets/levelGroup/AntLand/room6Floor/room6Floor.colV.inc.c"
+};
+Vec3w AntLand_room6Floor_ColT[] = {
+#include "assets/levelGroup/AntLand/room6Floor/room6Floor.colT.inc.c"
+};
+Rect3D AntLand_room6Floor_ColS = {
+#include "assets/levelGroup/AntLand/room6Floor/room6Floor.colS.inc.c"
+};
+ModelCollision AntLand_room6Floor_ColH = {
+ARRAY_COUNT(AntLand_room6Floor_ColV), ARRAY_COUNT(AntLand_room6Floor_ColT), AntLand_room6Floor_ColV, AntLand_room6Floor_ColT, &AntLand_room6Floor_ColS
+};
+Vec3f AntLand_room8Floor_ColV[] = {
+#include "assets/levelGroup/AntLand/room8Floor/room8Floor.colV.inc.c"
+};
+Vec3w AntLand_room8Floor_ColT[] = {
+#include "assets/levelGroup/AntLand/room8Floor/room8Floor.colT.inc.c"
+};
+Rect3D AntLand_room8Floor_ColS = {
+#include "assets/levelGroup/AntLand/room8Floor/room8Floor.colS.inc.c"
+};
+ModelCollision AntLand_room8Floor_ColH = {
+ARRAY_COUNT(AntLand_room8Floor_ColV), ARRAY_COUNT(AntLand_room8Floor_ColT), AntLand_room8Floor_ColV, AntLand_room8Floor_ColT, &AntLand_room8Floor_ColS
+};
+Vec3f AntLand_room17Floor_ColV[] = {
+#include "assets/levelGroup/AntLand/room17Floor/room17Floor.colV.inc.c"
+};
+Vec3w AntLand_room17Floor_ColT[] = {
+#include "assets/levelGroup/AntLand/room17Floor/room17Floor.colT.inc.c"
+};
+Rect3D AntLand_room17Floor_ColS = {
+#include "assets/levelGroup/AntLand/room17Floor/room17Floor.colS.inc.c"
+};
+ModelCollision AntLand_room17Floor_ColH = {
+ARRAY_COUNT(AntLand_room17Floor_ColV), ARRAY_COUNT(AntLand_room17Floor_ColT), AntLand_room17Floor_ColV, AntLand_room17Floor_ColT, &AntLand_room17Floor_ColS
+};
+Vec3f AntLand_room10Floor_ColV[] = {
+#include "assets/levelGroup/AntLand/room10Floor/room10Floor.colV.inc.c"
+};
+Vec3w AntLand_room10Floor_ColT[] = {
+#include "assets/levelGroup/AntLand/room10Floor/room10Floor.colT.inc.c"
+};
+Rect3D AntLand_room10Floor_ColS = {
+#include "assets/levelGroup/AntLand/room10Floor/room10Floor.colS.inc.c"
+};
+ModelCollision AntLand_room10Floor_ColH = {
+ARRAY_COUNT(AntLand_room10Floor_ColV), ARRAY_COUNT(AntLand_room10Floor_ColT), AntLand_room10Floor_ColV, AntLand_room10Floor_ColT, &AntLand_room10Floor_ColS
+};
+Vec3f AntLand_room10Platform1_ColV[] = {
+#include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colV.inc.c"
+};
+Vec3w AntLand_room10Platform1_ColT[] = {
+#include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colT.inc.c"
+};
+Rect3D AntLand_room10Platform1_ColS = {
+#include "assets/levelGroup/AntLand/room10Platform1/room10Platform1.colS.inc.c"
+};
+ModelCollision AntLand_room10Platform1_ColH = {
+ARRAY_COUNT(AntLand_room10Platform1_ColV), ARRAY_COUNT(AntLand_room10Platform1_ColT), AntLand_room10Platform1_ColV, AntLand_room10Platform1_ColT, &AntLand_room10Platform1_ColS
+};
+Vec3f AntLand_room10Platform2_ColV[] = {
+#include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colV.inc.c"
+};
+Vec3w AntLand_room10Platform2_ColT[] = {
+#include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colT.inc.c"
+};
+Rect3D AntLand_room10Platform2_ColS = {
+#include "assets/levelGroup/AntLand/room10Platform2/room10Platform2.colS.inc.c"
+};
+ModelCollision AntLand_room10Platform2_ColH = {
+ARRAY_COUNT(AntLand_room10Platform2_ColV), ARRAY_COUNT(AntLand_room10Platform2_ColT), AntLand_room10Platform2_ColV, AntLand_room10Platform2_ColT, &AntLand_room10Platform2_ColS
+};
+Vec3f AntLand_room10Platform3_ColV[] = {
+#include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colV.inc.c"
+};
+Vec3w AntLand_room10Platform3_ColT[] = {
+#include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colT.inc.c"
+};
+Rect3D AntLand_room10Platform3_ColS = {
+#include "assets/levelGroup/AntLand/room10Platform3/room10Platform3.colS.inc.c"
+};
+ModelCollision AntLand_room10Platform3_ColH = {
+ARRAY_COUNT(AntLand_room10Platform3_ColV), ARRAY_COUNT(AntLand_room10Platform3_ColT), AntLand_room10Platform3_ColV, AntLand_room10Platform3_ColT, &AntLand_room10Platform3_ColS
+};
+Vec3f AntLand_room5Platform_ColV[] = {
+#include "assets/levelGroup/AntLand/room5Platform/room5Platform.colV.inc.c"
+};
+Vec3w AntLand_room5Platform_ColT[] = {
+#include "assets/levelGroup/AntLand/room5Platform/room5Platform.colT.inc.c"
+};
+Rect3D AntLand_room5Platform_ColS = {
+#include "assets/levelGroup/AntLand/room5Platform/room5Platform.colS.inc.c"
+};
+ModelCollision AntLand_room5Platform_ColH = {
+ARRAY_COUNT(AntLand_room5Platform_ColV), ARRAY_COUNT(AntLand_room5Platform_ColT), AntLand_room5Platform_ColV, AntLand_room5Platform_ColT, &AntLand_room5Platform_ColS
+};
+Vec3f AntLand_room13Platform_ColV[] = {
+#include "assets/levelGroup/AntLand/room13Platform/room13Platform.colV.inc.c"
+};
+Vec3w AntLand_room13Platform_ColT[] = {
+#include "assets/levelGroup/AntLand/room13Platform/room13Platform.colT.inc.c"
+};
+Rect3D AntLand_room13Platform_ColS = {
+#include "assets/levelGroup/AntLand/room13Platform/room13Platform.colS.inc.c"
+};
+ModelCollision AntLand_room13Platform_ColH = {
+ARRAY_COUNT(AntLand_room13Platform_ColV), ARRAY_COUNT(AntLand_room13Platform_ColT), AntLand_room13Platform_ColV, AntLand_room13Platform_ColT, &AntLand_room13Platform_ColS
+};
+Vec3f AntLand_room21Platform1_ColV[] = {
+#include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colV.inc.c"
+};
+Vec3w AntLand_room21Platform1_ColT[] = {
+#include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colT.inc.c"
+};
+Rect3D AntLand_room21Platform1_ColS = {
+#include "assets/levelGroup/AntLand/room21Platform1/room21Platform1.colS.inc.c"
+};
+ModelCollision AntLand_room21Platform1_ColH = {
+ARRAY_COUNT(AntLand_room21Platform1_ColV), ARRAY_COUNT(AntLand_room21Platform1_ColT), AntLand_room21Platform1_ColV, AntLand_room21Platform1_ColT, &AntLand_room21Platform1_ColS
+};
+Vec3f AntLand_room21Platform2_ColV[] = {
+#include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colV.inc.c"
+};
+Vec3w AntLand_room21Platform2_ColT[] = {
+#include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colT.inc.c"
+};
+Rect3D AntLand_room21Platform2_ColS = {
+#include "assets/levelGroup/AntLand/room21Platform2/room21Platform2.colS.inc.c"
+};
+ModelCollision AntLand_room21Platform2_ColH = {
+ARRAY_COUNT(AntLand_room21Platform2_ColV), ARRAY_COUNT(AntLand_room21Platform2_ColT), AntLand_room21Platform2_ColV, AntLand_room21Platform2_ColT, &AntLand_room21Platform2_ColS
+};
+Vec3f AntLand_room12Floor1_ColV[] = {
+#include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colV.inc.c"
+};
+Vec3w AntLand_room12Floor1_ColT[] = {
+#include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colT.inc.c"
+};
+Rect3D AntLand_room12Floor1_ColS = {
+#include "assets/levelGroup/AntLand/room12Floor1/room12Floor1.colS.inc.c"
+};
+ModelCollision AntLand_room12Floor1_ColH = {
+ARRAY_COUNT(AntLand_room12Floor1_ColV), ARRAY_COUNT(AntLand_room12Floor1_ColT), AntLand_room12Floor1_ColV, AntLand_room12Floor1_ColT, &AntLand_room12Floor1_ColS
+};
+Vec3f AntLand_room12Floor2_ColV[] = {
+#include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colV.inc.c"
+};
+Vec3w AntLand_room12Floor2_ColT[] = {
+#include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colT.inc.c"
+};
+Rect3D AntLand_room12Floor2_ColS = {
+#include "assets/levelGroup/AntLand/room12Floor2/room12Floor2.colS.inc.c"
+};
+ModelCollision AntLand_room12Floor2_ColH = {
+ARRAY_COUNT(AntLand_room12Floor2_ColV), ARRAY_COUNT(AntLand_room12Floor2_ColT), AntLand_room12Floor2_ColV, AntLand_room12Floor2_ColT, &AntLand_room12Floor2_ColS
+};
+Vec3f AntLand_room11Floor1_ColV[] = {
+#include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colV.inc.c"
+};
+Vec3w AntLand_room11Floor1_ColT[] = {
+#include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colT.inc.c"
+};
+Rect3D AntLand_room11Floor1_ColS = {
+#include "assets/levelGroup/AntLand/room11Floor1/room11Floor1.colS.inc.c"
+};
+ModelCollision AntLand_room11Floor1_ColH = {
+ARRAY_COUNT(AntLand_room11Floor1_ColV), ARRAY_COUNT(AntLand_room11Floor1_ColT), AntLand_room11Floor1_ColV, AntLand_room11Floor1_ColT, &AntLand_room11Floor1_ColS
+};
+Vec3f AntLand_room11Floor2_ColV[] = {
+#include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colV.inc.c"
+};
+Vec3w AntLand_room11Floor2_ColT[] = {
+#include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colT.inc.c"
+};
+Rect3D AntLand_room11Floor2_ColS = {
+#include "assets/levelGroup/AntLand/room11Floor2/room11Floor2.colS.inc.c"
+};
+ModelCollision AntLand_room11Floor2_ColH = {
+ARRAY_COUNT(AntLand_room11Floor2_ColV), ARRAY_COUNT(AntLand_room11Floor2_ColT), AntLand_room11Floor2_ColV, AntLand_room11Floor2_ColT, &AntLand_room11Floor2_ColS
+};
+Vec3f AntLand_room4Grate_ColV[] = {
+#include "assets/levelGroup/AntLand/room4Grate/room4Grate.colV.inc.c"
+};
+Vec3w AntLand_room4Grate_ColT[] = {
+#include "assets/levelGroup/AntLand/room4Grate/room4Grate.colT.inc.c"
+};
+Rect3D AntLand_room4Grate_ColS = {
+#include "assets/levelGroup/AntLand/room4Grate/room4Grate.colS.inc.c"
+};
+ModelCollision AntLand_room4Grate_ColH = {
+ARRAY_COUNT(AntLand_room4Grate_ColV), ARRAY_COUNT(AntLand_room4Grate_ColT), AntLand_room4Grate_ColV, AntLand_room4Grate_ColT, &AntLand_room4Grate_ColS
+};
+Vec3f AntLand_room7Floor_ColV[] = {
+#include "assets/levelGroup/AntLand/room7Floor/room7Floor.colV.inc.c"
+};
+Vec3w AntLand_room7Floor_ColT[] = {
+#include "assets/levelGroup/AntLand/room7Floor/room7Floor.colT.inc.c"
+};
+Rect3D AntLand_room7Floor_ColS = {
+#include "assets/levelGroup/AntLand/room7Floor/room7Floor.colS.inc.c"
+};
+ModelCollision AntLand_room7Floor_ColH = {
+ARRAY_COUNT(AntLand_room7Floor_ColV), ARRAY_COUNT(AntLand_room7Floor_ColT), AntLand_room7Floor_ColV, AntLand_room7Floor_ColT, &AntLand_room7Floor_ColS
+};
+Vec3f AntLand_room7Ceiling_ColV[] = {
+#include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colV.inc.c"
+};
+Vec3w AntLand_room7Ceiling_ColT[] = {
+#include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colT.inc.c"
+};
+Rect3D AntLand_room7Ceiling_ColS = {
+#include "assets/levelGroup/AntLand/room7Ceiling/room7Ceiling.colS.inc.c"
+};
+ModelCollision AntLand_room7Ceiling_ColH = {
+ARRAY_COUNT(AntLand_room7Ceiling_ColV), ARRAY_COUNT(AntLand_room7Ceiling_ColT), AntLand_room7Ceiling_ColV, AntLand_room7Ceiling_ColT, &AntLand_room7Ceiling_ColS
+};
+Vec3f AntLand_room15Floor_ColV[] = {
+#include "assets/levelGroup/AntLand/room15Floor/room15Floor.colV.inc.c"
+};
+Vec3w AntLand_room15Floor_ColT[] = {
+#include "assets/levelGroup/AntLand/room15Floor/room15Floor.colT.inc.c"
+};
+Rect3D AntLand_room15Floor_ColS = {
+#include "assets/levelGroup/AntLand/room15Floor/room15Floor.colS.inc.c"
+};
+ModelCollision AntLand_room15Floor_ColH = {
+ARRAY_COUNT(AntLand_room15Floor_ColV), ARRAY_COUNT(AntLand_room15Floor_ColT), AntLand_room15Floor_ColV, AntLand_room15Floor_ColT, &AntLand_room15Floor_ColS
+};
+Vec3f AntLand_room15Ceiling_ColV[] = {
+#include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colV.inc.c"
+};
+Vec3w AntLand_room15Ceiling_ColT[] = {
+#include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colT.inc.c"
+};
+Rect3D AntLand_room15Ceiling_ColS = {
+#include "assets/levelGroup/AntLand/room15Ceiling/room15Ceiling.colS.inc.c"
+};
+ModelCollision AntLand_room15Ceiling_ColH = {
+ARRAY_COUNT(AntLand_room15Ceiling_ColV), ARRAY_COUNT(AntLand_room15Ceiling_ColT), AntLand_room15Ceiling_ColV, AntLand_room15Ceiling_ColT, &AntLand_room15Ceiling_ColS
+};
+Vec3f AntLand_room8Floor1_ColV[] = {
+#include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colV.inc.c"
+};
+Vec3w AntLand_room8Floor1_ColT[] = {
+#include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colT.inc.c"
+};
+Rect3D AntLand_room8Floor1_ColS = {
+#include "assets/levelGroup/AntLand/room8Floor1/room8Floor1.colS.inc.c"
+};
+ModelCollision AntLand_room8Floor1_ColH = {
+ARRAY_COUNT(AntLand_room8Floor1_ColV), ARRAY_COUNT(AntLand_room8Floor1_ColT), AntLand_room8Floor1_ColV, AntLand_room8Floor1_ColT, &AntLand_room8Floor1_ColS
+};
+Vec3f AntLand_room8Floor2_ColV[] = {
+#include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colV.inc.c"
+};
+Vec3w AntLand_room8Floor2_ColT[] = {
+#include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colT.inc.c"
+};
+Rect3D AntLand_room8Floor2_ColS = {
+#include "assets/levelGroup/AntLand/room8Floor2/room8Floor2.colS.inc.c"
+};
+ModelCollision AntLand_room8Floor2_ColH = {
+ARRAY_COUNT(AntLand_room8Floor2_ColV), ARRAY_COUNT(AntLand_room8Floor2_ColT), AntLand_room8Floor2_ColV, AntLand_room8Floor2_ColT, &AntLand_room8Floor2_ColS
+};
+Vec3f AntLand_room0doorPillar1_ColV[] = {
+#include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colV.inc.c"
+};
+Vec3w AntLand_room0doorPillar1_ColT[] = {
+#include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colT.inc.c"
+};
+Rect3D AntLand_room0doorPillar1_ColS = {
+#include "assets/levelGroup/AntLand/room0doorPillar1/room0doorPillar1.colS.inc.c"
+};
+ModelCollision AntLand_room0doorPillar1_ColH = {
+ARRAY_COUNT(AntLand_room0doorPillar1_ColV), ARRAY_COUNT(AntLand_room0doorPillar1_ColT), AntLand_room0doorPillar1_ColV, AntLand_room0doorPillar1_ColT, &AntLand_room0doorPillar1_ColS
+};
+Vec3f AntLand_room0doorPillar2_ColV[] = {
+#include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colV.inc.c"
+};
+Vec3w AntLand_room0doorPillar2_ColT[] = {
+#include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colT.inc.c"
+};
+Rect3D AntLand_room0doorPillar2_ColS = {
+#include "assets/levelGroup/AntLand/room0doorPillar2/room0doorPillar2.colS.inc.c"
+};
+ModelCollision AntLand_room0doorPillar2_ColH = {
+ARRAY_COUNT(AntLand_room0doorPillar2_ColV), ARRAY_COUNT(AntLand_room0doorPillar2_ColT), AntLand_room0doorPillar2_ColV, AntLand_room0doorPillar2_ColT, &AntLand_room0doorPillar2_ColS
+};
+Vec3f AntLand_room0doorTop_ColV[] = {
+#include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colV.inc.c"
+};
+Vec3w AntLand_room0doorTop_ColT[] = {
+#include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colT.inc.c"
+};
+Rect3D AntLand_room0doorTop_ColS = {
+#include "assets/levelGroup/AntLand/room0doorTop/room0doorTop.colS.inc.c"
+};
+ModelCollision AntLand_room0doorTop_ColH = {
+ARRAY_COUNT(AntLand_room0doorTop_ColV), ARRAY_COUNT(AntLand_room0doorTop_ColT), AntLand_room0doorTop_ColV, AntLand_room0doorTop_ColT, &AntLand_room0doorTop_ColS
+};
+Vec3f AntLand_room0doorTorchStand1_ColV[] = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colV.inc.c"
+};
+Vec3w AntLand_room0doorTorchStand1_ColT[] = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colT.inc.c"
+};
+Rect3D AntLand_room0doorTorchStand1_ColS = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand1/room0doorTorchStand1.colS.inc.c"
+};
+ModelCollision AntLand_room0doorTorchStand1_ColH = {
+ARRAY_COUNT(AntLand_room0doorTorchStand1_ColV), ARRAY_COUNT(AntLand_room0doorTorchStand1_ColT), AntLand_room0doorTorchStand1_ColV, AntLand_room0doorTorchStand1_ColT, &AntLand_room0doorTorchStand1_ColS
+};
+Vec3f AntLand_room0doorTorchStand2_ColV[] = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colV.inc.c"
+};
+Vec3w AntLand_room0doorTorchStand2_ColT[] = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colT.inc.c"
+};
+Rect3D AntLand_room0doorTorchStand2_ColS = {
+#include "assets/levelGroup/AntLand/room0doorTorchStand2/room0doorTorchStand2.colS.inc.c"
+};
+ModelCollision AntLand_room0doorTorchStand2_ColH = {
+ARRAY_COUNT(AntLand_room0doorTorchStand2_ColV), ARRAY_COUNT(AntLand_room0doorTorchStand2_ColT), AntLand_room0doorTorchStand2_ColV, AntLand_room0doorTorchStand2_ColT, &AntLand_room0doorTorchStand2_ColS
+};
+Vec3f AntLand_room16Floor1_ColV[] = {
+#include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colV.inc.c"
+};
+Vec3w AntLand_room16Floor1_ColT[] = {
+#include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colT.inc.c"
+};
+Rect3D AntLand_room16Floor1_ColS = {
+#include "assets/levelGroup/AntLand/room16Floor1/room16Floor1.colS.inc.c"
+};
+ModelCollision AntLand_room16Floor1_ColH = {
+ARRAY_COUNT(AntLand_room16Floor1_ColV), ARRAY_COUNT(AntLand_room16Floor1_ColT), AntLand_room16Floor1_ColV, AntLand_room16Floor1_ColT, &AntLand_room16Floor1_ColS
+};
+Vec3f AntLand_room16Floor2_ColV[] = {
+#include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colV.inc.c"
+};
+Vec3w AntLand_room16Floor2_ColT[] = {
+#include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colT.inc.c"
+};
+Rect3D AntLand_room16Floor2_ColS = {
+#include "assets/levelGroup/AntLand/room16Floor2/room16Floor2.colS.inc.c"
+};
+ModelCollision AntLand_room16Floor2_ColH = {
+ARRAY_COUNT(AntLand_room16Floor2_ColV), ARRAY_COUNT(AntLand_room16Floor2_ColT), AntLand_room16Floor2_ColV, AntLand_room16Floor2_ColT, &AntLand_room16Floor2_ColS
+};
+Vec3f AntLand_room16Grate_ColV[] = {
+#include "assets/levelGroup/AntLand/room16Grate/room16Grate.colV.inc.c"
+};
+Vec3w AntLand_room16Grate_ColT[] = {
+#include "assets/levelGroup/AntLand/room16Grate/room16Grate.colT.inc.c"
+};
+Rect3D AntLand_room16Grate_ColS = {
+#include "assets/levelGroup/AntLand/room16Grate/room16Grate.colS.inc.c"
+};
+ModelCollision AntLand_room16Grate_ColH = {
+ARRAY_COUNT(AntLand_room16Grate_ColV), ARRAY_COUNT(AntLand_room16Grate_ColT), AntLand_room16Grate_ColV, AntLand_room16Grate_ColT, &AntLand_room16Grate_ColS
+};
+Vec3f AntLand_fixedCamPillar_ColV[] = {
+#include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colV.inc.c"
+};
+Vec3w AntLand_fixedCamPillar_ColT[] = {
+#include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colT.inc.c"
+};
+Rect3D AntLand_fixedCamPillar_ColS = {
+#include "assets/levelGroup/AntLand/fixedCamPillar/fixedCamPillar.colS.inc.c"
+};
+ModelCollision AntLand_fixedCamPillar_ColH = {
+ARRAY_COUNT(AntLand_fixedCamPillar_ColV), ARRAY_COUNT(AntLand_fixedCamPillar_ColT), AntLand_fixedCamPillar_ColV, AntLand_fixedCamPillar_ColT, &AntLand_fixedCamPillar_ColS
+};
+s32 AntLand_alignment2[] = {0,0};
+Mtx AntLand_IMtx60 = IDENTITY;
+Lights1 AntLand_alScope2_Light =
+#include "assets/levelGroup/AntLand/alScope2.light.inc.c"
+Vtx AntLand_yellowAnt_vtx_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx.vtx.inc.c"
+};
+Mtx AntLand_IMtx61 = IDENTITY;
+unsigned char AntLand_Pad42[] = FILEPAD;
+unsigned char AntLand_yellowAnt_yellowAntEye_ci8_PNG[] = {
+#include "build/assets/levelGroup/AntLand/yellowAnt_yellowAntEye.ci8.png.inc.c"
+};
+unsigned char AntLand_Pad43[] = FILEPAD;
+unsigned char AntLand_yellowAnt_yellowAntEye_ci8_PAL[] = {
+#include "build/assets/levelGroup/AntLand/yellowAnt_yellowAntEye.ci8.pal.inc.c"
+};
+unsigned char AntLand_Pad44[] = FILEPAD;
+unsigned char AntLand_yellowAnt_yellowEyeColor_ci4_PNG[] = {
+#include "build/assets/levelGroup/AntLand/yellowAnt_yellowEyeColor.ci4.png.inc.c"
+};
+unsigned char AntLand_Pad45[] = FILEPAD;
+unsigned char AntLand_yellowAnt_yellowEyeColor_ci4_PAL[] = {
+#include "build/assets/levelGroup/AntLand/yellowAnt_yellowEyeColor.ci4.pal.inc.c"
+};
+Gfx AntLand_yellowAnt_gfx_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx2_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx2.vtx.inc.c"
+};
+Mtx AntLand_IMtx62 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx2_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx2.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx3_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx3.vtx.inc.c"
+};
+Mtx AntLand_IMtx63 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx3_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx3.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx4_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx4.vtx.inc.c"
+};
+Mtx AntLand_IMtx64 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx4_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx4.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx5_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx5.vtx.inc.c"
+};
+Mtx AntLand_IMtx65 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx5_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx5.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx6_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx6.vtx.inc.c"
+};
+Mtx AntLand_IMtx66 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx6_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx6.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx7_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx7.vtx.inc.c"
+};
+Mtx AntLand_IMtx67 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx7_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx7.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx8_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx8.vtx.inc.c"
+};
+Mtx AntLand_IMtx68 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx8_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx8.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx9_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx9.vtx.inc.c"
+};
+Mtx AntLand_IMtx69 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx9_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx9.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx10_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx10.vtx.inc.c"
+};
+Mtx AntLand_IMtx70 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx10_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx10.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx11_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx11.vtx.inc.c"
+};
+Mtx AntLand_IMtx71 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx11_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx11.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx12_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx12.vtx.inc.c"
+};
+Mtx AntLand_IMtx72 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx12_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx12.gfx.inc.c"
+};
+Vtx AntLand_yellowAnt_vtx13_Vtx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_vtx13.vtx.inc.c"
+};
+Mtx AntLand_IMtx73 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx13_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx13.gfx.inc.c"
+};
+Mtx AntLand_IMtx74 = IDENTITY;
+Gfx AntLand_yellowAnt_gfx14_Gfx[] = {
+#include "assets/levelGroup/AntLand/yellowAnt_gfx14.gfx.inc.c"
+};
+Anim AntLand_yellowAntAnim_Animh = {
+#include "assets/levelGroup/AntLand/yellowAntAnim/yellowAntAnim.animH.inc.c"
+};
+Mtx AntLand_yellowAntAnim_Animarr[20][13] = {
+#include "assets/levelGroup/AntLand/yellowAntAnim/yellowAntAnim.animArr.inc.c"
+};
+
+
+AnimPointer AntLand_yellowAntAnimPointers_Animp[1] = {
+	{&AntLand_yellowAntAnim_Animh.frames, &AntLand_yellowAntAnim_Animh.objects, &AntLand_yellowAntAnim_Animarr[0][0]}
+};

@@ -1,126 +1,94 @@
-"""
-Chameleon Twist: Sprite Actor struct splitter
-Dumps out spriteActor data as a .inc.c file.
+"""Room settings struct splitter."""
 
-Original Author: Ellie (Elisiah)
-Modified for Room Settings struct: Nathan R.
-"""
-
-import re
 import struct
-from pathlib import Path
+import sys
 from splat.util.log import error
-from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
 
+sys.path.append(str(options.opts.base_path / "tools/splat_ext"))
+from _ct_base import CTSegBase, do_pretty_print
 
-class N64SegRoomSettings(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
+# Field index → (referenced symbol type) for the four pointer fields at the
+# start of a RoomInstance.
+_PTR_FIELDS = {
+    0: "Roomobj",
+    1: "Roomact",
+    2: "Clct",
+    3: "Sprite",
+}
 
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
-
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.rmSet.inc.c"
-
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
+class N64SegRoomSettings(CTSegBase):
+    SUFFIX = "rmSet"
 
     def disassemble_data(self, rom_bytes):
-        sprite_data = rom_bytes[self.rom_start : self.rom_end]
-        segment_length = len(sprite_data)
-        if (segment_length) != 0x6C:
+        SIZE = 108
+        NULL_STRUCT = (0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0)
+        NULL_MACRO = "NULL_ROOM"
+        if self.version == "VER_US":
+            SIZE = 104
+            NULL_STRUCT = NULL_STRUCT[:-1]
+
+        buf = rom_bytes[self.rom_start : self.rom_end]
+        if len(buf) % SIZE != 0:
             error(
-                f"Error: roomSettings segment {self.name} length ({segment_length}) is not valid"
+                f"Error: roomSettings segment {self.name} length ({len(buf)}) is not valid"
             )
-
         lines = []
-
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Rmset")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Rmset", define=True
-            )
+        sym = self.get_myself("Rmset")
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("RoomSettings %s = {" % (sym.name))
+            lines.append(f"RoomInstance {sym.name}[] = {{")
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>IIIIiiiiiififffiiifhhhhiiiifi', byteData)
-        i = 0
-        while i < len(data):
-            v = data[i]
-            if data[i] != 0:
-                if i == 0: #Room Objects
-                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Roomobj")
-                    if not rmsym:
-                        rmsym = self.create_symbol(
-                            addr=data[i], in_segment=True, type="Roomobj", define=True
-                        )
-                        v = str(data[i])
-                    else: v = "&"+rmsym.name
-                elif i == 1: #Room Actors
-                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Roomact")
-                    if not rmsym:
-                        rmsym = self.create_symbol(
-                            addr=data[i], in_segment=True, type="Roomact", define=True
-                        )
-                        v = str(data[i])
-                    else: v = "&"+rmsym.name
-                elif i == 2: #Collectables
-                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Clct")
-                    if not rmsym:
-                        rmsym = self.create_symbol(
-                            addr=data[i], in_segment=True, type="Clct", define=True
-                        )
-                        v = str(data[i])
-                    else: v = "&"+rmsym.name
-                elif i == 3: #Sprite Actors
-                    rmsym = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Sprite")
-                    if not rmsym:
-                        rmsym = self.create_symbol(
-                            addr=data[i], in_segment=True, type="Sprite", define=True
-                        )
-                        v = str(data[i])
-                    else: v = "&"+rmsym.name
-            lines.append(f"    {v},")
-            i += 1
+        to_unpack = '>IIIIiiiiiififffffffhhhhhhhhhhhhff'
+        if self.version == "VER_US":
+            to_unpack = to_unpack[:-1]
 
+        csv_lines = []
+        has_null = False
+        x = 0
+        while x < len(buf):
+            data = struct.unpack(to_unpack, buf[x:x+SIZE])
+
+            if x == len(buf)-SIZE:
+                if data == NULL_STRUCT:
+                    has_null = True
+                    break
+
+            args = []
+            i = 0
+            while i < len(data):
+                use = data[i]
+                if i <= 3:
+                    if use != 0:
+                        sym = self.get_symbol(data[i], type=_PTR_FIELDS[i])
+                        if not sym:
+                            sym = self.create_symbol(
+                                addr=data[i], in_segment=True, type=_PTR_FIELDS[i], define=True
+                            )
+                        use = sym.name
+                    else:
+                        use = "NULL"
+                elif i in (19, 22, 25, 28):
+                    use = f"{{{data[i]}, {data[i+1]}, {data[i+2]}}}"
+                    i += 2
+                elif type(use) == float:
+                    use = self.round_float(use)
+                args.append(str(use))
+                i += 1
+            csv_lines.append(",".join(args))
+            x += SIZE
+
+
+        lines += do_pretty_print(csv_lines)
+        if has_null:
+            lines.append("\t"+NULL_MACRO)
+        else:
+            #remove following comma
+            lines[-1] = lines[-1][:-1]
 
         if not self.data_only:
             lines.append("};")
 
-        # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)

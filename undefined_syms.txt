@@ -1,0 +1,1 @@
+gfxZBuffer = 0x80000400;

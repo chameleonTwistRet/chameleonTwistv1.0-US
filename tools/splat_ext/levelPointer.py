@@ -1,113 +1,79 @@
-"""
-"""
+"""Level pointer struct splitter: emits StageModel[]."""
 
-import re
 import struct
-from pathlib import Path
+import sys
 from splat.util.log import error
-from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
 
-class N64SegLevelPointer(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
+sys.path.append(str(options.opts.base_path / "tools/splat_ext"))
+from _ct_base import CTSegBase, do_pretty_print
 
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
+_PTR_FIELDS = {
+    0: "Gfx",
+    1: "ColH",
+}
 
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.lvp.inc.c"
-
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
+class N64SegLevelPointer(CTSegBase):
+    SUFFIX = "lvp"
 
     def disassemble_data(self, rom_bytes):
-        pointer_data = rom_bytes[self.rom_start : self.rom_end]
+        SIZE = 48
 
-        lines = []
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvp")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Lvp", define=True
+        buf = rom_bytes[self.rom_start : self.rom_end]
+        if len(buf) % SIZE != 0:
+            error(
+                f"Error: levelPointer segment {self.name} length ({len(buf)}) is not valid"
             )
 
-
-
-        num = 0
-        pointersets = []
-        while num*0x30 < len(pointer_data):
-            data = struct.unpack('>IIiiiiiiiiii', pointer_data[num*0x30:(num+1)*0x30])
-            pointersets.append([])
-            i = 0
-            while i < len(data):
-                if i == 0: #Graphics
-                    symG = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "Gfx")
-                    if not symG:
-                        symG = self.create_symbol(
-                            addr=data[i], in_segment=True, type="Gfx", define=True
-                        )
-                    pointersets[num].append("&"+symG.name)
-                elif i == 1: #Collision
-                    symC = self.retrieve_sym_type(symbols.all_symbols_dict, data[i], "ColH")
-                    if not symC:
-                        symC = self.create_symbol(
-                            addr=data[i], in_segment=True, type="ColH", define=True
-                        )
-                    pointersets[num].append("&"+symC.name)
-                else:
-                    nus = str(data[i])
-                    if i == 2:
-                        nus = "{"+nus
-                    elif i == 11:
-                        nus += "}"
-                    pointersets[num].append(nus)
-
-                i += 1
-            num += 1
-        
+        lines = []
+        sym = self.get_myself("Lvp")
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("LevelPointer  "+sym.name+"["+str(num)+"] = {")
+            lines.append(f"StageModel {sym.name}[] = {{")
 
-        for set in pointersets:
-            currLine = "{"
-            for v in set: currLine += v+", "
-            currLine += "},"
-            lines.append(currLine)
+        externs = []
+        csv_lines = []
+        x = 0
+        while x < len(buf):
+            data = struct.unpack('>IIiiiiiiiiii', buf[x:x+SIZE])
+
+            args = []
+            i = 0
+            while i < len(data):
+                if i <= 1:
+                    sym = self.get_symbol(data[i], type=_PTR_FIELDS[i])
+                    if not sym:
+                        sym = self.create_symbol(
+                            addr=data[i], in_segment=True, type=_PTR_FIELDS[i], define=True
+                        )
+                    if i == 0:
+                        externs.append(f"extern Gfx {sym.name}[];")
+                        #Gfx is an array so it doesnt need another pointer
+                        args.append(sym.name)
+                    else:
+                        externs.append(f"extern ModelCollision {sym.name};")
+                        args.append("&"+sym.name)
+                elif i == 2:
+                    #if SOMEHOW the rest isnt just padding, report back
+                    if data[i:] != (0,) * 10:
+                        s = str(data[i:])[1:-1]
+                        args.append(f"{{{s}}}")
+                    i += 9
+                i += 1
+            csv_lines.append(",".join(args))
+            x += SIZE
+
+        if not self.data_only:
+
+            lines[1:1] = list(set(externs))
+
+        lines += do_pretty_print(csv_lines)
+        #remove following comma
+        lines[-1] = lines[-1][:-1]
 
         if not self.data_only:
             lines.append("};")
 
-        # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)

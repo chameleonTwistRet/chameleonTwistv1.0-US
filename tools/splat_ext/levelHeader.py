@@ -1,94 +1,74 @@
-"""
-Chameleon Twist: Sprite Actor struct splitter
-Dumps out spriteActor data as a .inc.c file.
+"""Level header struct splitter."""
 
-Original Author: Ellie (Elisiah)
-Modified for Level Header struct: Nathan R.
-"""
-
-import re
 import struct
-from pathlib import Path
+import sys
 from splat.util.log import error
-from splat.util import options, symbols
-from splat.segtypes.common.codesubsegment import CommonSegCodeSubsegment
+from splat.util import options
 
+sys.path.append(str(options.opts.base_path / "tools/splat_ext"))
+from _ct_base import CTSegBase
 
-class N64SegLevelHeader(CommonSegCodeSubsegment):
-    def __init__(
-        self,
-        rom_start,
-        rom_end,
-        type,
-        name,
-        vram_start,
-        args,
-        yaml,
-    ):
-        super().__init__(
-            rom_start,
-            rom_end,
-            type,
-            name,
-            vram_start,
-            args=args,
-            yaml=yaml,
-        )
-        self.file_text = None
-        self.data_only = isinstance(yaml, dict) and yaml.get("data_only", False)
+REFS = {
+    0: ("LvmH", lambda s: f"&{s.name}"),
+    1: ("Rmset", lambda s: s.name),
+    2: ("Lvp", lambda s: s.name),
+    5: ("RabObjects", lambda s: s.name),
+    7: ("Sprlib", lambda s: s.name),
+    8: ("Lvlscope", lambda s: f"&{s.name}"),
+}
 
-    def get_linker_section(self) -> str:
-        #return ".data"
-        return []
-
-    def out_path(self) -> Path:
-        return options.opts.asset_path / self.dir / f"{self.name}.lvlHdr.inc.c"
-
-    def scan(self, rom_bytes: bytes):
-        if self.out_path().exists():
-            return
-        self.file_text = self.disassemble_data(rom_bytes)
+class N64SegLevelHeader(CTSegBase):
+    SUFFIX = "lvlHdr"
 
     def disassemble_data(self, rom_bytes):
-        sprite_data = rom_bytes[self.rom_start : self.rom_end]
-        segment_length = len(sprite_data)
-        if (segment_length) != 0x20:
+        SIZE = 32
+
+        buf = rom_bytes[self.rom_start : self.rom_end]
+        if len(buf) != SIZE:
             error(
-                f"Error: levelHeader segment {self.name} length ({segment_length}) is not valid"
+                f"Error: levelHeader segment {self.name} length ({len(buf)}) is not valid"
             )
 
         lines = []
-
-        sym = self.retrieve_sym_type(symbols.all_symbols_dict, self.vram_start, "Lvlhdr")
-        if not sym:
-            sym = self.create_symbol(
-                addr=self.vram_start, in_segment=True, type="Lvlhdr", define=True
-            )
+        sym = self.get_myself("Lvlhdr")
         if not self.data_only:
             lines.append('#include "common.h"')
             lines.append("")
-            lines.append("LevelHeader %s = {" % (sym.name))
+            lines.append(f"StageData {sym.name} = {{")
 
-        byteData = bytearray(sprite_data)
-        data = struct.unpack('>IIIIIIII', byteData)
+        data = struct.unpack('>IIIHHIIII', buf)
+        args = []
+        max_column = 1
         i = 0
         while i < len(data):
             use = data[i]
-            if use != 0:
-                if i == 0: #level map
-                    map = self.retrieve_sym_type(symbols.all_symbols_dict, use, "LvmH")
-                    if map: use = "&"+map.name
-                elif i == 1: #overworld rooms
-                    ov = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Rmset")
-                    if ov: use = "&"+ov.name
-                elif i == 2: #pointers
-                    pointers = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvp")
-                    if pointers: use = "&"+pointers.name
-                elif i == len(data) - 1: #level scope
-                    scopeSym = self.retrieve_sym_type(symbols.all_symbols_dict, use, "Lvlscope")
-                    if scopeSym: use = "&"+scopeSym.name
-            lines.append(f"    {use},")
+            if i in REFS:
+                if use == 0:
+                    use = "NULL"
+                else:
+                    ref_type, fmt = REFS[i]
+                    ref_sym = self.get_symbol(use, type=ref_type)
+                    if ref_sym:
+                        use = fmt(ref_sym)
+                    else:
+                        use = self.create_symbol(
+                            addr=self.vram_start, in_segment=True, type=ref_type, define=True
+                        )
+            elif i == 3:
+                use = f"ARRAY_COUNT({args[-1]})"
+            elif i == 6:
+                use = hex(use)
+            use = str(use)
+            max_column = max(max_column, len(use))
+            args.append(use)
             i += 1
+
+        #custom pretty print because we want it in columns
+        for item in args:
+            lines.append(f"{item:>{max_column}},")
+
+        #remove following comma
+        lines[-1] = lines[-1][:-1]
 
         if not self.data_only:
             lines.append("};")
@@ -96,10 +76,3 @@ class N64SegLevelHeader(CommonSegCodeSubsegment):
         # enforce newline at end of file
         lines.append("")
         return "\n".join(lines)
-
-    def split(self, rom_bytes: bytes):
-        if self.file_text and self.out_path():
-            self.out_path().parent.mkdir(parents=True, exist_ok=True)
-
-            with open(self.out_path(), "w", newline="\n") as f:
-                f.write(self.file_text)

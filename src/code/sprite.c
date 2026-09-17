@@ -94,7 +94,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80059834.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80059860.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/printUISprite.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005A0D4.s")
 
@@ -128,7 +128,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005FADC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005FAE8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/setPrimColor.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005FB1C.s")
 
@@ -140,7 +140,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005FB74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005FB80.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/SetTextGradient.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005FC0C.s")
 
@@ -156,7 +156,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8005FEB8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80060270.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_TypeA_Init.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80060588.s")
 
@@ -182,7 +182,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_800613C0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80061690.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_TypeC_Init.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80061928.s")
 
@@ -334,7 +334,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006B550.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006B9A0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/Effect_PlayerEyes_Init.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006BC08.s")
 
@@ -386,6 +386,16 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E044.s")
 
+const char D_80117214[] = "ＰＡＵＳＥ！";
+const char D_80117224[] = "ＣＡＮＣＥＬ";
+const char D_80117234[] = "ＳＴＡＧＥ　ＳＥＬＥＣＴ";
+const char D_80117250[] = "ＣＯＬＯＲ　ＳＥＬＥＣＴ";
+const char D_8011726C[] = "ＥＸＩＴ";
+const char D_80117278[] = "ＲＥＴＲＹ";
+const char D_80117284[] = "ＳＴＡＧＥ　ＣＨＡＮＧＥ";
+const char D_801172A0[] = "ＣＯＬＯＲ　ＣＨＡＮＧＥ";
+const char D_801172BC[] = "ＥＸＩＴ";
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E0EC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006E5A4.s")
@@ -405,6 +415,9 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F2C8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F31C.s")
+
+#define period "\xAd\xa3"
+const char D_80117308[] = "ＳＷＩＴＣＨ　ＯＦＦ　ＴＨＥ　ＰＯＷＥＲ" period;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8006F444.s")
 
@@ -564,6 +577,13 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078B2C.s")
 
+const char D_8011736C[] = "ＴＯ　ＴＨＥ　ＣＯＮＴＲＯＬＬＥＲ　ＳＯＣＫＥＴ一" period;
+const char D_801173A4[] = "　　ＲＵＭＢＬＥ　ＰＡＫ　ＩＳ　　";
+const char D_801173C8[] = "ＭＡＬＦＵＮＣＴＩＯＮＩＮＧ" period;
+const char D_801173E8[] = "　　ＣＯＮＴＲＯＬＬＥＲ　ＰＡＫ　ＩＳ　　";
+const char D_80117414[] = "ＮＯＴ　ＤＥＳＩＧＮＥＤ　ＦＯＲ　ＵＳＥ　ＷＩＴＨ";
+const char D_80117448[] = "ＣＨＡＭＥＬＥＯＮ　ＴＷＩＳＴ" period;
+
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078B64.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_80078E28.s")
@@ -594,7 +614,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C78C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C864.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/PrintTextWrapper.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007C8A4.s")
 
@@ -610,7 +630,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007E964.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/ptstart.s")
+void ptstart(void) {
+}
+
+void func_8007ED4C(void) {
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/code/sprite/func_8007ED54.s")
 

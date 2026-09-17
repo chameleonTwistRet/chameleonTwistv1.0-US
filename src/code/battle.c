@@ -1,5 +1,16 @@
 #include "common.h"
 
+//bss
+u8 Battle_PlayerIsOut[4];
+s32 D_80182624; //s32 Battle_TimeLeft;
+s32 D_80182628; //s32 Battle_FirstRankCount; // number of players on 1st rank minus 1
+s32 D_8018262C; //s32 Battle_PlayerCount;
+s32 D_80182630; //s32 gMultiplayerBGM;
+s32 D_80182634; //s32 Battle_NumRanks;
+s32 D_80182638;///???
+s32 D_8018263C;
+
+
 /*
 //data
 u32 D_800EA510 = 0; // Battle_Time

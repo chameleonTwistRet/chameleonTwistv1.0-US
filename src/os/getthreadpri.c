@@ -1,3 +1,10 @@
 #include "common.h"
+#include "osint.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/getthreadpri/osGetThreadPri.s")
+OSPri osGetThreadPri(OSThread *thread) {
+    if (thread == NULL) {
+        thread = __osRunningThread;
+    }
+
+    return thread->priority;
+}
